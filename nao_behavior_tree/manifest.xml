@@ -1,0 +1,15 @@
+<package>
+  <description brief="nao_behavior_tree">
+
+     nao_behavior_tree
+
+  </description>
+  <author>Olivier</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/nao_behavior_tree</url>
+  <depend package="roscpp"/>
+
+</package>
+
+

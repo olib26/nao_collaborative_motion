@@ -1,0 +1,35 @@
+<launch>
+
+  <!--
+  	This pushes the local PYTHONPATH into the launch file, so that the NaoQI API is found.
+    You need to add the Nao's API dir to your PYTHONPATH so that the modules are found.
+  -->
+  <env name="PYTHONPATH" value="$(env PYTHONPATH)" /> 
+  
+  
+  <!-- 
+    Start Nao 2
+  -->
+  <arg name="nao_ip2" default="$(optenv NAO_IP 127.0.0.1)" />
+  <arg name="nao_port2" default="$(optenv NAO_PORT 9559)" />
+  
+  <node pkg="nao_driver" type="nao_walker.py" name="nao_walker2" required="true" args="--pip=$(arg nao_ip2) --pport=$(arg nao_port2)" output="screen">
+  	<remap from="cmd_vel" to="cmd_vel2"/>
+  </node>
+  
+  <node pkg="nao_driver" type="nao_sensors.py" name="nao_sensors2" required="true" args="--pip=$(arg nao_ip2) --pport=$(arg nao_port2)" output="screen">
+  	<remap from="torso_odometry" to="torso_odometry2"/>
+  </node>
+  
+  <node pkg="nao_driver" type="nao_controller.py" name="nao_controller2" required="true" args="--pip=$(arg nao_ip2) --pport=$(arg nao_port2)" output="screen"/>
+  
+ <!--
+    Top camera
+  -->
+  <node pkg="nao_driver" type="nao_camera.py" name="nao_camera2" required="true" args="--pip=$(arg nao_ip2) --pport=$(arg nao_port2)" output="screen">
+    <param name="camera_switch" value="0"/>
+    <param name="resolution" value="2"/>
+    <remap from="image_raw" to="image_raw2"/>
+  </node>
+
+</launch>

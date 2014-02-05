@@ -1,0 +1,15 @@
+<package>
+  <description brief="nao_custom">
+
+     nao_custom
+
+  </description>
+  <author>Olivier</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/nao_custom</url>
+  <depend package="roscpp"/>
+
+</package>
+
+

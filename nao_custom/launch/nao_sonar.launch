@@ -1,0 +1,8 @@
+<launch>
+
+  <node pkg="nao_custom" type="nao_sonar" name="nao_sonar" output="screen">
+    <param name="NAO_IP" value="127.0.0.1"/>
+    <param name="NAO_PORT" value="9559"/>
+  </node>
+  
+</launch>

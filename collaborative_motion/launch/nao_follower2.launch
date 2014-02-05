@@ -1,0 +1,15 @@
+<launch>
+
+  <!--
+    Nao controller 2
+  -->
+  <node pkg="collaborative_motion" type="nao_controller" name="nao_c2" args="2" output="screen">
+    <param name="x_01" value="2"/>
+    <param name="y_01" value="-1"/>
+    <param name="theta_01" value="3.14159265"/>
+    <param name="x_02" value="0"/>
+    <param name="y_02" value="0"/>
+    <param name="theta_02" value="0"/>
+  </node>
+
+</launch>

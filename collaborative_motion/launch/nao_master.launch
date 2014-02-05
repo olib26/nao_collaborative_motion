@@ -1,0 +1,6 @@
+<launch>
+
+	<include file="$(find collaborative_motion)/launch/nao_tracker_camera1.launch"/>
+	<include file="$(find collaborative_motion)/launch/nao_tracker_camera2.launch"/>
+  
+</launch>

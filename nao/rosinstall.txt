@@ -1,0 +1,12 @@
+- git:
+    uri: https://github.com/ahornung/humanoid_msgs
+    local-name: stacks/humanoid_msgs
+    version: 0.1.2
+- git:
+    uri: https://github.com/ahornung/nao_robot
+    local-name: stacks/nao_robot
+    version: 0.1.0
+- git:
+    uri: https://github.com/ahornung/nao_common
+    local-name: stacks/nao_common
+    version: 0.1.0
