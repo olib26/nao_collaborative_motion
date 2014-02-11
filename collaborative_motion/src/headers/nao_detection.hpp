@@ -24,6 +24,12 @@ bool init = false;
 // Image size
 int height,width;
 
+// Camera parameters
+const double VFOV = 47.6*M_PI/180;
+
+// Nao head spot
+const double H = 0.036;
+
 // Point in integral image
 struct Point
 {
@@ -32,23 +38,28 @@ struct Point
 };
 
 // Detector frame size
-const int sx = 30;
-const int sy = 50;
+int sx,sy;
+const int sx_min = 10;
+const int sy_min = 15;
+const int s_diffusion = 3;
 
 // Object coordinate
-int x;
-int y;
+int x,y;
+double depth;
 
 // Diffusion variance
 const int sigma_diffusion = 8;
 
 // Number of particles
-const int N = 1000;
+const int N = 2000;
 
 // Generate N random particles
-int Px [N];
-int Py [N];
-double W [N];
+struct Particle{
+	int x,y;
+	int sx,sy;
+	double w;
+};
+Particle* particles = new Particle[N];
 
 // HSV Thresholds
 int H_MIN,H_MAX,S_MIN,S_MAX,V_MIN,V_MAX;

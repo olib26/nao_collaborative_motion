@@ -1,0 +1,15 @@
+<package>
+  <description brief="hello_world">
+
+     hello_world
+
+  </description>
+  <author>Olivier</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/hello_world</url>
+  <depend package="roscpp"/>
+
+</package>
+
+

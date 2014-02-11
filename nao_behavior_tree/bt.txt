@@ -1,6 +1,3 @@
 [*
-	A ActionName
-	A ActionName
-	A ActionName
-	A ActionName
+	A Greet1
 ]

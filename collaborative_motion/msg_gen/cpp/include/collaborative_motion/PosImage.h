@@ -26,6 +26,7 @@ struct PosImage_ {
   , y(0)
   , height(0)
   , width(0)
+  , depth(0.0)
   {
   }
 
@@ -34,6 +35,7 @@ struct PosImage_ {
   , y(0)
   , height(0)
   , width(0)
+  , depth(0.0)
   {
   }
 
@@ -48,6 +50,9 @@ struct PosImage_ {
 
   typedef int32_t _width_type;
   int32_t width;
+
+  typedef float _depth_type;
+  float depth;
 
 
   typedef boost::shared_ptr< ::collaborative_motion::PosImage_<ContainerAllocator> > Ptr;
@@ -78,12 +83,12 @@ template<class ContainerAllocator>
 struct MD5Sum< ::collaborative_motion::PosImage_<ContainerAllocator> > {
   static const char* value() 
   {
-    return "77cbce8086047f00755fff9fa950d785";
+    return "cf0beac2e7204b108e4d905cfbc48a56";
   }
 
   static const char* value(const  ::collaborative_motion::PosImage_<ContainerAllocator> &) { return value(); } 
-  static const uint64_t static_value1 = 0x77cbce8086047f00ULL;
-  static const uint64_t static_value2 = 0x755fff9fa950d785ULL;
+  static const uint64_t static_value1 = 0xcf0beac2e7204b10ULL;
+  static const uint64_t static_value2 = 0x8e4d905cfbc48a56ULL;
 };
 
 template<class ContainerAllocator>
@@ -104,6 +109,7 @@ struct Definition< ::collaborative_motion::PosImage_<ContainerAllocator> > {
 int32 y\n\
 int32 height\n\
 int32 width\n\
+float32 depth\n\
 \n\
 ";
   }
@@ -128,6 +134,7 @@ template<class ContainerAllocator> struct Serializer< ::collaborative_motion::Po
     stream.next(m.y);
     stream.next(m.height);
     stream.next(m.width);
+    stream.next(m.depth);
   }
 
   ROS_DECLARE_ALLINONE_SERIALIZER;
@@ -153,6 +160,8 @@ struct Printer< ::collaborative_motion::PosImage_<ContainerAllocator> >
     Printer<int32_t>::stream(s, indent + "  ", v.height);
     s << indent << "width: ";
     Printer<int32_t>::stream(s, indent + "  ", v.width);
+    s << indent << "depth: ";
+    Printer<float>::stream(s, indent + "  ", v.depth);
   }
 };
 

@@ -1,0 +1,2 @@
+/usr/bin/ar cr lib/libbt_server.a  CMakeFiles/bt_server.dir/src/behavior_tree/rosaction.o
+/usr/bin/ranlib lib/libbt_server.a

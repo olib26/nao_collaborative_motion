@@ -7,4 +7,6 @@
           HEIGHT
           WIDTH-VAL
           WIDTH
+          DEPTH-VAL
+          DEPTH
 ))

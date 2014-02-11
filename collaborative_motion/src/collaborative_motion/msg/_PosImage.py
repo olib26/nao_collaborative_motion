@@ -6,17 +6,18 @@ import struct
 
 
 class PosImage(genpy.Message):
-  _md5sum = "77cbce8086047f00755fff9fa950d785"
+  _md5sum = "cf0beac2e7204b108e4d905cfbc48a56"
   _type = "collaborative_motion/PosImage"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """int32 x
 int32 y
 int32 height
 int32 width
+float32 depth
 
 """
-  __slots__ = ['x','y','height','width']
-  _slot_types = ['int32','int32','int32','int32']
+  __slots__ = ['x','y','height','width','depth']
+  _slot_types = ['int32','int32','int32','int32','float32']
 
   def __init__(self, *args, **kwds):
     """
@@ -26,7 +27,7 @@ int32 width
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       x,y,height,width
+       x,y,height,width,depth
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -43,11 +44,14 @@ int32 width
         self.height = 0
       if self.width is None:
         self.width = 0
+      if self.depth is None:
+        self.depth = 0.
     else:
       self.x = 0
       self.y = 0
       self.height = 0
       self.width = 0
+      self.depth = 0.
 
   def _get_types(self):
     """
@@ -62,7 +66,7 @@ int32 width
     """
     try:
       _x = self
-      buff.write(_struct_4i.pack(_x.x, _x.y, _x.height, _x.width))
+      buff.write(_struct_4if.pack(_x.x, _x.y, _x.height, _x.width, _x.depth))
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
 
@@ -75,8 +79,8 @@ int32 width
       end = 0
       _x = self
       start = end
-      end += 16
-      (_x.x, _x.y, _x.height, _x.width,) = _struct_4i.unpack(str[start:end])
+      end += 20
+      (_x.x, _x.y, _x.height, _x.width, _x.depth,) = _struct_4if.unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -90,7 +94,7 @@ int32 width
     """
     try:
       _x = self
-      buff.write(_struct_4i.pack(_x.x, _x.y, _x.height, _x.width))
+      buff.write(_struct_4if.pack(_x.x, _x.y, _x.height, _x.width, _x.depth))
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
 
@@ -104,11 +108,11 @@ int32 width
       end = 0
       _x = self
       start = end
-      end += 16
-      (_x.x, _x.y, _x.height, _x.width,) = _struct_4i.unpack(str[start:end])
+      end += 20
+      (_x.x, _x.y, _x.height, _x.width, _x.depth,) = _struct_4if.unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
 
 _struct_I = genpy.struct_I
-_struct_4i = struct.Struct("<4i")
+_struct_4if = struct.Struct("<4if")

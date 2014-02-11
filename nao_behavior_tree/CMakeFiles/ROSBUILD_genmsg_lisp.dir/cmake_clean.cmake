@@ -1,0 +1,39 @@
+FILE(REMOVE_RECURSE
+  "msg_gen"
+  "src/nao_behavior_tree/msg"
+  "msg_gen"
+  "CMakeFiles/ROSBUILD_genmsg_lisp"
+  "msg_gen/lisp/ROSAction.lisp"
+  "msg_gen/lisp/_package.lisp"
+  "msg_gen/lisp/_package_ROSAction.lisp"
+  "msg_gen/lisp/ROSGoal.lisp"
+  "msg_gen/lisp/_package.lisp"
+  "msg_gen/lisp/_package_ROSGoal.lisp"
+  "msg_gen/lisp/ROSActionGoal.lisp"
+  "msg_gen/lisp/_package.lisp"
+  "msg_gen/lisp/_package_ROSActionGoal.lisp"
+  "msg_gen/lisp/ROSResult.lisp"
+  "msg_gen/lisp/_package.lisp"
+  "msg_gen/lisp/_package_ROSResult.lisp"
+  "msg_gen/lisp/ROSActionResult.lisp"
+  "msg_gen/lisp/_package.lisp"
+  "msg_gen/lisp/_package_ROSActionResult.lisp"
+  "msg_gen/lisp/ROSFeedback.lisp"
+  "msg_gen/lisp/_package.lisp"
+  "msg_gen/lisp/_package_ROSFeedback.lisp"
+  "msg_gen/lisp/ROSActionFeedback.lisp"
+  "msg_gen/lisp/_package.lisp"
+  "msg_gen/lisp/_package_ROSActionFeedback.lisp"
+  "msg/ROSAction.msg"
+  "msg/ROSGoal.msg"
+  "msg/ROSActionGoal.msg"
+  "msg/ROSResult.msg"
+  "msg/ROSActionResult.msg"
+  "msg/ROSFeedback.msg"
+  "msg/ROSActionFeedback.msg"
+)
+
+# Per-language clean rules from dependency scanning.
+FOREACH(lang)
+  INCLUDE(CMakeFiles/ROSBUILD_genmsg_lisp.dir/cmake_clean_${lang}.cmake OPTIONAL)
+ENDFOREACH(lang)

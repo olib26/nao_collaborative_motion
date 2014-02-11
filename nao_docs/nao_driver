@@ -1,0 +1,9 @@
+LD_LIBRARY_PATH=~/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/naoqi-runtime/lib:$LD_LIBRARY_PATH NAO_IP=127.0.0.1 roslaunch nao_driver nao_driver.launch
+
+Enable stiffness:
+rosservice call /body_stiffness/enable "{}"
+
+Walker test:
+rostopic pub -1 /cmd_vel geometry_msgs/Twist '{linear: {x: 1.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.0}}'
+
+

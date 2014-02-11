@@ -49,15 +49,22 @@ double normalRandom()
 
 void robotCoordinate()
 {
-	x = 0;
-	y = 0;
+	x = y = sx = sy = 0;
 	for(int i = 0; i < N; i++)
 	{
-		x += Px[i];
-		y += Py[i];
+		x += particles[i].x + particles[i].sx/2;
+		y += particles[i].y + particles[i].sy/2;
+		sx += particles[i].sx;
+		sy += particles[i].sy;
 	}
-	x = x/N+sx/2;
-	y = y/N+sy/2;
+	x = x/N;
+	y = y/N;
+	sx = sx/N;
+	sy = sy/N;
+	
+	// Evaluate depth
+	double alpha = (double)sx/height*VFOV;
+	depth = H/tan(alpha/2)/2;
 }
 
 
@@ -65,19 +72,19 @@ void showRobot(IplImage* img)
 {
 	CvPoint c1,c2;
 
-	c1 = cvPoint(y-5,x-5);
-	if((x-5) < 0) {c1.y = 0;}
-	if((y-5) < 0) {c1.x = 0;}
-	if((x-5) >= height) {c1.y = height-1;}
-	if((y-5) >= width) {c1.x = width-1;}
+	c1 = cvPoint(y-sy/2,x-sx/2);
+	if((x-sx/2) < 0) {c1.y = 0;}
+	if((y-sy/2) < 0) {c1.x = 0;}
+	if((x-sx/2) >= height) {c1.y = height-1;}
+	if((y-sy/2) >= width) {c1.x = width-1;}
 
-	c2 = cvPoint(y+5,x+5);
-	if((x+5) < 0) {c2.y = 0;}
-	if((y+5) < 0) {c2.x = 0;}
-	if((x+5) >= height) {c2.y = height-1;}
-	if((y+5) >= width) {c2.x = width-1;}
+	c2 = cvPoint(y+sy/2,x+sx/2);
+	if((x+sx/2) < 0) {c2.y = 0;}
+	if((y+sy/3) < 0) {c2.x = 0;}
+	if((x+sx/2) >= height) {c2.y = height-1;}
+	if((y+sy/2) >= width) {c2.x = width-1;}
 
-	cvRectangle(img,c1,c2,cvScalar(130),CV_FILLED);
+	cvRectangle(img,c1,c2,cvScalar(130),2);
 }
 
 
@@ -85,33 +92,43 @@ void showParticles(IplImage* img)
 {
 	for(int i = 0; i < N; i++)
 	{
-		if((((Px[i]+sx/2) < height) & ((Py[i]+sy/2) < width)) & (((Px[i]+sx/2) >= 0) & ((Py[i]+sy/2) >= 0)))
+		if((((particles[i].x+sx/2) < height) & ((particles[i].y+sy/2) < width)) & (((particles[i].x+sx/2) >= 0) & ((particles[i].y+sy/2) >= 0)))
 		{
-			img->imageData[((Px[i]+sx/2)*img->widthStep)+(Py[i]+sy/2)] = 130;
+			img->imageData[((particles[i].x+sx/2)*img->widthStep)+(particles[i].y+sy/2)] = 130;
 		}
 	}
 }
 
 
+int getPixelValue(IplImage* img,int i,int j)
+{
+	if(cvGet2D(img,i,j).val[0] == 255)
+	{
+		return 1;
+	}
+	return -1;
+}
+
+
 int** integralImage(IplImage* img)
 {
-	// Init
+	// Init integral image
 	int** integral = 0;
 	integral = new int*[height];
 	for(int i = 0; i < height; i++) {integral[i] = new int[width];};
-	int cumSum = cvGet2D(img,0,0).val[0];
+	int cumSum = getPixelValue(img,0,0);
 	integral[0][0] = cumSum;
 
 	for(int i = 1; i < height; i++)
 	{
-		cumSum += cvGet2D(img,i,0).val[0];
+		cumSum += getPixelValue(img,i,0);
 		integral[i][0] = cumSum;
 	}
 
-	cumSum = cvGet2D(img,0,0).val[0];
+	cumSum = getPixelValue(img,0,0);
 	for(int j = 1; j < width; j++)
 	{
-		cumSum += cvGet2D(img,0,j).val[0];
+		cumSum += getPixelValue(img,0,j);
 		integral[0][j] = cumSum;
 	}
 
@@ -119,7 +136,7 @@ int** integralImage(IplImage* img)
 	{
 		for(int j = 1; j < width; j++)
 		{
-			integral[i][j] = integral[i-1][j] + integral[i][j-1] - integral[i-1][j-1] + cvGet2D(img,i,j).val[0];
+			integral[i][j] = integral[i-1][j] + integral[i][j-1] - integral[i-1][j-1] + getPixelValue(img,i,j);
 		}
 	}
 
@@ -127,7 +144,7 @@ int** integralImage(IplImage* img)
 }
 
 
-double evaluate(int x, int y, int** integral)
+double evaluate(int x, int y, int sx, int sy, int** integral)
 {
 	Point p(x+sx-1,y+sy-1);
 
@@ -142,6 +159,7 @@ double evaluate(int x, int y, int** integral)
 	if(y > width) {y = width;}
 
 	int weight = integral[p.x][p.y] - integral[x-1][p.y] - integral[p.x][y-1] + integral[x-1][y-1];
+	if(weight < 0) {weight = 0;}
 	return weight;
 }
 
@@ -150,9 +168,16 @@ void initParticles()
 {
 	for(int i = 0; i < N; i++)
 	{
-		Px[i] = rand() % height;
-		Py[i] = rand() % width;
-		W[i] = 1;
+		// Position
+		particles[i].x = rand() % height;
+		particles[i].y = rand() % width;
+		
+		// Weight
+		particles[i].w = 1;
+		
+		// Size
+		particles[i].sx = sx_min;
+		particles[i].sy = sy_min;
 	}
 }
 
@@ -162,13 +187,24 @@ void particleFilter(IplImage* img)
 	// Diffusion
 	double diffusion_x [N];
 	double diffusion_y [N];
+	double diffusion_sx [N];
+	double diffusion_sy [N];
 
 	for(int i = 0; i < N; i++)
 	{
+		// Position
 		diffusion_x[i] = sigma_diffusion*normalRandom();
-		Px[i] += diffusion_x[i];
+		particles[i].x += diffusion_x[i];
 		diffusion_y[i] = sigma_diffusion*normalRandom();
-		Py[i] += diffusion_y[i];
+		particles[i].y += diffusion_y[i];
+		
+		// Size
+		diffusion_sx[i] = s_diffusion*normalRandom();
+		particles[i].sx += diffusion_sx[i];
+		if(particles[i].sx < sx_min) {particles[i].sx = sx_min;}
+		diffusion_sy[i] = s_diffusion*normalRandom();
+		particles[i].sy = diffusion_sy[i];
+		if(particles[i].sy < sy_min) {particles[i].sy = sy_min;}
 	}
 
 	// Weighting
@@ -176,20 +212,20 @@ void particleFilter(IplImage* img)
 	int** integral = integralImage(img);
 	for(int i = 0; i < N; i++)
 	{
-		W[i] = evaluate(Px[i],Py[i],integral);
-		norm += W[i];
+		particles[i].w = evaluate(particles[i].x,particles[i].y,particles[i].sx,particles[i].sy,integral);
+		norm += particles[i].w;
 	}
 	for(int i = 0; i < N; i++)
 	{
-		W[i] = W[i]/norm;
+		particles[i].w = particles[i].w/norm;
 	}
 
 	// Resampling
 	double cdf[N];
-	cdf[0] = W[0];
+	cdf[0] = particles[0].w;
 	for(int i = 1; i < N; i++)
 	{
-		cdf[i] = cdf[i-1] + W[i];
+		cdf[i] = cdf[i-1] + particles[i].w;
 	}
 
 	double r = uniformRandom()/N;
@@ -199,12 +235,11 @@ void particleFilter(IplImage* img)
 		{
 			if(cdf[j] >= r)
 			{
-				Px[i] = Px[j];
-				Py[i] = Py[j];
+				particles[i] = particles[j];
 				break;
 			}
 		}
-		W[i] = (double)1/N;
+		particles[i].w = (double)1/N;
 		r += (double)1/N;
 	}
 
@@ -273,10 +308,11 @@ public:
 		pos.y = y;
 		pos.height = height;
 		pos.width = width;
+		pos.depth = depth;
 		robotPosition_pub.publish(pos);
 
 		// Draw particles and robot
-		showParticles(hsv_mask);
+		//showParticles(hsv_mask);
 		showRobot(hsv_mask);
 
 		cvNamedWindow("hsv-msk",1); cvShowImage("hsv-msk",hsv_mask);

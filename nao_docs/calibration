@@ -1,0 +1,14 @@
+LD_LIBRARY_PATH=~/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/naoqi-runtime/lib:$LD_LIBRARY_PATH NAO_IP=127.0.0.1 roslaunch collaborative_motion nao_init1.launch
+
+rosrun collaborative_motion color_filter 1
+
+
+Orange:
+H_MIN = 0    H_MAX = 30
+S_MIN = 180  S_MAX = 255
+V_MIN = 90   V_MAX = 255
+
+Blue:
+H_MIN = 115  H_MAX = 180
+S_MIN = 100  S_MAX = 255
+V_MIN = 90   V_MAX = 255
