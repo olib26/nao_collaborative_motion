@@ -407,6 +407,8 @@
 		<pathentry include="/usr/include/c++/4.6/backward" kind="inc" path="" system="true"/>
 		<pathentry include="/opt/ros/fuerte/include/actionlib" kind="inc" path="" system="true"/>
 		<pathentry include="/home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/fuerte/stacks/image_common/image_transport/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/fuerte/stacks/vision_opencv/cv_bridge/include" kind="inc" path="" system="true"/>
 		<pathentry excluding="**/CMakeFiles/" kind="out" path=""/>
 		<pathentry kind="src" path=""/>
 	</storageModule>

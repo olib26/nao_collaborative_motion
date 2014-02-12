@@ -11,7 +11,6 @@ public:
 		execute_time_((ros::Duration) 0)
 	{}
 
-	// the action succeeds automatically after 5 seconds
 	int executeCB(ros::Duration dt)
 	{
 		std::cout << "**Stop -%- Executing Main Task, elapsed_time: "

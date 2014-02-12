@@ -57,6 +57,16 @@ CMakeFiles/Stop.dir/src/actions/Stop.o: /opt/ros/fuerte/share/rostest/manifest.x
 CMakeFiles/Stop.dir/src/actions/Stop.o: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
 CMakeFiles/Stop.dir/src/actions/Stop.o: /opt/ros/fuerte/share/actionlib/manifest.xml
 CMakeFiles/Stop.dir/src/actions/Stop.o: /opt/ros/fuerte/share/roslib/manifest.xml
+CMakeFiles/Stop.dir/src/actions/Stop.o: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+CMakeFiles/Stop.dir/src/actions/Stop.o: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+CMakeFiles/Stop.dir/src/actions/Stop.o: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+CMakeFiles/Stop.dir/src/actions/Stop.o: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+CMakeFiles/Stop.dir/src/actions/Stop.o: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+CMakeFiles/Stop.dir/src/actions/Stop.o: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+CMakeFiles/Stop.dir/src/actions/Stop.o: /opt/ros/fuerte/share/rosconsole/manifest.xml
+CMakeFiles/Stop.dir/src/actions/Stop.o: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+CMakeFiles/Stop.dir/src/actions/Stop.o: /opt/ros/fuerte/share/message_filters/manifest.xml
+CMakeFiles/Stop.dir/src/actions/Stop.o: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Stop.dir/src/actions/Stop.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/Stop.dir/src/actions/Stop.o -c /home/olivier/ros_workspace/nao_behavior_tree/src/actions/Stop.cpp
@@ -111,6 +121,37 @@ Stop_EXTERNAL_OBJECTS =
 
 bin/Stop: CMakeFiles/Stop.dir/src/actions/Stop.o
 bin/Stop: CMakeFiles/Stop.dir/src/behavior_tree/rosaction.o
+bin/Stop: /usr/local/lib/libopencv_calib3d.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_contrib.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_core.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_features2d.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_flann.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_gpu.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_highgui.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_imgproc.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_legacy.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_ml.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_nonfree.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_objdetect.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_photo.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_stitching.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_ts.a
+bin/Stop: /usr/local/lib/libopencv_video.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_videostab.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_nonfree.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_ocl.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_gpu.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_legacy.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_calib3d.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_features2d.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_flann.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_ml.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_objdetect.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_highgui.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_photo.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_video.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_imgproc.so.2.4.8
+bin/Stop: /usr/local/lib/libopencv_core.so.2.4.8
 bin/Stop: CMakeFiles/Stop.dir/build.make
 bin/Stop: CMakeFiles/Stop.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable bin/Stop"

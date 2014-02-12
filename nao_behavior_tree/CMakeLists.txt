@@ -57,6 +57,11 @@ if(NOT OPENGL_FOUND)
     message(ERROR " OPENGL not found!")
 endif(NOT OPENGL_FOUND)
 
+#########################################################
+# FIND OPENCV
+#########################################################
+find_package(OpenCV 2.4.8 REQUIRED)
+
 
 #set the default path for built executables to the "bin" directory
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
@@ -110,7 +115,7 @@ rosbuild_add_executable(Stop src/actions/Stop.cpp src/behavior_tree/rosaction.cp
 rosbuild_link_boost(Stop thread)
 
 rosbuild_add_executable(Search src/actions/Search.cpp src/behavior_tree/rosaction.cpp)
-target_link_libraries(Search alproxies alvalue)
+target_link_libraries(Search alproxies alvalue ${OpenCV_LIBS})
 rosbuild_link_boost(Search thread)
 
 rosbuild_add_executable(GoClose src/actions/GoClose.cpp src/behavior_tree/rosaction.cpp)

@@ -92,9 +92,9 @@ void showParticles(IplImage* img)
 {
 	for(int i = 0; i < N; i++)
 	{
-		if((((particles[i].x+sx/2) < height) & ((particles[i].y+sy/2) < width)) & (((particles[i].x+sx/2) >= 0) & ((particles[i].y+sy/2) >= 0)))
+		if((((particles[i].x+particles[i].sx/2) < height) & ((particles[i].y+particles[i].sy/2) < width)) & (((particles[i].x+particles[i].sx/2) >= 0) & ((particles[i].y+particles[i].sy/2) >= 0)))
 		{
-			img->imageData[((particles[i].x+sx/2)*img->widthStep)+(particles[i].y+sy/2)] = 130;
+			img->imageData[((particles[i].x+particles[i].sx/2)*img->widthStep)+(particles[i].y+particles[i].sy/2)] = 130;
 		}
 	}
 }

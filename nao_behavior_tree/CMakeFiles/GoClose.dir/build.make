@@ -57,6 +57,16 @@ CMakeFiles/GoClose.dir/src/actions/GoClose.o: /opt/ros/fuerte/share/rostest/mani
 CMakeFiles/GoClose.dir/src/actions/GoClose.o: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
 CMakeFiles/GoClose.dir/src/actions/GoClose.o: /opt/ros/fuerte/share/actionlib/manifest.xml
 CMakeFiles/GoClose.dir/src/actions/GoClose.o: /opt/ros/fuerte/share/roslib/manifest.xml
+CMakeFiles/GoClose.dir/src/actions/GoClose.o: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+CMakeFiles/GoClose.dir/src/actions/GoClose.o: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+CMakeFiles/GoClose.dir/src/actions/GoClose.o: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+CMakeFiles/GoClose.dir/src/actions/GoClose.o: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+CMakeFiles/GoClose.dir/src/actions/GoClose.o: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+CMakeFiles/GoClose.dir/src/actions/GoClose.o: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+CMakeFiles/GoClose.dir/src/actions/GoClose.o: /opt/ros/fuerte/share/rosconsole/manifest.xml
+CMakeFiles/GoClose.dir/src/actions/GoClose.o: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+CMakeFiles/GoClose.dir/src/actions/GoClose.o: /opt/ros/fuerte/share/message_filters/manifest.xml
+CMakeFiles/GoClose.dir/src/actions/GoClose.o: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/GoClose.dir/src/actions/GoClose.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/GoClose.dir/src/actions/GoClose.o -c /home/olivier/ros_workspace/nao_behavior_tree/src/actions/GoClose.cpp
@@ -111,6 +121,37 @@ GoClose_EXTERNAL_OBJECTS =
 
 bin/GoClose: CMakeFiles/GoClose.dir/src/actions/GoClose.o
 bin/GoClose: CMakeFiles/GoClose.dir/src/behavior_tree/rosaction.o
+bin/GoClose: /usr/local/lib/libopencv_calib3d.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_contrib.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_core.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_features2d.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_flann.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_gpu.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_highgui.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_imgproc.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_legacy.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_ml.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_nonfree.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_objdetect.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_photo.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_stitching.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_ts.a
+bin/GoClose: /usr/local/lib/libopencv_video.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_videostab.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_nonfree.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_ocl.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_gpu.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_legacy.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_calib3d.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_features2d.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_flann.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_ml.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_objdetect.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_highgui.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_photo.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_video.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_imgproc.so.2.4.8
+bin/GoClose: /usr/local/lib/libopencv_core.so.2.4.8
 bin/GoClose: CMakeFiles/GoClose.dir/build.make
 bin/GoClose: CMakeFiles/GoClose.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable bin/GoClose"

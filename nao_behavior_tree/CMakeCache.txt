@@ -197,6 +197,23 @@ OPENGL_glu_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libGLU.so
 //Path to a file.
 OPENGL_xmesa_INCLUDE_DIR:PATH=OPENGL_xmesa_INCLUDE_DIR-NOTFOUND
 
+//Path where debug 3rdpaty OpenCV dependencies are located
+OpenCV_3RDPARTY_LIB_DIR_DBG:PATH=/opt/ros/fuerte/share/OpenCV/3rdparty/lib
+
+//Path where release 3rdpaty OpenCV dependencies are located
+OpenCV_3RDPARTY_LIB_DIR_OPT:PATH=/opt/ros/fuerte/share/OpenCV/3rdparty/lib
+
+OpenCV_CONFIG_PATH:FILEPATH=/opt/ros/fuerte/share/OpenCV
+
+//The directory containing a CMake configuration file for OpenCV.
+OpenCV_DIR:PATH=/usr/local/share/OpenCV
+
+//Path where debug OpenCV libraries are located
+OpenCV_LIB_DIR_DBG:PATH=/opt/ros/fuerte/lib
+
+//Path where release OpenCV libraries are located
+OpenCV_LIB_DIR_OPT:PATH=/opt/ros/fuerte/lib
+
 //Path to a file.
 PROJECTCONFIG:FILEPATH=PROJECTCONFIG-NOTFOUND
 
@@ -387,7 +404,7 @@ X11_xf86vmode_INCLUDE_PATH:PATH=/usr/include
 _file_name:FILEPATH=//home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/rosaction.cpp
 
 //Dependencies for the target
-bt_server_LIB_DEPENDS:STATIC=general;roscpp;general;rostime;general;rosconsole;general;roscpp_serialization;general;xmlrpcpp;general;actionlib;general;roslib;
+bt_server_LIB_DEPENDS:STATIC=general;actionlib;general;roslib;general;cv_bridge;general;opencv_calib3d;general;opencv_contrib;general;opencv_core;general;opencv_features2d;general;opencv_flann;general;opencv_gpu;general;opencv_highgui;general;opencv_imgproc;general;opencv_legacy;general;opencv_ml;general;opencv_nonfree;general;opencv_objdetect;general;opencv_photo;general;opencv_stitching;general;opencv_ts;general;opencv_video;general;opencv_videostab;general;image_transport;general;poco_lite;general;boost_fs_wrapper;general;tinyxml;general;message_filters;general;roscpp;general;rostime;general;rosconsole;general;roscpp_serialization;general;xmlrpcpp;
 
 //Value Computed by CMake
 nao_behavior_tree_BINARY_DIR:STATIC=/home/olivier/ros_workspace/nao_behavior_tree
@@ -554,6 +571,16 @@ OPENGL_gl_LIBRARY-ADVANCED:INTERNAL=1
 OPENGL_glu_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: OPENGL_xmesa_INCLUDE_DIR
 OPENGL_xmesa_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OpenCV_3RDPARTY_LIB_DIR_DBG
+OpenCV_3RDPARTY_LIB_DIR_DBG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OpenCV_3RDPARTY_LIB_DIR_OPT
+OpenCV_3RDPARTY_LIB_DIR_OPT-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OpenCV_CONFIG_PATH
+OpenCV_CONFIG_PATH-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OpenCV_LIB_DIR_DBG
+OpenCV_LIB_DIR_DBG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OpenCV_LIB_DIR_OPT
+OpenCV_LIB_DIR_OPT-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PYTHON_EXECUTABLE
 PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: X11_ICE_INCLUDE_PATH
@@ -675,18 +702,18 @@ X11_xf86misc_INCLUDE_PATH-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: X11_xf86vmode_INCLUDE_PATH
 X11_xf86vmode_INCLUDE_PATH-ADVANCED:INTERNAL=1
 _rosbuild_EXPORTS:INTERNAL=
-_rosbuild_cached_flag_time:INTERNAL=1392038821.25
+_rosbuild_cached_flag_time:INTERNAL=1392216746.59
 _roslang_LANGS:INTERNAL=roscpp;rospy;roslisp
-_rospack_deps_manifests_invoke_result:INTERNAL=/opt/ros/fuerte/share/roslang/manifest.xml;/opt/ros/fuerte/share/roscpp/manifest.xml;/opt/ros/fuerte/share/std_msgs/manifest.xml;/opt/ros/fuerte/share/rospy/manifest.xml;/opt/ros/fuerte/share/rostest/manifest.xml;/opt/ros/fuerte/share/actionlib_msgs/manifest.xml;/opt/ros/fuerte/share/actionlib/manifest.xml;/opt/ros/fuerte/share/roslib/manifest.xml
+_rospack_deps_manifests_invoke_result:INTERNAL=/opt/ros/fuerte/share/roslang/manifest.xml;/opt/ros/fuerte/share/roscpp/manifest.xml;/opt/ros/fuerte/share/std_msgs/manifest.xml;/opt/ros/fuerte/share/rospy/manifest.xml;/opt/ros/fuerte/share/rostest/manifest.xml;/opt/ros/fuerte/share/actionlib_msgs/manifest.xml;/opt/ros/fuerte/share/actionlib/manifest.xml;/opt/ros/fuerte/share/roslib/manifest.xml;/opt/ros/fuerte/share/geometry_msgs/manifest.xml;/opt/ros/fuerte/share/nav_msgs/manifest.xml;/opt/ros/fuerte/share/sensor_msgs/manifest.xml;/opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml;/opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml;/opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml;/opt/ros/fuerte/share/rosconsole/manifest.xml;/opt/ros/fuerte/stacks/pluginlib/manifest.xml;/opt/ros/fuerte/share/message_filters/manifest.xml;/opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
 _rospack_msgsrv_gen_invoke_result:INTERNAL=
 nao_behavior_tree_CFLAGS_OTHER:INTERNAL=
 nao_behavior_tree_INCLUDEDIR:INTERNAL=
-nao_behavior_tree_INCLUDE_DIRS:INTERNAL=/opt/ros/fuerte/include;/opt/ros/fuerte/share/actionlib/include
-nao_behavior_tree_LDFLAGS_OTHER:INTERNAL=-Wl,-rpath,/opt/ros/fuerte/share/actionlib/lib
-nao_behavior_tree_LIBRARIES:INTERNAL=roscpp;rostime;rosconsole;roscpp_serialization;xmlrpcpp;actionlib;roslib
-nao_behavior_tree_LIBRARY_DIRS:INTERNAL=/opt/ros/fuerte/lib;/opt/ros/fuerte/share/actionlib/lib
-nao_behavior_tree_cached_manifest_list:INTERNAL=/home/olivier/ros_workspace/nao_behavior_tree/manifest.xml;/opt/ros/fuerte/share/roslang/manifest.xml;/opt/ros/fuerte/share/roscpp/manifest.xml;/opt/ros/fuerte/share/std_msgs/manifest.xml;/opt/ros/fuerte/share/rospy/manifest.xml;/opt/ros/fuerte/share/rostest/manifest.xml;/opt/ros/fuerte/share/actionlib_msgs/manifest.xml;/opt/ros/fuerte/share/actionlib/manifest.xml;/opt/ros/fuerte/share/roslib/manifest.xml
-nao_behavior_tree_temp:INTERNAL=-Wl,-rpath,/opt/ros/fuerte/share/actionlib/lib
+nao_behavior_tree_INCLUDE_DIRS:INTERNAL=/opt/ros/fuerte/include;/opt/ros/fuerte/share/actionlib/include;/opt/ros/fuerte/include/opencv;/opt/ros/fuerte/stacks/vision_opencv/cv_bridge/include;/opt/ros/fuerte/stacks/image_common/image_transport/include;/opt/ros/fuerte/stacks/pluginlib/include;/opt/ros/fuerte/stacks/pluginlib
+nao_behavior_tree_LDFLAGS_OTHER:INTERNAL=-Wl,-rpath,/opt/ros/fuerte/share/actionlib/lib -Wl,-rpath,/opt/ros/fuerte/stacks/vision_opencv/cv_bridge/lib -Wl,-rpath,/opt/ros/fuerte/stacks/image_common/image_transport/lib -Wl,-rpath,/opt/ros/fuerte/stacks/pluginlib/lib
+nao_behavior_tree_LIBRARIES:INTERNAL=actionlib;roslib;cv_bridge;opencv_calib3d;opencv_contrib;opencv_core;opencv_features2d;opencv_flann;opencv_gpu;opencv_highgui;opencv_imgproc;opencv_legacy;opencv_ml;opencv_nonfree;opencv_objdetect;opencv_photo;opencv_stitching;opencv_ts;opencv_video;opencv_videostab;image_transport;poco_lite;boost_fs_wrapper;tinyxml;message_filters;roscpp;rostime;rosconsole;roscpp_serialization;xmlrpcpp
+nao_behavior_tree_LIBRARY_DIRS:INTERNAL=/opt/ros/fuerte/lib;/opt/ros/fuerte/share/actionlib/lib;/opt/ros/fuerte/stacks/vision_opencv/cv_bridge/lib;/opt/ros/fuerte/stacks/image_common/image_transport/lib;/opt/ros/fuerte/stacks/pluginlib/lib
+nao_behavior_tree_cached_manifest_list:INTERNAL=/home/olivier/ros_workspace/nao_behavior_tree/manifest.xml;/opt/ros/fuerte/share/roslang/manifest.xml;/opt/ros/fuerte/share/roscpp/manifest.xml;/opt/ros/fuerte/share/std_msgs/manifest.xml;/opt/ros/fuerte/share/rospy/manifest.xml;/opt/ros/fuerte/share/rostest/manifest.xml;/opt/ros/fuerte/share/actionlib_msgs/manifest.xml;/opt/ros/fuerte/share/actionlib/manifest.xml;/opt/ros/fuerte/share/roslib/manifest.xml;/opt/ros/fuerte/share/geometry_msgs/manifest.xml;/opt/ros/fuerte/share/nav_msgs/manifest.xml;/opt/ros/fuerte/share/sensor_msgs/manifest.xml;/opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml;/opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml;/opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml;/opt/ros/fuerte/share/rosconsole/manifest.xml;/opt/ros/fuerte/stacks/pluginlib/manifest.xml;/opt/ros/fuerte/share/message_filters/manifest.xml;/opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+nao_behavior_tree_temp:INTERNAL=-Wl,-rpath,/opt/ros/fuerte/share/actionlib/lib;-Wl,-rpath,/opt/ros/fuerte/stacks/vision_opencv/cv_bridge/lib;-Wl,-rpath,/opt/ros/fuerte/stacks/image_common/image_transport/lib;-Wl,-rpath,/opt/ros/fuerte/stacks/pluginlib/lib
 roscpp_CMAKE:INTERNAL=/opt/ros/fuerte/share/roscpp/rosbuild/roscpp.cmake
 roslib_path:INTERNAL=/opt/ros/fuerte/share/roslib
 roslisp_CMAKE:INTERNAL=/opt/ros/fuerte/share/roslisp/rosbuild/roslisp.cmake

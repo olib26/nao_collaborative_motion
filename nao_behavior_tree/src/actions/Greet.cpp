@@ -48,7 +48,6 @@ public:
 		deactivate();
 	}
 
-	// the action succeeds automatically after 5 seconds
 	int executeCB(ros::Duration dt)
 	{
 		std::cout << "**Greet -%- Executing Main Task, elapsed_time: "

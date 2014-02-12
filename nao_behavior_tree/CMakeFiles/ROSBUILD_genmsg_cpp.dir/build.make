@@ -78,6 +78,16 @@ msg_gen/cpp/include/nao_behavior_tree/ROSAction.h: /opt/ros/fuerte/share/rostest
 msg_gen/cpp/include/nao_behavior_tree/ROSAction.h: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
 msg_gen/cpp/include/nao_behavior_tree/ROSAction.h: /opt/ros/fuerte/share/actionlib/manifest.xml
 msg_gen/cpp/include/nao_behavior_tree/ROSAction.h: /opt/ros/fuerte/share/roslib/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSAction.h: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSAction.h: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSAction.h: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSAction.h: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSAction.h: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSAction.h: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSAction.h: /opt/ros/fuerte/share/rosconsole/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSAction.h: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSAction.h: /opt/ros/fuerte/share/message_filters/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSAction.h: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/cpp/include/nao_behavior_tree/ROSAction.h"
 	/opt/ros/fuerte/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSAction.msg
@@ -94,6 +104,16 @@ msg_gen/cpp/include/nao_behavior_tree/ROSGoal.h: /opt/ros/fuerte/share/rostest/m
 msg_gen/cpp/include/nao_behavior_tree/ROSGoal.h: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
 msg_gen/cpp/include/nao_behavior_tree/ROSGoal.h: /opt/ros/fuerte/share/actionlib/manifest.xml
 msg_gen/cpp/include/nao_behavior_tree/ROSGoal.h: /opt/ros/fuerte/share/roslib/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSGoal.h: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSGoal.h: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSGoal.h: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSGoal.h: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSGoal.h: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSGoal.h: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSGoal.h: /opt/ros/fuerte/share/rosconsole/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSGoal.h: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSGoal.h: /opt/ros/fuerte/share/message_filters/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSGoal.h: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/cpp/include/nao_behavior_tree/ROSGoal.h"
 	/opt/ros/fuerte/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSGoal.msg
@@ -113,6 +133,16 @@ msg_gen/cpp/include/nao_behavior_tree/ROSActionGoal.h: /opt/ros/fuerte/share/ros
 msg_gen/cpp/include/nao_behavior_tree/ROSActionGoal.h: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
 msg_gen/cpp/include/nao_behavior_tree/ROSActionGoal.h: /opt/ros/fuerte/share/actionlib/manifest.xml
 msg_gen/cpp/include/nao_behavior_tree/ROSActionGoal.h: /opt/ros/fuerte/share/roslib/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionGoal.h: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionGoal.h: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionGoal.h: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionGoal.h: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionGoal.h: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionGoal.h: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionGoal.h: /opt/ros/fuerte/share/rosconsole/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionGoal.h: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionGoal.h: /opt/ros/fuerte/share/message_filters/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionGoal.h: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/cpp/include/nao_behavior_tree/ROSActionGoal.h"
 	/opt/ros/fuerte/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSActionGoal.msg
@@ -129,6 +159,16 @@ msg_gen/cpp/include/nao_behavior_tree/ROSResult.h: /opt/ros/fuerte/share/rostest
 msg_gen/cpp/include/nao_behavior_tree/ROSResult.h: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
 msg_gen/cpp/include/nao_behavior_tree/ROSResult.h: /opt/ros/fuerte/share/actionlib/manifest.xml
 msg_gen/cpp/include/nao_behavior_tree/ROSResult.h: /opt/ros/fuerte/share/roslib/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSResult.h: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSResult.h: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSResult.h: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSResult.h: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSResult.h: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSResult.h: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSResult.h: /opt/ros/fuerte/share/rosconsole/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSResult.h: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSResult.h: /opt/ros/fuerte/share/message_filters/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSResult.h: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/cpp/include/nao_behavior_tree/ROSResult.h"
 	/opt/ros/fuerte/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSResult.msg
@@ -149,6 +189,16 @@ msg_gen/cpp/include/nao_behavior_tree/ROSActionResult.h: /opt/ros/fuerte/share/r
 msg_gen/cpp/include/nao_behavior_tree/ROSActionResult.h: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
 msg_gen/cpp/include/nao_behavior_tree/ROSActionResult.h: /opt/ros/fuerte/share/actionlib/manifest.xml
 msg_gen/cpp/include/nao_behavior_tree/ROSActionResult.h: /opt/ros/fuerte/share/roslib/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionResult.h: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionResult.h: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionResult.h: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionResult.h: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionResult.h: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionResult.h: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionResult.h: /opt/ros/fuerte/share/rosconsole/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionResult.h: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionResult.h: /opt/ros/fuerte/share/message_filters/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionResult.h: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/cpp/include/nao_behavior_tree/ROSActionResult.h"
 	/opt/ros/fuerte/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSActionResult.msg
@@ -165,6 +215,16 @@ msg_gen/cpp/include/nao_behavior_tree/ROSFeedback.h: /opt/ros/fuerte/share/roste
 msg_gen/cpp/include/nao_behavior_tree/ROSFeedback.h: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
 msg_gen/cpp/include/nao_behavior_tree/ROSFeedback.h: /opt/ros/fuerte/share/actionlib/manifest.xml
 msg_gen/cpp/include/nao_behavior_tree/ROSFeedback.h: /opt/ros/fuerte/share/roslib/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSFeedback.h: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSFeedback.h: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSFeedback.h: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSFeedback.h: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSFeedback.h: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSFeedback.h: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSFeedback.h: /opt/ros/fuerte/share/rosconsole/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSFeedback.h: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSFeedback.h: /opt/ros/fuerte/share/message_filters/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSFeedback.h: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/cpp/include/nao_behavior_tree/ROSFeedback.h"
 	/opt/ros/fuerte/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSFeedback.msg
@@ -185,6 +245,16 @@ msg_gen/cpp/include/nao_behavior_tree/ROSActionFeedback.h: /opt/ros/fuerte/share
 msg_gen/cpp/include/nao_behavior_tree/ROSActionFeedback.h: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
 msg_gen/cpp/include/nao_behavior_tree/ROSActionFeedback.h: /opt/ros/fuerte/share/actionlib/manifest.xml
 msg_gen/cpp/include/nao_behavior_tree/ROSActionFeedback.h: /opt/ros/fuerte/share/roslib/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionFeedback.h: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionFeedback.h: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionFeedback.h: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionFeedback.h: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionFeedback.h: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionFeedback.h: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionFeedback.h: /opt/ros/fuerte/share/rosconsole/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionFeedback.h: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionFeedback.h: /opt/ros/fuerte/share/message_filters/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/ROSActionFeedback.h: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/cpp/include/nao_behavior_tree/ROSActionFeedback.h"
 	/opt/ros/fuerte/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSActionFeedback.msg

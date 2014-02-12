@@ -106,6 +106,16 @@ msg_gen/lisp/ROSAction.lisp: /opt/ros/fuerte/share/rostest/manifest.xml
 msg_gen/lisp/ROSAction.lisp: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
 msg_gen/lisp/ROSAction.lisp: /opt/ros/fuerte/share/actionlib/manifest.xml
 msg_gen/lisp/ROSAction.lisp: /opt/ros/fuerte/share/roslib/manifest.xml
+msg_gen/lisp/ROSAction.lisp: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+msg_gen/lisp/ROSAction.lisp: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+msg_gen/lisp/ROSAction.lisp: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+msg_gen/lisp/ROSAction.lisp: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+msg_gen/lisp/ROSAction.lisp: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+msg_gen/lisp/ROSAction.lisp: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+msg_gen/lisp/ROSAction.lisp: /opt/ros/fuerte/share/rosconsole/manifest.xml
+msg_gen/lisp/ROSAction.lisp: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+msg_gen/lisp/ROSAction.lisp: /opt/ros/fuerte/share/message_filters/manifest.xml
+msg_gen/lisp/ROSAction.lisp: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/lisp/ROSAction.lisp, msg_gen/lisp/_package.lisp, msg_gen/lisp/_package_ROSAction.lisp"
 	/opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSAction.msg
@@ -126,6 +136,16 @@ msg_gen/lisp/ROSGoal.lisp: /opt/ros/fuerte/share/rostest/manifest.xml
 msg_gen/lisp/ROSGoal.lisp: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
 msg_gen/lisp/ROSGoal.lisp: /opt/ros/fuerte/share/actionlib/manifest.xml
 msg_gen/lisp/ROSGoal.lisp: /opt/ros/fuerte/share/roslib/manifest.xml
+msg_gen/lisp/ROSGoal.lisp: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+msg_gen/lisp/ROSGoal.lisp: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+msg_gen/lisp/ROSGoal.lisp: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+msg_gen/lisp/ROSGoal.lisp: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+msg_gen/lisp/ROSGoal.lisp: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+msg_gen/lisp/ROSGoal.lisp: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+msg_gen/lisp/ROSGoal.lisp: /opt/ros/fuerte/share/rosconsole/manifest.xml
+msg_gen/lisp/ROSGoal.lisp: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+msg_gen/lisp/ROSGoal.lisp: /opt/ros/fuerte/share/message_filters/manifest.xml
+msg_gen/lisp/ROSGoal.lisp: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/lisp/ROSGoal.lisp, msg_gen/lisp/_package.lisp, msg_gen/lisp/_package_ROSGoal.lisp"
 	/opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSGoal.msg
@@ -149,6 +169,16 @@ msg_gen/lisp/ROSActionGoal.lisp: /opt/ros/fuerte/share/rostest/manifest.xml
 msg_gen/lisp/ROSActionGoal.lisp: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
 msg_gen/lisp/ROSActionGoal.lisp: /opt/ros/fuerte/share/actionlib/manifest.xml
 msg_gen/lisp/ROSActionGoal.lisp: /opt/ros/fuerte/share/roslib/manifest.xml
+msg_gen/lisp/ROSActionGoal.lisp: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+msg_gen/lisp/ROSActionGoal.lisp: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+msg_gen/lisp/ROSActionGoal.lisp: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+msg_gen/lisp/ROSActionGoal.lisp: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+msg_gen/lisp/ROSActionGoal.lisp: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+msg_gen/lisp/ROSActionGoal.lisp: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+msg_gen/lisp/ROSActionGoal.lisp: /opt/ros/fuerte/share/rosconsole/manifest.xml
+msg_gen/lisp/ROSActionGoal.lisp: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+msg_gen/lisp/ROSActionGoal.lisp: /opt/ros/fuerte/share/message_filters/manifest.xml
+msg_gen/lisp/ROSActionGoal.lisp: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/lisp/ROSActionGoal.lisp, msg_gen/lisp/_package.lisp, msg_gen/lisp/_package_ROSActionGoal.lisp"
 	/opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSActionGoal.msg
@@ -169,6 +199,16 @@ msg_gen/lisp/ROSResult.lisp: /opt/ros/fuerte/share/rostest/manifest.xml
 msg_gen/lisp/ROSResult.lisp: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
 msg_gen/lisp/ROSResult.lisp: /opt/ros/fuerte/share/actionlib/manifest.xml
 msg_gen/lisp/ROSResult.lisp: /opt/ros/fuerte/share/roslib/manifest.xml
+msg_gen/lisp/ROSResult.lisp: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+msg_gen/lisp/ROSResult.lisp: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+msg_gen/lisp/ROSResult.lisp: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+msg_gen/lisp/ROSResult.lisp: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+msg_gen/lisp/ROSResult.lisp: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+msg_gen/lisp/ROSResult.lisp: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+msg_gen/lisp/ROSResult.lisp: /opt/ros/fuerte/share/rosconsole/manifest.xml
+msg_gen/lisp/ROSResult.lisp: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+msg_gen/lisp/ROSResult.lisp: /opt/ros/fuerte/share/message_filters/manifest.xml
+msg_gen/lisp/ROSResult.lisp: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/lisp/ROSResult.lisp, msg_gen/lisp/_package.lisp, msg_gen/lisp/_package_ROSResult.lisp"
 	/opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSResult.msg
@@ -193,6 +233,16 @@ msg_gen/lisp/ROSActionResult.lisp: /opt/ros/fuerte/share/rostest/manifest.xml
 msg_gen/lisp/ROSActionResult.lisp: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
 msg_gen/lisp/ROSActionResult.lisp: /opt/ros/fuerte/share/actionlib/manifest.xml
 msg_gen/lisp/ROSActionResult.lisp: /opt/ros/fuerte/share/roslib/manifest.xml
+msg_gen/lisp/ROSActionResult.lisp: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+msg_gen/lisp/ROSActionResult.lisp: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+msg_gen/lisp/ROSActionResult.lisp: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+msg_gen/lisp/ROSActionResult.lisp: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+msg_gen/lisp/ROSActionResult.lisp: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+msg_gen/lisp/ROSActionResult.lisp: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+msg_gen/lisp/ROSActionResult.lisp: /opt/ros/fuerte/share/rosconsole/manifest.xml
+msg_gen/lisp/ROSActionResult.lisp: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+msg_gen/lisp/ROSActionResult.lisp: /opt/ros/fuerte/share/message_filters/manifest.xml
+msg_gen/lisp/ROSActionResult.lisp: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/lisp/ROSActionResult.lisp, msg_gen/lisp/_package.lisp, msg_gen/lisp/_package_ROSActionResult.lisp"
 	/opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSActionResult.msg
@@ -213,6 +263,16 @@ msg_gen/lisp/ROSFeedback.lisp: /opt/ros/fuerte/share/rostest/manifest.xml
 msg_gen/lisp/ROSFeedback.lisp: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
 msg_gen/lisp/ROSFeedback.lisp: /opt/ros/fuerte/share/actionlib/manifest.xml
 msg_gen/lisp/ROSFeedback.lisp: /opt/ros/fuerte/share/roslib/manifest.xml
+msg_gen/lisp/ROSFeedback.lisp: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+msg_gen/lisp/ROSFeedback.lisp: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+msg_gen/lisp/ROSFeedback.lisp: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+msg_gen/lisp/ROSFeedback.lisp: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+msg_gen/lisp/ROSFeedback.lisp: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+msg_gen/lisp/ROSFeedback.lisp: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+msg_gen/lisp/ROSFeedback.lisp: /opt/ros/fuerte/share/rosconsole/manifest.xml
+msg_gen/lisp/ROSFeedback.lisp: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+msg_gen/lisp/ROSFeedback.lisp: /opt/ros/fuerte/share/message_filters/manifest.xml
+msg_gen/lisp/ROSFeedback.lisp: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/lisp/ROSFeedback.lisp, msg_gen/lisp/_package.lisp, msg_gen/lisp/_package_ROSFeedback.lisp"
 	/opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSFeedback.msg
@@ -237,6 +297,16 @@ msg_gen/lisp/ROSActionFeedback.lisp: /opt/ros/fuerte/share/rostest/manifest.xml
 msg_gen/lisp/ROSActionFeedback.lisp: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
 msg_gen/lisp/ROSActionFeedback.lisp: /opt/ros/fuerte/share/actionlib/manifest.xml
 msg_gen/lisp/ROSActionFeedback.lisp: /opt/ros/fuerte/share/roslib/manifest.xml
+msg_gen/lisp/ROSActionFeedback.lisp: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+msg_gen/lisp/ROSActionFeedback.lisp: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+msg_gen/lisp/ROSActionFeedback.lisp: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+msg_gen/lisp/ROSActionFeedback.lisp: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+msg_gen/lisp/ROSActionFeedback.lisp: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+msg_gen/lisp/ROSActionFeedback.lisp: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+msg_gen/lisp/ROSActionFeedback.lisp: /opt/ros/fuerte/share/rosconsole/manifest.xml
+msg_gen/lisp/ROSActionFeedback.lisp: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+msg_gen/lisp/ROSActionFeedback.lisp: /opt/ros/fuerte/share/message_filters/manifest.xml
+msg_gen/lisp/ROSActionFeedback.lisp: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/lisp/ROSActionFeedback.lisp, msg_gen/lisp/_package.lisp, msg_gen/lisp/_package_ROSActionFeedback.lisp"
 	/opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSActionFeedback.msg
