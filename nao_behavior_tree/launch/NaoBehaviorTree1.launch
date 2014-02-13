@@ -2,7 +2,7 @@
   
   <arg name="nao_ip1" default="$(optenv NAO_IP 127.0.0.1)"/>
   <arg name="nao_port1" default="$(optenv NAO_PORT 9560)"/>
-
+  
   <!--
     Top camera 1
   -->

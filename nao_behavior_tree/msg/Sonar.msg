@@ -1,4 +1,4 @@
-# Sonar values (meters)
+# Sonar values
 
 Header header
 

@@ -60,11 +60,10 @@ public:
 		{
 			initialize();
 
-			// Run behavior
-			set_feedback(RUNNING);
-			behavior_proxy_ptr->runBehavior("behavior_hello");
-
 			set_feedback(SUCCESS);
+
+			// Run behavior
+			behavior_proxy_ptr->runBehavior("behavior_hello");
 
 			finalize();
 			return 1;

@@ -257,6 +257,47 @@ void particleFilter(IplImage* img)
 }
 
 
+void imageProcessing(IplImage* img)
+{
+	// Create temporary images
+	CvSize sz = cvGetSize(img);
+	IplImage* hsv_image = cvCreateImage(sz,8,3);
+	IplImage* hsv_mask = cvCreateImage(sz,8,1);
+
+	// HSV Conversion and Thresholding
+	cvCvtColor(img,hsv_image,CV_BGR2HSV);
+	cvInRangeS(hsv_image,hsv_min,hsv_max, hsv_mask);
+
+	// Init
+	if((height != sz.height) | (width != sz.width))
+	{
+		height = sz.height;
+		width = sz.width;
+
+		initParticles();
+	}
+
+	// Filter
+	particleFilter(hsv_mask);
+
+	// Compute variance
+	std::pair<double,double> V = particlesVariance();
+	//ROS_INFO("Variances:  Vx = %f, Vy = %f",V.first,V.second);
+	if((V.first > Var_max) & (V.second > Var_max))
+	{
+		robotDetected = false;
+	}
+
+	// Draw robot
+	showRobot(hsv_mask);
+
+	// Show result
+	cvNamedWindow("GoClose",1); cvShowImage("GoClose",hsv_mask);
+
+	cvWaitKey(10);
+}
+
+
 class ImageConverter
 {
 	ros::NodeHandle nh;
@@ -264,10 +305,6 @@ class ImageConverter
 	image_transport::Subscriber image_sub;
 
 public:
-	IplImage* img;
-	IplImage* hsv_image;
-	IplImage* hsv_mask;
-
 	ImageConverter()
 	: it(nh)
 	{
@@ -292,39 +329,6 @@ public:
 		}
 
 		img = new IplImage(cv_ptr->image);
-		CvSize sz = cvGetSize(img);
-		hsv_image = cvCreateImage(sz,8,3);
-		hsv_mask = cvCreateImage(sz,8,1);
-		cvCvtColor(img,hsv_image,CV_BGR2HSV);
-		cvInRangeS(hsv_image,hsv_min,hsv_max, hsv_mask);
-
-		// Init
-		if((height != sz.height) | (width != sz.width))
-		{
-			height = sz.height;
-			width = sz.width;
-
-			initParticles();
-		}
-
-		// Filter
-		particleFilter(hsv_mask);
-
-		// Compute variance
-		std::pair<double,double> V = particlesVariance();
-		//ROS_INFO("Variances:  Vx = %f, Vy = %f",V.first,V.second);
-		if((V.first > Var_max) & (V.second > Var_max))
-		{
-			robotDetected = false;
-		}
-
-		// Draw robot
-		showRobot(hsv_mask);
-
-		// Show result
-		cvNamedWindow("GoClose",1); cvShowImage("GoClose",hsv_mask);
-
-		cvWaitKey(10);
 	}
 };
 
@@ -334,8 +338,8 @@ class GoClose : ROSAction
 public:
 	bool init_;
 	ros::Duration execute_time_;
+	IplImage* img_temp;
 	AL::ALMotionProxy* motion_proxy_ptr;
-	ImageConverter* ic;
 
 	GoClose(std::string name,std::string NAO_IP,int NAO_PORT) :
 		ROSAction(name),
@@ -348,15 +352,11 @@ public:
 	~GoClose()
 	{
 		delete motion_proxy_ptr;
-		delete ic;
 	}
 
 	void initialize()
 	{
 		sleep(1.0);
-
-		// Launch Particle Filter
-		ic = new ImageConverter();
 
 		// Enable stiffness
 		AL::ALValue stiffness_name("Body");
@@ -381,7 +381,6 @@ public:
 		// Stop moving
 		motion_proxy_ptr->stopMove();
 
-		delete ic;
 		init_ = false;
 		deactivate();
 	}
@@ -400,19 +399,23 @@ public:
 			set_feedback(RUNNING);
 		}
 
+		// Image Processing
+		img_temp = cvCloneImage(img);
+		imageProcessing(img_temp);
+
 		// Robot not detected
 		if(!robotDetected)
 		{
-			finalize();
 			set_feedback(FAILURE);
+			finalize();
 			return 1;
 		}
 
 		// Close to the other robot
 		if((right < dist_threshold) & (left < dist_threshold) & (depth < dist_threshold))
 		{
-			finalize();
 			set_feedback(SUCCESS);
+			finalize();
 			return 1;
 		}
 
@@ -471,10 +474,15 @@ int main(int argc, char** argv)
 		// Sonar subscriber
 		ros::Subscriber sonar_sub = nh.subscribe("/sonar" + nao,1000,receive_sonar);
 
-		// Action server
+		// Launch Image Converter
+		ImageConverter* ic = new ImageConverter();
+
+		// Launch Server
 		GoClose server(ros::this_node::getName(),NAO_IP,NAO_PORT);
 
 		ros::spin();
+
+		cvDestroyAllWindows();
 	}
 
 	else

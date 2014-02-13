@@ -13,6 +13,9 @@
 // Robot selection
 std::string nao;
 
+// Image
+IplImage* img;
+
 // Image size
 int height,width;
 

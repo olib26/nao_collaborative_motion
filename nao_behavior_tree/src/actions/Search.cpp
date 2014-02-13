@@ -44,7 +44,7 @@ void showParticles(IplImage* img)
 
 
 std::pair<double,double> particlesVariance()
-{
+		{
 	std::pair<double,double> M; // Mean
 	std::pair<double,double> V;	// Variance
 
@@ -64,7 +64,7 @@ std::pair<double,double> particlesVariance()
 	V.second = V.second/N - M.second*M.second;
 
 	return V;
-}
+		}
 
 
 int getPixelValue(IplImage* img,int i,int j)
@@ -198,6 +198,47 @@ void particleFilter(IplImage* img)
 }
 
 
+void imageProcessing(IplImage* img)
+{
+	// Create temporary images
+	CvSize sz = cvGetSize(img);
+	IplImage* hsv_image = cvCreateImage(sz,8,3);
+	IplImage* hsv_mask = cvCreateImage(sz,8,1);
+
+	// HSV Conversion and Thresholding
+	cvCvtColor(img,hsv_image,CV_BGR2HSV);
+	cvInRangeS(hsv_image,hsv_min,hsv_max, hsv_mask);
+
+	// Init
+	if((height != sz.height) | (width != sz.width))
+	{
+		height = sz.height;
+		width = sz.width;
+
+		initParticles();
+	}
+
+	// Filter
+	particleFilter(hsv_mask);
+
+	// Compute variance
+	std::pair<double,double> V = particlesVariance();
+	//ROS_INFO("Variances:  Vx = %f, Vy = %f",V.first,V.second);
+	if((V.first < Var_min) & (V.second < Var_min))
+	{
+		robotDetected = true;
+	}
+
+	// Draw particles
+	showParticles(hsv_mask);
+
+	// Show result
+	cvNamedWindow("Search",1); cvShowImage("Search",hsv_mask);
+
+	cvWaitKey(10);
+}
+
+
 class ImageConverter
 {
 	ros::NodeHandle nh;
@@ -205,10 +246,6 @@ class ImageConverter
 	image_transport::Subscriber image_sub;
 
 public:
-	IplImage* img;
-	IplImage* hsv_image;
-	IplImage* hsv_mask;
-
 	ImageConverter()
 	: it(nh)
 	{
@@ -233,39 +270,6 @@ public:
 		}
 
 		img = new IplImage(cv_ptr->image);
-		CvSize sz = cvGetSize(img);
-		hsv_image = cvCreateImage(sz,8,3);
-		hsv_mask = cvCreateImage(sz,8,1);
-		cvCvtColor(img,hsv_image,CV_BGR2HSV);
-		cvInRangeS(hsv_image,hsv_min,hsv_max, hsv_mask);
-
-		// Init
-		if((height != sz.height) | (width != sz.width))
-		{
-			height = sz.height;
-			width = sz.width;
-
-			initParticles();
-		}
-
-		// Filter
-		particleFilter(hsv_mask);
-
-		// Compute variance
-		std::pair<double,double> V = particlesVariance();
-		//ROS_INFO("Variances:  Vx = %f, Vy = %f",V.first,V.second);
-		if((V.first < Var_min) & (V.second < Var_min))
-		{
-			robotDetected = true;
-		}
-
-		// Draw particles
-		showParticles(hsv_mask);
-
-		// Show result
-		cvNamedWindow("Search",1); cvShowImage("Search",hsv_mask);
-
-		cvWaitKey(10);
 	}
 };
 
@@ -275,8 +279,9 @@ class Search : ROSAction
 public:
 	bool init_;
 	ros::Duration execute_time_;
+	IplImage* img_temp;
 	AL::ALMotionProxy* motion_proxy_ptr;
-	ImageConverter* ic;
+
 
 	Search(std::string name,std::string NAO_IP,int NAO_PORT) :
 		ROSAction(name),
@@ -289,15 +294,11 @@ public:
 	~Search()
 	{
 		delete motion_proxy_ptr;
-		delete ic;
 	}
 
 	void initialize()
 	{
 		sleep(1.0);
-
-		// Launch Particle Filter
-		ic = new ImageConverter();
 
 		// Enable stiffness
 		AL::ALValue stiffness_name("Body");
@@ -310,10 +311,10 @@ public:
 
 		// Start rotating
 		motion_proxy_ptr->moveInit();
-        motion_proxy_ptr->setWalkTargetVelocity(0,0,1,0.5);
+		motion_proxy_ptr->setWalkTargetVelocity(0,0,1,0.5);
 
-        // Robot not detected
-        robotDetected = false;
+		// Robot not detected
+		robotDetected = false;
 
 		init_ = true;
 	}
@@ -323,7 +324,6 @@ public:
 		// Stop rotating
 		motion_proxy_ptr->stopMove();
 
-		delete ic;
 		init_ = false;
 		deactivate();
 	}
@@ -331,9 +331,9 @@ public:
 	int executeCB(ros::Duration dt)
 	{
 		std::cout << "**Search -%- Executing Main Task, elapsed_time: "
-		          << dt.toSec() << std::endl;
+				<< dt.toSec() << std::endl;
 		std::cout << "**Search -%- execute_time: "
-		          << execute_time_.toSec() << std::endl;
+				<< execute_time_.toSec() << std::endl;
 		execute_time_ += dt;
 
 		if(!init_)
@@ -342,10 +342,14 @@ public:
 			set_feedback(RUNNING);
 		}
 
+		// Image Processing
+		img_temp = cvCloneImage(img);
+		imageProcessing(img_temp);
+
 		if(robotDetected)
 		{
-			finalize();
 			set_feedback(SUCCESS);
+			finalize();
 			return 1;
 		}
 
@@ -385,9 +389,15 @@ int main(int argc, char** argv)
 		hsv_min = cvScalar(H_MIN,S_MIN,V_MIN,0);
 		hsv_max = cvScalar(H_MAX,S_MAX,V_MAX,0);
 
+		// Launch Image Converter
+		ImageConverter* ic = new ImageConverter();
+
+		// Launch Server
 		Search server(ros::this_node::getName(),NAO_IP,NAO_PORT);
 
 		ros::spin();
+
+		cvDestroyAllWindows();
 	}
 
 	else
