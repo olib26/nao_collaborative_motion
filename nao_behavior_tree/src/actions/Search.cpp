@@ -253,7 +253,7 @@ public:
 
 		// Compute variance
 		std::pair<double,double> V = particlesVariance();
-		ROS_INFO("Variances:  Vx = %f, Vy = %f",V.first,V.second);
+		//ROS_INFO("Variances:  Vx = %f, Vy = %f",V.first,V.second);
 		if((V.first < Var_min) & (V.second < Var_min))
 		{
 			robotDetected = true;
@@ -289,6 +289,7 @@ public:
 	~Search()
 	{
 		delete motion_proxy_ptr;
+		delete ic;
 	}
 
 	void initialize()
@@ -319,9 +320,6 @@ public:
 
 	void finalize()
 	{
-		// Stop rotating
-		motion_proxy_ptr->stopMove();
-
 		delete ic;
 		init_ = false;
 		deactivate();
@@ -343,6 +341,9 @@ public:
 
 		if(robotDetected)
 		{
+			// Stop rotating
+			motion_proxy_ptr->stopMove();
+
 			set_feedback(SUCCESS);
 			finalize();
 			return 1;
