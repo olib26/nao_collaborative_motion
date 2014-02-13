@@ -300,6 +300,8 @@ void imageProcessing(IplImage* img)
 
 class ImageConverter
 {
+	IplImage* img;
+
 	ros::NodeHandle nh;
 	image_transport::ImageTransport it;
 	image_transport::Subscriber image_sub;
@@ -329,6 +331,8 @@ public:
 		}
 
 		img = new IplImage(cv_ptr->image);
+
+		if(updateRequest) {imageProcessing(img); updateRequest = false;}
 	}
 };
 
@@ -338,7 +342,6 @@ class GoClose : ROSAction
 public:
 	bool init_;
 	ros::Duration execute_time_;
-	IplImage* img_temp;
 	AL::ALMotionProxy* motion_proxy_ptr;
 
 	GoClose(std::string name,std::string NAO_IP,int NAO_PORT) :
@@ -395,13 +398,17 @@ public:
 
 		if(!init_)
 		{
-			initialize();
 			set_feedback(RUNNING);
+			if(motion_proxy_ptr->moveIsActive() | motion_proxy_ptr->walkIsActive())
+			{
+				return 1;
+			}
+
+			initialize();
 		}
 
-		// Image Processing
-		img_temp = cvCloneImage(img);
-		imageProcessing(img_temp);
+		// Update Filter
+		updateRequest = true;
 
 		// Robot not detected
 		if(!robotDetected)

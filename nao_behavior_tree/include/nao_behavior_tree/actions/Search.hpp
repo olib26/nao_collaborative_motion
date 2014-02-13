@@ -13,8 +13,8 @@
 // Robot selection
 std::string nao;
 
-// Image
-IplImage* img;
+// Update Filter
+bool updateRequest;
 
 // Image size
 int height,width;
