@@ -378,6 +378,9 @@ public:
 
 	void finalize()
 	{
+		// Stop moving
+		motion_proxy_ptr->stopMove();
+
 		delete ic;
 		init_ = false;
 		deactivate();
@@ -391,7 +394,7 @@ public:
 		          << execute_time_.toSec() << std::endl;
 		execute_time_ += dt;
 
-		if (!init_)
+		if(!init_)
 		{
 			initialize();
 			set_feedback(RUNNING);
@@ -400,22 +403,16 @@ public:
 		// Robot not detected
 		if(!robotDetected)
 		{
-			// Stop moving
-			motion_proxy_ptr->stopMove();
-
-			set_feedback(FAILURE);
 			finalize();
+			set_feedback(FAILURE);
 			return 1;
 		}
 
 		// Close to the other robot
 		if((right < dist_threshold) & (left < dist_threshold) & (depth < dist_threshold))
 		{
-			// Stop moving
-			motion_proxy_ptr->stopMove();
-
-			set_feedback(SUCCESS);
 			finalize();
+			set_feedback(SUCCESS);
 			return 1;
 		}
 

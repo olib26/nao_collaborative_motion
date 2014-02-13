@@ -320,6 +320,9 @@ public:
 
 	void finalize()
 	{
+		// Stop rotating
+		motion_proxy_ptr->stopMove();
+
 		delete ic;
 		init_ = false;
 		deactivate();
@@ -333,7 +336,7 @@ public:
 		          << execute_time_.toSec() << std::endl;
 		execute_time_ += dt;
 
-		if (!init_)
+		if(!init_)
 		{
 			initialize();
 			set_feedback(RUNNING);
@@ -341,11 +344,8 @@ public:
 
 		if(robotDetected)
 		{
-			// Stop rotating
-			motion_proxy_ptr->stopMove();
-
-			set_feedback(SUCCESS);
 			finalize();
+			set_feedback(SUCCESS);
 			return 1;
 		}
 
