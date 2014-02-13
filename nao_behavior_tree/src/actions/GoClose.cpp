@@ -414,7 +414,7 @@ public:
 
 		// Controller
 		int y_rel = y - width/2;
-		double angular = -alpha*y;
+		double angular = -alpha*y_rel;
 		// Thresholds
 		if(angular > 1) {angular = 1;}
 		if(angular < -1) {angular = -1;}

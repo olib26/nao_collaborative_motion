@@ -17,6 +17,11 @@ int main(int argc, char** argv)
 	// initialize the behavior tree client node
 	ros::init(argc, argv, "nao_behavior_tree");
 
+	ros::NodeHandle pnh("~");
+	// File
+	std::string file;
+	pnh.param("file",file,std::string("/home/olivier/ros_workspace/nao_behavior_tree/bt.txt"));
+
 	// initialize OpenGL engine for visualization
 	glut_setup(argc, argv);
 
@@ -26,7 +31,7 @@ int main(int argc, char** argv)
 
 	// create the bt from the file bt.txt (put on the path)
 	std::cout << "----------------- PARSE FILE -----------------" << std::endl;
-	parse_file("/home/olivier/ros_workspace/nao_behavior_tree/bt.txt");
+	parse_file(file);
 
 	// print the data parsed from the specification file
 	std::cout << "----------------- PRINT TREE -----------------" << std::endl;

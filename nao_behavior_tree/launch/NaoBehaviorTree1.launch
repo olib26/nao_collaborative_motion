@@ -23,7 +23,7 @@
   
   
   <!--
-    Actions
+    Actions 1
   -->
   <node pkg="nao_behavior_tree" type="Greet" name="Greet1" args="1">
     <param name="NAO_IP" value="$(arg nao_ip1)"/>
@@ -45,8 +45,10 @@
   
 
   <!--
-    Behavior Tree
+    Behavior Tree 1
   -->
-  <node pkg="nao_behavior_tree" type="nao_behavior_tree" name="nao_behavior_tree" output="screen"/>
+  <node pkg="nao_behavior_tree" type="nao_behavior_tree" name="nao_behavior_tree1" output="screen"/>
+    <param name="file" value="/home/olivier/ros_workspace/nao_behavior_tree/bt1.txt"/>
+  </node>
 
 </launch>
