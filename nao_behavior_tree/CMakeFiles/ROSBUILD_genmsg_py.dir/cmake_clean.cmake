@@ -11,6 +11,7 @@ FILE(REMOVE_RECURSE
   "src/nao_behavior_tree/msg/_ROSActionResult.py"
   "src/nao_behavior_tree/msg/_ROSFeedback.py"
   "src/nao_behavior_tree/msg/_ROSActionFeedback.py"
+  "src/nao_behavior_tree/msg/_Sonar.py"
   "msg/ROSAction.msg"
   "msg/ROSGoal.msg"
   "msg/ROSActionGoal.msg"

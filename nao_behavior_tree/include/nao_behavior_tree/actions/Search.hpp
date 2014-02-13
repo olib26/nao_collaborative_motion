@@ -41,11 +41,14 @@ struct Particle{
 };
 Particle* particles = new Particle[N];
 
+// Minimum weight
+const double eps = 1E-3;
+
 // Variance Threshold
 const double Var_min = 100;
 
 // Robot detection
-bool robotDetected = false;
+bool robotDetected;
 
 // HSV Thresholds
 int H_MIN,H_MAX,S_MIN,S_MAX,V_MIN,V_MAX;

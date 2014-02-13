@@ -25,6 +25,7 @@ f6ee413308853b1180174262209f9e40 msg_gen/cpp/include/nao_behavior_tree/ROSAction
 a7c1a99b780c96c77481b01a09d8547f msg_gen/cpp/include/nao_behavior_tree/ROSFeedback.h
 e7c4ed79233e3e3d8e8d41f5ed8eea97 msg_gen/cpp/include/nao_behavior_tree/ROSGoal.h
 bc0a576b00f1b90e9da7ae905d4d9b57 msg_gen/cpp/include/nao_behavior_tree/ROSResult.h
+034b016f9b6ad55273795c5f71c1ded3 msg_gen/cpp/include/nao_behavior_tree/Sonar.h
 fb9b107aa77d001bedb5bfd1d1ea01d2 msg_gen/lisp/ROSAction.lisp
 79c74851e0d96b5a0a68e256d413c827 msg_gen/lisp/ROSActionFeedback.lisp
 28a56a1f41c2077a71651d48b7965dc5 msg_gen/lisp/ROSActionGoal.lisp
@@ -32,6 +33,7 @@ fb9b107aa77d001bedb5bfd1d1ea01d2 msg_gen/lisp/ROSAction.lisp
 17ab273abd0f62ab200f9b689fbf37f7 msg_gen/lisp/ROSFeedback.lisp
 b5bd8bf08d63b3ed543862ee1920ea52 msg_gen/lisp/ROSGoal.lisp
 3574b48bee6ed9b492ed230322d33edc msg_gen/lisp/ROSResult.lisp
+48622e4a3defe59b43671d065dfb6c70 msg_gen/lisp/Sonar.lisp
 e350b1466d9adcd6a48f58c9ca631380 src/nao_behavior_tree/msg/_ROSAction.py
 e46a666fc3e5aca13c48d54c16db8a06 src/nao_behavior_tree/msg/_ROSActionFeedback.py
 f2a1c3abe2193b25a64a3d2d15b055a0 src/nao_behavior_tree/msg/_ROSActionGoal.py
@@ -39,4 +41,5 @@ a50ad5d9030e0ea2a5c35e6b218d12d2 src/nao_behavior_tree/msg/_ROSActionResult.py
 d567c8942edd2945bcf10d7ecc845967 src/nao_behavior_tree/msg/_ROSFeedback.py
 c6466c361c987620cdce8ad34a020293 src/nao_behavior_tree/msg/_ROSGoal.py
 e36069ba6d7f2d865e123a8e82c7aaf9 src/nao_behavior_tree/msg/_ROSResult.py
-8038341d84e5fa5560ea2dd739bc8e37 src/nao_behavior_tree/msg/__init__.py
+b64ceff1fc821a990c4cc3642f0b2701 src/nao_behavior_tree/msg/_Sonar.py
+69ed090d8019a8e91c811ba654136b0e src/nao_behavior_tree/msg/__init__.py

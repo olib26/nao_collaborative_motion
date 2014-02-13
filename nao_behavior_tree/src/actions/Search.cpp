@@ -11,7 +11,7 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
-#include "nao_behavior_tree/Search.hpp"
+#include "nao_behavior_tree/actions/Search.hpp"
 
 namespace enc = sensor_msgs::image_encodings;
 
@@ -122,7 +122,7 @@ double evaluate(int x, int y, int sx, int sy, int** integral)
 	if(y > width) {y = width;}
 
 	int weight = integral[p.x][p.y] - integral[x-1][p.y] - integral[p.x][y-1] + integral[x-1][y-1];
-	if(weight < 0) {weight = 0;}
+	if(weight <= 0) {weight = eps;}
 	return weight;
 }
 
@@ -309,6 +309,9 @@ public:
 		motion_proxy_ptr->moveInit();
         motion_proxy_ptr->setWalkTargetVelocity(0,0,1,1);
 
+        // Robot not detected
+        robotDetected = false;
+
 		init_ = true;
 	}
 
@@ -350,6 +353,7 @@ public:
 		execute_time_ = (ros::Duration) 0;
 	}
 };
+
 
 int main(int argc, char** argv)
 {

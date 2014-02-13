@@ -123,3 +123,8 @@ target_link_libraries(GoClose alproxies alvalue)
 rosbuild_link_boost(GoClose thread)
 
 rosbuild_add_library(bt_server ${PROJECT_SOURCE_DIR}/src/behavior_tree/rosaction.cpp)
+
+
+# Sensors
+rosbuild_add_executable(nao_sonar src/sensors/nao_sonar.cpp)
+target_link_libraries(nao_sonar alproxies alvalue)

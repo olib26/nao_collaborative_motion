@@ -11,6 +11,7 @@
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/bt_server.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/clean-test-results.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/nao_behavior_tree.dir
+/home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/nao_sonar.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/rosbuild_precompile.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/rosbuild_premsgsrvgen.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/rospack_genmsg.dir

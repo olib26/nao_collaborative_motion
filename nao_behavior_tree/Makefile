@@ -265,6 +265,19 @@ nao_behavior_tree/fast:
 .PHONY : nao_behavior_tree/fast
 
 #=============================================================================
+# Target rules for targets named nao_sonar
+
+# Build rule for target.
+nao_sonar: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nao_sonar
+.PHONY : nao_sonar
+
+# fast build rule for target.
+nao_sonar/fast:
+	$(MAKE) -f CMakeFiles/nao_sonar.dir/build.make CMakeFiles/nao_sonar.dir/build
+.PHONY : nao_sonar/fast
+
+#=============================================================================
 # Target rules for targets named rosbuild_precompile
 
 # Build rule for target.
@@ -587,6 +600,21 @@ src/behavior_tree/rosaction.s:
 	$(MAKE) -f CMakeFiles/nao_behavior_tree.dir/build.make CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.s
 .PHONY : src/behavior_tree/rosaction.s
 
+# target to build an object file
+src/sensors/nao_sonar.o:
+	$(MAKE) -f CMakeFiles/nao_sonar.dir/build.make CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o
+.PHONY : src/sensors/nao_sonar.o
+
+# target to preprocess a source file
+src/sensors/nao_sonar.i:
+	$(MAKE) -f CMakeFiles/nao_sonar.dir/build.make CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.i
+.PHONY : src/sensors/nao_sonar.i
+
+# target to generate assembly for a file
+src/sensors/nao_sonar.s:
+	$(MAKE) -f CMakeFiles/nao_sonar.dir/build.make CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.s
+.PHONY : src/sensors/nao_sonar.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -607,6 +635,7 @@ help:
 	@echo "... clean-test-results"
 	@echo "... edit_cache"
 	@echo "... nao_behavior_tree"
+	@echo "... nao_sonar"
 	@echo "... rebuild_cache"
 	@echo "... rosbuild_precompile"
 	@echo "... rosbuild_premsgsrvgen"
@@ -652,6 +681,9 @@ help:
 	@echo "... src/behavior_tree/rosaction.o"
 	@echo "... src/behavior_tree/rosaction.i"
 	@echo "... src/behavior_tree/rosaction.s"
+	@echo "... src/sensors/nao_sonar.o"
+	@echo "... src/sensors/nao_sonar.i"
+	@echo "... src/sensors/nao_sonar.s"
 .PHONY : help
 
 

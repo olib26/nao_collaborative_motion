@@ -9501,8 +9501,8 @@ opencv2/imgproc/imgproc.hpp
 -
 opencv2/highgui/highgui.hpp
 -
-nao_behavior_tree/Search.hpp
-/home/olivier/ros_workspace/nao_behavior_tree/src/actions/nao_behavior_tree/Search.hpp
+nao_behavior_tree/actions/Search.hpp
+/home/olivier/ros_workspace/nao_behavior_tree/src/actions/nao_behavior_tree/actions/Search.hpp
 
 /opt/ros/fuerte/include/XmlRpcDecl.h
 ros/macros.h
@@ -10638,7 +10638,7 @@ opencv2/core/core.hpp
 stdexcept
 -
 
-include/nao_behavior_tree/Search.hpp
+include/nao_behavior_tree/actions/Search.hpp
 
 include/nao_behavior_tree/node.h
 ros/ros.h

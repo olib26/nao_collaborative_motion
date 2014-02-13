@@ -14,6 +14,8 @@
     (:file "_package_ROSActionResult" :depends-on ("_package"))
     (:file "ROSGoal" :depends-on ("_package_ROSGoal"))
     (:file "_package_ROSGoal" :depends-on ("_package"))
+    (:file "Sonar" :depends-on ("_package_Sonar"))
+    (:file "_package_Sonar" :depends-on ("_package"))
     (:file "ROSActionGoal" :depends-on ("_package_ROSActionGoal"))
     (:file "_package_ROSActionGoal" :depends-on ("_package"))
     (:file "ROSActionFeedback" :depends-on ("_package_ROSActionFeedback"))

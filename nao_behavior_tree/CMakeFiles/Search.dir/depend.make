@@ -952,7 +952,7 @@ CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/stacks/image_common/
 CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/stacks/image_common/image_transport/include/image_transport/subscriber.h
 CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/stacks/image_common/image_transport/include/image_transport/transport_hints.h
 CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/include/cv_bridge/cv_bridge.h
-CMakeFiles/Search.dir/src/actions/Search.o: include/nao_behavior_tree/Search.hpp
+CMakeFiles/Search.dir/src/actions/Search.o: include/nao_behavior_tree/actions/Search.hpp
 CMakeFiles/Search.dir/src/actions/Search.o: include/nao_behavior_tree/node.h
 CMakeFiles/Search.dir/src/actions/Search.o: include/nao_behavior_tree/parameters.h
 CMakeFiles/Search.dir/src/actions/Search.o: include/nao_behavior_tree/rosaction.h
