@@ -107,6 +107,8 @@ rosbuild_link_boost(${PROJECT_NAME} thread)
 
 rosbuild_add_boost_directories()
 
+
+# Actions
 rosbuild_add_executable(Greet src/actions/Greet.cpp src/behavior_tree/rosaction.cpp)
 target_link_libraries(Greet alproxies alvalue)
 rosbuild_link_boost(Greet thread)
