@@ -65,7 +65,7 @@ bool robotDetected;
 // Controller parameters
 const double alpha = 0.001;
 const double rho = 0.8;
-const double dist_threshold = 0.6;
+const double dist_threshold = 0.8;
 
 // Sonar
 double right = INFINITY;

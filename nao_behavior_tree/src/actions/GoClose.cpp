@@ -322,14 +322,14 @@ public:
 		showRobot(hsv_mask);
 
 		// Show result
-		cvNamedWindow("hsv-msk",1); cvShowImage("hsv-msk",hsv_mask);
+		cvNamedWindow("GoClose",1); cvShowImage("GoClose",hsv_mask);
 
 		cvWaitKey(10);
 	}
 };
 
 
-class Search : ROSAction
+class GoClose : ROSAction
 {
 public:
 	bool init_;
@@ -337,7 +337,7 @@ public:
 	AL::ALMotionProxy* motion_proxy_ptr;
 	ImageConverter* ic;
 
-	Search(std::string name,std::string NAO_IP,int NAO_PORT) :
+	GoClose(std::string name,std::string NAO_IP,int NAO_PORT) :
 		ROSAction(name),
 		init_(false),
 		execute_time_((ros::Duration) 0)
@@ -345,10 +345,9 @@ public:
 		motion_proxy_ptr = new AL::ALMotionProxy(NAO_IP,NAO_PORT);
 	}
 
-	~Search()
+	~GoClose()
 	{
 		delete motion_proxy_ptr;
-		delete ic;
 	}
 
 	void initialize()
@@ -363,6 +362,9 @@ public:
 		AL::ALValue stiffness(1.0f);
 		AL::ALValue stiffness_time(1.0f);
 		motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
+
+		// Foot Contact Protection
+		motion_proxy_ptr->setMotionConfig(AL::ALValue::array(AL::ALValue::array("ENABLE_FOOT_CONTACT_PROTECTION",true)));
 
 		// Init moving
 		motion_proxy_ptr->moveInit();
@@ -379,6 +381,7 @@ public:
 		motion_proxy_ptr->stopMove();
 
 		init_ = false;
+		delete ic;
 		deactivate();
 	}
 
@@ -445,7 +448,7 @@ int main(int argc, char** argv)
 		if(atoi(argv[1]) == 1) {nao = "1";}
 		if(atoi(argv[1]) == 2) {nao = "2";}
 
-		ros::init(argc, argv,"Search" + nao);
+		ros::init(argc, argv,"GoClose" + nao);
 		ros::NodeHandle nh;
 
 		ros::NodeHandle pnh("~");
@@ -468,7 +471,7 @@ int main(int argc, char** argv)
 		ros::Subscriber sonar_sub = nh.subscribe("/sonar" + nao,1000,receive_sonar);
 
 		// Action server
-		Search server(ros::this_node::getName(),NAO_IP,NAO_PORT);
+		GoClose server(ros::this_node::getName(),NAO_IP,NAO_PORT);
 
 		ros::spin();
 	}

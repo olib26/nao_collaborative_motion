@@ -254,16 +254,16 @@ public:
 		// Compute variance
 		std::pair<double,double> V = particlesVariance();
 		ROS_INFO("Variances:  Vx = %f, Vy = %f",V.first,V.second);
-		if((V.first > Var_min) & (V.second > Var_min))
+		if((V.first < Var_min) & (V.second < Var_min))
 		{
-			//robotDetected = true;
+			robotDetected = true;
 		}
 
 		// Draw particles
 		showParticles(hsv_mask);
 
 		// Show result
-		cvNamedWindow("hsv-msk",1); cvShowImage("hsv-msk",hsv_mask);
+		cvNamedWindow("Search",1); cvShowImage("Search",hsv_mask);
 
 		cvWaitKey(10);
 	}
@@ -289,7 +289,6 @@ public:
 	~Search()
 	{
 		delete motion_proxy_ptr;
-		delete ic;
 	}
 
 	void initialize()
@@ -305,9 +304,12 @@ public:
 		AL::ALValue stiffness_time(1.0f);
 		motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
 
+		// Foot Contact Protection
+		motion_proxy_ptr->setMotionConfig(AL::ALValue::array(AL::ALValue::array("ENABLE_FOOT_CONTACT_PROTECTION",true)));
+
 		// Start rotating
 		motion_proxy_ptr->moveInit();
-        motion_proxy_ptr->setWalkTargetVelocity(0,0,1,1);
+        motion_proxy_ptr->setWalkTargetVelocity(0,0,1,0.5);
 
         // Robot not detected
         robotDetected = false;
@@ -320,6 +322,7 @@ public:
 		// Stop rotating
 		motion_proxy_ptr->stopMove();
 
+		delete ic;
 		init_ = false;
 		deactivate();
 	}
