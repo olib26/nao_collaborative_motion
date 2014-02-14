@@ -331,8 +331,7 @@ public:
 		}
 
 		img = new IplImage(cv_ptr->image);
-
-		if(updateRequest) {imageProcessing(img); updateRequest = false;}
+		imageProcessing(img);
 	}
 };
 
@@ -342,6 +341,7 @@ class GoClose : ROSAction
 public:
 	bool init_;
 	ros::Duration execute_time_;
+	ImageConverter* ic;
 	AL::ALMotionProxy* motion_proxy_ptr;
 
 	GoClose(std::string name,std::string NAO_IP,int NAO_PORT) :
@@ -355,6 +355,7 @@ public:
 	~GoClose()
 	{
 		delete motion_proxy_ptr;
+		delete ic;
 	}
 
 	void initialize()
@@ -384,31 +385,29 @@ public:
 		// Stop moving
 		motion_proxy_ptr->stopMove();
 
+		// Delete Filter
+		delete ic;
+
 		init_ = false;
 		deactivate();
 	}
 
 	int executeCB(ros::Duration dt)
 	{
-		std::cout << "**Search -%- Executing Main Task, elapsed_time: "
+		std::cout << "**GoClose -%- Executing Main Task, elapsed_time: "
 		          << dt.toSec() << std::endl;
-		std::cout << "**Search -%- execute_time: "
+		std::cout << "**GoClose -%- execute_time: "
 		          << execute_time_.toSec() << std::endl;
 		execute_time_ += dt;
 
 		if(!init_)
 		{
 			set_feedback(RUNNING);
-			if(motion_proxy_ptr->moveIsActive() | motion_proxy_ptr->walkIsActive())
-			{
-				return 1;
-			}
-
 			initialize();
-		}
 
-		// Update Filter
-		updateRequest = true;
+			// Launch Particle Filter
+			ic = new ImageConverter();
+		}
 
 		// Robot not detected
 		if(!robotDetected)
@@ -419,7 +418,8 @@ public:
 		}
 
 		// Close to the other robot
-		if((right < dist_threshold) & (left < dist_threshold) & (depth < dist_threshold))
+		//ROS_INFO("Depth = %f, r = %f, l = %f",depth,right,left);
+		if(((right < dist_threshold) | (left < dist_threshold)) & (depth < dist_threshold))
 		{
 			set_feedback(SUCCESS);
 			finalize();
@@ -480,9 +480,6 @@ int main(int argc, char** argv)
 
 		// Sonar subscriber
 		ros::Subscriber sonar_sub = nh.subscribe("/sonar" + nao,1000,receive_sonar);
-
-		// Launch Image Converter
-		ImageConverter* ic = new ImageConverter();
 
 		// Launch Server
 		GoClose server(ros::this_node::getName(),NAO_IP,NAO_PORT);

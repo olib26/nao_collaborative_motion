@@ -2,6 +2,7 @@
 #include <nao_behavior_tree/ROSAction.h>		// automatically generated actionlib header
 #include <boost/thread.hpp>
 
+bool busy = false;
 // construct action with: A name
 ROSAction::ROSAction(std::string name) :
 	as_(nh_, name, false),
@@ -31,6 +32,8 @@ void ROSAction::executionThread()
 	// while (as_.isPreemptRequested() || ros::ok())
 	while ( is_active() && ros::ok())
 	{
+		std::cout << "execution_thread_.get_id()" << execution_thread_.get_id() << std::endl;
+
 		bool active = timeout_check(); // check if tick was received
 		std::cout << "im active" << active << std::endl;
 		{
@@ -54,6 +57,7 @@ void ROSAction::executionThread()
 	std::cout << "About to Destroy Thread" << std::endl;
 	// set_feedback(NODE_ERROR);
 	// send_feedback();
+	std::cout << "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
 	stop();
 	// execution_thread_.join();
 }
@@ -68,29 +72,45 @@ void ROSAction::goalCB()
 
 	send_feedback();
 
-	bool started;		// is thread running?
+	// if (!busy)
+	// {
+	// 	feedback_.FEEDBACK_ = NODE_ERROR;
+	// 	result_.RESULT_     = NODE_ERROR;
+	// }
+
+	if (feedback_.FEEDBACK_ != SUCCESS &&
+	    feedback_.FEEDBACK_ != FAILURE)
 	{
-		boost::lock_guard<boost::mutex> lock(mutex_started_);
-		started = started_;
+		bool started;		// is thread running?
+		{
+			boost::lock_guard<boost::mutex> lock(mutex_started_);
+			started = started_;
+		}
+		std::cout << "started: " << started << std::endl;
+		if (started)
+		{
+			if (goal_ > 0)	    // possitive tick
+				reset_timeout();
+			else if (goal_ < 0) // negative tick
+				stop();
+			else			    // neutral tick
+			{}
+		}
+		else
+		{
+			if (goal_ > 0)	    // possitive tick
+				start();
+			else if (goal_ < 0) // negative tick
+			{}
+			else			    // neutral tick
+			{}
+		}
 	}
-	std::cout << "started: " << started << std::endl;
-	if (started)
+	if (feedback_.FEEDBACK_ == SUCCESS ||
+	    feedback_.FEEDBACK_ == FAILURE)
 	{
-		if (goal_ > 0)	    // possitive tick
-			reset_timeout();
-		else if (goal_ < 0) // negative tick
-			stop();
-		else			    // neutral tick
-		{}
-	}
-	else
-	{
-		if (goal_ > 0)	    // possitive tick
-			start();
-		else if (goal_ < 0) // negative tick
-		{}
-		else			    // neutral tick
-		{}
+		feedback_.FEEDBACK_ = NODE_ERROR;
+		result_.RESULT_     = NODE_ERROR;
 	}
 }
 
@@ -116,6 +136,8 @@ void ROSAction::start()
 		active_ = true;
 	}
 	std::cout << "Starting Thread Now" << std::endl;
+	std::cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;
+
 	execution_thread_ = boost::thread(
 		boost::bind(&ROSAction::executionThread, this) );
 }

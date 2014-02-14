@@ -13,9 +13,6 @@
 // Robot selection
 std::string nao;
 
-// Update Filter
-bool updateRequest;
-
 // Image size
 int height,width;
 

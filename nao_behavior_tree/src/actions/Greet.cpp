@@ -58,13 +58,13 @@ public:
 
 		if (!init_)
 		{
+			set_feedback(RUNNING);
 			initialize();
-
-			set_feedback(SUCCESS);
 
 			// Run behavior
 			behavior_proxy_ptr->runBehavior("behavior_hello");
 
+			set_feedback(SUCCESS);
 			finalize();
 			return 1;
 		}

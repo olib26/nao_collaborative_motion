@@ -7,6 +7,8 @@
 #include "nao_behavior_tree/node.h"
 #include "nao_behavior_tree/parameters.h"
 
+extern bool busy;
+
 class ROSAction
 {
 protected:

@@ -272,8 +272,7 @@ public:
 		}
 
 		img = new IplImage(cv_ptr->image);
-
-		if(updateRequest) {imageProcessing(img); updateRequest = false;}
+		imageProcessing(img);
 	}
 };
 
@@ -283,7 +282,7 @@ class Search : ROSAction
 public:
 	bool init_;
 	ros::Duration execute_time_;
-	IplImage* img_temp;
+	ImageConverter* ic;
 	AL::ALMotionProxy* motion_proxy_ptr;
 
 	Search(std::string name,std::string NAO_IP,int NAO_PORT) :
@@ -297,6 +296,7 @@ public:
 	~Search()
 	{
 		delete motion_proxy_ptr;
+		delete ic;
 	}
 
 	void initialize()
@@ -312,9 +312,8 @@ public:
 		// Foot Contact Protection
 		motion_proxy_ptr->setMotionConfig(AL::ALValue::array(AL::ALValue::array("ENABLE_FOOT_CONTACT_PROTECTION",true)));
 
-		// Start rotating
+		// Init moving
 		motion_proxy_ptr->moveInit();
-		motion_proxy_ptr->setWalkTargetVelocity(0,0,1,0.5);
 
 		// Robot not detected
 		robotDetected = false;
@@ -326,6 +325,9 @@ public:
 	{
 		// Stop rotating
 		motion_proxy_ptr->stopMove();
+
+		// Delete Filter
+		delete ic;
 
 		init_ = false;
 		deactivate();
@@ -342,16 +344,14 @@ public:
 		if(!init_)
 		{
 			set_feedback(RUNNING);
-			if(motion_proxy_ptr->moveIsActive() | motion_proxy_ptr->walkIsActive())
-			{
-				return 1;
-			}
-
 			initialize();
-		}
 
-		// Update Filter
-		updateRequest = true;
+			// Launch Particle Filter
+			ic = new ImageConverter();
+
+			// Start rotating
+			motion_proxy_ptr->setWalkTargetVelocity(0,0,1,0.5);
+		}
 
 		if(robotDetected)
 		{
@@ -395,9 +395,6 @@ int main(int argc, char** argv)
 		pnh.param("V_MAX",V_MAX,int(0));
 		hsv_min = cvScalar(H_MIN,S_MIN,V_MIN,0);
 		hsv_max = cvScalar(H_MAX,S_MAX,V_MAX,0);
-
-		// Launch Image Converter
-		ImageConverter* ic = new ImageConverter();
 
 		// Launch Server
 		Search server(ros::this_node::getName(),NAO_IP,NAO_PORT);

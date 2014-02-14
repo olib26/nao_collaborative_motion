@@ -4354,6 +4354,7 @@ CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/node.o: /opt/ros/fuerte/inclu
 CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/node.o: /opt/ros/fuerte/include/std_msgs/Header.h
 CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/node.o: include/nao_behavior_tree/display.h
 CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/node.o: include/nao_behavior_tree/node.h
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/node.o: include/nao_behavior_tree/parser.h
 CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/node.o: msg_gen/cpp/include/nao_behavior_tree/ROSAction.h
 CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/node.o: msg_gen/cpp/include/nao_behavior_tree/ROSActionFeedback.h
 CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/node.o: msg_gen/cpp/include/nao_behavior_tree/ROSActionGoal.h
