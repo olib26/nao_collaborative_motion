@@ -1,0 +1,6 @@
+[*
+	A Search2
+	A GoClose2
+	A Greet2
+	A Stop2
+]

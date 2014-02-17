@@ -1,0 +1,6 @@
+<launch>
+
+	<include file="$(find nao_behavior_tree)/launch/NaoBehaviorTree1.launch"/>
+	<include file="$(find nao_behavior_tree)/launch/NaoBehaviorTree2.launch"/>
+  
+</launch>
