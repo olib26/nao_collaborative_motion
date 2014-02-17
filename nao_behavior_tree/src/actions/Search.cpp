@@ -303,7 +303,7 @@ public:
 
 	void initialize()
 	{
-		sleep(1.0);
+		init_ = true;
 
 		// Enable stiffness
 		AL::ALValue stiffness_name("Body");
@@ -319,8 +319,6 @@ public:
 
 		// Robot not detected
 		robotDetected = false;
-
-		init_ = true;
 	}
 
 	void finalize()

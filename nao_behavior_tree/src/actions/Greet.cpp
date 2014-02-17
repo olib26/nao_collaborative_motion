@@ -28,7 +28,7 @@ public:
 
 	void initialize()
 	{
-		sleep(1.0);
+		init_ = true;
 
 		// Enable stiffness
 		AL::ALValue stiffness_name("Body");
@@ -38,8 +38,6 @@ public:
 
 		// Install the behavior
 		behavior_proxy_ptr->installBehavior("/home/olivier/nao_behavior_tree/actions/behaviors/behavior_hello/behavior.xar");
-
-		init_ = true;
 	}
 
 	void finalize()
