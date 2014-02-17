@@ -210,9 +210,11 @@ void particleFilter(IplImage* img)
 		// Size
 		particles[i].sx += s_diffusion*normalRandom();
 		if(particles[i].sx < sx_min) {particles[i].sx = sx_min;}
+		if(particles[i].sx > sx_max) {particles[i].sx = sx_max;}
 
 		particles[i].sy += s_diffusion*normalRandom();
 		if(particles[i].sy < sy_min) {particles[i].sy = sy_min;}
+		if(particles[i].sy > sy_max) {particles[i].sy = sy_max;}
 	}
 
 	// Weighting

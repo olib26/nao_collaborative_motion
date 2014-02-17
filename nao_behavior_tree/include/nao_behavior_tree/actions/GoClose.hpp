@@ -33,10 +33,13 @@ struct Point
 int sx,sy;
 const int sx_min = 10;
 const int sy_min = 15;
+const int sx_max = 200;
+const int sy_max = 300;
+
 
 // Diffusion variance
-const int sigma_diffusion = 8;
-const int s_diffusion = 3;
+const int sigma_diffusion = 8; // Position
+const int s_diffusion = 3; // Size
 
 // Object coordinate
 int x,y;
