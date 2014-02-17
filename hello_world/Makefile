@@ -291,6 +291,19 @@ test-results-run/fast:
 .PHONY : test-results-run/fast
 
 #=============================================================================
+# Target rules for targets named testBoxMuller
+
+# Build rule for target.
+testBoxMuller: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 testBoxMuller
+.PHONY : testBoxMuller
+
+# fast build rule for target.
+testBoxMuller/fast:
+	$(MAKE) -f CMakeFiles/testBoxMuller.dir/build.make CMakeFiles/testBoxMuller.dir/build
+.PHONY : testBoxMuller/fast
+
+#=============================================================================
 # Target rules for targets named tests
 
 # Build rule for target.
@@ -318,6 +331,21 @@ src/main.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.s
 .PHONY : src/main.s
 
+# target to build an object file
+src/testBoxMuller.o:
+	$(MAKE) -f CMakeFiles/testBoxMuller.dir/build.make CMakeFiles/testBoxMuller.dir/src/testBoxMuller.o
+.PHONY : src/testBoxMuller.o
+
+# target to preprocess a source file
+src/testBoxMuller.i:
+	$(MAKE) -f CMakeFiles/testBoxMuller.dir/build.make CMakeFiles/testBoxMuller.dir/src/testBoxMuller.i
+.PHONY : src/testBoxMuller.i
+
+# target to generate assembly for a file
+src/testBoxMuller.s:
+	$(MAKE) -f CMakeFiles/testBoxMuller.dir/build.make CMakeFiles/testBoxMuller.dir/src/testBoxMuller.s
+.PHONY : src/testBoxMuller.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -341,10 +369,14 @@ help:
 	@echo "... test-future"
 	@echo "... test-results"
 	@echo "... test-results-run"
+	@echo "... testBoxMuller"
 	@echo "... tests"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/testBoxMuller.o"
+	@echo "... src/testBoxMuller.i"
+	@echo "... src/testBoxMuller.s"
 .PHONY : help
 
 

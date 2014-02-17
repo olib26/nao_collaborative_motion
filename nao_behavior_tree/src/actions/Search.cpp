@@ -25,8 +25,10 @@ double uniformRandom()
 double normalRandom()
 {
 	// Box-Muller transform
-	double u1 = uniformRandom();
-	double u2 = uniformRandom();
+	double u1,u2;
+	u1 = u2 = 0;
+	while(u1 == 0) {u1 = uniformRandom();}
+	while(u2 == 0) {u2 = uniformRandom();}
 	return cos(2*M_PI*u2)*sqrt(-2.*log(u1));
 }
 
@@ -148,16 +150,16 @@ void initParticles()
 void particleFilter(IplImage* img)
 {
 	// Diffusion
-	double diffusion_x [N];
-	double diffusion_y [N];
-
 	for(int i = 0; i < N; i++)
 	{
 		// Position
-		diffusion_x[i] = sigma_diffusion*normalRandom();
-		particles[i].x += diffusion_x[i];
-		diffusion_y[i] = sigma_diffusion*normalRandom();
-		particles[i].y += diffusion_y[i];
+		particles[i].x += sigma_diffusion*normalRandom();
+		if(particles[i].x < 0) {particles[i].x = 0;}
+		if(particles[i].x > height-1) {particles[i].x = height-1;}
+
+		particles[i].y += sigma_diffusion*normalRandom();
+		if(particles[i].y < 0) {particles[i].y = 0;}
+		if(particles[i].y > width-1) {particles[i].y = width-1;}
 	}
 
 	// Weighting

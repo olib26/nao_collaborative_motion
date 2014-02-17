@@ -183,7 +183,7 @@ ROSPACK_EXE:FILEPATH=/opt/ros/fuerte/bin/rospack
 USERCONFIG:FILEPATH=USERCONFIG-NOTFOUND
 
 //Path to a file.
-_file_name:FILEPATH=/home/olivier/ros_workspace/hello_world/src/main.cpp
+_file_name:FILEPATH=/home/olivier/ros_workspace/hello_world/src/testBoxMuller.cpp
 
 //Value Computed by CMake
 hello_world_BINARY_DIR:STATIC=/home/olivier/ros_workspace/hello_world
@@ -321,7 +321,7 @@ FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python][v2.7.3()]
 PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
 _rosbuild_EXPORTS:INTERNAL=
 _rosbuild_cached_flag_time:INTERNAL=1390308894.99
-_roslang_LANGS:INTERNAL=roslisp;rospy;roscpp
+_roslang_LANGS:INTERNAL=roscpp;rospy;roslisp
 _rospack_deps_manifests_invoke_result:INTERNAL=/opt/ros/fuerte/share/roslang/manifest.xml;/opt/ros/fuerte/share/roscpp/manifest.xml
 _rospack_msgsrv_gen_invoke_result:INTERNAL=
 hello_world_CFLAGS_OTHER:INTERNAL=

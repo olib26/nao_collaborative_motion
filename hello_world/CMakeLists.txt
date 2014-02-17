@@ -27,5 +27,8 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 #rosbuild_add_boost_directories()
 #rosbuild_link_boost(${PROJECT_NAME} thread)
 #rosbuild_add_executable(example examples/example.cpp)
+
 rosbuild_add_executable(main src/main.cpp)
+rosbuild_add_executable(testBoxMuller src/testBoxMuller.cpp)
+
 #target_link_libraries(example ${PROJECT_NAME})

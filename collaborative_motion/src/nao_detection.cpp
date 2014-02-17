@@ -41,8 +41,10 @@ double uniformRandom()
 double normalRandom()
 {
 	// Box-Muller transform
-	double u1 = uniformRandom();
-	double u2 = uniformRandom();
+	double u1,u2;
+	u1 = u2 = 0;
+	while(u1 == 0) {u1 = uniformRandom();}
+	while(u2 == 0) {u2 = uniformRandom();}
 	return cos(2*M_PI*u2)*sqrt(-2.*log(u1));
 }
 
@@ -203,7 +205,7 @@ void particleFilter(IplImage* img)
 		particles[i].sx += diffusion_sx[i];
 		if(particles[i].sx < sx_min) {particles[i].sx = sx_min;}
 		diffusion_sy[i] = s_diffusion*normalRandom();
-		particles[i].sy = diffusion_sy[i];
+		particles[i].sy += diffusion_sy[i];
 		if(particles[i].sy < sy_min) {particles[i].sy = sy_min;}
 	}
 
