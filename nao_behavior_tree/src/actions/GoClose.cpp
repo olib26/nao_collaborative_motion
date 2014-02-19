@@ -89,7 +89,7 @@ void robotCoordinate()
 
 	// Estimate depth
 	depth = robotDepth();
-	ROS_INFO("Depth = %f",depth);
+	//ROS_INFO("Depth = %f",depth);
 }
 
 
@@ -400,7 +400,6 @@ public:
 	{
 		init_ = true;
 
-		/*
 		// Enable stiffness
 		AL::ALValue stiffness_name("Body");
 		AL::ALValue stiffness(1.0f);
@@ -415,7 +414,6 @@ public:
 
         // Robot detected
         robotDetected = true;
-        */
 	}
 
 	void finalize()
@@ -447,7 +445,6 @@ public:
 			ic = new ImageConverter();
 		}
 
-		/*
 		// Robot not detected
 		if(!robotDetected)
 		{
@@ -472,7 +469,6 @@ public:
 		if(angular > 1) {angular = 1;}
 		if(angular < -1) {angular = -1;}
 		motion_proxy_ptr->setWalkTargetVelocity(rho,0,angular,1);
-		*/
 
 		return 0;
 	}
