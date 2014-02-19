@@ -13,11 +13,15 @@
 // Robot selection
 std::string nao;
 
+// Motion proxy
+AL::ALMotionProxy* motion_proxy_ptr;
+
 // Image size
 int height,width;
 
 // Camera parameters
 const double VFOV = 47.6*M_PI/180;
+const double HFOV = 60.9*M_PI/180;
 
 // Nao head spot
 const double H = 0.036;

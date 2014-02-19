@@ -12,6 +12,9 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
+#include <eigen3/Eigen/Core>
+#include <eigen3/Eigen/LU>
+
 #include "nao_behavior_tree/actions/GoClose.hpp"
 
 namespace enc = sensor_msgs::image_encodings;
@@ -34,6 +37,56 @@ double normalRandom()
 }
 
 
+float robotDepth()
+{
+	// Two interesting points
+	float alpha1 = atan((x + (sx-height)/2)/(float)height*2*tan(VFOV/2));
+	float alpha2 = atan((x - (sx+height)/2)/(float)height*2*tan(VFOV/2));
+	float beta = atan((y - width/2)/(float)width*2*tan(HFOV/2));
+
+	// Vectors in relative coordinates
+	Eigen::Vector4f v1r(1,-tan(beta),-tan(alpha1),1);
+	Eigen::Vector4f v2r(1,-tan(beta),-tan(alpha2),1);
+
+	// Camera to absolute coordinates
+	std::string cameraName = "CameraTop";
+	int space = 2; //FRAME_ROBOT
+	bool useSensorValues = true;
+	std::vector<float> transVec = motion_proxy_ptr->getTransform(cameraName,space,useSensorValues);
+	std::vector<float> cameraPos = motion_proxy_ptr->getPosition(cameraName,space,useSensorValues);
+
+	Eigen::Matrix4f transMat;
+	transMat <<
+	transVec[0] , transVec[1] , transVec[2] , transVec[3] ,
+	transVec[4] , transVec[5] , transVec[6] , transVec[7] ,
+	transVec[8] , transVec[9] , transVec[10], transVec[11],
+	transVec[12], transVec[13], transVec[14], transVec[15];
+
+	// Vectors in absolute coordinates
+	Eigen::Vector4f v1 = transMat*v1r;
+	Eigen::Vector4f v2 = transMat*v2r;
+
+	// Center
+	Eigen::Vector4f c = (v1+v2)/2;
+	float c_norm = c.transpose()*c;
+
+	// Projection
+	Eigen::MatrixXf proj_mat = c.transpose()*v1;
+	float proj = proj_mat(0,0);
+
+	// Orthogonal part in v1
+	Eigen::Vector4f orth = proj/c_norm*c - v1;
+
+	// Norm
+	Eigen::MatrixXf orth_norm_mat = orth.transpose()*orth;
+	float orth_norm = orth_norm_mat(0,0);
+
+	// Approximate depth
+	float d = H/2*proj/orth_norm;
+	return d;
+}
+
+
 void robotCoordinate()
 {
 	x = y = sx = sy = 0;
@@ -49,9 +102,9 @@ void robotCoordinate()
 	sx = sx/N;
 	sy = sy/N;
 
-	// Evaluate depth
-	double alpha = (double)sx/height*VFOV;
-	depth = H/tan(alpha/2)/2;
+	// Estimate depth
+	depth = robotDepth();
+	ROS_INFO("Depth = %f",depth);
 }
 
 
@@ -343,7 +396,6 @@ public:
 	bool init_;
 	ros::Duration execute_time_;
 	ImageConverter* ic;
-	AL::ALMotionProxy* motion_proxy_ptr;
 
 	GoClose(std::string name,std::string NAO_IP,int NAO_PORT) :
 		ROSAction(name),
