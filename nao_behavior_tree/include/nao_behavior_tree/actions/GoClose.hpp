@@ -43,7 +43,7 @@ const int sy_max = 300;
 
 // Diffusion variance
 const int sigma_diffusion = 8; // Position
-const int s_diffusion = 3; // Size
+const int s_diffusion = 2; // Size
 
 // Object coordinate
 int x,y;

@@ -40,49 +40,34 @@ double normalRandom()
 float robotDepth()
 {
 	// Two interesting points
-	float alpha1 = atan((x + (sx-height)/2)/(float)height*2*tan(VFOV/2));
-	float alpha2 = atan((x - (sx+height)/2)/(float)height*2*tan(VFOV/2));
-	float beta = atan((y - width/2)/(float)width*2*tan(HFOV/2));
+	float alpha1 = (x + (sx-height)/2)/(float)height*2*tan(VFOV/2.);
+	float alpha2 = (x - (sx+height)/2)/(float)height*2*tan(VFOV/2.);
+	float beta = (y - width/2)/(float)width*2*tan(HFOV/2.);
 
-	// Vectors in relative coordinates
-	Eigen::Vector4f v1r(1,-tan(beta),-tan(alpha1),1);
-	Eigen::Vector4f v2r(1,-tan(beta),-tan(alpha2),1);
+	// Vectors
+	Eigen::Vector3f v1(1,-beta,-alpha1);
+	Eigen::Vector3f v2(1,-beta,-alpha2);
 
-	// Camera to absolute coordinates
-	std::string cameraName = "CameraTop";
-	int space = 2; //FRAME_ROBOT
-	bool useSensorValues = true;
-	std::vector<float> transVec = motion_proxy_ptr->getTransform(cameraName,space,useSensorValues);
-	std::vector<float> cameraPos = motion_proxy_ptr->getPosition(cameraName,space,useSensorValues);
-
-	Eigen::Matrix4f transMat;
-	transMat <<
-	transVec[0] , transVec[1] , transVec[2] , transVec[3] ,
-	transVec[4] , transVec[5] , transVec[6] , transVec[7] ,
-	transVec[8] , transVec[9] , transVec[10], transVec[11],
-	transVec[12], transVec[13], transVec[14], transVec[15];
-
-	// Vectors in absolute coordinates
-	Eigen::Vector4f v1 = transMat*v1r;
-	Eigen::Vector4f v2 = transMat*v2r;
+	// Normalization
+	v1 = v1/v1.norm();
+	v2 = v2/v2.norm();
 
 	// Center
-	Eigen::Vector4f c = (v1+v2)/2;
-	float c_norm = c.transpose()*c;
+	Eigen::Vector3f c = (v1+v2)/2.;
+	float c_norm = c.norm();
 
 	// Projection
 	Eigen::MatrixXf proj_mat = c.transpose()*v1;
 	float proj = proj_mat(0,0);
 
 	// Orthogonal part in v1
-	Eigen::Vector4f orth = proj/c_norm*c - v1;
+	Eigen::Vector3f orth = v1 - proj/c_norm*c;
 
 	// Norm
-	Eigen::MatrixXf orth_norm_mat = orth.transpose()*orth;
-	float orth_norm = orth_norm_mat(0,0);
+	float orth_norm = orth.norm();
 
 	// Approximate depth
-	float d = H/2*proj/orth_norm;
+	float d = H/2.*proj/orth_norm;
 	return d;
 }
 
@@ -415,6 +400,7 @@ public:
 	{
 		init_ = true;
 
+		/*
 		// Enable stiffness
 		AL::ALValue stiffness_name("Body");
 		AL::ALValue stiffness(1.0f);
@@ -429,6 +415,7 @@ public:
 
         // Robot detected
         robotDetected = true;
+        */
 	}
 
 	void finalize()
@@ -460,6 +447,7 @@ public:
 			ic = new ImageConverter();
 		}
 
+		/*
 		// Robot not detected
 		if(!robotDetected)
 		{
@@ -484,6 +472,7 @@ public:
 		if(angular > 1) {angular = 1;}
 		if(angular < -1) {angular = -1;}
 		motion_proxy_ptr->setWalkTargetVelocity(rho,0,angular,1);
+		*/
 
 		return 0;
 	}
