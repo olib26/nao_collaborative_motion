@@ -380,6 +380,7 @@ class GoClose : ROSAction
 public:
 	bool init_;
 	ros::Duration execute_time_;
+	AL::ALMotionProxy* motion_proxy_ptr;
 	ImageConverter* ic;
 
 	GoClose(std::string name,std::string NAO_IP,int NAO_PORT) :

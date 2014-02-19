@@ -13,9 +13,6 @@
 // Robot selection
 std::string nao;
 
-// Motion proxy
-AL::ALMotionProxy* motion_proxy_ptr;
-
 // Image size
 int height,width;
 
