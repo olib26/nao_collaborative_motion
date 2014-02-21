@@ -11,6 +11,8 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
+#include <geometry_msgs/Twist.h>
+
 #include "nao_behavior_tree/actions/Search.hpp"
 
 namespace enc = sensor_msgs::image_encodings;
@@ -235,7 +237,7 @@ void imageProcessing(IplImage* img)
 	showParticles(hsv_mask);
 
 	// Show result
-	cvNamedWindow("Search",1); cvShowImage("Search",hsv_mask);
+	//cvNamedWindow("Search",1); cvShowImage("Search",hsv_mask);
 
 	cvWaitKey(10);
 }
@@ -311,9 +313,6 @@ public:
 		AL::ALValue stiffness_time(1.0f);
 		motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
 
-		// Foot Contact Protection
-		motion_proxy_ptr->setMotionConfig(AL::ALValue::array(AL::ALValue::array("ENABLE_FOOT_CONTACT_PROTECTION",true)));
-
 		// Init moving
 		motion_proxy_ptr->moveInit();
 
@@ -350,7 +349,9 @@ public:
 			ic = new ImageConverter();
 
 			// Start rotating
-			motion_proxy_ptr->setWalkTargetVelocity(0,0,1,0.5);
+			geometry_msgs::Twist cmd;
+			cmd.angular.z = 0.5;
+			cmd_pub.publish(cmd);
 		}
 
 		if(robotDetected)
@@ -379,6 +380,7 @@ int main(int argc, char** argv)
 		if(atoi(argv[1]) == 2) {nao = "2";}
 
 		ros::init(argc, argv,"Search" + nao);
+		ros::NodeHandle nh;
 
 		ros::NodeHandle pnh("~");
 		// Robot parameters
@@ -395,6 +397,9 @@ int main(int argc, char** argv)
 		pnh.param("V_MAX",V_MAX,int(0));
 		hsv_min = cvScalar(H_MIN,S_MIN,V_MIN,0);
 		hsv_max = cvScalar(H_MAX,S_MAX,V_MAX,0);
+
+		// Walker publisher
+		cmd_pub = nh.advertise<geometry_msgs::Twist>("/cmd_vel" + nao,100);
 
 		// Launch Server
 		Search server(ros::this_node::getName(),NAO_IP,NAO_PORT);

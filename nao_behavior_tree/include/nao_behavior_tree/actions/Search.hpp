@@ -13,6 +13,9 @@
 // Robot selection
 std::string nao;
 
+// Walker publisher
+ros::Publisher cmd_pub;
+
 // Image size
 int height,width;
 

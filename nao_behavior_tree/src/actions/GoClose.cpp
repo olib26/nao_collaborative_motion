@@ -15,6 +15,8 @@
 #include <eigen3/Eigen/Core>
 #include <eigen3/Eigen/LU>
 
+#include <geometry_msgs/Twist.h>
+
 #include "nao_behavior_tree/actions/GoClose.hpp"
 
 namespace enc = sensor_msgs::image_encodings;
@@ -331,7 +333,7 @@ void imageProcessing(IplImage* img)
 	showRobot(hsv_mask);
 
 	// Show result
-	cvNamedWindow("GoClose",1); cvShowImage("GoClose",hsv_mask);
+	//cvNamedWindow("GoClose",1); cvShowImage("GoClose",hsv_mask);
 
 	cvWaitKey(10);
 }
@@ -407,9 +409,6 @@ public:
 		AL::ALValue stiffness_time(1.0f);
 		motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
 
-		// Foot Contact Protection
-		motion_proxy_ptr->setMotionConfig(AL::ALValue::array(AL::ALValue::array("ENABLE_FOOT_CONTACT_PROTECTION",true)));
-
 		// Init moving
 		motion_proxy_ptr->moveInit();
 
@@ -469,7 +468,12 @@ public:
 		// Thresholds
 		if(angular > 1) {angular = 1;}
 		if(angular < -1) {angular = -1;}
-		motion_proxy_ptr->setWalkTargetVelocity(rho,0,angular,1);
+
+		// Publish
+		geometry_msgs::Twist cmd;
+		cmd.linear.x = rho;
+		cmd.angular.z = angular;
+		cmd_pub.publish(cmd);
 
 		return 0;
 	}
@@ -517,6 +521,9 @@ int main(int argc, char** argv)
 
 		// Sonar subscriber
 		ros::Subscriber sonar_sub = nh.subscribe("/sonar" + nao,1000,receive_sonar);
+
+		// Walker publisher
+		cmd_pub = nh.advertise<geometry_msgs::Twist>("/cmd_vel" + nao,100);
 
 		// Launch Server
 		GoClose server(ros::this_node::getName(),NAO_IP,NAO_PORT);

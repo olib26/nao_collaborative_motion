@@ -880,6 +880,8 @@ CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/include/actionlib/se
 CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/include/actionlib_msgs/GoalID.h
 CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/include/actionlib_msgs/GoalStatus.h
 CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/include/actionlib_msgs/GoalStatusArray.h
+CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/include/geometry_msgs/Twist.h
+CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/include/geometry_msgs/Vector3.h
 CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/include/opencv/cv.h
 CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/include/opencv/cxcore.h
 CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/include/opencv/highgui.h

@@ -10,7 +10,7 @@ class Sonar(genpy.Message):
   _md5sum = "b8459b06f837afc7f64834d442c94be1"
   _type = "nao_behavior_tree/Sonar"
   _has_header = True #flag to mark the presence of a Header object
-  _full_text = """# Sonar values (meters)
+  _full_text = """# Sonar values
 
 Header header
 

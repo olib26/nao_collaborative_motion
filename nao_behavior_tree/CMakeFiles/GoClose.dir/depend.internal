@@ -1000,6 +1000,8 @@ CMakeFiles/GoClose.dir/src/actions/GoClose.o
  /opt/ros/fuerte/include/actionlib_msgs/GoalID.h
  /opt/ros/fuerte/include/actionlib_msgs/GoalStatus.h
  /opt/ros/fuerte/include/actionlib_msgs/GoalStatusArray.h
+ /opt/ros/fuerte/include/geometry_msgs/Twist.h
+ /opt/ros/fuerte/include/geometry_msgs/Vector3.h
  /opt/ros/fuerte/include/opencv/cv.h
  /opt/ros/fuerte/include/opencv/cxcore.h
  /opt/ros/fuerte/include/opencv/highgui.h

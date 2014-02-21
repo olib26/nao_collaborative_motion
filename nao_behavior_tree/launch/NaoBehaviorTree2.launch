@@ -21,6 +21,13 @@
     <remap from="sonar" to="sonar2"/>
   </node>
   
+  <!--
+    Walker 2
+  -->
+  <node pkg="nao_driver" type="nao_walker.py" name="nao_walker2" required="true" args="--pip=$(arg nao_ip2) --pport=$(arg nao_port2)" output="screen">
+  	<remap from="cmd_vel" to="cmd_vel2"/>
+  </node>
+  
   
   <!--
     Actions 2

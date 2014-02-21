@@ -96,7 +96,7 @@ template<class ContainerAllocator>
 struct Definition< ::nao_behavior_tree::Sonar_<ContainerAllocator> > {
   static const char* value() 
   {
-    return "# Sonar values (meters)\n\
+    return "# Sonar values\n\
 \n\
 Header header\n\
 \n\
