@@ -42,13 +42,14 @@ double normalRandom()
 float robotDepth()
 {
 	// Two interesting points
-	float alpha1 = (x + (sx-height)/2)/(float)height*2*tan(VFOV/2.);
-	float alpha2 = (x - (sx+height)/2)/(float)height*2*tan(VFOV/2.);
-	float beta = (y - width/2)/(float)width*2*tan(HFOV/2.);
+	float p_u1 = -(x + (sx-height)/2);
+	float p_u2 = -(x - (sx+height)/2);
+	float p_v = -(y - width/2);
+	float f = (float)width/2/tan(HFOV/2.);
 
 	// Vectors
-	Eigen::Vector3f v1(1,-beta,-alpha1);
-	Eigen::Vector3f v2(1,-beta,-alpha2);
+	Eigen::Vector3f v1(f,p_v,p_u1);
+	Eigen::Vector3f v2(f,p_v,p_u2);
 
 	// Normalization
 	v1 = v1/v1.norm();
