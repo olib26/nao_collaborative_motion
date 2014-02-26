@@ -82,7 +82,7 @@ void showRobot(IplImage* img)
 
 	c2 = cvPoint(y+sy/2,x+sx/2);
 	if((x+sx/2) < 0) {c2.y = 0;}
-	if((y+sy/3) < 0) {c2.x = 0;}
+	if((y+sy/2) < 0) {c2.x = 0;}
 	if((x+sx/2) >= height) {c2.y = height-1;}
 	if((y+sy/2) >= width) {c2.x = width-1;}
 

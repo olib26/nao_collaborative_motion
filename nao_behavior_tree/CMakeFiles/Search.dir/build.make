@@ -52,12 +52,12 @@ CMakeFiles/Search.dir/src/actions/Search.o: manifest.xml
 CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/share/roslang/manifest.xml
 CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/share/roscpp/manifest.xml
 CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/share/std_msgs/manifest.xml
+CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
 CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/share/rospy/manifest.xml
 CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/share/rostest/manifest.xml
 CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
 CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/share/actionlib/manifest.xml
 CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/share/roslib/manifest.xml
-CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
 CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/share/nav_msgs/manifest.xml
 CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
 CMakeFiles/Search.dir/src/actions/Search.o: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
