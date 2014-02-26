@@ -35,7 +35,7 @@ struct Robot
 Robot r1,r2;
 
 // Number of particles
-const int N = 2000;
+const int N = 1000;
 
 // Generate N random particles
 struct Particle{

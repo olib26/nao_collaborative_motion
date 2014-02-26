@@ -34,20 +34,20 @@ double normalRandom()
 }
 
 
-void robotCoordinate(Particle* particles, Robot r)
+void robotCoordinate(Particle* particles, Robot* r)
 {
-	r.x = r.y = r.sx = r.sy = 0;
+	r->x = r->y = r->sx = r->sy = 0;
 	for(int i = 0; i < N; i++)
 	{
-		r.x += particles[i].x + particles[i].sx/2;
-		r.y += particles[i].y + particles[i].sy/2;
-		r.sx += particles[i].sx;
-		r.sy += particles[i].sy;
+		r->x += particles[i].x + particles[i].sx/2;
+		r->y += particles[i].y + particles[i].sy/2;
+		r->sx += particles[i].sx;
+		r->sy += particles[i].sy;
 	}
-	r.x = r.x/N;
-	r.y = r.y/N;
-	r.sx = r.sx/N;
-	r.sy = r.sy/N;
+	r->x = r->x/N;
+	r->y = r->y/N;
+	r->sx = r->sx/N;
+	r->sy = r->sy/N;
 }
 
 
@@ -151,10 +151,10 @@ int** integralImage(IplImage* img)
 }
 
 
-double evaluate(int x, int y, int sx, int sy, int** integral, Robot other)
+double evaluate(int x, int y, int sx, int sy, int** integral, Robot* other)
 {
 	// Distance between the particle and the other robot
-	double distance = sqrt((x-other.x)*(x-other.x) + (y-other.y)*(y-other.y));
+	double distance = sqrt((x-other->x)*(x-other->x) + (y-other->y)*(y-other->y));
 	if(distance < distanceThreshold) {return eps;}
 
 	// Number of pixels
@@ -194,7 +194,7 @@ void initParticles(Particle* particles)
 }
 
 
-void particleFilter(IplImage* img, Particle* particles, Robot robot, Robot other)
+void particleFilter(IplImage* img, Particle* particles, Robot* robot, Robot* other)
 {
 	// Diffusion
 	for(int i = 0; i < N; i++)
@@ -281,8 +281,12 @@ void imageProcessing(IplImage* img)
 	}
 
 	// Filter
-	particleFilter(hsv_mask,particles1,r1,r2);
-	particleFilter(hsv_mask,particles2,r2,r1);
+	particleFilter(hsv_mask,particles1,&r1,&r2);
+	particleFilter(hsv_mask,particles2,&r2,&r1);
+
+	// Draw particles
+	showParticles(hsv_mask,particles1);
+	showParticles(hsv_mask,particles2);
 
 	// Draw robots
 	showRobot(hsv_mask,r1);
@@ -298,8 +302,8 @@ void on_mouse(int event, int x, int y, int d, void *ptr)
 	if(event == cv::EVENT_LBUTTONDOWN)
 	{
 	    cv::Point* p = (cv::Point*)ptr;
-	    p->x = x;
-	    p->y = y;
+	    p->x = y;
+	    p->y = x;
 	}
 }
 
