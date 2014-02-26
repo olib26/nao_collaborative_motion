@@ -83,6 +83,13 @@ void showParticles(IplImage* img, Particle* particles)
 }
 
 
+Odometry computeOdometry(Robot r)
+{
+	Odometry odom;
+	return odom;
+}
+
+
 std::pair<double,double> particlesVariance(Particle* particles)
 {
 	std::pair<double,double> M; // Mean

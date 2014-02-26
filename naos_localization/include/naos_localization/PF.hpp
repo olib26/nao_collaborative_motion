@@ -34,6 +34,12 @@ struct Robot
 };
 Robot r1,r2;
 
+// Odometry
+struct Odometry
+{
+	double x,y;
+};
+
 // Number of particles
 const int N = 1000;
 
