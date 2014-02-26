@@ -162,7 +162,7 @@ double evaluate(int x, int y, int sx, int sy, int** integral, Robot* other)
 {
 	// Distance between the particle and the other robot
 	double distance = sqrt((x-other->x)*(x-other->x) + (y-other->y)*(y-other->y));
-	if(distance < distanceThreshold) {return eps;}
+	if(distance < sqrt(other->sx*other->sx + other->sy*other->sy)) {return eps;}
 
 	// Number of pixels
 	CvPoint p = cvPoint(x+sx-1,y+sy-1);

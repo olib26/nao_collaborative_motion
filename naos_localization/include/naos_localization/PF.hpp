@@ -55,9 +55,6 @@ Particle* particles2 = new Particle[N];
 // Minimum weight
 const double eps = 1E-3;
 
-// Minimum distance between robots
-const double distanceThreshold = 30;
-
 // HSV Thresholds
 int H_MIN,H_MAX,S_MIN,S_MAX,V_MIN,V_MAX;
 CvScalar hsv_min,hsv_max;
