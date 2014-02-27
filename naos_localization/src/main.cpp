@@ -22,7 +22,11 @@
 
 using namespace std;
 
+// Camera selection
 bool webcam;
+
+// Odometry publisher
+ros::Publisher odom_pub;
 
 
 double uniformRandom()
@@ -91,10 +95,9 @@ void showParticles(IplImage* img, Particle* particles)
 }
 
 
-Odometry computeOdometry(Robot r)
+void computeOdometry(Robot r)
 {
-	Odometry odom;
-	return odom;
+
 }
 
 

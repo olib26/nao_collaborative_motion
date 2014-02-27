@@ -9,9 +9,6 @@
 #define PF_HPP_
 
 
-// Camera index
-int camera;
-
 // Image size
 int height,width;
 
@@ -33,12 +30,6 @@ struct Robot
 	Robot () : x(0),y(0),sx(sx_min),sy(sy_min) {}
 };
 Robot r1,r2;
-
-// Odometry
-struct Odometry
-{
-	double x,y;
-};
 
 // Number of particles
 const int N = 1000;
