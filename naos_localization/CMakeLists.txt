@@ -35,6 +35,26 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 #uncomment if you have defined services
 #rosbuild_gensrv()
 
+
+# Aldebaran libraries
+include_directories(
+$ENV{AL_DIR_SDK}/include
+$ENV{AL_DIR_SDK}/include/alcommon
+$ENV{AL_DIR_SDK}/include/alvision
+$ENV{AL_DIR_SDK}/include/alcore
+$ENV{AL_DIR_SDK}/include/alproxies
+$ENV{AL_DIR_SDK}/include/alvalue
+$ENV{AL_DIR_SDK}/include/altools
+$ENV{AL_DIR_SDK}/include/alfactory
+$ENV{AL_DIR_SDK}/include/libthread
+$ENV{AL_DIR_SDK}/include/alvision
+)
+
+link_directories(
+$ENV{AL_DIR_SDK}/lib
+)
+
+
 #common commands for building c++ executables and libraries
 #rosbuild_add_library(${PROJECT_NAME} src/example.cpp)
 #target_link_libraries(${PROJECT_NAME} another_library)
@@ -42,7 +62,9 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 #rosbuild_link_boost(${PROJECT_NAME} thread)
 #rosbuild_add_executable(example examples/example.cpp)
 
+
 rosbuild_add_executable(main src/main.cpp)
-target_link_libraries(main ${OpenCV_LIBS})
+target_link_libraries(main ${OpenCV_LIBS} alproxies alvalue alvision)
+
 
 #target_link_libraries(example ${PROJECT_NAME})

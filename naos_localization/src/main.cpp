@@ -1,5 +1,5 @@
 /*
- * main.cpp
+ * webcam.cpp
  *
  *  Created on: Feb 24, 2014
  *      Author: Olivier BALLAND
@@ -12,9 +12,17 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
+#include <alproxies/alvideodeviceproxy.h>
+#include <alvision/alimage.h>
+#include <alvision/alvisiondefinitions.h>
+
 #include <naos_localization/PF.hpp>
+#include <naos_localization/webcam.hpp>
+#include <naos_localization/nao.hpp>
 
 using namespace std;
+
+bool webcam;
 
 
 double uniformRandom()
@@ -91,7 +99,7 @@ Odometry computeOdometry(Robot r)
 
 
 std::pair<double,double> particlesVariance(Particle* particles)
-{
+				{
 	std::pair<double,double> M; // Mean
 	std::pair<double,double> V;	// Variance
 
@@ -111,7 +119,7 @@ std::pair<double,double> particlesVariance(Particle* particles)
 	V.second = V.second/N - M.second*M.second;
 
 	return V;
-}
+				}
 
 
 int getPixelValue(IplImage* img,int i,int j)
@@ -158,11 +166,15 @@ int** integralImage(IplImage* img)
 }
 
 
-double evaluate(int x, int y, int sx, int sy, int** integral, Robot* other)
+double evaluate(int x, int y, int sx, int sy, int** integral, Robot* robot, Robot* other)
 {
 	// Distance between the particle and the other robot
-	double distance = sqrt((x-other->x)*(x-other->x) + (y-other->y)*(y-other->y));
-	if(distance < sqrt(other->sx*other->sx + other->sy*other->sy)) {return eps;}
+	double distanceOther = sqrt((x-other->x)*(x-other->x) + (y-other->y)*(y-other->y));
+	if(distanceOther < sqrt(other->sx*other->sx + other->sy*other->sy)) {return eps;}
+
+	// Distance between the particle and the robot
+	double distanceRobot = (x-robot->x)*(x-robot->x) + (y-robot->y)*(y-robot->y);
+	double sigma = robot->sx*robot->sx + robot->sy*robot->sy;
 
 	// Number of pixels
 	CvPoint p = cvPoint(x+sx-1,y+sy-1);
@@ -178,6 +190,10 @@ double evaluate(int x, int y, int sx, int sy, int** integral, Robot* other)
 	if(y > width) {y = width;}
 
 	int weight = integral[p.x][p.y] - integral[x-1][p.y] - integral[p.x][y-1] + integral[x-1][y-1];
+
+	// Data association
+	weight = weight*exp(-distanceRobot/sigma/2);
+
 	if(weight <= 0) {weight = eps;}
 	return weight;
 }
@@ -230,7 +246,7 @@ void particleFilter(IplImage* img, Particle* particles, Robot* robot, Robot* oth
 	int** integral = integralImage(img);
 	for(int i = 0; i < N; i++)
 	{
-		particles[i].w = evaluate(particles[i].x,particles[i].y,particles[i].sx,particles[i].sy,integral,other);
+		particles[i].w = evaluate(particles[i].x,particles[i].y,particles[i].sx,particles[i].sy,integral,robot,other);
 		norm += particles[i].w;
 	}
 	for(int i = 0; i < N; i++)
@@ -304,25 +320,59 @@ void imageProcessing(IplImage* img)
 }
 
 
+IplImage* getImage(bool webcam)
+{
+	if(!webcam)
+	{
+		AL::ALValue img = camera_proxy_ptr->getImageRemote(clientName);
+		imgHeader->imageData = (char*) img[6].GetBinary();
+		camera_proxy_ptr->releaseImage(clientName);
+		return cvCloneImage(imgHeader);
+	}
+
+	else
+	{
+		return cvQueryFrame(capture);
+	}
+}
+
+
 void on_mouse(int event, int x, int y, int d, void *ptr)
 {
 	if(event == cv::EVENT_LBUTTONDOWN)
 	{
-	    cv::Point* p = (cv::Point*)ptr;
-	    p->x = y;
-	    p->y = x;
+		cv::Point* p = (cv::Point*)ptr;
+		p->x = y;
+		p->y = x;
 	}
 }
 
 
 int main(int argc, char** argv)
 {
-	ros::init(argc, argv,"naos_localization");
+	ros::init(argc, argv,"localization");
 	ros::NodeHandle nh;
 
 	ros::NodeHandle pnh("~");
-	// Camera id
-	pnh.param("camera",camera,int(0));
+	if(argc != 1)
+	{
+		// Camera selection
+		if(atoi(argv[1]) == 0) {webcam = true;}
+		if(atoi(argv[1]) == 1) {webcam = false;}
+
+		// Robot parameters
+		pnh.param("NAO_IP",NAO_IP,std::string("127.0.0.1"));
+		pnh.param("NAO_PORT",NAO_PORT,int(9559));
+
+		// Camera id
+		pnh.param("camera",camera,int(0));
+	}
+	else
+	{
+		puts("Error, not enough arguments");
+		return 0;
+	}
+
 	// HSV parameters
 	pnh.param("H_MIN",H_MIN,int(0));
 	pnh.param("H_MAX",H_MAX,int(0));
@@ -333,10 +383,35 @@ int main(int argc, char** argv)
 	hsv_min = cvScalar(H_MIN,S_MIN,V_MIN,0);
 	hsv_max = cvScalar(H_MAX,S_MAX,V_MAX,0);
 
-	// Capture from camera
-	IplImage* img;
+	// Init proxy
+	if(!webcam)
+	{
+		camera_proxy_ptr = new AL::ALVideoDeviceProxy(NAO_IP,NAO_PORT);
+		// Select top camera
+		camera_proxy_ptr->setParam(AL::kCameraSelectID,0);
+		// Set Resolution, Color space and FPS
+		// Resolution = 640x480
+		// Color space = BGR
+		// FPS = 30
+		clientName = camera_proxy_ptr->subscribe("localization",AL::kVGA,AL::kBGRColorSpace,30);
+		// Init image
+		imgHeader = cvCreateImageHeader(cvSize(640,480),8,3);
+	}
+
+	// Init webcam
+	if(webcam)
+	{
+		capture = cvCaptureFromCAM(camera);
+	}
+
+
+	// Window
 	cvNamedWindow("Camera_Output",1);
-	CvCapture* capture = cvCaptureFromCAM(0);
+
+	// Image
+	IplImage* img;
+
+	sleep(1);
 
 	// Init robots positions
 	cv::Point p;
@@ -344,7 +419,7 @@ int main(int argc, char** argv)
 
 	while(((r1.x == 0) | (r2.x == 0)) & ros::ok())
 	{
-		img = cvQueryFrame(capture); // Capture one image
+		img = getImage(webcam);
 		cvShowImage("Camera_Output",img);
 
 		if((p.x != 0) & (p.y !=0))
@@ -369,7 +444,7 @@ int main(int argc, char** argv)
 	}
 
 	while(ros::ok()){
-		img = cvQueryFrame(capture); // Capture one image
+		img = getImage(webcam);
 
 		// Image processing
 		imageProcessing(img);
@@ -377,7 +452,17 @@ int main(int argc, char** argv)
 		cvWaitKey(100);
 	}
 
-	cvReleaseCapture(&capture); // Release capture.
+
+	// Cleanup
+	if(!webcam)
+	{
+		camera_proxy_ptr->unsubscribe(clientName);
+		cvReleaseImageHeader(&imgHeader);
+	}
+	else
+	{
+		cvReleaseCapture(&capture); // Release capture
+	}
 	cvDestroyWindow("Camera_Output"); // Destroy Window
 
 	return 0;
