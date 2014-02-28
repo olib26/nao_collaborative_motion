@@ -95,7 +95,7 @@ void showParticles(IplImage* img, Particle* particles)
 }
 
 
-void computeOdometry(Robot r)
+void computeOdometry(Robot r,bool webcam)
 {
 
 }
@@ -172,11 +172,11 @@ int** integralImage(IplImage* img)
 double evaluate(int x, int y, int sx, int sy, int** integral, Robot* robot, Robot* other)
 {
 	// Distance between the particle and the other robot
-	double distanceOther = sqrt((x-other->x)*(x-other->x) + (y-other->y)*(y-other->y));
+	double distanceOther = sqrt((x+sx/2-other->x)*(x+sx/2-other->x) + (y+sy/2-other->y)*(y+sy/2-other->y));
 	if(distanceOther < sqrt(other->sx*other->sx + other->sy*other->sy)) {return eps;}
 
 	// Distance between the particle and the robot
-	double distanceRobot = (x-robot->x)*(x-robot->x) + (y-robot->y)*(y-robot->y);
+	double distanceRobot = (x+sx/2-robot->x)*(x+sx/2-robot->x) + (y+sy/2-robot->y)*(y+sy/2-robot->y);
 	double sigma = robot->sx*robot->sx + robot->sy*robot->sy;
 
 	// Number of pixels
