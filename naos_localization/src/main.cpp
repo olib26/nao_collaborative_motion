@@ -16,17 +16,13 @@
 #include <alvision/alimage.h>
 #include <alvision/alvisiondefinitions.h>
 
+#include <naos_localization/Odometry.h>
+
 #include <naos_localization/PF.hpp>
 #include <naos_localization/webcam.hpp>
 #include <naos_localization/nao.hpp>
 
 using namespace std;
-
-// Camera selection
-bool webcam;
-
-// Odometry publisher
-ros::Publisher odom_pub;
 
 
 double uniformRandom()
@@ -95,14 +91,32 @@ void showParticles(IplImage* img, Particle* particles)
 }
 
 
-void computeOdometry(Robot r,bool webcam)
+naos_localization::Odometry computeOdometry(Robot r1, Robot r2, bool webcam)
 {
+	naos_localization::Odometry odom;
 
+	double k;
+	if(webcam)
+	{
+		k = webcamHeight/focalLength;
+	}
+	else
+	{
+		float f = (float)width/2/tan(HFOV/2.);
+		k = cameraHeight/f;
+	}
+
+	odom.x1 = (r1.y-width/2)*k;
+	odom.y1 = -(r1.x-height/2)*k;
+	odom.x2 = (r2.y-width/2)*k;
+	odom.y2 = -(r2.x-height/2)*k;
+
+	return odom;
 }
 
 
 std::pair<double,double> particlesVariance(Particle* particles)
-				{
+						{
 	std::pair<double,double> M; // Mean
 	std::pair<double,double> V;	// Variance
 
@@ -122,7 +136,7 @@ std::pair<double,double> particlesVariance(Particle* particles)
 	V.second = V.second/N - M.second*M.second;
 
 	return V;
-				}
+						}
 
 
 int getPixelValue(IplImage* img,int i,int j)
@@ -356,6 +370,12 @@ int main(int argc, char** argv)
 	ros::init(argc, argv,"localization");
 	ros::NodeHandle nh;
 
+	// Odometry publisher
+	ros::Publisher odom_pub = nh.advertise<naos_localization::Odometry>("/odometry",100);
+
+	// Camera selection
+	bool webcam;
+
 	ros::NodeHandle pnh("~");
 	if(argc != 1)
 	{
@@ -414,7 +434,7 @@ int main(int argc, char** argv)
 	// Image
 	IplImage* img;
 
-	sleep(1);
+	sleep(1); // Wait for proxy init
 
 	// Init robots positions
 	cv::Point p;
@@ -451,6 +471,10 @@ int main(int argc, char** argv)
 
 		// Image processing
 		imageProcessing(img);
+
+		// Publish odometry
+		naos_localization::Odometry odom = computeOdometry(r1,r2,webcam);
+		odom_pub.publish(odom);
 
 		cvWaitKey(100);
 	}

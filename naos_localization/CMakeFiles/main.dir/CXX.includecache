@@ -6233,6 +6233,8 @@ alvision/alimage.h
 -
 alvision/alvisiondefinitions.h
 -
+naos_localization/Odometry.h
+-
 naos_localization/PF.hpp
 -
 naos_localization/webcam.hpp
@@ -6435,6 +6437,10 @@ boost/make_shared.hpp
 -
 
 /opt/ros/fuerte/include/ros/message_forward.h
+
+/opt/ros/fuerte/include/ros/message_operations.h
+ostream
+-
 
 /opt/ros/fuerte/include/ros/message_traits.h
 message_forward.h
@@ -6846,6 +6852,22 @@ ros/forwards.h
 
 /opt/ros/fuerte/include/rosconsole/macros_generated.h
 
+/opt/ros/fuerte/include/std_msgs/Header.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+
 /usr/local/include/opencv2/calib3d/calib3d.hpp
 opencv2/core/core.hpp
 /usr/local/include/opencv2/calib3d/opencv2/core/core.hpp
@@ -7101,4 +7123,28 @@ include/naos_localization/PF.hpp
 include/naos_localization/nao.hpp
 
 include/naos_localization/webcam.hpp
+
+msg_gen/cpp/include/naos_localization/Odometry.h
+string
+-
+vector
+-
+map
+-
+ostream
+-
+ros/serialization.h
+msg_gen/cpp/include/naos_localization/ros/serialization.h
+ros/builtin_message_traits.h
+msg_gen/cpp/include/naos_localization/ros/builtin_message_traits.h
+ros/message_operations.h
+msg_gen/cpp/include/naos_localization/ros/message_operations.h
+ros/time.h
+msg_gen/cpp/include/naos_localization/ros/time.h
+ros/macros.h
+msg_gen/cpp/include/naos_localization/ros/macros.h
+ros/assert.h
+msg_gen/cpp/include/naos_localization/ros/assert.h
+std_msgs/Header.h
+msg_gen/cpp/include/naos_localization/std_msgs/Header.h
 

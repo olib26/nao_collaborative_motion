@@ -42,9 +42,29 @@ CMAKE_BINARY_DIR = /home/olivier/ros_workspace/naos_localization
 # Include the progress variables for this target.
 include CMakeFiles/ROSBUILD_genmsg_lisp.dir/progress.make
 
-CMakeFiles/ROSBUILD_genmsg_lisp:
+CMakeFiles/ROSBUILD_genmsg_lisp: msg_gen/lisp/Odometry.lisp
+CMakeFiles/ROSBUILD_genmsg_lisp: msg_gen/lisp/_package.lisp
+CMakeFiles/ROSBUILD_genmsg_lisp: msg_gen/lisp/_package_Odometry.lisp
+
+msg_gen/lisp/Odometry.lisp: msg/Odometry.msg
+msg_gen/lisp/Odometry.lisp: /opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py
+msg_gen/lisp/Odometry.lisp: /opt/ros/fuerte/share/roslib/bin/gendeps
+msg_gen/lisp/Odometry.lisp: /opt/ros/fuerte/share/std_msgs/msg/Header.msg
+msg_gen/lisp/Odometry.lisp: manifest.xml
+msg_gen/lisp/Odometry.lisp: /opt/ros/fuerte/share/roslang/manifest.xml
+msg_gen/lisp/Odometry.lisp: /opt/ros/fuerte/share/roscpp/manifest.xml
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/naos_localization/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/lisp/Odometry.lisp, msg_gen/lisp/_package.lisp, msg_gen/lisp/_package_Odometry.lisp"
+	/opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/olivier/ros_workspace/naos_localization/msg/Odometry.msg
+
+msg_gen/lisp/_package.lisp: msg_gen/lisp/Odometry.lisp
+
+msg_gen/lisp/_package_Odometry.lisp: msg_gen/lisp/Odometry.lisp
 
 ROSBUILD_genmsg_lisp: CMakeFiles/ROSBUILD_genmsg_lisp
+ROSBUILD_genmsg_lisp: msg_gen/lisp/Odometry.lisp
+ROSBUILD_genmsg_lisp: msg_gen/lisp/_package.lisp
+ROSBUILD_genmsg_lisp: msg_gen/lisp/_package_Odometry.lisp
 ROSBUILD_genmsg_lisp: CMakeFiles/ROSBUILD_genmsg_lisp.dir/build.make
 .PHONY : ROSBUILD_genmsg_lisp
 

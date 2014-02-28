@@ -15,6 +15,7 @@ SET(CMAKE_C_INCLUDE_PATH
   "src"
   "/usr/local/include/opencv"
   "/usr/local/include"
+  "msg_gen/cpp/include"
   "/home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include"
   "/home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alcommon"
   "/home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alvision"

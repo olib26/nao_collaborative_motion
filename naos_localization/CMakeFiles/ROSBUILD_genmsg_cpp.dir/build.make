@@ -42,9 +42,21 @@ CMAKE_BINARY_DIR = /home/olivier/ros_workspace/naos_localization
 # Include the progress variables for this target.
 include CMakeFiles/ROSBUILD_genmsg_cpp.dir/progress.make
 
-CMakeFiles/ROSBUILD_genmsg_cpp:
+CMakeFiles/ROSBUILD_genmsg_cpp: msg_gen/cpp/include/naos_localization/Odometry.h
+
+msg_gen/cpp/include/naos_localization/Odometry.h: msg/Odometry.msg
+msg_gen/cpp/include/naos_localization/Odometry.h: /opt/ros/fuerte/share/roscpp/rosbuild/scripts/genmsg_cpp.py
+msg_gen/cpp/include/naos_localization/Odometry.h: /opt/ros/fuerte/share/roslib/bin/gendeps
+msg_gen/cpp/include/naos_localization/Odometry.h: /opt/ros/fuerte/share/std_msgs/msg/Header.msg
+msg_gen/cpp/include/naos_localization/Odometry.h: manifest.xml
+msg_gen/cpp/include/naos_localization/Odometry.h: /opt/ros/fuerte/share/roslang/manifest.xml
+msg_gen/cpp/include/naos_localization/Odometry.h: /opt/ros/fuerte/share/roscpp/manifest.xml
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/naos_localization/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/cpp/include/naos_localization/Odometry.h"
+	/opt/ros/fuerte/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/olivier/ros_workspace/naos_localization/msg/Odometry.msg
 
 ROSBUILD_genmsg_cpp: CMakeFiles/ROSBUILD_genmsg_cpp
+ROSBUILD_genmsg_cpp: msg_gen/cpp/include/naos_localization/Odometry.h
 ROSBUILD_genmsg_cpp: CMakeFiles/ROSBUILD_genmsg_cpp.dir/build.make
 .PHONY : ROSBUILD_genmsg_cpp
 

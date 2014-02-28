@@ -591,6 +591,7 @@ CMakeFiles/main.dir/src/main.o: /opt/ros/fuerte/include/ros/master.h
 CMakeFiles/main.dir/src/main.o: /opt/ros/fuerte/include/ros/message.h
 CMakeFiles/main.dir/src/main.o: /opt/ros/fuerte/include/ros/message_event.h
 CMakeFiles/main.dir/src/main.o: /opt/ros/fuerte/include/ros/message_forward.h
+CMakeFiles/main.dir/src/main.o: /opt/ros/fuerte/include/ros/message_operations.h
 CMakeFiles/main.dir/src/main.o: /opt/ros/fuerte/include/ros/message_traits.h
 CMakeFiles/main.dir/src/main.o: /opt/ros/fuerte/include/ros/names.h
 CMakeFiles/main.dir/src/main.o: /opt/ros/fuerte/include/ros/node_handle.h
@@ -626,6 +627,7 @@ CMakeFiles/main.dir/src/main.o: /opt/ros/fuerte/include/ros/types.h
 CMakeFiles/main.dir/src/main.o: /opt/ros/fuerte/include/ros/wall_timer.h
 CMakeFiles/main.dir/src/main.o: /opt/ros/fuerte/include/ros/wall_timer_options.h
 CMakeFiles/main.dir/src/main.o: /opt/ros/fuerte/include/rosconsole/macros_generated.h
+CMakeFiles/main.dir/src/main.o: /opt/ros/fuerte/include/std_msgs/Header.h
 CMakeFiles/main.dir/src/main.o: /usr/local/include/opencv2/calib3d/calib3d.hpp
 CMakeFiles/main.dir/src/main.o: /usr/local/include/opencv2/contrib/contrib.hpp
 CMakeFiles/main.dir/src/main.o: /usr/local/include/opencv2/contrib/openfabmap.hpp
@@ -656,4 +658,5 @@ CMakeFiles/main.dir/src/main.o: /usr/local/include/opencv2/video/video.hpp
 CMakeFiles/main.dir/src/main.o: include/naos_localization/PF.hpp
 CMakeFiles/main.dir/src/main.o: include/naos_localization/nao.hpp
 CMakeFiles/main.dir/src/main.o: include/naos_localization/webcam.hpp
+CMakeFiles/main.dir/src/main.o: msg_gen/cpp/include/naos_localization/Odometry.h
 

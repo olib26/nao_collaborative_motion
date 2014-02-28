@@ -1,4 +1,7 @@
 FILE(REMOVE_RECURSE
+  "msg_gen"
+  "src/naos_localization/msg"
+  "msg_gen"
   "CMakeFiles/tests"
 )
 

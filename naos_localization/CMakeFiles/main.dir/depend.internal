@@ -592,6 +592,7 @@ CMakeFiles/main.dir/src/main.o
  /opt/ros/fuerte/include/ros/message.h
  /opt/ros/fuerte/include/ros/message_event.h
  /opt/ros/fuerte/include/ros/message_forward.h
+ /opt/ros/fuerte/include/ros/message_operations.h
  /opt/ros/fuerte/include/ros/message_traits.h
  /opt/ros/fuerte/include/ros/names.h
  /opt/ros/fuerte/include/ros/node_handle.h
@@ -627,6 +628,7 @@ CMakeFiles/main.dir/src/main.o
  /opt/ros/fuerte/include/ros/wall_timer.h
  /opt/ros/fuerte/include/ros/wall_timer_options.h
  /opt/ros/fuerte/include/rosconsole/macros_generated.h
+ /opt/ros/fuerte/include/std_msgs/Header.h
  /usr/local/include/opencv2/calib3d/calib3d.hpp
  /usr/local/include/opencv2/contrib/contrib.hpp
  /usr/local/include/opencv2/contrib/openfabmap.hpp
@@ -657,3 +659,4 @@ CMakeFiles/main.dir/src/main.o
  include/naos_localization/PF.hpp
  include/naos_localization/nao.hpp
  include/naos_localization/webcam.hpp
+ msg_gen/cpp/include/naos_localization/Odometry.h

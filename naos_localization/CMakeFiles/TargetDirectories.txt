@@ -1,5 +1,6 @@
 /home/olivier/ros_workspace/naos_localization/CMakeFiles/ROSBUILD_genmsg_cpp.dir
 /home/olivier/ros_workspace/naos_localization/CMakeFiles/ROSBUILD_genmsg_lisp.dir
+/home/olivier/ros_workspace/naos_localization/CMakeFiles/ROSBUILD_genmsg_py.dir
 /home/olivier/ros_workspace/naos_localization/CMakeFiles/ROSBUILD_gensrv_cpp.dir
 /home/olivier/ros_workspace/naos_localization/CMakeFiles/ROSBUILD_gensrv_lisp.dir
 /home/olivier/ros_workspace/naos_localization/CMakeFiles/clean-test-results.dir
@@ -7,6 +8,7 @@
 /home/olivier/ros_workspace/naos_localization/CMakeFiles/rosbuild_precompile.dir
 /home/olivier/ros_workspace/naos_localization/CMakeFiles/rosbuild_premsgsrvgen.dir
 /home/olivier/ros_workspace/naos_localization/CMakeFiles/rospack_genmsg.dir
+/home/olivier/ros_workspace/naos_localization/CMakeFiles/rospack_genmsg_all.dir
 /home/olivier/ros_workspace/naos_localization/CMakeFiles/rospack_genmsg_libexe.dir
 /home/olivier/ros_workspace/naos_localization/CMakeFiles/rospack_gensrv.dir
 /home/olivier/ros_workspace/naos_localization/CMakeFiles/test.dir

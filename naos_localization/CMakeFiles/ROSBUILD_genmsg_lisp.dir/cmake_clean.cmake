@@ -1,5 +1,11 @@
 FILE(REMOVE_RECURSE
+  "msg_gen"
+  "src/naos_localization/msg"
+  "msg_gen"
   "CMakeFiles/ROSBUILD_genmsg_lisp"
+  "msg_gen/lisp/Odometry.lisp"
+  "msg_gen/lisp/_package.lisp"
+  "msg_gen/lisp/_package_Odometry.lisp"
 )
 
 # Per-language clean rules from dependency scanning.
