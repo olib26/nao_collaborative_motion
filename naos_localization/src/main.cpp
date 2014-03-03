@@ -44,6 +44,10 @@ double normalRandom()
 
 void robotCoordinate(Particle* particles, Robot* r)
 {
+	// Save previous values
+	r->x_temp = r->x;
+	r->y_temp = r->y;
+
 	r->x = r->y = r->sx = r->sy = 0;
 	for(int i = 0; i < N; i++)
 	{
@@ -52,10 +56,6 @@ void robotCoordinate(Particle* particles, Robot* r)
 		r->sx += particles[i].sx;
 		r->sy += particles[i].sy;
 	}
-
-	// Save previous values
-	r->x_temp = r->x;
-	r->y_temp = r->y,
 
 	// Update
 	r->x = r->x/N;
@@ -85,15 +85,15 @@ void showRobot(IplImage* img, Robot r)
 }
 
 
-void showOdometry(IplImage* img, naos_localization::Odometry odom, Robot r)
+void showOdometry(IplImage* img, double vx, double vy, Robot r)
 {
 	CvPoint p1,p2;
-	CvScalar color(0,0,255);
+	CvScalar color = cvScalar(0,0,255);
 	int thickness = 2;
-	p1.x = ;
-	p1.y = ;
-	p2.x = ;
-	p2.y = ;
+	p1.x = r.y;
+	p1.y = r.x;
+	p2.x = r.y + vx;
+	p2.y = r.x - vy;
 	cvLine(img,p1,p2,color,thickness,CV_AA,0);
 }
 
@@ -110,8 +110,9 @@ void showParticles(IplImage* img, Particle* particles)
 }
 
 
-static double dt;
-naos_localization::Odometry computeOdometry(Robot r1, Robot r2, bool webcam)
+static double timestamp;
+static int counter;
+naos_localization::Odometry computeOdometry(Robot* r1, Robot* r2, bool webcam)
 {
 	naos_localization::Odometry odom;
 
@@ -127,24 +128,42 @@ naos_localization::Odometry computeOdometry(Robot r1, Robot r2, bool webcam)
 	}
 
 	// Position
-	odom.x1 = (r1.y-width/2)*k;
-	odom.y1 = -(r1.x-height/2)*k;
-	odom.x2 = (r2.y-width/2)*k;
-	odom.y2 = -(r2.x-height/2)*k;
+	odom.x1 = (r1->y-width/2)*k;
+	odom.y1 = -(r1->x-height/2)*k;
+	odom.x2 = (r2->y-width/2)*k;
+	odom.y2 = -(r2->x-height/2)*k;
 
 	// Velocity
-	dt = ros::Time::now().toSec() - dt;
-	odom.vx1 = (odom.x1 - (r1.y_temp-width/2)*k)/dt;
-	odom.vy1 = (odom.y1 + (r1.x_temp-height/2)*k)/dt;
-	odom.vx2 = (odom.x2 - (r2.y_temp-width/2)*k)/dt;
-	odom.vy2 = (odom.y2 + (r2.x_temp-height/2)*k)/dt;
+	double dt = ros::Time::now().toSec() - timestamp;
+	timestamp = ros::Time::now().toSec();
+	r1->vx += (odom.x1 - (r1->y_temp-width/2)*k)/dt;
+	r1->vy += (odom.y1 + (r1->x_temp-height/2)*k)/dt;
+	r2->vx += (odom.x2 - (r2->y_temp-width/2)*k)/dt;
+	r2->vy += (odom.y2 + (r2->x_temp-height/2)*k)/dt;
+
+	if(counter < nbSamples) {counter++; return odom;}
+	else
+	{
+		double ratio = 100;
+		odom.vx1 = r1->vx*ratio/nbSamples;
+		odom.vy1 = r1->vy*ratio/nbSamples;
+		odom.vx2 = r2->vx*ratio/nbSamples;
+		odom.vy2 = r2->vy*ratio/nbSamples;
+
+		r1->vx = 0;
+		r1->vy = 0;
+		r2->vx = 0;
+		r2->vy = 0;
+
+		counter = 0;
+	}
 
 	return odom;
 }
 
 
 std::pair<double,double> particlesVariance(Particle* particles)
-						{
+{
 	std::pair<double,double> M; // Mean
 	std::pair<double,double> V;	// Variance
 
@@ -164,7 +183,7 @@ std::pair<double,double> particlesVariance(Particle* particles)
 	V.second = V.second/N - M.second*M.second;
 
 	return V;
-						}
+}
 
 
 int getPixelValue(IplImage* img,int i,int j)
@@ -343,7 +362,7 @@ void imageProcessing(IplImage* img)
 	{
 		height = sz.height;
 		width = sz.width;
-		showOdometry
+
 		initParticles(particles1);
 		initParticles(particles2);
 	}
@@ -496,7 +515,7 @@ int main(int argc, char** argv)
 	}
 
 	// Init timer
-	dt = ros::Time::now().toSec();
+	timestamp = ros::Time::now().toSec();
 
 	while(ros::ok()){
 		img = getImage(webcam);
@@ -505,12 +524,16 @@ int main(int argc, char** argv)
 		imageProcessing(img);
 
 		// Publish odometry
-		naos_localization::Odometry odom = computeOdometry(r1,r2,webcam);
+		naos_localization::Odometry odom = computeOdometry(&r1,&r2,webcam);
 		odom_pub.publish(odom);
 
 		// Show results
-		showOdometry(img,odom,r1);
-		cvShowImage("Odometry",img);
+		if(odom.vx1 != 0)
+		{
+			showOdometry(img,odom.vx1,odom.vy1,r1);
+			showOdometry(img,odom.vx2,odom.vy2,r2);
+			cvShowImage("Odometry",img);
+		}
 
 		cvWaitKey(100);
 	}

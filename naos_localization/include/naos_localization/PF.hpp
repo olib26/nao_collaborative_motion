@@ -28,7 +28,8 @@ struct Robot
 	int x,y;
 	int x_temp,y_temp;
 	int sx,sy;
-	Robot () : x(0),y(0),x_temp(0),y_temp(0),sx(sx_min),sy(sy_min) {}
+	double vx,vy;
+	Robot () : x(0),y(0),x_temp(0),y_temp(0),sx(sx_min),sy(sy_min),vx(0),vy(0) {}
 };
 Robot r1,r2;
 
@@ -50,6 +51,9 @@ const double eps = 1E-3;
 // HSV Thresholds
 int H_MIN,H_MAX,S_MIN,S_MAX,V_MIN,V_MAX;
 CvScalar hsv_min,hsv_max;
+
+// Velocity
+const int nbSamples = 10;
 
 
 #endif /* PF_HPP_ */
