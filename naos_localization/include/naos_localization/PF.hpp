@@ -26,8 +26,9 @@ const int s_diffusion = 2; // Size
 struct Robot
 {
 	int x,y;
+	int x_temp,y_temp;
 	int sx,sy;
-	Robot () : x(0),y(0),sx(sx_min),sy(sy_min) {}
+	Robot () : x(0),y(0),x_temp(0),y_temp(0),sx(sx_min),sy(sy_min) {}
 };
 Robot r1,r2;
 

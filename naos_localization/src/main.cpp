@@ -52,6 +52,12 @@ void robotCoordinate(Particle* particles, Robot* r)
 		r->sx += particles[i].sx;
 		r->sy += particles[i].sy;
 	}
+
+	// Save previous values
+	r->x_temp = r->x;
+	r->y_temp = r->y,
+
+	// Update
 	r->x = r->x/N;
 	r->y = r->y/N;
 	r->sx = r->sx/N;
@@ -79,6 +85,19 @@ void showRobot(IplImage* img, Robot r)
 }
 
 
+void showOdometry(IplImage* img, naos_localization::Odometry odom, Robot r)
+{
+	CvPoint p1,p2;
+	CvScalar color(0,0,255);
+	int thickness = 2;
+	p1.x = ;
+	p1.y = ;
+	p2.x = ;
+	p2.y = ;
+	cvLine(img,p1,p2,color,thickness,CV_AA,0);
+}
+
+
 void showParticles(IplImage* img, Particle* particles)
 {
 	for(int i = 0; i < N; i++)
@@ -91,6 +110,7 @@ void showParticles(IplImage* img, Particle* particles)
 }
 
 
+static double dt;
 naos_localization::Odometry computeOdometry(Robot r1, Robot r2, bool webcam)
 {
 	naos_localization::Odometry odom;
@@ -106,10 +126,18 @@ naos_localization::Odometry computeOdometry(Robot r1, Robot r2, bool webcam)
 		k = cameraHeight/f;
 	}
 
+	// Position
 	odom.x1 = (r1.y-width/2)*k;
 	odom.y1 = -(r1.x-height/2)*k;
 	odom.x2 = (r2.y-width/2)*k;
 	odom.y2 = -(r2.x-height/2)*k;
+
+	// Velocity
+	dt = ros::Time::now().toSec() - dt;
+	odom.vx1 = (odom.x1 - (r1.y_temp-width/2)*k)/dt;
+	odom.vy1 = (odom.y1 + (r1.x_temp-height/2)*k)/dt;
+	odom.vx2 = (odom.x2 - (r2.y_temp-width/2)*k)/dt;
+	odom.vy2 = (odom.y2 + (r2.x_temp-height/2)*k)/dt;
 
 	return odom;
 }
@@ -315,7 +343,7 @@ void imageProcessing(IplImage* img)
 	{
 		height = sz.height;
 		width = sz.width;
-
+		showOdometry
 		initParticles(particles1);
 		initParticles(particles2);
 	}
@@ -430,6 +458,7 @@ int main(int argc, char** argv)
 
 	// Window
 	cvNamedWindow("Camera_Output",1);
+	cvNamedWindow("Odometry",1);
 
 	// Image
 	IplImage* img;
@@ -466,6 +495,9 @@ int main(int argc, char** argv)
 		cvWaitKey(100);
 	}
 
+	// Init timer
+	dt = ros::Time::now().toSec();
+
 	while(ros::ok()){
 		img = getImage(webcam);
 
@@ -475,6 +507,10 @@ int main(int argc, char** argv)
 		// Publish odometry
 		naos_localization::Odometry odom = computeOdometry(r1,r2,webcam);
 		odom_pub.publish(odom);
+
+		// Show results
+		showOdometry(img,odom,r1);
+		cvShowImage("Odometry",img);
 
 		cvWaitKey(100);
 	}
@@ -491,6 +527,7 @@ int main(int argc, char** argv)
 		cvReleaseCapture(&capture); // Release capture
 	}
 	cvDestroyWindow("Camera_Output"); // Destroy Window
+	cvDestroyWindow("Odometry");
 
 	return 0;
 }
