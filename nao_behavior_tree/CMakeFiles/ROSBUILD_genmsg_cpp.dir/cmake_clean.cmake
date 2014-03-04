@@ -11,6 +11,7 @@ FILE(REMOVE_RECURSE
   "msg_gen/cpp/include/nao_behavior_tree/ROSFeedback.h"
   "msg_gen/cpp/include/nao_behavior_tree/ROSActionFeedback.h"
   "msg_gen/cpp/include/nao_behavior_tree/Sonar.h"
+  "msg_gen/cpp/include/nao_behavior_tree/Odometry.h"
   "msg/ROSAction.msg"
   "msg/ROSGoal.msg"
   "msg/ROSActionGoal.msg"

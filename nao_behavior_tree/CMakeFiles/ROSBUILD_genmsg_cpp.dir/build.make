@@ -56,6 +56,7 @@ CMakeFiles/ROSBUILD_genmsg_cpp: msg_gen/cpp/include/nao_behavior_tree/ROSGoal.h
 CMakeFiles/ROSBUILD_genmsg_cpp: msg_gen/cpp/include/nao_behavior_tree/Sonar.h
 CMakeFiles/ROSBUILD_genmsg_cpp: msg_gen/cpp/include/nao_behavior_tree/ROSActionGoal.h
 CMakeFiles/ROSBUILD_genmsg_cpp: msg_gen/cpp/include/nao_behavior_tree/ROSActionFeedback.h
+CMakeFiles/ROSBUILD_genmsg_cpp: msg_gen/cpp/include/nao_behavior_tree/Odometry.h
 CMakeFiles/ROSBUILD_genmsg_cpp: msg_gen/cpp/include/nao_behavior_tree/ROSResult.h
 
 msg_gen/cpp/include/nao_behavior_tree/ROSAction.h: msg/ROSAction.msg
@@ -287,9 +288,36 @@ msg_gen/cpp/include/nao_behavior_tree/Sonar.h: /opt/ros/fuerte/stacks/image_comm
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/cpp/include/nao_behavior_tree/Sonar.h"
 	/opt/ros/fuerte/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/Sonar.msg
 
+msg_gen/cpp/include/nao_behavior_tree/Odometry.h: msg/Odometry.msg
+msg_gen/cpp/include/nao_behavior_tree/Odometry.h: /opt/ros/fuerte/share/roscpp/rosbuild/scripts/genmsg_cpp.py
+msg_gen/cpp/include/nao_behavior_tree/Odometry.h: /opt/ros/fuerte/share/roslib/bin/gendeps
+msg_gen/cpp/include/nao_behavior_tree/Odometry.h: /opt/ros/fuerte/share/std_msgs/msg/Header.msg
+msg_gen/cpp/include/nao_behavior_tree/Odometry.h: manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/Odometry.h: /opt/ros/fuerte/share/roslang/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/Odometry.h: /opt/ros/fuerte/share/roscpp/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/Odometry.h: /opt/ros/fuerte/share/std_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/Odometry.h: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/Odometry.h: /opt/ros/fuerte/share/rospy/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/Odometry.h: /opt/ros/fuerte/share/rostest/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/Odometry.h: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/Odometry.h: /opt/ros/fuerte/share/actionlib/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/Odometry.h: /opt/ros/fuerte/share/roslib/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/Odometry.h: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/Odometry.h: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/Odometry.h: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/Odometry.h: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/Odometry.h: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/Odometry.h: /opt/ros/fuerte/share/rosconsole/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/Odometry.h: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/Odometry.h: /opt/ros/fuerte/share/message_filters/manifest.xml
+msg_gen/cpp/include/nao_behavior_tree/Odometry.h: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_9)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/cpp/include/nao_behavior_tree/Odometry.h"
+	/opt/ros/fuerte/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/Odometry.msg
+
 msg/ROSAction.msg: action/ROS.action
 msg/ROSAction.msg: /opt/ros/fuerte/share/actionlib_msgs/scripts/genaction.py
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg/ROSAction.msg, msg/ROSGoal.msg, msg/ROSActionGoal.msg, msg/ROSResult.msg, msg/ROSActionResult.msg, msg/ROSFeedback.msg, msg/ROSActionFeedback.msg"
 	/opt/ros/fuerte/share/actionlib_msgs/scripts/genaction.py /home/olivier/ros_workspace/nao_behavior_tree/action/ROS.action -o /home/olivier/ros_workspace/nao_behavior_tree/msg
 
@@ -314,6 +342,7 @@ ROSBUILD_genmsg_cpp: msg_gen/cpp/include/nao_behavior_tree/ROSActionResult.h
 ROSBUILD_genmsg_cpp: msg_gen/cpp/include/nao_behavior_tree/ROSFeedback.h
 ROSBUILD_genmsg_cpp: msg_gen/cpp/include/nao_behavior_tree/ROSActionFeedback.h
 ROSBUILD_genmsg_cpp: msg_gen/cpp/include/nao_behavior_tree/Sonar.h
+ROSBUILD_genmsg_cpp: msg_gen/cpp/include/nao_behavior_tree/Odometry.h
 ROSBUILD_genmsg_cpp: msg/ROSAction.msg
 ROSBUILD_genmsg_cpp: msg/ROSGoal.msg
 ROSBUILD_genmsg_cpp: msg/ROSActionGoal.msg

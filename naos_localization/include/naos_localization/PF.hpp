@@ -28,10 +28,15 @@ struct Robot
 	int x,y;
 	int x_temp,y_temp;
 	int sx,sy;
-	double vx,vy;
-	Robot () : x(0),y(0),x_temp(0),y_temp(0),sx(sx_min),sy(sy_min),vx(0),vy(0) {}
+	double vx_temp,vy_temp;
+	Robot () : x(0),y(0),x_temp(0),y_temp(0),sx(sx_min),sy(sy_min),vx_temp(0),vy_temp(0) {}
 };
 Robot r1,r2;
+
+// Odometry
+naos_localization::Odometry odom1,odom2;
+double timestamp1,timestamp2;
+int counter1,counter2;
 
 // Number of particles
 const int N = 1000;

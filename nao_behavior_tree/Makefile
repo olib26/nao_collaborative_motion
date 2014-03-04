@@ -226,6 +226,19 @@ Stop/fast:
 .PHONY : Stop/fast
 
 #=============================================================================
+# Target rules for targets named TrackingAmongObstacles
+
+# Build rule for target.
+TrackingAmongObstacles: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 TrackingAmongObstacles
+.PHONY : TrackingAmongObstacles
+
+# fast build rule for target.
+TrackingAmongObstacles/fast:
+	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/build
+.PHONY : TrackingAmongObstacles/fast
+
+#=============================================================================
 # Target rules for targets named bt_server
 
 # Build rule for target.
@@ -250,6 +263,19 @@ clean-test-results: cmake_check_build_system
 clean-test-results/fast:
 	$(MAKE) -f CMakeFiles/clean-test-results.dir/build.make CMakeFiles/clean-test-results.dir/build
 .PHONY : clean-test-results/fast
+
+#=============================================================================
+# Target rules for targets named localization
+
+# Build rule for target.
+localization: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 localization
+.PHONY : localization
+
+# fast build rule for target.
+localization/fast:
+	$(MAKE) -f CMakeFiles/localization.dir/build.make CMakeFiles/localization.dir/build
+.PHONY : localization/fast
 
 #=============================================================================
 # Target rules for targets named nao_behavior_tree
@@ -481,6 +507,21 @@ src/actions/Stop.s:
 .PHONY : src/actions/Stop.s
 
 # target to build an object file
+src/actions/TrackingAmongObstacles.o:
+	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/actions/TrackingAmongObstacles.o
+.PHONY : src/actions/TrackingAmongObstacles.o
+
+# target to preprocess a source file
+src/actions/TrackingAmongObstacles.i:
+	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/actions/TrackingAmongObstacles.i
+.PHONY : src/actions/TrackingAmongObstacles.i
+
+# target to generate assembly for a file
+src/actions/TrackingAmongObstacles.s:
+	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/actions/TrackingAmongObstacles.s
+.PHONY : src/actions/TrackingAmongObstacles.s
+
+# target to build an object file
 src/behavior_tree/display.o:
 	$(MAKE) -f CMakeFiles/nao_behavior_tree.dir/build.make CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o
 .PHONY : src/behavior_tree/display.o
@@ -576,6 +617,7 @@ src/behavior_tree/rosaction.o:
 	$(MAKE) -f CMakeFiles/Greet.dir/build.make CMakeFiles/Greet.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/Stop.dir/build.make CMakeFiles/Stop.dir/src/behavior_tree/rosaction.o
+	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/bt_server.dir/build.make CMakeFiles/bt_server.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/nao_behavior_tree.dir/build.make CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o
 .PHONY : src/behavior_tree/rosaction.o
@@ -586,6 +628,7 @@ src/behavior_tree/rosaction.i:
 	$(MAKE) -f CMakeFiles/Greet.dir/build.make CMakeFiles/Greet.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/Stop.dir/build.make CMakeFiles/Stop.dir/src/behavior_tree/rosaction.i
+	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/bt_server.dir/build.make CMakeFiles/bt_server.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/nao_behavior_tree.dir/build.make CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.i
 .PHONY : src/behavior_tree/rosaction.i
@@ -596,9 +639,25 @@ src/behavior_tree/rosaction.s:
 	$(MAKE) -f CMakeFiles/Greet.dir/build.make CMakeFiles/Greet.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/Stop.dir/build.make CMakeFiles/Stop.dir/src/behavior_tree/rosaction.s
+	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/bt_server.dir/build.make CMakeFiles/bt_server.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/nao_behavior_tree.dir/build.make CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.s
 .PHONY : src/behavior_tree/rosaction.s
+
+# target to build an object file
+src/map/localization.o:
+	$(MAKE) -f CMakeFiles/localization.dir/build.make CMakeFiles/localization.dir/src/map/localization.o
+.PHONY : src/map/localization.o
+
+# target to preprocess a source file
+src/map/localization.i:
+	$(MAKE) -f CMakeFiles/localization.dir/build.make CMakeFiles/localization.dir/src/map/localization.i
+.PHONY : src/map/localization.i
+
+# target to generate assembly for a file
+src/map/localization.s:
+	$(MAKE) -f CMakeFiles/localization.dir/build.make CMakeFiles/localization.dir/src/map/localization.s
+.PHONY : src/map/localization.s
 
 # target to build an object file
 src/sensors/nao_sonar.o:
@@ -631,9 +690,11 @@ help:
 	@echo "... ROSBUILD_gensrv_lisp"
 	@echo "... Search"
 	@echo "... Stop"
+	@echo "... TrackingAmongObstacles"
 	@echo "... bt_server"
 	@echo "... clean-test-results"
 	@echo "... edit_cache"
+	@echo "... localization"
 	@echo "... nao_behavior_tree"
 	@echo "... nao_sonar"
 	@echo "... rebuild_cache"
@@ -660,6 +721,9 @@ help:
 	@echo "... src/actions/Stop.o"
 	@echo "... src/actions/Stop.i"
 	@echo "... src/actions/Stop.s"
+	@echo "... src/actions/TrackingAmongObstacles.o"
+	@echo "... src/actions/TrackingAmongObstacles.i"
+	@echo "... src/actions/TrackingAmongObstacles.s"
 	@echo "... src/behavior_tree/display.o"
 	@echo "... src/behavior_tree/display.i"
 	@echo "... src/behavior_tree/display.s"
@@ -681,6 +745,9 @@ help:
 	@echo "... src/behavior_tree/rosaction.o"
 	@echo "... src/behavior_tree/rosaction.i"
 	@echo "... src/behavior_tree/rosaction.s"
+	@echo "... src/map/localization.o"
+	@echo "... src/map/localization.i"
+	@echo "... src/map/localization.s"
 	@echo "... src/sensors/nao_sonar.o"
 	@echo "... src/sensors/nao_sonar.i"
 	@echo "... src/sensors/nao_sonar.s"

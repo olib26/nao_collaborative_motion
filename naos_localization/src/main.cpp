@@ -1,5 +1,5 @@
 /*
- * webcam.cpp
+ * main.cpp
  *
  *  Created on: Feb 24, 2014
  *      Author: Olivier BALLAND
@@ -90,10 +90,14 @@ void showOdometry(IplImage* img, double vx, double vy, Robot r)
 	CvPoint p1,p2;
 	CvScalar color = cvScalar(0,0,255);
 	int thickness = 2;
+
 	p1.x = r.y;
 	p1.y = r.x;
-	p2.x = r.y + vx;
-	p2.y = r.x - vy;
+
+	double ratio = 1000;
+	p2.x = r.y + vx*ratio;
+	p2.y = r.x - vy*ratio;
+
 	cvLine(img,p1,p2,color,thickness,CV_AA,0);
 }
 
@@ -110,12 +114,8 @@ void showParticles(IplImage* img, Particle* particles)
 }
 
 
-static double timestamp;
-static int counter;
-naos_localization::Odometry computeOdometry(Robot* r1, Robot* r2, bool webcam)
+void computeOdometry(Robot* r, naos_localization::Odometry* odom, double* timestamp, int* counter , bool webcam)
 {
-	naos_localization::Odometry odom;
-
 	double k;
 	if(webcam)
 	{
@@ -128,37 +128,28 @@ naos_localization::Odometry computeOdometry(Robot* r1, Robot* r2, bool webcam)
 	}
 
 	// Position
-	odom.x1 = (r1->y-width/2)*k;
-	odom.y1 = -(r1->x-height/2)*k;
-	odom.x2 = (r2->y-width/2)*k;
-	odom.y2 = -(r2->x-height/2)*k;
+	odom->x = (r->y-width/2)*k;
+	odom->y = -(r->x-height/2)*k;
 
 	// Velocity
-	double dt = ros::Time::now().toSec() - timestamp;
-	timestamp = ros::Time::now().toSec();
-	r1->vx += (odom.x1 - (r1->y_temp-width/2)*k)/dt;
-	r1->vy += (odom.y1 + (r1->x_temp-height/2)*k)/dt;
-	r2->vx += (odom.x2 - (r2->y_temp-width/2)*k)/dt;
-	r2->vy += (odom.y2 + (r2->x_temp-height/2)*k)/dt;
+	double dt = ros::Time::now().toSec() - *timestamp;
+	*timestamp = ros::Time::now().toSec();
+	r->vx_temp += (odom->x - (r->y_temp-width/2)*k)/dt;
+	r->vy_temp += (odom->y + (r->x_temp-height/2)*k)/dt;
 
-	if(counter < nbSamples) {counter++; return odom;}
+	if(*counter < nbSamples) {(*counter)++; return;}
 	else
 	{
-		double ratio = 100;
-		odom.vx1 = r1->vx*ratio/nbSamples;
-		odom.vy1 = r1->vy*ratio/nbSamples;
-		odom.vx2 = r2->vx*ratio/nbSamples;
-		odom.vy2 = r2->vy*ratio/nbSamples;
+		odom->vx = r->vx_temp/nbSamples;
+		odom->vy = r->vy_temp/nbSamples;
 
-		r1->vx = 0;
-		r1->vy = 0;
-		r2->vx = 0;
-		r2->vy = 0;
+		r->vx_temp = 0;
+		r->vy_temp = 0;
 
-		counter = 0;
+		*counter = 0;
 	}
 
-	return odom;
+	return;
 }
 
 
@@ -417,8 +408,9 @@ int main(int argc, char** argv)
 	ros::init(argc, argv,"localization");
 	ros::NodeHandle nh;
 
-	// Odometry publisher
-	ros::Publisher odom_pub = nh.advertise<naos_localization::Odometry>("/odometry",100);
+	// Odometry publishers
+	ros::Publisher odom1_pub = nh.advertise<naos_localization::Odometry>("/odometry1",100);
+	ros::Publisher odom2_pub = nh.advertise<naos_localization::Odometry>("/odometry2",100);
 
 	// Camera selection
 	bool webcam;
@@ -514,8 +506,8 @@ int main(int argc, char** argv)
 		cvWaitKey(100);
 	}
 
-	// Init timer
-	timestamp = ros::Time::now().toSec();
+	// Init timers
+	timestamp1 = timestamp2 = ros::Time::now().toSec();
 
 	while(ros::ok()){
 		img = getImage(webcam);
@@ -524,16 +516,16 @@ int main(int argc, char** argv)
 		imageProcessing(img);
 
 		// Publish odometry
-		naos_localization::Odometry odom = computeOdometry(&r1,&r2,webcam);
-		odom_pub.publish(odom);
+		computeOdometry(&r1,&odom1,&timestamp1,&counter1,webcam);
+		computeOdometry(&r2,&odom2,&timestamp2,&counter2,webcam);
+
+		odom1_pub.publish(odom1);
+		odom2_pub.publish(odom2);
 
 		// Show results
-		if(odom.vx1 != 0)
-		{
-			showOdometry(img,odom.vx1,odom.vy1,r1);
-			showOdometry(img,odom.vx2,odom.vy2,r2);
-			cvShowImage("Odometry",img);
-		}
+		showOdometry(img,odom1.vx,odom1.vy,r1);
+		showOdometry(img,odom2.vx,odom2.vy,r2);
+		cvShowImage("Odometry",img);
 
 		cvWaitKey(100);
 	}

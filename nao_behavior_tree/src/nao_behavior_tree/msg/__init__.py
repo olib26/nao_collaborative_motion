@@ -1,3 +1,4 @@
+from ._Odometry import *
 from ._ROSActionFeedback import *
 from ._ROSActionGoal import *
 from ._ROSAction import *

@@ -124,8 +124,16 @@ rosbuild_add_executable(GoClose src/actions/GoClose.cpp src/behavior_tree/rosact
 target_link_libraries(GoClose alproxies alvalue ${OpenCV_LIBS})
 rosbuild_link_boost(GoClose thread)
 
+rosbuild_add_executable(TrackingAmongObstacles src/actions/TrackingAmongObstacles.cpp src/behavior_tree/rosaction.cpp)
+target_link_libraries(TrackingAmongObstacles alproxies alvalue ${OpenCV_LIBS})
+rosbuild_link_boost(TrackingAmongObstacles thread)
+
 rosbuild_add_library(bt_server ${PROJECT_SOURCE_DIR}/src/behavior_tree/rosaction.cpp)
 
+
+# Map
+rosbuild_add_executable(localization src/map/localization.cpp)
+target_link_libraries(localization ${OpenCV_LIBS} alproxies alvalue alvision)
 
 # Sensors
 rosbuild_add_executable(nao_sonar src/sensors/nao_sonar.cpp)

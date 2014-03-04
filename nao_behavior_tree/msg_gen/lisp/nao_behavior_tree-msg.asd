@@ -20,6 +20,8 @@
     (:file "_package_ROSActionGoal" :depends-on ("_package"))
     (:file "ROSActionFeedback" :depends-on ("_package_ROSActionFeedback"))
     (:file "_package_ROSActionFeedback" :depends-on ("_package"))
+    (:file "Odometry" :depends-on ("_package_Odometry"))
+    (:file "_package_Odometry" :depends-on ("_package"))
     (:file "ROSResult" :depends-on ("_package_ROSResult"))
     (:file "_package_ROSResult" :depends-on ("_package"))
   ))
