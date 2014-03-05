@@ -32,14 +32,13 @@ void receive_odometry1(const TorsoOdometry::ConstPtr &msg)
 
 		if(x_1 == x_2)
 		{
-			if((y_2-y_1) < 0) {dtheta = -M_PI;}
-			if((y_2-y_1) > 0) {dtheta = M_PI;}
+			if((y_2-y_1) < 0) {dtheta = -M_PI/2;}
+			if((y_2-y_1) > 0) {dtheta = M_PI/2;}
 		}
 		else
 		{
 			dtheta = atan((y_2-y_1)/(x_2-x_1));
 			if((x_2-x_1) < 0) {dtheta += M_PI;}
-			if((x_2-x_1) > 0) {dtheta -= M_PI;}
 		}
 
 		dtheta -= theta_1;
