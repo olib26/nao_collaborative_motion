@@ -1078,6 +1078,7 @@ CMakeFiles/TrackingAmongObstacles.dir/src/actions/TrackingAmongObstacles.o
  include/nao_behavior_tree/node.h
  include/nao_behavior_tree/parameters.h
  include/nao_behavior_tree/rosaction.h
+ msg_gen/cpp/include/nao_behavior_tree/Bearing.h
  msg_gen/cpp/include/nao_behavior_tree/Odometry.h
  msg_gen/cpp/include/nao_behavior_tree/ROSAction.h
  msg_gen/cpp/include/nao_behavior_tree/ROSActionFeedback.h

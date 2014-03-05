@@ -17,6 +17,7 @@
 
 #include <geometry_msgs/Twist.h>
 #include <nao_behavior_tree/Odometry.h>
+#include <nao_behavior_tree/Bearing.h>
 
 #include "nao_behavior_tree/actions/TrackingAmongObstacles.hpp"
 
@@ -40,42 +41,6 @@ double normalRandom()
 }
 
 
-float robotDepth()
-{
-	// Two interesting points
-	float p_u1 = -(x + (sx-height)/2);
-	float p_u2 = -(x - (sx+height)/2);
-	float p_v = -(y - width/2);
-	float f = (float)width/2/tan(HFOV/2.);
-
-	// Vectors
-	Eigen::Vector3f v1(f,p_v,p_u1);
-	Eigen::Vector3f v2(f,p_v,p_u2);
-
-	// Normalization
-	v1 = v1/v1.norm();
-	v2 = v2/v2.norm();
-
-	// Center
-	Eigen::Vector3f c = (v1+v2)/2.;
-	float c_norm = c.norm();
-
-	// Projection
-	Eigen::MatrixXf proj_mat = c.transpose()*v1;
-	float proj = proj_mat(0,0);
-
-	// Orthogonal part in v1
-	Eigen::Vector3f orth = v1 - proj/c_norm*c;
-
-	// Norm
-	float orth_norm = orth.norm();
-
-	// Approximate depth
-	float d = H/2.*proj/orth_norm;
-	return d;
-}
-
-
 void robotCoordinate()
 {
 	x = y = sx = sy = 0;
@@ -90,10 +55,6 @@ void robotCoordinate()
 	y = y/N;
 	sx = sx/N;
 	sy = sy/N;
-
-	// Estimate depth
-	depth = robotDepth();
-	//ROS_INFO("Depth = %f",depth);
 }
 
 
@@ -420,6 +381,7 @@ double relativeBearing()
 	return alpha;
 }
 
+
 double computeBearing()
 {
 	double alpha = relativeBearing();
@@ -519,27 +481,11 @@ public:
 			return 1;
 		}
 
-		// Close to the other robot
-		//ROS_INFO("Depth = %f, r = %f, l = %f",depth,right,left);
-		if(depth < dist_threshold)
-		{
-			set_feedback(SUCCESS);
-			finalize();
-			return 1;
-		}
-
-		// Controller
-		int y_rel = y - width/2;
-		double angular = -alpha*y_rel;
-		// Thresholds
-		if(angular > 1) {angular = 1;}
-		if(angular < -1) {angular = -1;}
-
-		// Publish
-		geometry_msgs::Twist cmd;
-		cmd.linear.x = rho;
-		cmd.angular.z = angular;
-		cmd_pub.publish(cmd);
+		// Publish angles
+		nao_behavior_tree::Bearing bearing;
+		bearing.relative = relativeBearing();
+		bearing.absolute = computeBearing();
+		bearing_pub.publish(bearing);
 
 		return 0;
 	}
@@ -602,6 +548,9 @@ int main(int argc, char** argv)
 
 		// Walker publisher
 		cmd_pub = nh.advertise<geometry_msgs::Twist>("/cmd_vel" + r1.id,100);
+
+		// Bearing publisher
+		bearing_pub = nh.advertise<nao_behavior_tree::Bearing>("/bearing" + r1.id,100);
 
 		// Launch Server
 		TrackingAmongObstacles server(ros::this_node::getName(),NAO_IP,NAO_PORT);

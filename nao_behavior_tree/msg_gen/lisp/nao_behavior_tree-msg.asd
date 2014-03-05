@@ -10,6 +10,8 @@
     (:file "_package_ROSFeedback" :depends-on ("_package"))
     (:file "ROSAction" :depends-on ("_package_ROSAction"))
     (:file "_package_ROSAction" :depends-on ("_package"))
+    (:file "Bearing" :depends-on ("_package_Bearing"))
+    (:file "_package_Bearing" :depends-on ("_package"))
     (:file "ROSActionResult" :depends-on ("_package_ROSActionResult"))
     (:file "_package_ROSActionResult" :depends-on ("_package"))
     (:file "ROSGoal" :depends-on ("_package_ROSGoal"))

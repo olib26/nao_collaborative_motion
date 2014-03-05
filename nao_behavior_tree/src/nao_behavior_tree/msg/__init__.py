@@ -1,5 +1,6 @@
 from ._Odometry import *
 from ._ROSActionFeedback import *
+from ._Bearing import *
 from ._ROSActionGoal import *
 from ._ROSAction import *
 from ._ROSResult import *

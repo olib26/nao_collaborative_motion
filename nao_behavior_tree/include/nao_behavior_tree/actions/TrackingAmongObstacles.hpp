@@ -24,6 +24,9 @@ AL::ALMotionProxy* motion_proxy_ptr;
 // Walker publisher
 ros::Publisher cmd_pub;
 
+// Angles publisher
+ros::Publisher bearing_pub;
+
 // Image size
 int height,width;
 

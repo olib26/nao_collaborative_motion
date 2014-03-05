@@ -17,6 +17,7 @@
 #include <alvision/alvisiondefinitions.h>
 
 #include <nao_behavior_tree/Odometry.h>
+#include <nao_behavior_tree/Bearing.h>
 
 #include <nao_behavior_tree/map/PF.hpp>
 #include <nao_behavior_tree/map/webcam.hpp>
@@ -97,6 +98,23 @@ void showOdometry(IplImage* img, double vx, double vy, Robot r)
 	double ratio = 1000;
 	p2.x = r.y + vx*ratio;
 	p2.y = r.x - vy*ratio;
+
+	cvLine(img,p1,p2,color,thickness,CV_AA,0);
+}
+
+
+void showBearings(IplImage* img, Robot r)
+{
+	CvPoint p1,p2;
+	CvScalar color = cvScalar(0,0,255);
+	int thickness = 2;
+
+	p1.x = r.y;
+	p1.y = r.x;
+
+	double length = 50;
+	p2.x = r.y ;
+	p2.y = r.x ;
 
 	cvLine(img,p1,p2,color,thickness,CV_AA,0);
 }
@@ -403,6 +421,20 @@ void on_mouse(int event, int x, int y, int d, void *ptr)
 }
 
 
+void receive_bearing1(const nao_behavior_tree::Bearing::ConstPtr &msg)
+{
+	r1.absoluteBearing = msg->absolute;
+	r1.relativeBearing = msg->relative;
+}
+
+
+void receive_bearing2(const nao_behavior_tree::Bearing::ConstPtr &msg)
+{
+	r2.absoluteBearing = msg->absolute;
+	r2.relativeBearing = msg->relative;
+}
+
+
 int main(int argc, char** argv)
 {
 	ros::init(argc, argv,"localization");
@@ -411,6 +443,10 @@ int main(int argc, char** argv)
 	// Odometry publishers
 	ros::Publisher odom1_pub = nh.advertise<nao_behavior_tree::Odometry>("/odometry1",100);
 	ros::Publisher odom2_pub = nh.advertise<nao_behavior_tree::Odometry>("/odometry2",100);
+
+	// Bearing subscribers
+	ros::Subscriber bearing1_sub = nh.subscribe("/bearing1",1000,receive_bearing1);
+	ros::Subscriber bearing2_sub = nh.subscribe("/bearing2",1000,receive_bearing2);
 
 	// Camera selection
 	bool webcam;
@@ -525,6 +561,8 @@ int main(int argc, char** argv)
 		// Show results
 		showOdometry(img,odom1.vx,odom1.vy,r1);
 		showOdometry(img,odom2.vx,odom2.vy,r2);
+		showBearings(img,r1);
+		showBearings(img,r2);
 		cvShowImage("Odometry",img);
 
 		cvWaitKey(100);

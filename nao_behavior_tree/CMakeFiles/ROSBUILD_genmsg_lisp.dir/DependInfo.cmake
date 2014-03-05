@@ -17,6 +17,7 @@ SET(CMAKE_MULTIPLE_OUTPUT_PAIRS
   "/home/olivier/ros_workspace/nao_behavior_tree/msg/ROSGoal.msg" "/home/olivier/ros_workspace/nao_behavior_tree/msg/ROSAction.msg"
   "/home/olivier/ros_workspace/nao_behavior_tree/msg/ROSResult.msg" "/home/olivier/ros_workspace/nao_behavior_tree/msg/ROSAction.msg"
   "/home/olivier/ros_workspace/nao_behavior_tree/msg_gen/lisp/_package.lisp" "/home/olivier/ros_workspace/nao_behavior_tree/msg_gen/lisp/ROSAction.lisp"
+  "/home/olivier/ros_workspace/nao_behavior_tree/msg_gen/lisp/_package_Bearing.lisp" "/home/olivier/ros_workspace/nao_behavior_tree/msg_gen/lisp/Bearing.lisp"
   "/home/olivier/ros_workspace/nao_behavior_tree/msg_gen/lisp/_package_Odometry.lisp" "/home/olivier/ros_workspace/nao_behavior_tree/msg_gen/lisp/Odometry.lisp"
   "/home/olivier/ros_workspace/nao_behavior_tree/msg_gen/lisp/_package_ROSAction.lisp" "/home/olivier/ros_workspace/nao_behavior_tree/msg_gen/lisp/ROSAction.lisp"
   "/home/olivier/ros_workspace/nao_behavior_tree/msg_gen/lisp/_package_ROSActionFeedback.lisp" "/home/olivier/ros_workspace/nao_behavior_tree/msg_gen/lisp/ROSActionFeedback.lisp"

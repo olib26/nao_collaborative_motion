@@ -656,4 +656,5 @@ CMakeFiles/localization.dir/src/map/localization.o
  include/nao_behavior_tree/map/PF.hpp
  include/nao_behavior_tree/map/nao.hpp
  include/nao_behavior_tree/map/webcam.hpp
+ msg_gen/cpp/include/nao_behavior_tree/Bearing.h
  msg_gen/cpp/include/nao_behavior_tree/Odometry.h

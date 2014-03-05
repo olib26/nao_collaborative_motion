@@ -29,7 +29,8 @@ struct Robot
 	int x_temp,y_temp;
 	int sx,sy;
 	double vx_temp,vy_temp;
-	Robot () : x(0),y(0),x_temp(0),y_temp(0),sx(sx_min),sy(sy_min),vx_temp(0),vy_temp(0) {}
+	double absoluteBearing,relativeBearing;
+	Robot () : x(0),y(0),x_temp(0),y_temp(0),sx(sx_min),sy(sy_min),vx_temp(0),vy_temp(0),absoluteBearing(0),relativeBearing(0) {}
 };
 Robot r1,r2;
 

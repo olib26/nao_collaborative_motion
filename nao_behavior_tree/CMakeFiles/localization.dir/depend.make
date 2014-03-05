@@ -655,5 +655,6 @@ CMakeFiles/localization.dir/src/map/localization.o: /opt/ros/fuerte/include/std_
 CMakeFiles/localization.dir/src/map/localization.o: include/nao_behavior_tree/map/PF.hpp
 CMakeFiles/localization.dir/src/map/localization.o: include/nao_behavior_tree/map/nao.hpp
 CMakeFiles/localization.dir/src/map/localization.o: include/nao_behavior_tree/map/webcam.hpp
+CMakeFiles/localization.dir/src/map/localization.o: msg_gen/cpp/include/nao_behavior_tree/Bearing.h
 CMakeFiles/localization.dir/src/map/localization.o: msg_gen/cpp/include/nao_behavior_tree/Odometry.h
 

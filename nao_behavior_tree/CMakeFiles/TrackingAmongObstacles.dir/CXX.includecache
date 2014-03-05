@@ -10059,6 +10059,8 @@ geometry_msgs/Twist.h
 -
 nao_behavior_tree/Odometry.h
 -
+nao_behavior_tree/Bearing.h
+-
 nao_behavior_tree/actions/TrackingAmongObstacles.hpp
 /home/olivier/ros_workspace/nao_behavior_tree/src/actions/nao_behavior_tree/actions/TrackingAmongObstacles.hpp
 
@@ -11259,6 +11261,30 @@ nao_behavior_tree/node.h
 include/nao_behavior_tree/nao_behavior_tree/node.h
 nao_behavior_tree/parameters.h
 include/nao_behavior_tree/nao_behavior_tree/parameters.h
+
+msg_gen/cpp/include/nao_behavior_tree/Bearing.h
+string
+-
+vector
+-
+map
+-
+ostream
+-
+ros/serialization.h
+msg_gen/cpp/include/nao_behavior_tree/ros/serialization.h
+ros/builtin_message_traits.h
+msg_gen/cpp/include/nao_behavior_tree/ros/builtin_message_traits.h
+ros/message_operations.h
+msg_gen/cpp/include/nao_behavior_tree/ros/message_operations.h
+ros/time.h
+msg_gen/cpp/include/nao_behavior_tree/ros/time.h
+ros/macros.h
+msg_gen/cpp/include/nao_behavior_tree/ros/macros.h
+ros/assert.h
+msg_gen/cpp/include/nao_behavior_tree/ros/assert.h
+std_msgs/Header.h
+msg_gen/cpp/include/nao_behavior_tree/std_msgs/Header.h
 
 msg_gen/cpp/include/nao_behavior_tree/Odometry.h
 string
