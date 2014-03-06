@@ -86,7 +86,7 @@ void showRobot(IplImage* img, Robot r)
 }
 
 
-void showOdometry(IplImage* img, double vx, double vy, Robot r)
+void showOdometry(IplImage* img, nao_behavior_tree::Odometry odom, Robot r, double k)
 {
 	CvPoint p1,p2;
 	CvScalar color = cvScalar(0,0,255);
@@ -95,28 +95,40 @@ void showOdometry(IplImage* img, double vx, double vy, Robot r)
 	p1.x = r.y;
 	p1.y = r.x;
 
-	double ratio = 1000;
-	p2.x = r.y + vx*ratio;
-	p2.y = r.x - vy*ratio;
+	double ratio = 1;
+	p2.x = (odom.x + odom.vx*ratio)/k + width/2;
+	p2.y = -(odom.y + odom.vy*ratio)/k + height/2;
 
 	cvLine(img,p1,p2,color,thickness,CV_AA,0);
 }
 
 
-void showBearings(IplImage* img, Robot r)
+void showBearings(IplImage* img, nao_behavior_tree::Odometry odom, Robot r, double k)
 {
-	CvPoint p1,p2;
-	CvScalar color = cvScalar(0,0,255);
+	CvPoint p1,p2,p3;
 	int thickness = 2;
+	double length = 0.2;
 
 	p1.x = r.y;
 	p1.y = r.x;
 
-	double length = 50;
-	p2.x = r.y ;
-	p2.y = r.x ;
+	double relative = r.relativeBearing;
+	double absolute = r.absoluteBearing;
 
-	cvLine(img,p1,p2,color,thickness,CV_AA,0);
+	ROS_INFO("Relative bearing = %f",relative);
+	ROS_INFO("Absolute bearing = %f",absolute);
+
+	// Relative
+	p2.x = (odom.x + length*cos(relative+absolute))/k + width/2;
+	p2.y = -(odom.y + length*sin(relative+absolute))/k + height/2;
+	CvScalar color1 = cvScalar(0,255,0);
+	cvLine(img,p1,p2,color1,thickness,CV_AA,0);
+
+	// Absolute
+	p3.x = (odom.x + length*cos(absolute))/k + width/2;
+	p3.y = -(odom.y + length*sin(absolute))/k + height/2;
+	CvScalar color2 = cvScalar(255,0,0);
+	cvLine(img,p1,p3,color2,thickness,CV_AA,0);
 }
 
 
@@ -132,7 +144,7 @@ void showParticles(IplImage* img, Particle* particles)
 }
 
 
-void computeOdometry(Robot* r, nao_behavior_tree::Odometry* odom, double* timestamp, int* counter , bool webcam)
+double cameraCoef(bool webcam)
 {
 	double k;
 	if(webcam)
@@ -144,7 +156,12 @@ void computeOdometry(Robot* r, nao_behavior_tree::Odometry* odom, double* timest
 		float f = (float)width/2/tan(HFOV/2.);
 		k = cameraHeight/f;
 	}
+	return k;
+}
 
+
+void computeOdometry(Robot* r, nao_behavior_tree::Odometry* odom, double* timestamp, int* counter , double k)
+{
 	// Position
 	odom->x = (r->y-width/2)*k;
 	odom->y = -(r->x-height/2)*k;
@@ -366,16 +383,6 @@ void imageProcessing(IplImage* img)
 	cvCvtColor(img,hsv_image,CV_BGR2HSV);
 	cvInRangeS(hsv_image,hsv_min,hsv_max,hsv_mask);
 
-	// Init
-	if((height != sz.height) | (width != sz.width))
-	{
-		height = sz.height;
-		width = sz.width;
-
-		initParticles(particles1);
-		initParticles(particles2);
-	}
-
 	// Filter
 	particleFilter(hsv_mask,particles1,&r1,&r2);
 	particleFilter(hsv_mask,particles2,&r2,&r1);
@@ -502,7 +509,6 @@ int main(int argc, char** argv)
 		capture = cvCaptureFromCAM(camera);
 	}
 
-
 	// Window
 	cvNamedWindow("Camera_Output",1);
 	cvNamedWindow("Odometry",1);
@@ -548,21 +554,34 @@ int main(int argc, char** argv)
 	while(ros::ok()){
 		img = getImage(webcam);
 
+		CvSize sz = cvGetSize(img);
+		// Init
+		if((height != sz.height) | (width != sz.width))
+		{
+			height = sz.height;
+			width = sz.width;
+
+			k = cameraCoef(webcam);
+
+			initParticles(particles1);
+			initParticles(particles2);
+		}
+
 		// Image processing
 		imageProcessing(img);
 
 		// Publish odometry
-		computeOdometry(&r1,&odom1,&timestamp1,&counter1,webcam);
-		computeOdometry(&r2,&odom2,&timestamp2,&counter2,webcam);
+		computeOdometry(&r1,&odom1,&timestamp1,&counter1,k);
+		computeOdometry(&r2,&odom2,&timestamp2,&counter2,k);
 
 		odom1_pub.publish(odom1);
 		odom2_pub.publish(odom2);
 
 		// Show results
-		showOdometry(img,odom1.vx,odom1.vy,r1);
-		showOdometry(img,odom2.vx,odom2.vy,r2);
-		showBearings(img,r1);
-		showBearings(img,r2);
+		showOdometry(img,odom1,r1,k);
+		showOdometry(img,odom2,r2,k);
+		showBearings(img,odom1,r1,k);
+		//showBearings(img,odom2,r2,k);
 		cvShowImage("Odometry",img);
 
 		cvWaitKey(100);

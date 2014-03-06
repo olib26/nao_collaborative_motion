@@ -12,6 +12,9 @@
 // Image size
 int height,width;
 
+// Camera coefficient
+double k;
+
 // Detector frame size
 const int sx_min = 10;
 const int sy_min = 15;

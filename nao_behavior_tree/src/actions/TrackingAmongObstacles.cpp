@@ -296,7 +296,7 @@ void imageProcessing(IplImage* img)
 	showRobot(hsv_mask);
 
 	// Show result
-	//cvNamedWindow("GoClose",1); cvShowImage("GoClose",hsv_mask);
+	cvNamedWindow("Robot",1); cvShowImage("Robot",hsv_mask);
 
 	cvWaitKey(10);
 }
@@ -363,7 +363,7 @@ double relativeBearing()
 	std::string cameraName = "CameraTop";
 	int space = 2; //FRAME_ROBOT
 	bool useSensorValues = true;
-	std::vector<float> transVec = motion_proxy_ptr->getTransform(cameraName, space, useSensorValues);
+	std::vector<float> transVec = motion_proxy_ptr->getTransform(cameraName,space,useSensorValues);
 	Eigen::Matrix4f transMat;
 	transMat <<
 		transVec[0] , transVec[1] , transVec[2] , transVec[3] ,
@@ -398,11 +398,12 @@ double computeBearing()
 		if((r2.x-r1.x) < 0) {theta += M_PI;}
 	}
 
+	double phi = theta-alpha;
 	// Angle between ]-pi,pi]
-	while(theta > M_PI) {theta -= 2*M_PI;}
-	while(theta <= -M_PI) {theta += 2*M_PI;}
+	while(phi > M_PI) {phi -= 2*M_PI;}
+	while(phi <= -M_PI) {phi += 2*M_PI;}
 
-	return theta-alpha;
+	return phi;
 }
 
 
@@ -458,10 +459,12 @@ public:
 
 	int executeCB(ros::Duration dt)
 	{
+		/*
 		std::cout << "**TrackingAmongObstacles -%- Executing Main Task, elapsed_time: "
 		          << dt.toSec() << std::endl;
 		std::cout << "**TrackingAmongObstacles -%- execute_time: "
 		          << execute_time_.toSec() << std::endl;
+		*/
 		execute_time_ += dt;
 
 		if(!init_)
