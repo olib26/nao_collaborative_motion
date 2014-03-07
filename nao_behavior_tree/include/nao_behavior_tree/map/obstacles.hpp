@@ -39,7 +39,7 @@ struct Obstacle
 };
 Obstacle currentObstacle;
 std::vector<Obstacle> obstacles;
-const int maxObstacles = 100;
+const int maxPoints = 100;
 
 // Robots
 struct Robot

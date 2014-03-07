@@ -33,10 +33,11 @@ void showObstacles(IplImage* img)
 	CvScalar color = cvScalar(0,0,255);
 	int thickness = 2;
 
-	for(int i = 0; i < obstacles.size(); i++)
+	for(unsigned int i = 0; i < obstacles.size(); i++)
 	{
 		std::vector<cv::Point> points = obstacles.at(i).pointsImage;
-		for(int j = 0; j < points.size()-1; j++)
+
+		for(unsigned  int j = 0; j < points.size()-1; j++)
 		{
 			p1 = points.at(j);
 			p2 = points.at(j+1);
@@ -46,6 +47,8 @@ void showObstacles(IplImage* img)
 		p2 = points.at(0);
 		cvLine(img,p1,p2,color,thickness,CV_AA,0);
 	}
+
+	cvShowImage("Camera_Output",img);
 }
 
 
@@ -126,20 +129,27 @@ void on_mouse(int event, int x, int y, int d, void *ptr)
 	if(event == cv::EVENT_LBUTTONDOWN)
 	{
 		// New point
-		cv::Point pixel(y,x);
+		cv::Point pixel(x,y);
 		currentObstacle.pointsImage.push_back(pixel);
 		
 		Point p = pixelToPoint(pixel);
 		currentObstacle.pointsWorld.push_back(p);
+
+		ROS_INFO("Pixel added: x = %i, y = %i",y,x);
 	}
 	
 	if(event == cv::EVENT_RBUTTONDOWN)
 	{	
-		obstacles.push_back(currentObstacle);
-		
-		// New obstacle
-		currentObstacle.pointsWorld.clear();
-		currentObstacle.pointsImage.clear();
+		if(!currentObstacle.pointsImage.empty())
+		{
+			obstacles.push_back(currentObstacle);
+
+			ROS_INFO("Create obstacle %i",obstacles.size());
+
+			// New obstacle
+			currentObstacle.pointsWorld.clear();
+			currentObstacle.pointsImage.clear();
+		}
 	}
 }
 
@@ -152,7 +162,7 @@ void creation(IplImage* img)
 	cv::Point p;
 	cv::setMouseCallback("Camera_Output",on_mouse,&p);
 	
-	int key;
+	char key;
 	while(ros::ok())
 	{
 		showObstacles(img);
@@ -161,10 +171,48 @@ void creation(IplImage* img)
 	}
 	
 	// Save obstacles
-	obstacles.resize(maxObstacles);
-	std::ofstream os("/home/olivier/ros_workspace/map/obstacles.dat",std::ios::binary);
-	os.write(reinterpret_cast<const char*>(&(obstacles[0])),obstacles.size()*sizeof(Obstacle));
-	os.close();
+	// World
+	std::vector<Point> saveWorld;
+	for(unsigned int i = 0; i < obstacles.size(); i++)
+	{
+		Obstacle obstacle = obstacles.at(i);
+		for(unsigned int j = 0; j < obstacle.pointsWorld.size(); j++)
+		{
+			saveWorld.push_back(obstacle.pointsWorld.at(j));
+		}
+
+		Point space;
+		space.x = INFINITY;
+		space.y = INFINITY;
+		saveWorld.push_back(space);
+	}
+
+	saveWorld.resize(maxPoints);
+	std::ofstream os_world("/home/olivier/ros_workspace/map/world.dat",std::ios::binary);
+	os_world.write(reinterpret_cast<const char*>(&(saveWorld[0])),saveWorld.size()*sizeof(Point));
+	os_world.close();
+
+
+	// Image
+	std::vector<cv::Point> saveImage;
+	for(unsigned int i = 0; i < obstacles.size(); i++)
+	{
+		Obstacle obstacle = obstacles.at(i);
+		for(unsigned int j = 0; j < obstacle.pointsImage.size(); j++)
+		{
+			saveImage.push_back(obstacle.pointsImage.at(j));
+		}
+
+		cv::Point space;
+		space.x = INT_MAX;
+		space.y = INT_MAX;
+		saveImage.push_back(space);
+	}
+
+	saveImage.resize(maxPoints);
+	std::ofstream os_image("/home/olivier/ros_workspace/map/image.dat",std::ios::binary);
+	os_image.write(reinterpret_cast<const char*>(&(saveImage[0])),saveImage.size()*sizeof(cv::Point));
+	os_image.close();
 }
 
 
@@ -251,20 +299,47 @@ int main(int argc, char** argv)
 	if(mode == NORMAL)
 	{
 		// Load obstacles
-		obstacles.resize(maxObstacles);
-		std::ifstream is("/home/olivier/ros_workspace/map/obstacles.dat",std::ios::binary);
-		is.read(reinterpret_cast<char*>(&(obstacles[0])),obstacles.size()*sizeof(Obstacle));
-		is.close();
+		// Image
+		std::vector<cv::Point> saveImage;
+		saveImage.resize(maxPoints);
+		std::ifstream is_image("/home/olivier/ros_workspace/map/image.dat",std::ios::binary);
+		is_image.read(reinterpret_cast<char*>(&(saveImage[0])),saveImage.size()*sizeof(cv::Point));
+		is_image.close();
+
+		// World
+		std::vector<Point> saveWorld;
+		saveWorld.resize(maxPoints);
+		std::ifstream is_world("/home/olivier/ros_workspace/map/world.dat",std::ios::binary);
+		is_world.read(reinterpret_cast<char*>(&(saveWorld[0])),saveWorld.size()*sizeof(Point));
+		is_world.close();
+
+		for(int i = 0; i < maxPoints; i++)
+		{
+			if(saveImage.at(i).x == 0)
+			{
+				break;
+			}
+
+			if(saveImage.at(i).x != INT_MAX)
+			{
+				currentObstacle.pointsImage.push_back(saveImage.at(i));
+				currentObstacle.pointsWorld.push_back(saveWorld.at(i));
+			}
+			else
+			{
+				obstacles.push_back(currentObstacle);
+				currentObstacle.pointsImage.clear();
+				currentObstacle.pointsWorld.clear();
+			}
+		}
+
 
 		// Test
-		cvShowImage("Camera_Output",img);
-		showObstacles(img);
-
-		ros::Rate r(10);
 		while(ros::ok())
 		{
+			showObstacles(img);
 			ros::spinOnce();
-			r.sleep();
+			cvWaitKey(100);
 		}
 	}
 
