@@ -107,7 +107,7 @@ void showBearings(IplImage* img, nao_behavior_tree::Odometry odom, Robot r, doub
 {
 	CvPoint p1,p2,p3;
 	int thickness = 2;
-	double length = 0.2;
+	double length = 1;
 
 	p1.x = r.y;
 	p1.y = r.x;
@@ -432,6 +432,7 @@ void receive_bearing1(const nao_behavior_tree::Bearing::ConstPtr &msg)
 {
 	r1.absoluteBearing = msg->absolute;
 	r1.relativeBearing = msg->relative;
+	robot2Detected = msg->robotDetected;
 }
 
 
@@ -439,6 +440,7 @@ void receive_bearing2(const nao_behavior_tree::Bearing::ConstPtr &msg)
 {
 	r2.absoluteBearing = msg->absolute;
 	r2.relativeBearing = msg->relative;
+	robot1Detected = msg->robotDetected;
 }
 
 
@@ -581,10 +583,11 @@ int main(int argc, char** argv)
 		showOdometry(img,odom1,r1,k);
 		showOdometry(img,odom2,r2,k);
 		showBearings(img,odom1,r1,k);
-		//showBearings(img,odom2,r2,k);
+		showBearings(img,odom2,r2,k);
 		cvShowImage("Odometry",img);
 
 		cvWaitKey(100);
+		ros::spinOnce();
 	}
 
 

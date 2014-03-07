@@ -37,6 +37,8 @@ struct Robot
 };
 Robot r1,r2;
 
+bool robot1Detected,robot2Detected;
+
 // Odometry
 nao_behavior_tree::Odometry odom1,odom2;
 double timestamp1,timestamp2;
