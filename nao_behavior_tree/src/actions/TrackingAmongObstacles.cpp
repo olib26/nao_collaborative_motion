@@ -546,14 +546,14 @@ int main(int argc, char** argv)
 		hsv_max = cvScalar(H_MAX,S_MAX,V_MAX,0);
 
 		// Odometry subscribers
-		ros::Subscriber odom1_sub = nh.subscribe("/odometry" + r1.id,1000,receive_odometry1);
-		ros::Subscriber odom2_sub = nh.subscribe("/odometry" + r2.id,1000,receive_odometry2);
+		ros::Subscriber odom1_sub = nh.subscribe("/odometry" + r1.id,1,receive_odometry1);
+		ros::Subscriber odom2_sub = nh.subscribe("/odometry" + r2.id,1,receive_odometry2);
 
 		// Walker publisher
-		cmd_pub = nh.advertise<geometry_msgs::Twist>("/cmd_vel" + r1.id,100);
+		cmd_pub = nh.advertise<geometry_msgs::Twist>("/cmd_vel" + r1.id,1);
 
 		// Bearing publisher
-		bearing_pub = nh.advertise<nao_behavior_tree::Bearing>("/bearing" + r1.id,100);
+		bearing_pub = nh.advertise<nao_behavior_tree::Bearing>("/bearing" + r1.id,1);
 
 		// Launch Server
 		TrackingAmongObstacles server(ros::this_node::getName(),NAO_IP,NAO_PORT);

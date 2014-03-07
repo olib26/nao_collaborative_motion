@@ -450,12 +450,12 @@ int main(int argc, char** argv)
 	ros::NodeHandle nh;
 
 	// Odometry publishers
-	ros::Publisher odom1_pub = nh.advertise<nao_behavior_tree::Odometry>("/odometry1",100);
-	ros::Publisher odom2_pub = nh.advertise<nao_behavior_tree::Odometry>("/odometry2",100);
+	ros::Publisher odom1_pub = nh.advertise<nao_behavior_tree::Odometry>("/odometry1",1);
+	ros::Publisher odom2_pub = nh.advertise<nao_behavior_tree::Odometry>("/odometry2",1);
 
 	// Bearing subscribers
-	ros::Subscriber bearing1_sub = nh.subscribe("/bearing1",1000,receive_bearing1);
-	ros::Subscriber bearing2_sub = nh.subscribe("/bearing2",1000,receive_bearing2);
+	ros::Subscriber bearing1_sub = nh.subscribe("/bearing1",1,receive_bearing1);
+	ros::Subscriber bearing2_sub = nh.subscribe("/bearing2",1,receive_bearing2);
 
 	// Camera selection
 	bool webcam;

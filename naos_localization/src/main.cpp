@@ -94,7 +94,6 @@ void showOdometry(IplImage* img, double vx, double vy, Robot r)
 	p1.x = r.y;
 	p1.y = r.x;
 
-	// TO DO
 	double ratio = 1000;
 	p2.x = r.y + vx*ratio;
 	p2.y = r.x - vy*ratio;
