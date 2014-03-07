@@ -388,8 +388,8 @@ void imageProcessing(IplImage* img)
 	particleFilter(hsv_mask,particles2,&r2,&r1);
 
 	// Draw particles
-	showParticles(hsv_mask,particles1);
-	showParticles(hsv_mask,particles2);
+	//showParticles(hsv_mask,particles1);
+	//showParticles(hsv_mask,particles2);
 
 	// Draw robots
 	showRobot(hsv_mask,r1);
@@ -582,8 +582,8 @@ int main(int argc, char** argv)
 		// Show results
 		showOdometry(img,odom1,r1,k);
 		showOdometry(img,odom2,r2,k);
-		showBearings(img,odom1,r1,k);
-		showBearings(img,odom2,r2,k);
+		if(robot2Detected) {showBearings(img,odom1,r1,k);}
+		if(robot1Detected) {showBearings(img,odom2,r2,k);}
 		cvShowImage("Odometry",img);
 
 		cvWaitKey(100);

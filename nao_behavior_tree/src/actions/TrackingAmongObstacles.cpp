@@ -286,7 +286,6 @@ void imageProcessing(IplImage* img)
 
 	// Compute variance
 	std::pair<double,double> V = particlesVariance();
-	//ROS_INFO("Variances:  Vx = %f, Vy = %f",V.first,V.second);
 	if((V.first > Var_max) & (V.second > Var_max))
 	{
 		robotDetected = false;
@@ -459,12 +458,10 @@ public:
 
 	int executeCB(ros::Duration dt)
 	{
-		/*
 		std::cout << "**TrackingAmongObstacles -%- Executing Main Task, elapsed_time: "
 		          << dt.toSec() << std::endl;
 		std::cout << "**TrackingAmongObstacles -%- execute_time: "
 		          << execute_time_.toSec() << std::endl;
-		*/
 		execute_time_ += dt;
 
 		if(!init_)
@@ -488,6 +485,7 @@ public:
 		nao_behavior_tree::Bearing bearing;
 		bearing.relative = relativeBearing();
 		bearing.absolute = computeBearing();
+		bearing.robotDetected = robotDetected;
 		bearing_pub.publish(bearing);
 
 		return 0;
