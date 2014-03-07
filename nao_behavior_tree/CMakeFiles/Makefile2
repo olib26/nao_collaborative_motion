@@ -586,6 +586,41 @@ clean: CMakeFiles/nao_sonar.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/obstacles.dir
+
+# All Build rule for target.
+CMakeFiles/obstacles.dir/all: CMakeFiles/rosbuild_precompile.dir/all
+	$(MAKE) -f CMakeFiles/obstacles.dir/build.make CMakeFiles/obstacles.dir/depend
+	$(MAKE) -f CMakeFiles/obstacles.dir/build.make CMakeFiles/obstacles.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  56
+	@echo "Built target obstacles"
+.PHONY : CMakeFiles/obstacles.dir/all
+
+# Include target in all.
+all: CMakeFiles/obstacles.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/obstacles.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles 36
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/obstacles.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles 0
+.PHONY : CMakeFiles/obstacles.dir/rule
+
+# Convenience name for target.
+obstacles: CMakeFiles/obstacles.dir/rule
+.PHONY : obstacles
+
+# clean rule for target.
+CMakeFiles/obstacles.dir/clean:
+	$(MAKE) -f CMakeFiles/obstacles.dir/build.make CMakeFiles/obstacles.dir/clean
+.PHONY : CMakeFiles/obstacles.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/obstacles.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/rosbuild_precompile.dir
 
 # All Build rule for target.

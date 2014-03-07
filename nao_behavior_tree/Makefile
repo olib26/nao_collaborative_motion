@@ -304,6 +304,19 @@ nao_sonar/fast:
 .PHONY : nao_sonar/fast
 
 #=============================================================================
+# Target rules for targets named obstacles
+
+# Build rule for target.
+obstacles: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 obstacles
+.PHONY : obstacles
+
+# fast build rule for target.
+obstacles/fast:
+	$(MAKE) -f CMakeFiles/obstacles.dir/build.make CMakeFiles/obstacles.dir/build
+.PHONY : obstacles/fast
+
+#=============================================================================
 # Target rules for targets named rosbuild_precompile
 
 # Build rule for target.
@@ -660,6 +673,21 @@ src/map/localization.s:
 .PHONY : src/map/localization.s
 
 # target to build an object file
+src/map/obstacles.o:
+	$(MAKE) -f CMakeFiles/obstacles.dir/build.make CMakeFiles/obstacles.dir/src/map/obstacles.o
+.PHONY : src/map/obstacles.o
+
+# target to preprocess a source file
+src/map/obstacles.i:
+	$(MAKE) -f CMakeFiles/obstacles.dir/build.make CMakeFiles/obstacles.dir/src/map/obstacles.i
+.PHONY : src/map/obstacles.i
+
+# target to generate assembly for a file
+src/map/obstacles.s:
+	$(MAKE) -f CMakeFiles/obstacles.dir/build.make CMakeFiles/obstacles.dir/src/map/obstacles.s
+.PHONY : src/map/obstacles.s
+
+# target to build an object file
 src/sensors/nao_sonar.o:
 	$(MAKE) -f CMakeFiles/nao_sonar.dir/build.make CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o
 .PHONY : src/sensors/nao_sonar.o
@@ -697,6 +725,7 @@ help:
 	@echo "... localization"
 	@echo "... nao_behavior_tree"
 	@echo "... nao_sonar"
+	@echo "... obstacles"
 	@echo "... rebuild_cache"
 	@echo "... rosbuild_precompile"
 	@echo "... rosbuild_premsgsrvgen"
@@ -748,6 +777,9 @@ help:
 	@echo "... src/map/localization.o"
 	@echo "... src/map/localization.i"
 	@echo "... src/map/localization.s"
+	@echo "... src/map/obstacles.o"
+	@echo "... src/map/obstacles.i"
+	@echo "... src/map/obstacles.s"
 	@echo "... src/sensors/nao_sonar.o"
 	@echo "... src/sensors/nao_sonar.i"
 	@echo "... src/sensors/nao_sonar.s"

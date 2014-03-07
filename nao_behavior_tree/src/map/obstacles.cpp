@@ -8,6 +8,9 @@
 #include <ros/ros.h>
 
 #include <iostream>
+#include <iostream>
+#include <fstream>
+
 #include <opencv2/opencv.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -22,6 +25,28 @@
 #include <nao_behavior_tree/map/obstacles.hpp>
 #include <nao_behavior_tree/map/webcam.hpp>
 #include <nao_behavior_tree/map/nao.hpp>
+
+
+void showObstacles(IplImage* img)
+{
+	cv::Point p1,p2;
+	CvScalar color = cvScalar(0,0,255);
+	int thickness = 2;
+
+	for(int i = 0; i < obstacles.size(); i++)
+	{
+		std::vector<cv::Point> points = obstacles.at(i).pointsImage;
+		for(int j = 0; j < points.size()-1; j++)
+		{
+			p1 = points.at(j);
+			p2 = points.at(j+1);
+			cvLine(img,p1,p2,color,thickness,CV_AA,0);
+		}
+		p1 = points.back();
+		p2 = points.at(0);
+		cvLine(img,p1,p2,color,thickness,CV_AA,0);
+	}
+}
 
 
 void receive_odometry1(const nao_behavior_tree::Odometry::ConstPtr &msg)
@@ -74,7 +99,8 @@ double cameraCoef(bool webcam)
 
 Point pixelToPoint(cv::Point pixel)
 {
-	
+	Point p;
+	return p;
 }
 
 
@@ -101,15 +127,15 @@ void on_mouse(int event, int x, int y, int d, void *ptr)
 	{
 		// New point
 		cv::Point pixel(y,x);
-		currentObstacle.pointsImage.pushback(pixel);
+		currentObstacle.pointsImage.push_back(pixel);
 		
-		Point p = pixelToPoint(pixel)
-		currentObstacle.pointsWorld.pushback(p);
+		Point p = pixelToPoint(pixel);
+		currentObstacle.pointsWorld.push_back(p);
 	}
 	
 	if(event == cv::EVENT_RBUTTONDOWN)
 	{	
-		obstacles.pushback(currentObstacle);
+		obstacles.push_back(currentObstacle);
 		
 		// New obstacle
 		currentObstacle.pointsWorld.clear();
@@ -118,8 +144,10 @@ void on_mouse(int event, int x, int y, int d, void *ptr)
 }
 
 
-void creation()
+void creation(IplImage* img)
 {
+	cvShowImage("Camera_Output",img);
+
 	// Init mouse callback
 	cv::Point p;
 	cv::setMouseCallback("Camera_Output",on_mouse,&p);
@@ -127,22 +155,16 @@ void creation()
 	int key;
 	while(ros::ok())
 	{
+		showObstacles(img);
 		key = cvWaitKey(100);
 		if(key == 27) {break;} // Esc key
 	}
 	
 	// Save obstacles
-	// World
-	obstacles.pointsWorld.resize(maxObstacles);
-	std::ofstream os_world("/home/olivier/ros_workspace/obstacles/pointsWorld.dat",std::ios::binary);
-	os_world.write(reinterpret_cast<const char*>(&(obstacles.pointsWorld[0])),obstacles.pointsWorld.size()*sizeof(Point));
-	os_world.close();
-	
-	// Image
-	obstacles.pointsImage.resize(maxObstacles);
-	std::ofstream os_image("/home/olivier/ros_workspace/obstacles/pointsImage.dat",std::ios::binary);
-	os_image.write(reinterpret_cast<const char*>(&(obstacles.pointsImage[0])),obstacles.pointsImage.size()*sizeof(cv::Point));
-	os_image.close();
+	obstacles.resize(maxObstacles);
+	std::ofstream os("/home/olivier/ros_workspace/map/obstacles.dat",std::ios::binary);
+	os.write(reinterpret_cast<const char*>(&(obstacles[0])),obstacles.size()*sizeof(Obstacle));
+	os.close();
 }
 
 
@@ -225,23 +247,25 @@ int main(int argc, char** argv)
 	k = cameraCoef(webcam);
 
 	
-	if(mode == CREATION) {creation();}
+	if(mode == CREATION) {creation(img);}
 	if(mode == NORMAL)
 	{
 		// Load obstacles
-		// World
-		obstacles.pointsWorld.resize(maxObstacles);
-		std::ifstream is_world("/home/olivier/ros_workspace/obstacles/pointsWorld.dat",std::ios::binary);
-		is_world.read(reinterpret_cast<char*>(&(obstacles.pointsWorld[0])),obstacles.pointsWorld.size()*sizeof(Point));
-		is_world.close();
-		
-		// Image
-		obstacles.pointsImage.resize(maxObstacles);
-		std::ifstream is_image("/home/olivier/ros_workspace/obstacles/pointsImage.dat",std::ios::binary);
-		is_image.read(reinterpret_cast<char*>(&(obstacles.pointsImage[0])),obstacles.pointsImage.size()*sizeof(cv::Point));
-		is_image.close();
-		
-		//
+		obstacles.resize(maxObstacles);
+		std::ifstream is("/home/olivier/ros_workspace/map/obstacles.dat",std::ios::binary);
+		is.read(reinterpret_cast<char*>(&(obstacles[0])),obstacles.size()*sizeof(Obstacle));
+		is.close();
+
+		// Test
+		cvShowImage("Camera_Output",img);
+		showObstacles(img);
+
+		ros::Rate r(10);
+		while(ros::ok())
+		{
+			ros::spinOnce();
+			r.sleep();
+		}
 	}
 
 	

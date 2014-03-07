@@ -38,7 +38,7 @@ struct Obstacle
 	std::vector<cv::Point> pointsImage;
 };
 Obstacle currentObstacle;
-std::vector<Obstacles> obstacles;
+std::vector<Obstacle> obstacles;
 const int maxObstacles = 100;
 
 // Robots

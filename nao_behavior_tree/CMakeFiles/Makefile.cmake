@@ -81,6 +81,7 @@ SET(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/localization.dir/DependInfo.cmake"
   "CMakeFiles/nao_behavior_tree.dir/DependInfo.cmake"
   "CMakeFiles/nao_sonar.dir/DependInfo.cmake"
+  "CMakeFiles/obstacles.dir/DependInfo.cmake"
   "CMakeFiles/rosbuild_precompile.dir/DependInfo.cmake"
   "CMakeFiles/rosbuild_premsgsrvgen.dir/DependInfo.cmake"
   "CMakeFiles/rospack_genmsg.dir/DependInfo.cmake"

@@ -14,6 +14,7 @@
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/localization.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/nao_behavior_tree.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/nao_sonar.dir
+/home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/obstacles.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/rosbuild_precompile.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/rosbuild_premsgsrvgen.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/rospack_genmsg.dir

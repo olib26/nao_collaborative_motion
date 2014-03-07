@@ -135,6 +135,9 @@ rosbuild_add_library(bt_server ${PROJECT_SOURCE_DIR}/src/behavior_tree/rosaction
 rosbuild_add_executable(localization src/map/localization.cpp)
 target_link_libraries(localization ${OpenCV_LIBS} alproxies alvalue alvision)
 
+rosbuild_add_executable(obstacles src/map/obstacles.cpp)
+target_link_libraries(obstacles ${OpenCV_LIBS} alproxies alvalue alvision)
+
 
 # Sensors
 rosbuild_add_executable(nao_sonar src/sensors/nao_sonar.cpp)
