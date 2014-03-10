@@ -19,6 +19,9 @@
 #include <alvision/alimage.h>
 #include <alvision/alvisiondefinitions.h>
 
+#include <eigen3/Eigen/Core>
+#include <eigen3/Eigen/LU>
+
 #include <nao_behavior_tree/Odometry.h>
 #include <nao_behavior_tree/Bearing.h>
 
@@ -54,19 +57,19 @@ void showObstacles(IplImage* img)
 
 void receive_odometry1(const nao_behavior_tree::Odometry::ConstPtr &msg)
 {
-	r1.x = msg->x;
-	r1.y = msg->y;
-	r1.vx = msg->vx;
-	r1.vy = msg->vy;
+	r1.pos.x = msg->x;
+	r1.pos.y = msg->y;
+	r1.vel.x = msg->vx;
+	r1.vel.y = msg->vy;
 }
 
 
 void receive_odometry2(const nao_behavior_tree::Odometry::ConstPtr &msg)
 {
-	r2.x = msg->x;
-	r2.y = msg->y;
-	r2.vx = msg->vx;
-	r2.vy = msg->vy;
+	r2.pos.x = msg->x;
+	r2.pos.y = msg->y;
+	r2.vel.x = msg->vx;
+	r2.vel.y = msg->vy;
 }
 
 
@@ -103,7 +106,166 @@ double cameraCoef(bool webcam)
 Point pixelToPoint(cv::Point pixel)
 {
 	Point p;
+	p.x = (pixel.x-width/2)*k;
+	p.y = -(pixel.y-height/2)*k;
 	return p;
+}
+
+
+cv::Point pointToPixel(Point p)
+{
+	cv::Point point;
+	point.x = p.x/k + width/2;
+	point.y = -p.y/k + height/2;
+	return point;
+}
+
+
+double angle(Point p1, Point p2)
+{
+	double theta;
+
+	if(p1.x == p2.x)
+	{
+		if((p2.y-p1.y) < 0) {theta = -M_PI/2;}
+		if((p2.y-p1.y) > 0) {theta = M_PI/2;}
+	}
+	else
+	{
+		theta = atan((p2.y-p1.y)/(p2.x-p1.x));
+		if((p2.x-p1.x) < 0) {theta += M_PI;}
+	}
+
+	// Angle between ]-pi,pi]
+	while(theta > M_PI) {theta -= 2*M_PI;}
+	while(theta <= -M_PI) {theta += 2*M_PI;}
+
+	return theta;
+}
+
+
+obstacleEdges computeEdges(Obstacle obstacle, Robot r)
+{
+	obstacleEdges edges;
+
+	// Angles
+	double minAngle = M_PI;
+	double maxAngle = -M_PI;
+	double pointAngle;
+
+	Point pMin,pMax;
+
+	for(unsigned int i = 0; i < obstacle.pointsWorld.size(); i++)
+	{
+		Point p = obstacle.pointsWorld.at(i);
+
+		// Compute point angle
+		pointAngle = angle(r.pos,p);
+
+		// Update min and max
+		if(minAngle > pointAngle) {minAngle = pointAngle; pMin = p;}
+		if(maxAngle < pointAngle) {maxAngle = pointAngle; pMax = p;}
+	}
+
+	// Edges coefs
+	edges.first.p = pMin;
+	edges.first.theta = minAngle;
+
+	edges.second.p = pMax;
+	edges.second.theta = maxAngle;
+
+	return edges;
+}
+
+
+allEdges computeAllEdges(std::vector<Obstacle> obstacles, Robot r)
+{
+	allEdges edges;
+
+	for(unsigned int i = 0; i < obstacles.size(); i++)
+	{
+		obstacleEdges pair = computeEdges(obstacles.at(i),r);
+		edges.push_back(pair.first);
+		edges.push_back(pair.second);
+	}
+
+	return edges;
+}
+
+
+bool intersectEdge(Robot r, Edge edge)
+{
+	Point p0;
+	double V = angle(p0,r.vel);
+	double alpha = angle(r.pos,edge.p);
+
+	if((edge.theta-alpha) >= 0) {return (((V-alpha) >= 0) & ((V-alpha) <= (edge.theta-alpha)));}
+	else {return (((V-alpha) <= 0) & ((V-alpha) >= (edge.theta-alpha)));}
+}
+
+
+double distanceToEdge(Point p, Edge edge)
+{
+	Eigen::Vector2d vec(p.x-edge.p.x,p.y-edge.p.y);
+	Eigen::Vector2d d(cos(edge.theta),sin(edge.theta));
+	Eigen::MatrixXd proj = vec.transpose()*d;
+
+	if(proj(0,0) > 0)
+	{
+		Eigen::Vector2d orth = vec - proj(0,0)*d;
+		return orth.norm();
+	}
+	else
+	{
+		return vec.norm();
+	}
+}
+
+
+Edge closestEdge(Robot r, allEdges edges)
+{
+	Edge closest;
+	double dist;
+	double minDist = INFINITY;
+
+	for(unsigned int i = 0; i < edges.size(); i++)
+	{
+		Edge edge = edges.at(i);
+		dist = distanceToEdge(r.pos,edge);
+
+		if(dist < minDist) {closest = edge;}
+	}
+
+	return closest;
+}
+
+
+void showEdge(Edge edge, IplImage* img)
+{
+	cv::Point p1,p2;
+	CvScalar color = cvScalar(0,0,0);
+	int thickness = 1;
+
+	p1 = pointToPixel(edge.p);
+
+	Point p;
+	double length = 10;
+	p.x = edge.p.x + length*cos(edge.theta);
+	p.y = edge.p.y + length*sin(edge.theta);
+	p2 = pointToPixel(p);
+
+	cvLine(img,p1,p2,color,thickness,CV_AA,0);
+}
+
+
+void showAllEdges(std::vector<Edge> allEdges, IplImage* img)
+{
+	Edge edge;
+	for(unsigned int i = 0; i < allEdges.size(); i++)
+	{
+		edge = allEdges.at(i);
+		showEdge(edge,img);
+	}
 }
 
 

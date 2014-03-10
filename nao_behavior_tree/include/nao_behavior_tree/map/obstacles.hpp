@@ -41,11 +41,20 @@ Obstacle currentObstacle;
 std::vector<Obstacle> obstacles;
 const int maxPoints = 100;
 
-// Robots
+// Obstacle gap edges
+struct Edge
+{
+	Point p;
+	double theta;
+};
+typedef std::pair<Edge,Edge> obstacleEdges;
+typedef std::vector<Edge> allEdges;
+
+// Robot odometry
 struct Robot
 {
-	double x,y,theta;
-	double vx,vy;
+	Point pos,vel;
+	double theta;
 };
 Robot r1,r2;
 
