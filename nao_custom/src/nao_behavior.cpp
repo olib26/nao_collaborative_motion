@@ -36,7 +36,10 @@ int main(int argc, char** argv)
 	behavior_proxy_ptr = new AL::ALBehaviorManagerProxy(NAO_IP,NAO_PORT);
 
 	// Install behavior
-	behavior_proxy_ptr->installBehavior("/home/olivier/ros_workspace/nao_custom/behavior_hello/behavior.xar");
+	bool installation = behavior_proxy_ptr->installBehavior("/home/olivier/ros_workspace/nao_custom/behavior_hello/behavior.xar");
+
+	if(installation) {ROS_INFO("INSTALLED");}
+	else {ROS_INFO("FAILURE");}
 
 	// Behavior list
 	std::vector<std::string> list = behavior_proxy_ptr->getInstalledBehaviors();

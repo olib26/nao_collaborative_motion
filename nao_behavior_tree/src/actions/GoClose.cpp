@@ -324,17 +324,18 @@ void imageProcessing(IplImage* img)
 
 	// Compute variance
 	std::pair<double,double> V = particlesVariance();
-	//ROS_INFO("Variances:  Vx = %f, Vy = %f",V.first,V.second);
+	ROS_INFO("Variances:  Vx = %f, Vy = %f",V.first,V.second);
 	if((V.first > Var_max) & (V.second > Var_max))
 	{
 		robotDetected = false;
 	}
 
-	// Draw robot
+	// Draw robot and particles
 	showRobot(hsv_mask);
+	showParticles(hsv_mask);
 
 	// Show result
-	//cvNamedWindow("GoClose",1); cvShowImage("GoClose",hsv_mask);
+	cvNamedWindow("GoClose",1); cvShowImage("GoClose",hsv_mask);
 
 	cvWaitKey(10);
 }

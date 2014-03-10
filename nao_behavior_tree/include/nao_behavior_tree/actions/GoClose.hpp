@@ -47,7 +47,7 @@ const int s_diffusion = 2; // Size
 
 // Object coordinate
 int x,y;
-double depth;
+double depth = INFINITY;
 
 // Number of particles
 const int N = 2000;
@@ -72,7 +72,7 @@ bool robotDetected;
 // Controller parameters
 const double alpha = 0.001;
 const double rho = 0.8;
-const double dist_threshold = 0.8;
+const double dist_threshold = 0.4;
 
 // Sonar
 double right = INFINITY;

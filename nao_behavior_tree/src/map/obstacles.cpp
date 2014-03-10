@@ -121,6 +121,15 @@ cv::Point pointToPixel(Point p)
 }
 
 
+double moduloPi(double theta)
+{
+	// Angle between ]-pi,pi]
+	while(theta > M_PI) {theta -= 2*M_PI;}
+	while(theta <= -M_PI) {theta += 2*M_PI;}
+	return theta;
+}
+
+
 double angle(Point p1, Point p2)
 {
 	double theta;
@@ -136,9 +145,7 @@ double angle(Point p1, Point p2)
 		if((p2.x-p1.x) < 0) {theta += M_PI;}
 	}
 
-	// Angle between ]-pi,pi]
-	while(theta > M_PI) {theta -= 2*M_PI;}
-	while(theta <= -M_PI) {theta += 2*M_PI;}
+	moduloPi(theta);
 
 	return theta;
 }
@@ -149,18 +156,22 @@ obstacleEdges computeEdges(Obstacle obstacle, Robot r)
 	obstacleEdges edges;
 
 	// Angles
-	double minAngle = M_PI;
-	double maxAngle = -M_PI;
+	double minAngle = 0;
+	double maxAngle = 0;
 	double pointAngle;
 
 	Point pMin,pMax;
 
-	for(unsigned int i = 0; i < obstacle.pointsWorld.size(); i++)
+	Point pRef = obstacle.pointsWorld.front();
+	double ref = angle(r.pos,pRef);
+	pMin = pMax = pRef;
+
+	for(unsigned int i = 1; i < obstacle.pointsWorld.size(); i++)
 	{
 		Point p = obstacle.pointsWorld.at(i);
 
 		// Compute point angle
-		pointAngle = angle(r.pos,p);
+		pointAngle = moduloPi(angle(r.pos,p)-ref);
 
 		// Update min and max
 		if(minAngle > pointAngle) {minAngle = pointAngle; pMin = p;}
@@ -169,10 +180,10 @@ obstacleEdges computeEdges(Obstacle obstacle, Robot r)
 
 	// Edges coefs
 	edges.first.p = pMin;
-	edges.first.theta = minAngle;
+	edges.first.theta = moduloPi(minAngle+ref);
 
 	edges.second.p = pMax;
-	edges.second.theta = maxAngle;
+	edges.second.theta = moduloPi(maxAngle+ref);
 
 	return edges;
 }
@@ -500,6 +511,8 @@ int main(int argc, char** argv)
 		while(ros::ok())
 		{
 			showObstacles(img);
+			allEdges edges = computeAllEdges(obstacles,r1);
+			showAllEdges(edges,img);
 			ros::spinOnce();
 			cvWaitKey(100);
 		}

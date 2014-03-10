@@ -227,7 +227,7 @@ void imageProcessing(IplImage* img)
 
 	// Compute variance
 	std::pair<double,double> V = particlesVariance();
-	//ROS_INFO("Variances:  Vx = %f, Vy = %f",V.first,V.second);
+	ROS_INFO("Variances:  Vx = %f, Vy = %f",V.first,V.second);
 	if((V.first < Var_min) & (V.second < Var_min))
 	{
 		robotDetected = true;
@@ -237,7 +237,7 @@ void imageProcessing(IplImage* img)
 	showParticles(hsv_mask);
 
 	// Show result
-	//cvNamedWindow("Search",1); cvShowImage("Search",hsv_mask);
+	cvNamedWindow("Search",1); cvShowImage("Search",hsv_mask);
 
 	cvWaitKey(10);
 }
