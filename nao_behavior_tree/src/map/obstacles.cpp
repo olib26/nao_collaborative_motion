@@ -361,8 +361,8 @@ void creation(IplImage* img)
 		}
 
 		Point space;
-		space.x = INFINITY;
-		space.y = INFINITY;
+		space.x = 0;
+		space.y = 0;
 		saveWorld.push_back(space);
 	}
 
@@ -383,8 +383,8 @@ void creation(IplImage* img)
 		}
 
 		cv::Point space;
-		space.x = INT_MAX;
-		space.y = INT_MAX;
+		space.x = -1;
+		space.y = -1;
 		saveImage.push_back(space);
 	}
 
@@ -499,7 +499,7 @@ int main(int argc, char** argv)
 				break;
 			}
 
-			if(saveImage.at(i).x != INT_MAX)
+			if(saveImage.at(i).x != -1)
 			{
 				currentObstacle.pointsImage.push_back(saveImage.at(i));
 				currentObstacle.pointsWorld.push_back(saveWorld.at(i));
