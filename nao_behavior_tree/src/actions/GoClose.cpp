@@ -77,6 +77,7 @@ float robotDepth()
 
 void robotCoordinate()
 {
+	/*
 	x = y = sx = sy = 0;
 	for(int i = 0; i < N; i++)
 	{
@@ -89,6 +90,7 @@ void robotCoordinate()
 	y = y/N;
 	sx = sx/N;
 	sy = sy/N;
+	*/
 
 	// Estimate depth
 	depth = robotDepth();
@@ -279,6 +281,10 @@ void particleFilter(IplImage* img)
 		cdf[i] = cdf[i-1] + particles[i].w;
 	}
 
+	// Reset robot parameters
+	x = y = sx = sy = 0;
+	double maxWeight;
+
 	double r = uniformRandom()/N;
 	for(int i = 0; i < N; i++)
 	{
@@ -290,6 +296,18 @@ void particleFilter(IplImage* img)
 				break;
 			}
 		}
+
+		// Keep particle with maximum weight
+		if(particles[i].w > maxWeight)
+		{
+			x = particles[i].x;
+			y = particles[i].y;
+			sx = particles[i].sx;
+			sy = particles[i].sy;
+			maxWeight = particles[i].w;
+		}
+
+		// Change weight
 		particles[i].w = (double)1/N;
 		r += (double)1/N;
 	}
@@ -448,21 +466,25 @@ public:
 		}
 
 		// Robot not detected
+		/*
 		if(!robotDetected)
 		{
 			set_feedback(FAILURE);
 			finalize();
 			return 1;
 		}
+		*/
 
 		// Close to the other robot
-		//ROS_INFO("Depth = %f, r = %f, l = %f",depth,right,left);
+		ROS_INFO("Depth = %f, r = %f, l = %f",depth,right,left);
+
 		if(((right < dist_threshold) | (left < dist_threshold)) & (depth < dist_threshold))
 		{
 			set_feedback(SUCCESS);
 			finalize();
 			return 1;
 		}
+
 
 		// Controller
 		int y_rel = y - width/2;

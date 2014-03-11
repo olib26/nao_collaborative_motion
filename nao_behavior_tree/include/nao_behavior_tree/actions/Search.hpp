@@ -27,14 +27,18 @@ struct Point
 };
 
 // Detector frame size
-const int sx_min = 50;
-const int sy_min = 70;
+int sx,sy;
+const int sx_min = 10;
+const int sy_min = 15;
+const int sx_max = 200;
+const int sy_max = 300;
 
 // Diffusion variance
-const int sigma_diffusion = 8;
+const int sigma_diffusion = 50; // Position
+const int s_diffusion = 10; // Size
 
 // Number of particles
-const int N = 1000;
+const int N = 2000;
 
 // Generate N random particles
 struct Particle{
@@ -48,7 +52,8 @@ Particle* particles = new Particle[N];
 const double eps = 1E-3;
 
 // Variance Threshold
-const double Var_min = 100;
+const double Var_minx = 100;
+const double Var_miny = 200;
 
 // Robot detection
 bool robotDetected;

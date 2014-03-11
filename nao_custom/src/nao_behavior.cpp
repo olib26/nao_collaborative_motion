@@ -50,7 +50,7 @@ int main(int argc, char** argv)
 	}
 
 	// Run behavior
-	behavior_proxy_ptr->runBehavior("behavior_hello");
+	//behavior_proxy_ptr->runBehavior("behavior_hello");
 
 	ros::Rate loop_rate(100);
 	while(ros::ok())

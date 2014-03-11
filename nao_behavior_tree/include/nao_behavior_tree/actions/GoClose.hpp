@@ -24,7 +24,7 @@ const double VFOV = 47.6*M_PI/180;
 const double HFOV = 60.9*M_PI/180;
 
 // Nao head spot
-const double H = 0.036;
+const double H = 0.04;
 
 // Point in integral image
 struct Point
@@ -42,15 +42,15 @@ const int sy_max = 300;
 
 
 // Diffusion variance
-const int sigma_diffusion = 8; // Position
-const int s_diffusion = 2; // Size
+const int sigma_diffusion = 50; // Position
+const int s_diffusion = 10; // Size
 
 // Object coordinate
 int x,y;
 double depth = INFINITY;
 
 // Number of particles
-const int N = 2000;
+const int N = 2500;
 
 // Generate N random particles
 struct Particle{
@@ -64,7 +64,7 @@ Particle* particles = new Particle[N];
 const double eps = 1E-3;
 
 // Variance Threshold
-const double Var_max = 1000;
+const double Var_max = 2000;
 
 // Robot detection
 bool robotDetected;

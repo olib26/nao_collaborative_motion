@@ -73,7 +73,11 @@ std::pair<double,double> particlesVariance()
 
 int getPixelValue(IplImage* img,int i,int j)
 {
-	return cvGet2D(img,i,j).val[0];
+	if(cvGet2D(img,i,j).val[0] == 255)
+	{
+		return 1;
+	}
+	return -1;
 }
 
 
@@ -162,6 +166,15 @@ void particleFilter(IplImage* img)
 		particles[i].y += sigma_diffusion*normalRandom();
 		if(particles[i].y < 0) {particles[i].y = 0;}
 		if(particles[i].y > width-1) {particles[i].y = width-1;}
+
+		// Size
+		particles[i].sx += s_diffusion*normalRandom();
+		if(particles[i].sx < sx_min) {particles[i].sx = sx_min;}
+		if(particles[i].sx > sx_max) {particles[i].sx = sx_max;}
+
+		particles[i].sy += s_diffusion*normalRandom();
+		if(particles[i].sy < sy_min) {particles[i].sy = sy_min;}
+		if(particles[i].sy > sy_max) {particles[i].sy = sy_max;}
 	}
 
 	// Weighting
@@ -228,8 +241,9 @@ void imageProcessing(IplImage* img)
 	// Compute variance
 	std::pair<double,double> V = particlesVariance();
 	ROS_INFO("Variances:  Vx = %f, Vy = %f",V.first,V.second);
-	if((V.first < Var_min) & (V.second < Var_min))
+	if((V.first < Var_minx) & (V.second < Var_miny))
 	{
+		ROS_INFO("DETECTED");
 		robotDetected = true;
 	}
 
@@ -311,10 +325,10 @@ public:
 		AL::ALValue stiffness_name("Body");
 		AL::ALValue stiffness(1.0f);
 		AL::ALValue stiffness_time(1.0f);
-		motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
+		//motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
 
 		// Init moving
-		motion_proxy_ptr->moveInit();
+		//motion_proxy_ptr->moveInit();
 
 		// Robot not detected
 		robotDetected = false;
@@ -323,7 +337,7 @@ public:
 	void finalize()
 	{
 		// Stop rotating
-		motion_proxy_ptr->stopMove();
+		//motion_proxy_ptr->stopMove();
 
 		// Delete Filter
 		delete ic;
@@ -351,15 +365,17 @@ public:
 			// Start rotating
 			geometry_msgs::Twist cmd;
 			cmd.angular.z = 0.5;
-			cmd_pub.publish(cmd);
+			//cmd_pub.publish(cmd);
 		}
 
+		/*
 		if(robotDetected)
 		{
 			set_feedback(SUCCESS);
 			finalize();
 			return 1;
 		}
+		*/
 
 		return 0;
 	}
