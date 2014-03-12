@@ -22,6 +22,22 @@ string
 vector
 -
 
+/home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/alsonarproxy.h
+alproxies/alsonarproxyposthandler.h
+-
+alproxies/api.h
+-
+
+/home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/alsonarproxyposthandler.h
+boost/shared_ptr.hpp
+-
+alvalue/alvalue.h
+-
+string
+-
+vector
+-
+
 /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/api.h
 qi/macro.hpp
 -
@@ -6188,6 +6204,8 @@ boost/smart_ptr/weak_ptr.hpp
 
 /home/olivier/ros_workspace/nao_behavior_tree/src/sensors/nao_sonar.cpp
 ros/ros.h
+-
+alproxies/alsonarproxy.h
 -
 alproxies/almemoryproxy.h
 -

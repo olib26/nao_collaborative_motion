@@ -63,6 +63,14 @@ void robotCoordinate(Particle* particles, Robot* r)
 	r->y = r->y/N;
 	r->sx = r->sx/N;
 	r->sy = r->sy/N;
+
+	// Init temp position
+	if(!r->initTempPosition)
+	{
+		r->x_temp = r->x;
+		r->y_temp = r->y;
+		r->initTempPosition = true;
+	}
 }
 
 
@@ -289,13 +297,13 @@ double evaluate(int x, int y, int sx, int sy, int** integral, Robot* robot, Robo
 }
 
 
-void initParticles(Particle* particles)
+void initParticles(Particle* particles, Robot r)
 {
 	for(int i = 0; i < N; i++)
 	{
 		// Position
-		particles[i].x = rand() % height;
-		particles[i].y = rand() % width;
+		particles[i].x = r.x + sigma_diffusion*normalRandom();
+		particles[i].y = r.y + sigma_diffusion*normalRandom();
 
 		// Weight
 		particles[i].w = 1;
@@ -565,8 +573,8 @@ int main(int argc, char** argv)
 
 			k = cameraCoef(webcam);
 
-			initParticles(particles1);
-			initParticles(particles2);
+			initParticles(particles1,r1);
+			initParticles(particles2,r2);
 		}
 
 		// Image processing
@@ -578,6 +586,9 @@ int main(int argc, char** argv)
 
 		odom1_pub.publish(odom1);
 		odom2_pub.publish(odom2);
+
+		ROS_INFO("x1 = %f; y1 = %f",odom1.x,odom1.y);
+		ROS_INFO("x2 = %f; y2 = %f",odom2.x,odom2.y);
 
 		// Show results
 		showOdometry(img,odom1,r1,k);

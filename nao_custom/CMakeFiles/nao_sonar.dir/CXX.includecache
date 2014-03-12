@@ -22,6 +22,22 @@ string
 vector
 -
 
+/home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/alsonarproxy.h
+alproxies/alsonarproxyposthandler.h
+-
+alproxies/api.h
+-
+
+/home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/alsonarproxyposthandler.h
+boost/shared_ptr.hpp
+-
+alvalue/alvalue.h
+-
+string
+-
+vector
+-
+
 /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/api.h
 qi/macro.hpp
 -
@@ -6191,6 +6207,10 @@ ros/ros.h
 -
 alproxies/almemoryproxy.h
 -
+alproxies/alsonarproxy.h
+-
+nao_custom/Sonar.h
+-
 
 /opt/ros/fuerte/include/XmlRpcDecl.h
 ros/macros.h
@@ -6387,6 +6407,10 @@ boost/make_shared.hpp
 -
 
 /opt/ros/fuerte/include/ros/message_forward.h
+
+/opt/ros/fuerte/include/ros/message_operations.h
+ostream
+-
 
 /opt/ros/fuerte/include/ros/message_traits.h
 message_forward.h
@@ -6797,4 +6821,44 @@ ros/forwards.h
 /opt/ros/fuerte/include/ros/ros/forwards.h
 
 /opt/ros/fuerte/include/rosconsole/macros_generated.h
+
+/opt/ros/fuerte/include/std_msgs/Header.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+
+msg_gen/cpp/include/nao_custom/Sonar.h
+string
+-
+vector
+-
+map
+-
+ostream
+-
+ros/serialization.h
+msg_gen/cpp/include/nao_custom/ros/serialization.h
+ros/builtin_message_traits.h
+msg_gen/cpp/include/nao_custom/ros/builtin_message_traits.h
+ros/message_operations.h
+msg_gen/cpp/include/nao_custom/ros/message_operations.h
+ros/time.h
+msg_gen/cpp/include/nao_custom/ros/time.h
+ros/macros.h
+msg_gen/cpp/include/nao_custom/ros/macros.h
+ros/assert.h
+msg_gen/cpp/include/nao_custom/ros/assert.h
+std_msgs/Header.h
+msg_gen/cpp/include/nao_custom/std_msgs/Header.h
 

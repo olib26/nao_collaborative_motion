@@ -28,8 +28,8 @@ struct Point
 
 // Detector frame size
 int sx,sy;
-const int sx_min = 10;
-const int sy_min = 15;
+const int sx_min = 20;
+const int sy_min = 30;
 const int sx_max = 200;
 const int sy_max = 300;
 
@@ -52,8 +52,8 @@ Particle* particles = new Particle[N];
 const double eps = 1E-3;
 
 // Variance Threshold
-const double Var_minx = 100;
-const double Var_miny = 200;
+const double Var_minx = 1000;
+const double Var_miny = 1000;
 
 // Robot detection
 bool robotDetected;

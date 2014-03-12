@@ -1,5 +1,3 @@
 [*
 	A GoClose1
-	A Greet1
-	A Stop1
 ]

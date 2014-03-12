@@ -3,6 +3,8 @@
 
 CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/almemoryproxy.h
 CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/almemoryproxyposthandler.h
+CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/alsonarproxy.h
+CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/alsonarproxyposthandler.h
 CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/api.h
 CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alvalue/alvalue.h
 CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alvalue/config.h

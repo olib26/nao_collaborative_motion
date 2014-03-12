@@ -14,8 +14,8 @@ int camera;
 CvCapture* capture;
 
 // Parameters
-const double focalLength = 544; // pixels
-const double webcamHeight = 2; // meters
+const double focalLength = 480; // pixels
+const double webcamHeight = 2.2; // meters
 
 
 #endif /* WEBCAM_HPP_ */

@@ -22,6 +22,20 @@
 namespace enc = sensor_msgs::image_encodings;
 
 
+IplImage* filter(IplImage* img)
+{
+	CvSize sz = cvGetSize(img);
+	IplImage* hsv_image = cvCreateImage(sz,8,3);
+	IplImage* hsv_mask = cvCreateImage(sz,8,1);
+	cvCvtColor(img,hsv_image,CV_BGR2HSV);
+	CvScalar hsv_min = cvScalar(H_MIN,S_MIN,V_MIN,0);
+	CvScalar hsv_max = cvScalar(H_MAX,S_MAX,V_MAX,0);
+	cvInRangeS(hsv_image, hsv_min, hsv_max, hsv_mask);
+
+	return hsv_mask;
+}
+
+
 class ImageConverter
 {
 	ros::NodeHandle nh;
@@ -57,13 +71,8 @@ public:
 		}
 
 		img = new IplImage(cv_ptr->image);
-		CvSize sz = cvGetSize(img);
-		hsv_image = cvCreateImage(sz,8,3);
-		hsv_mask = cvCreateImage(sz,8,1);
-		cvCvtColor(img,hsv_image,CV_BGR2HSV);
-		CvScalar hsv_min = cvScalar(H_MIN,S_MIN,V_MIN,0);
-		CvScalar hsv_max = cvScalar(H_MAX,S_MAX,V_MAX,0);
-		cvInRangeS(hsv_image, hsv_min, hsv_max, hsv_mask);
+
+		hsv_mask = filter(img);
 
 		cvNamedWindow("hsv-msk",1); cvShowImage("hsv-msk", hsv_mask);
 		cvWaitKey(10);
@@ -92,12 +101,38 @@ int main(int argc, char** argv)
 
 	if(argc != 1)
 	{
+		bool webcam;
+
 		// Robot selection
 		if(atoi(argv[1]) == 1) {nao = "1";}
 		if(atoi(argv[1]) == 2) {nao = "2";}
 
-		ImageConverter ic;
-		ros::spin();
+		if(atoi(argv[1]) == 0) {webcam = true;}
+
+		if(!webcam)
+		{
+			ImageConverter ic;
+			ros::spin();
+		}
+		else
+		{
+			int id;
+			ros::NodeHandle pnh("~");
+			pnh.param("id",id,int(0));
+			CvCapture* capture = cvCaptureFromCAM(id);
+
+			while(ros::ok())
+			{
+
+				IplImage* img = cvQueryFrame(capture);
+				IplImage* hsv_mask = filter(img);
+				cvNamedWindow("Camera_Output",1); cvShowImage("Camera_Output", hsv_mask);
+				cvWaitKey(10);
+			}
+
+			cvReleaseCapture(&capture);
+		}
+
 		cvDestroyAllWindows();
 	}
 

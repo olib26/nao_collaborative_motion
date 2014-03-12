@@ -16,14 +16,14 @@ int height,width;
 double k;
 
 // Detector frame size
-const int sx_min = 10;
-const int sy_min = 15;
+const int sx_min = 25;
+const int sy_min = 25;
 const int sx_max = 200;
 const int sy_max = 300;
 
 // Diffusion variance
 const int sigma_diffusion = 8; // Position
-const int s_diffusion = 2; // Size
+const int s_diffusion = 5; // Size
 
 // Object coordinate
 struct Robot
@@ -33,7 +33,11 @@ struct Robot
 	int sx,sy;
 	double vx_temp,vy_temp;
 	double absoluteBearing,relativeBearing;
-	Robot () : x(0),y(0),x_temp(0),y_temp(0),sx(sx_min),sy(sy_min),vx_temp(0),vy_temp(0),absoluteBearing(0),relativeBearing(0) {}
+
+	// Init temp position
+	bool initTempPosition;
+
+	Robot () : x(0),y(0),x_temp(0),y_temp(0),sx(sx_min),sy(sy_min),vx_temp(0),vy_temp(0),absoluteBearing(0),relativeBearing(0),initTempPosition(false) {}
 };
 Robot r1,r2;
 

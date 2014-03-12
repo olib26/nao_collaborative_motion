@@ -300,8 +300,8 @@ void particleFilter(IplImage* img)
 		// Keep particle with maximum weight
 		if(particles[i].w > maxWeight)
 		{
-			x = particles[i].x;
-			y = particles[i].y;
+			x = particles[i].x + particles[i].sx/2;
+			y = particles[i].y + particles[i].sy/2;
 			sx = particles[i].sx;
 			sy = particles[i].sy;
 			maxWeight = particles[i].w;
@@ -326,7 +326,7 @@ void imageProcessing(IplImage* img)
 
 	// HSV Conversion and Thresholding
 	cvCvtColor(img,hsv_image,CV_BGR2HSV);
-	cvInRangeS(hsv_image,hsv_min,hsv_max, hsv_mask);
+	cvInRangeS(hsv_image,hsv_min,hsv_max,hsv_mask);
 
 	// Init
 	if((height != sz.height) | (width != sz.width))
@@ -378,6 +378,16 @@ public:
 	{
 	}
 
+	IplImage* crop(IplImage* src,CvRect roi)
+	{
+		IplImage* cropped = cvCreateImage(cvSize(roi.width,roi.height),src->depth,src->nChannels);
+		cvSetImageROI(src,roi);
+		cvCopy(src,cropped);
+		cvResetImageROI(src);
+
+		return cropped;
+	}
+
 	void imageConv(const sensor_msgs::ImageConstPtr& msg)
 	{
 		cv_bridge::CvImagePtr cv_ptr;
@@ -392,7 +402,14 @@ public:
 		}
 
 		img = new IplImage(cv_ptr->image);
-		imageProcessing(img);
+
+		// Crop
+		CvSize sz = cvGetSize(img);
+		cv::Rect roi(0,cutHeight-1,sz.width,sz.height-cutHeight);
+		IplImage* cropped = crop(img,roi);
+
+
+		imageProcessing(cropped);
 	}
 };
 
@@ -466,25 +483,21 @@ public:
 		}
 
 		// Robot not detected
-		/*
 		if(!robotDetected)
 		{
 			set_feedback(FAILURE);
 			finalize();
 			return 1;
 		}
-		*/
 
 		// Close to the other robot
 		ROS_INFO("Depth = %f, r = %f, l = %f",depth,right,left);
-
 		if(((right < dist_threshold) | (left < dist_threshold)) & (depth < dist_threshold))
 		{
 			set_feedback(SUCCESS);
 			finalize();
 			return 1;
 		}
-
 
 		// Controller
 		int y_rel = y - width/2;

@@ -8,6 +8,7 @@
 
 #include <ros/ros.h>
 #include <alproxies/almemoryproxy.h>
+#include <alproxies/alsonarproxy.h>
 #include <nao_custom/Sonar.h>
 
 using namespace nao_custom;
@@ -33,6 +34,13 @@ int main(int argc, char** argv)
 	ros::Time timestamp;
 	Sonar sonar_msg;
 
+	// Connect to ALSonar module.
+	AL::ALSonarProxy sonarProxy = AL::ALSonarProxy(NAO_IP,NAO_PORT);
+
+	// Subscribe to sonars, this will launch sonars (at hardware level) and start data acquisition.
+	std::string name = "nao_sonar";
+	sonarProxy.subscribe(name);
+
 	// Memory proxy
 	AL::ALMemoryProxy* memory_proxy_ptr;
 	memory_proxy_ptr = new AL::ALMemoryProxy(NAO_IP,NAO_PORT);
@@ -52,6 +60,9 @@ int main(int argc, char** argv)
 		loop_rate.sleep();
 		ros::spinOnce();
 	}
+
+	// Stopping sonar hardware
+	sonarProxy.unsubscribe(name);
 
 	return 0;
 }
