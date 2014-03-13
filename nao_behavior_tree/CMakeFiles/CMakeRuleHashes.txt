@@ -48,4 +48,4 @@ d567c8942edd2945bcf10d7ecc845967 src/nao_behavior_tree/msg/_ROSFeedback.py
 c6466c361c987620cdce8ad34a020293 src/nao_behavior_tree/msg/_ROSGoal.py
 e36069ba6d7f2d865e123a8e82c7aaf9 src/nao_behavior_tree/msg/_ROSResult.py
 b64ceff1fc821a990c4cc3642f0b2701 src/nao_behavior_tree/msg/_Sonar.py
-8d3abf9d9d27288de6947078249c1ee7 src/nao_behavior_tree/msg/__init__.py
+134e313dd4c1f95f77bc6a7d71db5cb2 src/nao_behavior_tree/msg/__init__.py

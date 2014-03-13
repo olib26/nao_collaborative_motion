@@ -5,11 +5,14 @@
 <pydev_property name="org.python.pydev.PYTHON_PROJECT_INTERPRETER">Default</pydev_property>
 <pydev_property name="org.python.pydev.PYTHON_PROJECT_VERSION">python 2.6</pydev_property>
 <pydev_pathproperty name="org.python.pydev.PROJECT_EXTERNAL_SOURCE_PATH">
+<path>/opt/ros/fuerte/stacks/pluginlib/src</path>
+<path>/opt/ros/fuerte/stacks/pluginlib/lib</path>
+<path>/home/olivier/ros_workspace/nao_custom/src</path>
 <path>/home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/src</path>
-<path>/home/olivier/ros_workspace/nao/stacks/nao_robot/nao_driver/src</path>
-<path>/opt/ros/fuerte/stacks/diagnostics/diagnostic_updater/src</path>
-<path>/opt/ros/fuerte/stacks/diagnostics/diagnostic_updater/lib</path>
-<path>/home/olivier/ros_workspace/nao/stacks/humanoid_msgs/humanoid_nav_msgs/src</path>
+<path>/opt/ros/fuerte/stacks/image_common/image_transport/src</path>
+<path>/opt/ros/fuerte/stacks/image_common/image_transport/lib</path>
+<path>/opt/ros/fuerte/stacks/vision_opencv/cv_bridge/src</path>
+<path>/opt/ros/fuerte/stacks/vision_opencv/cv_bridge/lib</path>
 <path>/home/olivier/ros_workspace/collaborative_motion/src</path>
 <path>/opt/ros/fuerte/share/ros/core/mk</path>
 <path>/opt/ros/fuerte/lib/python2.7/dist-packages</path>

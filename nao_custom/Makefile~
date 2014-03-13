@@ -122,6 +122,19 @@ ROSBUILD_genmsg_lisp/fast:
 .PHONY : ROSBUILD_genmsg_lisp/fast
 
 #=============================================================================
+# Target rules for targets named ROSBUILD_genmsg_py
+
+# Build rule for target.
+ROSBUILD_genmsg_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ROSBUILD_genmsg_py
+.PHONY : ROSBUILD_genmsg_py
+
+# fast build rule for target.
+ROSBUILD_genmsg_py/fast:
+	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_py.dir/build.make CMakeFiles/ROSBUILD_genmsg_py.dir/build
+.PHONY : ROSBUILD_genmsg_py/fast
+
+#=============================================================================
 # Target rules for targets named ROSBUILD_gensrv_cpp
 
 # Build rule for target.
@@ -159,6 +172,19 @@ clean-test-results: cmake_check_build_system
 clean-test-results/fast:
 	$(MAKE) -f CMakeFiles/clean-test-results.dir/build.make CMakeFiles/clean-test-results.dir/build
 .PHONY : clean-test-results/fast
+
+#=============================================================================
+# Target rules for targets named nao_behavior
+
+# Build rule for target.
+nao_behavior: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nao_behavior
+.PHONY : nao_behavior
+
+# fast build rule for target.
+nao_behavior/fast:
+	$(MAKE) -f CMakeFiles/nao_behavior.dir/build.make CMakeFiles/nao_behavior.dir/build
+.PHONY : nao_behavior/fast
 
 #=============================================================================
 # Target rules for targets named nao_sonar
@@ -317,6 +343,21 @@ tests/fast:
 .PHONY : tests/fast
 
 # target to build an object file
+src/nao_behavior.o:
+	$(MAKE) -f CMakeFiles/nao_behavior.dir/build.make CMakeFiles/nao_behavior.dir/src/nao_behavior.o
+.PHONY : src/nao_behavior.o
+
+# target to preprocess a source file
+src/nao_behavior.i:
+	$(MAKE) -f CMakeFiles/nao_behavior.dir/build.make CMakeFiles/nao_behavior.dir/src/nao_behavior.i
+.PHONY : src/nao_behavior.i
+
+# target to generate assembly for a file
+src/nao_behavior.s:
+	$(MAKE) -f CMakeFiles/nao_behavior.dir/build.make CMakeFiles/nao_behavior.dir/src/nao_behavior.s
+.PHONY : src/nao_behavior.s
+
+# target to build an object file
 src/nao_sonar.o:
 	$(MAKE) -f CMakeFiles/nao_sonar.dir/build.make CMakeFiles/nao_sonar.dir/src/nao_sonar.o
 .PHONY : src/nao_sonar.o
@@ -339,10 +380,12 @@ help:
 	@echo "... depend"
 	@echo "... ROSBUILD_genmsg_cpp"
 	@echo "... ROSBUILD_genmsg_lisp"
+	@echo "... ROSBUILD_genmsg_py"
 	@echo "... ROSBUILD_gensrv_cpp"
 	@echo "... ROSBUILD_gensrv_lisp"
 	@echo "... clean-test-results"
 	@echo "... edit_cache"
+	@echo "... nao_behavior"
 	@echo "... nao_sonar"
 	@echo "... rebuild_cache"
 	@echo "... rosbuild_precompile"
@@ -356,6 +399,9 @@ help:
 	@echo "... test-results"
 	@echo "... test-results-run"
 	@echo "... tests"
+	@echo "... src/nao_behavior.o"
+	@echo "... src/nao_behavior.i"
+	@echo "... src/nao_behavior.s"
 	@echo "... src/nao_sonar.o"
 	@echo "... src/nao_sonar.i"
 	@echo "... src/nao_sonar.s"

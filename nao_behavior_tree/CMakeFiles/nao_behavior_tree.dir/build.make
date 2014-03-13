@@ -46,51 +46,51 @@ include CMakeFiles/nao_behavior_tree.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/nao_behavior_tree.dir/flags.make
 
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o: CMakeFiles/nao_behavior_tree.dir/flags.make
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o: src/behavior_tree/display.cpp
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o: CMakeFiles/nao_behavior_tree.dir/flags.make
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o: src/behavior_tree/navigation.cpp
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o -c /home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/display.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o -c /home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/navigation.cpp
 
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -E /home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/display.cpp > CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.i
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -E /home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/navigation.cpp > CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.i
 
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -S /home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/display.cpp -o CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.s
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -S /home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/navigation.cpp -o CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.s
 
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o.requires:
-.PHONY : CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o.requires
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o.requires:
+.PHONY : CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o.requires
 
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o.provides: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o.requires
-	$(MAKE) -f CMakeFiles/nao_behavior_tree.dir/build.make CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o.provides.build
-.PHONY : CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o.provides
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o.provides: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o.requires
+	$(MAKE) -f CMakeFiles/nao_behavior_tree.dir/build.make CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o.provides.build
+.PHONY : CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o.provides
 
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o.provides.build: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o.provides.build: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o
 
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o: CMakeFiles/nao_behavior_tree.dir/flags.make
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o: src/behavior_tree/keystroke.cpp
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o: CMakeFiles/nao_behavior_tree.dir/flags.make
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o: src/behavior_tree/rosaction.cpp
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_2)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o -c /home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/keystroke.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o -c /home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/rosaction.cpp
 
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -E /home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/keystroke.cpp > CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.i
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -E /home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/rosaction.cpp > CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.i
 
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -S /home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/keystroke.cpp -o CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.s
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -S /home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/rosaction.cpp -o CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.s
 
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o.requires:
-.PHONY : CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o.requires
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o.requires:
+.PHONY : CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o.requires
 
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o.provides: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o.requires
-	$(MAKE) -f CMakeFiles/nao_behavior_tree.dir/build.make CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o.provides.build
-.PHONY : CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o.provides
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o.provides: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o.requires
+	$(MAKE) -f CMakeFiles/nao_behavior_tree.dir/build.make CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o.provides.build
+.PHONY : CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o.provides
 
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o.provides.build: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o.provides.build: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o
 
 CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/node.o: CMakeFiles/nao_behavior_tree.dir/flags.make
 CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/node.o: src/behavior_tree/node.cpp
@@ -138,32 +138,9 @@ CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/main.o.provides: CMakeFiles/n
 
 CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/main.o.provides.build: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/main.o
 
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o: CMakeFiles/nao_behavior_tree.dir/flags.make
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o: src/behavior_tree/rosaction.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_5)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o -c /home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/rosaction.cpp
-
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -E /home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/rosaction.cpp > CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.i
-
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -S /home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/rosaction.cpp -o CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.s
-
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o.requires:
-.PHONY : CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o.requires
-
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o.provides: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o.requires
-	$(MAKE) -f CMakeFiles/nao_behavior_tree.dir/build.make CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o.provides.build
-.PHONY : CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o.provides
-
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o.provides.build: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o
-
 CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/parser.o: CMakeFiles/nao_behavior_tree.dir/flags.make
 CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/parser.o: src/behavior_tree/parser.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/parser.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/parser.o -c /home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/parser.cpp
 
@@ -184,49 +161,72 @@ CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/parser.o.provides: CMakeFiles
 
 CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/parser.o.provides.build: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/parser.o
 
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o: CMakeFiles/nao_behavior_tree.dir/flags.make
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o: src/behavior_tree/navigation.cpp
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o: CMakeFiles/nao_behavior_tree.dir/flags.make
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o: src/behavior_tree/display.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_6)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o -c /home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/display.cpp
+
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -E /home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/display.cpp > CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.i
+
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -S /home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/display.cpp -o CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.s
+
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o.requires:
+.PHONY : CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o.requires
+
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o.provides: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o.requires
+	$(MAKE) -f CMakeFiles/nao_behavior_tree.dir/build.make CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o.provides.build
+.PHONY : CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o.provides
+
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o.provides.build: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o
+
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o: CMakeFiles/nao_behavior_tree.dir/flags.make
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o: src/behavior_tree/keystroke.cpp
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_7)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o -c /home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/navigation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o -c /home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/keystroke.cpp
 
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -E /home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/navigation.cpp > CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.i
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -E /home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/keystroke.cpp > CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.i
 
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -S /home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/navigation.cpp -o CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.s
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -S /home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/keystroke.cpp -o CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.s
 
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o.requires:
-.PHONY : CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o.requires
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o.requires:
+.PHONY : CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o.requires
 
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o.provides: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o.requires
-	$(MAKE) -f CMakeFiles/nao_behavior_tree.dir/build.make CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o.provides.build
-.PHONY : CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o.provides
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o.provides: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o.requires
+	$(MAKE) -f CMakeFiles/nao_behavior_tree.dir/build.make CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o.provides.build
+.PHONY : CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o.provides
 
-CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o.provides.build: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o
+CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o.provides.build: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o
 
 # Object files for target nao_behavior_tree
 nao_behavior_tree_OBJECTS = \
-"CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o" \
-"CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o" \
+"CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o" \
+"CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o" \
 "CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/node.o" \
 "CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/main.o" \
-"CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o" \
 "CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/parser.o" \
-"CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o"
+"CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o" \
+"CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o"
 
 # External object files for target nao_behavior_tree
 nao_behavior_tree_EXTERNAL_OBJECTS =
 
-bin/nao_behavior_tree: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o
-bin/nao_behavior_tree: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o
+bin/nao_behavior_tree: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o
+bin/nao_behavior_tree: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o
 bin/nao_behavior_tree: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/node.o
 bin/nao_behavior_tree: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/main.o
-bin/nao_behavior_tree: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o
 bin/nao_behavior_tree: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/parser.o
-bin/nao_behavior_tree: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o
+bin/nao_behavior_tree: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o
+bin/nao_behavior_tree: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o
 bin/nao_behavior_tree: /usr/local/lib/libopencv_calib3d.so.2.4.8
 bin/nao_behavior_tree: /usr/local/lib/libopencv_contrib.so.2.4.8
 bin/nao_behavior_tree: /usr/local/lib/libopencv_core.so.2.4.8
@@ -276,13 +276,13 @@ bin/nao_behavior_tree: CMakeFiles/nao_behavior_tree.dir/link.txt
 CMakeFiles/nao_behavior_tree.dir/build: bin/nao_behavior_tree
 .PHONY : CMakeFiles/nao_behavior_tree.dir/build
 
-CMakeFiles/nao_behavior_tree.dir/requires: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o.requires
-CMakeFiles/nao_behavior_tree.dir/requires: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o.requires
+CMakeFiles/nao_behavior_tree.dir/requires: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o.requires
+CMakeFiles/nao_behavior_tree.dir/requires: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o.requires
 CMakeFiles/nao_behavior_tree.dir/requires: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/node.o.requires
 CMakeFiles/nao_behavior_tree.dir/requires: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/main.o.requires
-CMakeFiles/nao_behavior_tree.dir/requires: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o.requires
 CMakeFiles/nao_behavior_tree.dir/requires: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/parser.o.requires
-CMakeFiles/nao_behavior_tree.dir/requires: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o.requires
+CMakeFiles/nao_behavior_tree.dir/requires: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/display.o.requires
+CMakeFiles/nao_behavior_tree.dir/requires: CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/keystroke.o.requires
 .PHONY : CMakeFiles/nao_behavior_tree.dir/requires
 
 CMakeFiles/nao_behavior_tree.dir/clean:
