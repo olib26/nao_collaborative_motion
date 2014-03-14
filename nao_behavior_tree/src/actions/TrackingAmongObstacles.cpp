@@ -350,6 +350,14 @@ public:
 		}
 
 		img = new IplImage(cv_ptr->image);
+
+		// Remove top
+		CvSize sz = cvGetSize(img);
+		CvPoint p1 = cvPoint(0,0);
+		CvPoint p2 = cvPoint(sz.width-1,cutHeight-1);
+		CvScalar color = cvScalar(0,0,0);
+		cvRectangle(img,p1,p2,color,CV_FILLED);
+
 		imageProcessing(img);
 	}
 };
@@ -388,6 +396,8 @@ double relativeBearing()
 
 	Eigen::Vector4f vec(v(0),v(1),v(2),1);
 	vec = transMat*vec;
+
+	ROS_INFO("Vec: x = %i, y = %i",vec(0),vec(1));
 
 	// Projection on the floor
 	// -HFOV/2 <= alpha <= HFOV/2
@@ -451,10 +461,10 @@ public:
 		AL::ALValue stiffness_name("Body");
 		AL::ALValue stiffness(1.0f);
 		AL::ALValue stiffness_time(1.0f);
-		motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
+		//motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
 
 		// Init moving
-		motion_proxy_ptr->moveInit();
+		//motion_proxy_ptr->moveInit();
 
         // Robot detected
         robotDetected = true;
@@ -492,9 +502,9 @@ public:
 		// Robot not detected
 		if(!robotDetected)
 		{
-			set_feedback(FAILURE);
-			finalize();
-			return 1;
+			//set_feedback(FAILURE);
+			//finalize();
+			//return 1;
 		}
 
 		// Publish angles

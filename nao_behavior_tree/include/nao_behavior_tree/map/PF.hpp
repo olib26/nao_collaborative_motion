@@ -16,8 +16,8 @@ int height,width;
 double k;
 
 // Detector frame size
-const int sx_min = 25;
-const int sy_min = 25;
+const int sx_min = 15;
+const int sy_min = 15;
 const int sx_max = 200;
 const int sy_max = 300;
 
