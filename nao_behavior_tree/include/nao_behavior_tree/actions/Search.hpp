@@ -34,7 +34,7 @@ const int sy_min = 30;
 const int sx_max = 200;
 const int sy_max = 300;
 
-// Diffusion variance
+// Diffusion standard deviation
 const int sigma_diffusion = 50; // Position
 const int s_diffusion = 10; // Size
 

@@ -29,13 +29,11 @@ ros::Publisher bearing_pub;
 
 // Image size
 int height,width;
+const int cutHeight = 100;
 
 // Camera parameters
 const double VFOV = 47.6*M_PI/180;
 const double HFOV = 60.9*M_PI/180;
-
-// Nao head spot
-const double H = 0.036;
 
 // Point in integral image
 struct Point
@@ -46,15 +44,15 @@ struct Point
 
 // Detector frame size
 int sx,sy;
-const int sx_min = 10;
-const int sy_min = 15;
+const int sx_min = 20;
+const int sy_min = 30;
 const int sx_max = 200;
 const int sy_max = 300;
 
 
-// Diffusion variance
-const int sigma_diffusion = 8; // Position
-const int s_diffusion = 2; // Size
+// Diffusion standard deviation
+const int sigma_diffusion = 50; // Position
+const int s_diffusion = 10; // Size
 
 // Object coordinate
 int x,y;
@@ -75,7 +73,7 @@ Particle* particles = new Particle[N];
 const double eps = 1E-3;
 
 // Variance Threshold
-const double Var_max = 1000;
+const double StD_max = 1000;
 
 // Robot detection
 bool robotDetected;

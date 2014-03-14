@@ -90,10 +90,10 @@ void showParticles(IplImage* img)
 }
 
 
-std::pair<double,double> particlesVariance()
+std::pair<double,double> particlesStD()
 {
 	std::pair<double,double> M; // Mean
-	std::pair<double,double> V;	// Variance
+	std::pair<double,double> V;	// Standard deviation
 
 	for(int i = 0; i < N; i++)
 	{
@@ -241,6 +241,10 @@ void particleFilter(IplImage* img)
 		cdf[i] = cdf[i-1] + particles[i].w;
 	}
 
+	// Reset robot parameters
+	x = y = sx = sy = 0;
+	double maxWeight;
+
 	double r = uniformRandom()/N;
 	for(int i = 0; i < N; i++)
 	{
@@ -252,12 +256,24 @@ void particleFilter(IplImage* img)
 				break;
 			}
 		}
+
+		// Keep particle with maximum weight
+		if(particles[i].w > maxWeight)
+		{
+			x = particles[i].x + particles[i].sx/2;
+			y = particles[i].y + particles[i].sy/2;
+			sx = particles[i].sx;
+			sy = particles[i].sy;
+			maxWeight = particles[i].w;
+		}
+
+		// Change weight
 		particles[i].w = (double)1/N;
 		r += (double)1/N;
 	}
 
 	// Update object coordinate
-	robotCoordinate();
+	//robotCoordinate();
 }
 
 
@@ -284,9 +300,9 @@ void imageProcessing(IplImage* img)
 	// Filter
 	particleFilter(hsv_mask);
 
-	// Compute variance
-	std::pair<double,double> V = particlesVariance();
-	if((V.first > Var_max) & (V.second > Var_max))
+	// Compute standard deviation
+	std::pair<double,double> V = particlesStD();
+	if((V.first > StD_max) & (V.second > StD_max))
 	{
 		robotDetected = false;
 	}
