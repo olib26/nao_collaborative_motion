@@ -304,7 +304,7 @@ void imageProcessing(IplImage* img)
 	std::pair<double,double> V = particlesStD();
 	if((V.first > StD_max) & (V.second > StD_max))
 	{
-		robotDetected = false;
+		//robotDetected = false;
 	}
 
 	// Draw robot
@@ -397,20 +397,18 @@ double relativeBearing()
 	Eigen::Vector4f vec(v(0),v(1),v(2),1);
 	vec = transMat*vec;
 
-	ROS_INFO("Vec: x = %i, y = %i",vec(0),vec(1));
+	ROS_INFO("Vec: x = %i, y = %i",vec(0)/vec(3),vec(1)/vec(3));
 
 	// Projection on the floor
 	// -HFOV/2 <= alpha <= HFOV/2
 	double alpha = atan((double)(vec(1)/vec(0)));
 
-	return alpha;
+	return -alpha;
 }
 
 
-double computeBearing()
+double absoluteBearing()
 {
-	double alpha = relativeBearing();
-
 	double theta;
 	if(r1.x == r2.x)
 	{
@@ -423,12 +421,11 @@ double computeBearing()
 		if((r2.x-r1.x) < 0) {theta += M_PI;}
 	}
 
-	double phi = theta-alpha;
 	// Angle between ]-pi,pi]
-	while(phi > M_PI) {phi -= 2*M_PI;}
-	while(phi <= -M_PI) {phi += 2*M_PI;}
+	while(theta > M_PI) {theta -= 2*M_PI;}
+	while(theta <= -M_PI) {theta += 2*M_PI;}
 
-	return phi;
+	return theta;
 }
 
 
@@ -461,10 +458,10 @@ public:
 		AL::ALValue stiffness_name("Body");
 		AL::ALValue stiffness(1.0f);
 		AL::ALValue stiffness_time(1.0f);
-		//motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
+		motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
 
 		// Init moving
-		//motion_proxy_ptr->moveInit();
+		motion_proxy_ptr->moveInit();
 
         // Robot detected
         robotDetected = true;
@@ -510,7 +507,7 @@ public:
 		// Publish angles
 		nao_behavior_tree::Bearing bearing;
 		bearing.relative = relativeBearing();
-		bearing.absolute = computeBearing();
+		bearing.absolute = absoluteBearing();
 		bearing.robotDetected = robotDetected;
 		bearing_pub.publish(bearing);
 

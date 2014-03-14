@@ -43,7 +43,7 @@ Nao_H25_V40 {
   cameraPixelSize 0.15
 }
 Nao_H25_V40 {
-  translation 0.908252 0.32 -0.510186
+  translation 0.900486 0.32 -0.232286
   rotation 0 0.707107 0.707107 3.14159
   cameraWidth 1024
   cameraHeight 960
