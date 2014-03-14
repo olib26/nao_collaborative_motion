@@ -77,7 +77,6 @@ float robotDepth()
 
 void robotCoordinate()
 {
-	/*
 	x = y = sx = sy = 0;
 	for(int i = 0; i < N; i++)
 	{
@@ -90,7 +89,6 @@ void robotCoordinate()
 	y = y/N;
 	sx = sx/N;
 	sy = sy/N;
-	*/
 
 	// Estimate depth
 	depth = robotDepth();
@@ -313,7 +311,10 @@ void particleFilter(IplImage* img)
 	}
 
 	// Update object coordinate
-	robotCoordinate();
+	//robotCoordinate();
+
+	// Depth
+	depth = robotDepth();
 }
 
 
@@ -378,15 +379,6 @@ public:
 	{
 	}
 
-	IplImage* crop(IplImage* src,CvRect roi)
-	{
-		IplImage* cropped = cvCreateImage(cvSize(roi.width,roi.height),src->depth,src->nChannels);
-		cvSetImageROI(src,roi);
-		cvCopy(src,cropped);
-		cvResetImageROI(src);
-
-		return cropped;
-	}
 
 	void imageConv(const sensor_msgs::ImageConstPtr& msg)
 	{
@@ -403,13 +395,14 @@ public:
 
 		img = new IplImage(cv_ptr->image);
 
-		// Crop
+		// Remove top
 		CvSize sz = cvGetSize(img);
-		cv::Rect roi(0,cutHeight-1,sz.width,sz.height-cutHeight);
-		IplImage* cropped = crop(img,roi);
+		CvPoint p1 = cvPoint(0,0);
+		CvPoint p2 = cvPoint(sz.width-1,cutHeight-1);
+		CvScalar color = cvScalar(0,0,0);
+		cvRectangle(img,p1,p2,color,CV_FILLED);
 
-
-		imageProcessing(cropped);
+		imageProcessing(img);
 	}
 };
 

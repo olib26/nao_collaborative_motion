@@ -290,6 +290,14 @@ public:
 		}
 
 		img = new IplImage(cv_ptr->image);
+
+		// Remove top
+		CvSize sz = cvGetSize(img);
+		CvPoint p1 = cvPoint(0,0);
+		CvPoint p2 = cvPoint(sz.width-1,cutHeight-1);
+		CvScalar color = cvScalar(0,0,0);
+		cvRectangle(img,p1,p2,color,CV_FILLED);
+
 		imageProcessing(img);
 	}
 };

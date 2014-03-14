@@ -1,8 +1,8 @@
 <launch>
   
   <node pkg="naos_localization" type="main" name="main" args="1" output="screen">
-    <param name="NAO_IP" value="192.168.1.19"/>
-    <param name="NAO_PORT" value="9559"/>
+    <param name="NAO_IP" value="127.0.0.1"/>
+    <param name="NAO_PORT" value="9561"/>
 
     <param name="H_MIN" value="0"/>
     <param name="H_MAX" value="30"/>

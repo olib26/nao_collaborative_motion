@@ -18,6 +18,7 @@ ros::Publisher cmd_pub;
 
 // Image size
 int height,width;
+const int cutHeight = 100;
 
 // Point in integral image
 struct Point
