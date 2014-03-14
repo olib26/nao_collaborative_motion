@@ -587,8 +587,8 @@ int main(int argc, char** argv)
 		odom1_pub.publish(odom1);
 		odom2_pub.publish(odom2);
 
-		ROS_INFO("x1 = %f; y1 = %f",odom1.x,odom1.y);
-		ROS_INFO("x2 = %f; y2 = %f",odom2.x,odom2.y);
+		//ROS_INFO("x1 = %f; y1 = %f",odom1.x,odom1.y);
+		//ROS_INFO("x2 = %f; y2 = %f",odom2.x,odom2.y);
 
 		// Show results
 		showOdometry(img,odom1,r1,k);
