@@ -128,10 +128,10 @@ void showParticles(IplImage* img)
 }
 
 
-std::pair<double,double> particlesVariance()
+std::pair<double,double> particlesStD()
 {
 	std::pair<double,double> M; // Mean
-	std::pair<double,double> V;	// Variance
+	std::pair<double,double> V;	// Standard deviation
 
 	for(int i = 0; i < N; i++)
 	{
@@ -341,10 +341,10 @@ void imageProcessing(IplImage* img)
 	// Filter
 	particleFilter(hsv_mask);
 
-	// Compute variance
-	std::pair<double,double> V = particlesVariance();
-	ROS_INFO("Variances:  Vx = %f, Vy = %f",V.first,V.second);
-	if((V.first > Var_max) & (V.second > Var_max))
+	// Compute standard deviation
+	std::pair<double,double> V = particlesStD();
+	ROS_INFO("Standard deviation:  Vx = %f, Vy = %f",V.first,V.second);
+	if((V.first > StD_max) & (V.second > StD_max))
 	{
 		robotDetected = false;
 	}

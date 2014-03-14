@@ -53,8 +53,8 @@ Particle* particles = new Particle[N];
 const double eps = 1E-3;
 
 // Variance Threshold
-const double Var_minx = 1000;
-const double Var_miny = 1000;
+const double StD_minx = 1000;
+const double StD_miny = 1000;
 
 // Robot detection
 bool robotDetected;
