@@ -81,6 +81,7 @@ const double rho = 0.8;
 const double dist_threshold = 0.4;
 
 // Sonar
+bool sonar;
 double right = INFINITY;
 double left = INFINITY;
 

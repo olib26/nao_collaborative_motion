@@ -18,6 +18,7 @@
   <node pkg="nao_behavior_tree" type="nao_sonar" name="nao_sonar1" output="screen">
     <param name="NAO_IP" value="$(arg nao_ip1)"/>
     <param name="NAO_PORT" value="$(arg nao_port1)"/>
+    <param name="sonar" value="false"/>
     <remap from="sonar" to="sonar1"/>
   </node>
   

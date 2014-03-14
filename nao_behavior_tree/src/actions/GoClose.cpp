@@ -492,7 +492,17 @@ public:
 
 		// Close to the other robot
 		ROS_INFO("Depth = %f, r = %f, l = %f",depth,right,left);
-		if(((right < dist_threshold) | (left < dist_threshold)) & (depth < dist_threshold))
+		bool sonarCond;
+		if(sonar)
+		{
+			sonarCond = ((right < dist_threshold) | (left < dist_threshold));
+		}
+		else
+		{
+			sonarCond = true;
+		}
+
+		if(sonarCond & (depth < dist_threshold))
 		{
 			set_feedback(SUCCESS);
 			finalize();
@@ -546,6 +556,8 @@ int main(int argc, char** argv)
 		int NAO_PORT;
 		pnh.param("NAO_IP",NAO_IP,std::string("127.0.0.1"));
 		pnh.param("NAO_PORT",NAO_PORT,int(9559));
+		// Sonar ON/OFF
+		pnh.param("sonar",sonar,bool(false));
 		// HSV parameters
 		pnh.param("H_MIN",H_MIN,int(0));
 		pnh.param("H_MAX",H_MAX,int(0));
