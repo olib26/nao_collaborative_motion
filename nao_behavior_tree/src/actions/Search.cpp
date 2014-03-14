@@ -243,12 +243,12 @@ void imageProcessing(IplImage* img)
 	ROS_INFO("Standard deviation:  Vx = %f, Vy = %f",V.first,V.second);
 	if((V.first < StD_minx) & (V.second < StD_miny))
 	{
-		ROS_INFO("DETECTED");
+		//ROS_INFO("DETECTED");
 		robotDetected = true;
 	}
 
 	// Draw particles
-	showParticles(hsv_mask);
+	//showParticles(hsv_mask);
 
 	// Show result
 	cvNamedWindow("Search",1); cvShowImage("Search",hsv_mask);

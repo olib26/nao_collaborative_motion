@@ -25,7 +25,12 @@ const double VFOV = 47.6*M_PI/180;
 const double HFOV = 60.9*M_PI/180;
 
 // Nao head spot
-const double H = 0.045;
+const double H = 0.043;
+
+// Mean depth
+double depth_temp;
+int counter;
+const int nbSamplesMean = 10;
 
 // Point in integral image
 struct Point

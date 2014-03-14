@@ -107,7 +107,7 @@ int main(int argc, char** argv)
 		if(atoi(argv[1]) == 1) {nao = "1";}
 		if(atoi(argv[1]) == 2) {nao = "2";}
 
-		if(atoi(argv[1]) == 0) {webcam = true;}
+		if(atoi(argv[1]) == 0) {webcam = false;}
 
 		if(!webcam)
 		{

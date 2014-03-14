@@ -44,7 +44,7 @@
     <param name="H_MAX" value="10"/>
     <param name="S_MIN" value="160"/>
     <param name="S_MAX" value="255"/>
-    <param name="V_MIN" value="120"/>
+    <param name="V_MIN" value="160"/>
     <param name="V_MAX" value="255"/>
   </node>
   
@@ -55,7 +55,7 @@
     <param name="H_MAX" value="10"/>
     <param name="S_MIN" value="160"/>
     <param name="S_MAX" value="255"/>
-    <param name="V_MIN" value="120"/>
+    <param name="V_MIN" value="160"/>
     <param name="V_MAX" value="255"/>
   </node>
   

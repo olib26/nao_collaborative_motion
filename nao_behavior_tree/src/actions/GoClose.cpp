@@ -92,7 +92,6 @@ void robotCoordinate()
 
 	// Estimate depth
 	depth = robotDepth();
-	//ROS_INFO("Depth = %f",depth);
 }
 
 
@@ -313,8 +312,16 @@ void particleFilter(IplImage* img)
 	// Update object coordinate
 	//robotCoordinate();
 
-	// Depth
-	depth = robotDepth();
+	// Mean depth
+	depth_temp += robotDepth();
+	if(counter < nbSamplesMean) {counter++;}
+	else
+	{
+		depth = depth_temp/nbSamplesMean;
+
+		depth_temp = 0;
+		counter = 0;
+	}
 }
 
 
