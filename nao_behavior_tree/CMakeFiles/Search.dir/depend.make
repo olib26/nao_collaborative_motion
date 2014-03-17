@@ -3,6 +3,8 @@
 
 CMakeFiles/Search.dir/src/actions/Search.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/almotionproxy.h
 CMakeFiles/Search.dir/src/actions/Search.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/almotionproxyposthandler.h
+CMakeFiles/Search.dir/src/actions/Search.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/alrobotpostureproxy.h
+CMakeFiles/Search.dir/src/actions/Search.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/alrobotpostureproxyposthandler.h
 CMakeFiles/Search.dir/src/actions/Search.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/api.h
 CMakeFiles/Search.dir/src/actions/Search.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alvalue/alvalue.h
 CMakeFiles/Search.dir/src/actions/Search.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alvalue/config.h

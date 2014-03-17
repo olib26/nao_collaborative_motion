@@ -1,7 +1,7 @@
 #include "nao_behavior_tree/rosaction.h"
 
 #include <alproxies/almotionproxy.h>
-#include <nao_behavior_tree/Sonar.h>
+#include <alproxies/alrobotpostureproxy.h>
 
 #include <opencv/cv.h>
 #include <opencv/cxcore.h>
@@ -16,6 +16,7 @@
 #include <eigen3/Eigen/LU>
 
 #include <geometry_msgs/Twist.h>
+#include <nao_behavior_tree/Sonar.h>
 
 #include "nao_behavior_tree/actions/GoClose.hpp"
 
@@ -420,6 +421,7 @@ public:
 	bool init_;
 	ros::Duration execute_time_;
 	AL::ALMotionProxy* motion_proxy_ptr;
+	AL::ALRobotPostureProxy* robotPosture;
 	ImageConverter* ic;
 
 	GoClose(std::string name,std::string NAO_IP,int NAO_PORT) :
@@ -428,11 +430,13 @@ public:
 		execute_time_((ros::Duration) 0)
 	{
 		motion_proxy_ptr = new AL::ALMotionProxy(NAO_IP,NAO_PORT);
+		robotPosture = new AL::ALRobotPostureProxy(NAO_IP,NAO_PORT);
 	}
 
 	~GoClose()
 	{
 		delete motion_proxy_ptr;
+		delete robotPosture;
 		delete ic;
 	}
 
@@ -445,6 +449,9 @@ public:
 		AL::ALValue stiffness(1.0f);
 		AL::ALValue stiffness_time(1.0f);
 		motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
+
+		// Stand
+		robotPosture->goToPosture("Stand",0.5f);
 
 		// Init moving
 		motion_proxy_ptr->moveInit();

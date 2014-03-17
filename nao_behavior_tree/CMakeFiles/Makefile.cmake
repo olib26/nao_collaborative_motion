@@ -67,6 +67,7 @@ SET(CMAKE_MAKEFILE_PRODUCTS
 SET(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/GoClose.dir/DependInfo.cmake"
   "CMakeFiles/Greet.dir/DependInfo.cmake"
+  "CMakeFiles/HeadTracker.dir/DependInfo.cmake"
   "CMakeFiles/ROSBUILD_genaction_msgs.dir/DependInfo.cmake"
   "CMakeFiles/ROSBUILD_genmsg_cpp.dir/DependInfo.cmake"
   "CMakeFiles/ROSBUILD_genmsg_lisp.dir/DependInfo.cmake"

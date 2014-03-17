@@ -3,6 +3,8 @@
 
 CMakeFiles/GoClose.dir/src/actions/GoClose.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/almotionproxy.h
 CMakeFiles/GoClose.dir/src/actions/GoClose.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/almotionproxyposthandler.h
+CMakeFiles/GoClose.dir/src/actions/GoClose.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/alrobotpostureproxy.h
+CMakeFiles/GoClose.dir/src/actions/GoClose.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/alrobotpostureproxyposthandler.h
 CMakeFiles/GoClose.dir/src/actions/GoClose.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/api.h
 CMakeFiles/GoClose.dir/src/actions/GoClose.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alvalue/alvalue.h
 CMakeFiles/GoClose.dir/src/actions/GoClose.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alvalue/config.h

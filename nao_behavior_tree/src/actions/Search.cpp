@@ -1,6 +1,7 @@
 #include "nao_behavior_tree/rosaction.h"
 
 #include <alproxies/almotionproxy.h>
+#include <alproxies/alrobotpostureproxy.h>
 
 #include <opencv/cv.h>
 #include <opencv/cxcore.h>
@@ -310,6 +311,7 @@ public:
 	ros::Duration execute_time_;
 	ImageConverter* ic;
 	AL::ALMotionProxy* motion_proxy_ptr;
+	AL::ALRobotPostureProxy* robotPosture;
 
 	Search(std::string name,std::string NAO_IP,int NAO_PORT) :
 		ROSAction(name),
@@ -317,11 +319,13 @@ public:
 		execute_time_((ros::Duration) 0)
 	{
 		motion_proxy_ptr = new AL::ALMotionProxy(NAO_IP,NAO_PORT);
+		robotPosture = new AL::ALRobotPostureProxy(NAO_IP,NAO_PORT);
 	}
 
 	~Search()
 	{
 		delete motion_proxy_ptr;
+		delete robotPosture;
 		delete ic;
 	}
 
@@ -334,6 +338,9 @@ public:
 		AL::ALValue stiffness(1.0f);
 		AL::ALValue stiffness_time(1.0f);
 		motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
+
+		// Stand
+		robotPosture->goToPosture("Stand",0.5f);
 
 		// Init moving
 		motion_proxy_ptr->moveInit();

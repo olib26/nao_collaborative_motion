@@ -122,6 +122,19 @@ Greet/fast:
 .PHONY : Greet/fast
 
 #=============================================================================
+# Target rules for targets named HeadTracker
+
+# Build rule for target.
+HeadTracker: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 HeadTracker
+.PHONY : HeadTracker
+
+# fast build rule for target.
+HeadTracker/fast:
+	$(MAKE) -f CMakeFiles/HeadTracker.dir/build.make CMakeFiles/HeadTracker.dir/build
+.PHONY : HeadTracker/fast
+
+#=============================================================================
 # Target rules for targets named ROSBUILD_genaction_msgs
 
 # Build rule for target.
@@ -503,6 +516,21 @@ src/actions/Greet.s:
 .PHONY : src/actions/Greet.s
 
 # target to build an object file
+src/actions/HeadTracker.o:
+	$(MAKE) -f CMakeFiles/HeadTracker.dir/build.make CMakeFiles/HeadTracker.dir/src/actions/HeadTracker.o
+.PHONY : src/actions/HeadTracker.o
+
+# target to preprocess a source file
+src/actions/HeadTracker.i:
+	$(MAKE) -f CMakeFiles/HeadTracker.dir/build.make CMakeFiles/HeadTracker.dir/src/actions/HeadTracker.i
+.PHONY : src/actions/HeadTracker.i
+
+# target to generate assembly for a file
+src/actions/HeadTracker.s:
+	$(MAKE) -f CMakeFiles/HeadTracker.dir/build.make CMakeFiles/HeadTracker.dir/src/actions/HeadTracker.s
+.PHONY : src/actions/HeadTracker.s
+
+# target to build an object file
 src/actions/Search.o:
 	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/src/actions/Search.o
 .PHONY : src/actions/Search.o
@@ -641,6 +669,7 @@ src/behavior_tree/parser.s:
 src/behavior_tree/rosaction.o:
 	$(MAKE) -f CMakeFiles/GoClose.dir/build.make CMakeFiles/GoClose.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/Greet.dir/build.make CMakeFiles/Greet.dir/src/behavior_tree/rosaction.o
+	$(MAKE) -f CMakeFiles/HeadTracker.dir/build.make CMakeFiles/HeadTracker.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/Stop.dir/build.make CMakeFiles/Stop.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.o
@@ -652,6 +681,7 @@ src/behavior_tree/rosaction.o:
 src/behavior_tree/rosaction.i:
 	$(MAKE) -f CMakeFiles/GoClose.dir/build.make CMakeFiles/GoClose.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/Greet.dir/build.make CMakeFiles/Greet.dir/src/behavior_tree/rosaction.i
+	$(MAKE) -f CMakeFiles/HeadTracker.dir/build.make CMakeFiles/HeadTracker.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/Stop.dir/build.make CMakeFiles/Stop.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.i
@@ -663,6 +693,7 @@ src/behavior_tree/rosaction.i:
 src/behavior_tree/rosaction.s:
 	$(MAKE) -f CMakeFiles/GoClose.dir/build.make CMakeFiles/GoClose.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/Greet.dir/build.make CMakeFiles/Greet.dir/src/behavior_tree/rosaction.s
+	$(MAKE) -f CMakeFiles/HeadTracker.dir/build.make CMakeFiles/HeadTracker.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/Stop.dir/build.make CMakeFiles/Stop.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.s
@@ -738,6 +769,7 @@ help:
 	@echo "... depend"
 	@echo "... GoClose"
 	@echo "... Greet"
+	@echo "... HeadTracker"
 	@echo "... ROSBUILD_genaction_msgs"
 	@echo "... ROSBUILD_genmsg_cpp"
 	@echo "... ROSBUILD_genmsg_lisp"
@@ -773,6 +805,9 @@ help:
 	@echo "... src/actions/Greet.o"
 	@echo "... src/actions/Greet.i"
 	@echo "... src/actions/Greet.s"
+	@echo "... src/actions/HeadTracker.o"
+	@echo "... src/actions/HeadTracker.i"
+	@echo "... src/actions/HeadTracker.s"
 	@echo "... src/actions/Search.o"
 	@echo "... src/actions/Search.i"
 	@echo "... src/actions/Search.s"
