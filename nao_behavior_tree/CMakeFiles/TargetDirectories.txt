@@ -1,4 +1,5 @@
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/GoClose.dir
+/home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/GoToPoint.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/Greet.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/HeadTracker.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/ROSBUILD_genaction_msgs.dir

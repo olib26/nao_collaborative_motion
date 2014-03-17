@@ -66,6 +66,7 @@ SET(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 SET(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/GoClose.dir/DependInfo.cmake"
+  "CMakeFiles/GoToPoint.dir/DependInfo.cmake"
   "CMakeFiles/Greet.dir/DependInfo.cmake"
   "CMakeFiles/HeadTracker.dir/DependInfo.cmake"
   "CMakeFiles/ROSBUILD_genaction_msgs.dir/DependInfo.cmake"

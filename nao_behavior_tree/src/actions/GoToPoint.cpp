@@ -1,20 +1,12 @@
 #include "nao_behavior_tree/rosaction.h"
 
 #include <alproxies/almotionproxy.h>
+#include <alproxies/alrobotpostureproxy.h>
 
 #include <geometry_msgs/Twist.h>
 #include <nao_behavior_tree/Odometry.h>
 
 #include "nao_behavior_tree/actions/GoToPoint.hpp"
-
-
-bool useSensorValues = true; // use Magnetic Rotary Encoder (MRE) sensor values
-double dtheta,theta_temp;
-Robot r;
-Point p;
-const double rho = 0.5;
-const double k = 1;
-const double angleThreshold = 10;
 
 
 double modulo2Pi(double theta)
@@ -41,6 +33,16 @@ double angle(double dx, double dy)
 	}
 
 	theta = modulo2Pi(theta);
+
+	return theta;
+}
+
+
+void updateBearing()
+{
+	std::vector<float> odometry = motion_proxy_ptr->getRobotPosition(useSensorValues);
+	dtheta = odometry.at(2) - theta_temp;
+	r.theta += dtheta;
 }
 
 
@@ -55,14 +57,6 @@ void estimateBearing()
 		// Use MRE sensor
 		updateBearing();
 	}
-}
-
-
-void updateBearing()
-{
-	std::vector<float> odometry = motion_proxy_ptr->getRobotPosition(useSensorValues);
-	dtheta = odometry.at(2) - theta_temp;
-	r.theta += dtheta;
 }
 
 
@@ -85,7 +79,7 @@ geometry_msgs::Twist controller()
 	if(angular > 1) {angular = 1;}
 	if(angular < -1) {angular = -1;}
 
-	cmd.linear.x = rho;
+	cmd.linear.x = linear;
 	cmd.angular.z = angular;
 
 	return cmd;
@@ -97,6 +91,7 @@ class GoToPoint : ROSAction
 public:
 	bool init_;
 	ros::Duration execute_time_;
+	AL::ALRobotPostureProxy* robotPosture;
 
 	GoToPoint(std::string name,std::string NAO_IP,int NAO_PORT) :
 		ROSAction(name),
@@ -104,11 +99,13 @@ public:
 		execute_time_((ros::Duration) 0)
 	{
 		motion_proxy_ptr = new AL::ALMotionProxy(NAO_IP,NAO_PORT);
+		robotPosture = new AL::ALRobotPostureProxy(NAO_IP,NAO_PORT);
 	}
 
 	~GoToPoint()
 	{
 		delete motion_proxy_ptr;
+		delete robotPosture;
 	}
 
 	void initialize()
@@ -120,6 +117,9 @@ public:
 		AL::ALValue stiffness(1.0f);
 		AL::ALValue stiffness_time(1.0f);
 		motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
+
+		// Stand
+		robotPosture->goToPosture("Stand",0.5f);
 
 		// Init moving
 		motion_proxy_ptr->moveInit();

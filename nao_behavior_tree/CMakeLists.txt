@@ -132,6 +132,10 @@ rosbuild_add_executable(HeadTracker src/actions/HeadTracker.cpp src/behavior_tre
 target_link_libraries(HeadTracker alproxies alvalue)
 rosbuild_link_boost(HeadTracker thread)
 
+rosbuild_add_executable(GoToPoint src/actions/GoToPoint.cpp src/behavior_tree/rosaction.cpp)
+target_link_libraries(GoToPoint alproxies alvalue)
+rosbuild_link_boost(GoToPoint thread)
+
 rosbuild_add_library(bt_server ${PROJECT_SOURCE_DIR}/src/behavior_tree/rosaction.cpp)
 
 

@@ -109,6 +109,19 @@ GoClose/fast:
 .PHONY : GoClose/fast
 
 #=============================================================================
+# Target rules for targets named GoToPoint
+
+# Build rule for target.
+GoToPoint: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 GoToPoint
+.PHONY : GoToPoint
+
+# fast build rule for target.
+GoToPoint/fast:
+	$(MAKE) -f CMakeFiles/GoToPoint.dir/build.make CMakeFiles/GoToPoint.dir/build
+.PHONY : GoToPoint/fast
+
+#=============================================================================
 # Target rules for targets named Greet
 
 # Build rule for target.
@@ -501,6 +514,21 @@ src/actions/GoClose.s:
 .PHONY : src/actions/GoClose.s
 
 # target to build an object file
+src/actions/GoToPoint.o:
+	$(MAKE) -f CMakeFiles/GoToPoint.dir/build.make CMakeFiles/GoToPoint.dir/src/actions/GoToPoint.o
+.PHONY : src/actions/GoToPoint.o
+
+# target to preprocess a source file
+src/actions/GoToPoint.i:
+	$(MAKE) -f CMakeFiles/GoToPoint.dir/build.make CMakeFiles/GoToPoint.dir/src/actions/GoToPoint.i
+.PHONY : src/actions/GoToPoint.i
+
+# target to generate assembly for a file
+src/actions/GoToPoint.s:
+	$(MAKE) -f CMakeFiles/GoToPoint.dir/build.make CMakeFiles/GoToPoint.dir/src/actions/GoToPoint.s
+.PHONY : src/actions/GoToPoint.s
+
+# target to build an object file
 src/actions/Greet.o:
 	$(MAKE) -f CMakeFiles/Greet.dir/build.make CMakeFiles/Greet.dir/src/actions/Greet.o
 .PHONY : src/actions/Greet.o
@@ -668,6 +696,7 @@ src/behavior_tree/parser.s:
 # target to build an object file
 src/behavior_tree/rosaction.o:
 	$(MAKE) -f CMakeFiles/GoClose.dir/build.make CMakeFiles/GoClose.dir/src/behavior_tree/rosaction.o
+	$(MAKE) -f CMakeFiles/GoToPoint.dir/build.make CMakeFiles/GoToPoint.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/Greet.dir/build.make CMakeFiles/Greet.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/HeadTracker.dir/build.make CMakeFiles/HeadTracker.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/src/behavior_tree/rosaction.o
@@ -680,6 +709,7 @@ src/behavior_tree/rosaction.o:
 # target to preprocess a source file
 src/behavior_tree/rosaction.i:
 	$(MAKE) -f CMakeFiles/GoClose.dir/build.make CMakeFiles/GoClose.dir/src/behavior_tree/rosaction.i
+	$(MAKE) -f CMakeFiles/GoToPoint.dir/build.make CMakeFiles/GoToPoint.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/Greet.dir/build.make CMakeFiles/Greet.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/HeadTracker.dir/build.make CMakeFiles/HeadTracker.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/src/behavior_tree/rosaction.i
@@ -692,6 +722,7 @@ src/behavior_tree/rosaction.i:
 # target to generate assembly for a file
 src/behavior_tree/rosaction.s:
 	$(MAKE) -f CMakeFiles/GoClose.dir/build.make CMakeFiles/GoClose.dir/src/behavior_tree/rosaction.s
+	$(MAKE) -f CMakeFiles/GoToPoint.dir/build.make CMakeFiles/GoToPoint.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/Greet.dir/build.make CMakeFiles/Greet.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/HeadTracker.dir/build.make CMakeFiles/HeadTracker.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/src/behavior_tree/rosaction.s
@@ -768,6 +799,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... GoClose"
+	@echo "... GoToPoint"
 	@echo "... Greet"
 	@echo "... HeadTracker"
 	@echo "... ROSBUILD_genaction_msgs"
@@ -802,6 +834,9 @@ help:
 	@echo "... src/actions/GoClose.o"
 	@echo "... src/actions/GoClose.i"
 	@echo "... src/actions/GoClose.s"
+	@echo "... src/actions/GoToPoint.o"
+	@echo "... src/actions/GoToPoint.i"
+	@echo "... src/actions/GoToPoint.s"
 	@echo "... src/actions/Greet.o"
 	@echo "... src/actions/Greet.i"
 	@echo "... src/actions/Greet.s"
