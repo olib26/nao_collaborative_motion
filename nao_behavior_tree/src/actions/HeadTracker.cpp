@@ -91,6 +91,9 @@ public:
 		angle = (float)(-relative-motion_proxy_ptr->getAngles(name,useSensors).front());
 		if((fabs(relative) < 2) & (fabs((double)angle) > angleThreshold)) {motion_proxy_ptr->changeAngles(name,angle,fractionMaxSpeed);}
 
+		//angle = (float)(-relative);
+		//if(fabs(relative) < 2) {motion_proxy_ptr->setAngles(name,angle,fractionMaxSpeed);}
+
 		return 0;
 	}
 
