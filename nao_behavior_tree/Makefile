@@ -291,6 +291,19 @@ nao_behavior_tree/fast:
 .PHONY : nao_behavior_tree/fast
 
 #=============================================================================
+# Target rules for targets named nao_leds
+
+# Build rule for target.
+nao_leds: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nao_leds
+.PHONY : nao_leds
+
+# fast build rule for target.
+nao_leds/fast:
+	$(MAKE) -f CMakeFiles/nao_leds.dir/build.make CMakeFiles/nao_leds.dir/build
+.PHONY : nao_leds/fast
+
+#=============================================================================
 # Target rules for targets named nao_sonar
 
 # Build rule for target.
@@ -658,6 +671,21 @@ src/behavior_tree/rosaction.s:
 .PHONY : src/behavior_tree/rosaction.s
 
 # target to build an object file
+src/leds/nao_leds.o:
+	$(MAKE) -f CMakeFiles/nao_leds.dir/build.make CMakeFiles/nao_leds.dir/src/leds/nao_leds.o
+.PHONY : src/leds/nao_leds.o
+
+# target to preprocess a source file
+src/leds/nao_leds.i:
+	$(MAKE) -f CMakeFiles/nao_leds.dir/build.make CMakeFiles/nao_leds.dir/src/leds/nao_leds.i
+.PHONY : src/leds/nao_leds.i
+
+# target to generate assembly for a file
+src/leds/nao_leds.s:
+	$(MAKE) -f CMakeFiles/nao_leds.dir/build.make CMakeFiles/nao_leds.dir/src/leds/nao_leds.s
+.PHONY : src/leds/nao_leds.s
+
+# target to build an object file
 src/map/localization.o:
 	$(MAKE) -f CMakeFiles/localization.dir/build.make CMakeFiles/localization.dir/src/map/localization.o
 .PHONY : src/map/localization.o
@@ -724,6 +752,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... localization"
 	@echo "... nao_behavior_tree"
+	@echo "... nao_leds"
 	@echo "... nao_sonar"
 	@echo "... obstacles"
 	@echo "... rebuild_cache"
@@ -774,6 +803,9 @@ help:
 	@echo "... src/behavior_tree/rosaction.o"
 	@echo "... src/behavior_tree/rosaction.i"
 	@echo "... src/behavior_tree/rosaction.s"
+	@echo "... src/leds/nao_leds.o"
+	@echo "... src/leds/nao_leds.i"
+	@echo "... src/leds/nao_leds.s"
 	@echo "... src/map/localization.o"
 	@echo "... src/map/localization.i"
 	@echo "... src/map/localization.s"

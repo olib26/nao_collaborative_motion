@@ -80,6 +80,7 @@ SET(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/clean-test-results.dir/DependInfo.cmake"
   "CMakeFiles/localization.dir/DependInfo.cmake"
   "CMakeFiles/nao_behavior_tree.dir/DependInfo.cmake"
+  "CMakeFiles/nao_leds.dir/DependInfo.cmake"
   "CMakeFiles/nao_sonar.dir/DependInfo.cmake"
   "CMakeFiles/obstacles.dir/DependInfo.cmake"
   "CMakeFiles/rosbuild_precompile.dir/DependInfo.cmake"

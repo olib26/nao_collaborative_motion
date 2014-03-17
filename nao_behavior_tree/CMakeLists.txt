@@ -142,3 +142,8 @@ target_link_libraries(obstacles ${OpenCV_LIBS} alproxies alvalue alvision)
 # Sensors
 rosbuild_add_executable(nao_sonar src/sensors/nao_sonar.cpp)
 target_link_libraries(nao_sonar alproxies alvalue)
+
+
+# Leds
+rosbuild_add_executable(nao_leds src/leds/nao_leds.cpp)
+target_link_libraries(nao_leds alproxies alvalue)

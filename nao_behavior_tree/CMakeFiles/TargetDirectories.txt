@@ -13,6 +13,7 @@
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/clean-test-results.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/localization.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/nao_behavior_tree.dir
+/home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/nao_leds.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/nao_sonar.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/obstacles.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/rosbuild_precompile.dir
