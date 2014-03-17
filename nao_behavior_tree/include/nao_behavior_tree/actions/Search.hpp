@@ -18,7 +18,7 @@ ros::Publisher cmd_pub;
 
 // Image size
 int height,width;
-const int cutHeight = 100;
+const int cutHeight = 200;
 
 // Point in integral image
 struct Point
@@ -53,8 +53,8 @@ Particle* particles = new Particle[N];
 const double eps = 1E-3;
 
 // Variance Threshold
-const double StD_minx = 1000;
-const double StD_miny = 1000;
+const double StD_minx = 2000;
+const double StD_miny = 2000;
 
 // Robot detection
 bool robotDetected;

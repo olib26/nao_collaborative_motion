@@ -379,8 +379,6 @@ double relativeBearing()
 
 	// Vector pointing to the other robot
 	Eigen::Vector3f v(f,p_x,p_y);
-	v.normalize();
-	v = d*v;
 
 	// Transformation to FRAME_ROBOT
 	std::string cameraName = "CameraTop";
@@ -397,11 +395,16 @@ double relativeBearing()
 	Eigen::Vector4f vec(v(0),v(1),v(2),1);
 	vec = transMat*vec;
 
-	ROS_INFO("Vec: x = %i, y = %i",vec(0)/vec(3),vec(1)/vec(3));
+	// Change norm
+	v = d/sqrt((double)(vec(0)*vec(0) + vec(1)*vec(1)))*v;
+
+	// Change frame
+	Eigen::Vector4f vec2(v(0),v(1),v(2),1);
+	vec2 = transMat*vec2;
 
 	// Projection on the floor
 	// -HFOV/2 <= alpha <= HFOV/2
-	double alpha = atan((double)(vec(1)/vec(0)));
+	double alpha = atan((double)(vec2(1)/vec2(0)));
 
 	return -alpha;
 }
@@ -458,10 +461,10 @@ public:
 		AL::ALValue stiffness_name("Body");
 		AL::ALValue stiffness(1.0f);
 		AL::ALValue stiffness_time(1.0f);
-		motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
+		//motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
 
 		// Init moving
-		motion_proxy_ptr->moveInit();
+		//motion_proxy_ptr->moveInit();
 
         // Robot detected
         robotDetected = true;

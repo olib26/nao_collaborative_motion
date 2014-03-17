@@ -18,7 +18,7 @@ ros::Publisher cmd_pub;
 
 // Image size
 int height,width;
-const int cutHeight = 100;
+const int cutHeight = 200;
 
 // Camera parameters
 const double VFOV = 47.6*M_PI/180;
@@ -30,7 +30,7 @@ const double H = 0.043;
 // Mean depth
 double depth_temp;
 int counter;
-const int nbSamplesMean = 10;
+const int nbSamplesMean = 3;
 
 // Point in integral image
 struct Point
@@ -70,7 +70,7 @@ Particle* particles = new Particle[N];
 const double eps = 1E-3;
 
 // Variance Threshold
-const double StD_max = 1000;
+const double StD_max = 2000;
 
 // Robot detection
 bool robotDetected;
@@ -78,7 +78,7 @@ bool robotDetected;
 // Controller parameters
 const double alpha = 0.001;
 const double rho = 0.8;
-const double dist_threshold = 0.4;
+const double dist_threshold = 0.6;
 
 // Sonar
 bool sonar;

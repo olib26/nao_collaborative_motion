@@ -248,7 +248,7 @@ void imageProcessing(IplImage* img)
 	}
 
 	// Draw particles
-	//showParticles(hsv_mask);
+	showParticles(hsv_mask);
 
 	// Show result
 	cvNamedWindow("Search",1); cvShowImage("Search",hsv_mask);

@@ -111,32 +111,20 @@ void showOdometry(IplImage* img, nao_behavior_tree::Odometry odom, Robot r, doub
 }
 
 
-void showBearings(IplImage* img, nao_behavior_tree::Odometry odom, Robot r, double k)
+void showBearing(IplImage* img, nao_behavior_tree::Odometry odom, Robot r, double k, double bearing)
 {
-	CvPoint p1,p2,p3;
+	CvPoint p1,p2;
+	CvScalar color = cvScalar(0,255,0);
 	int thickness = 2;
 	double length = 1;
 
 	p1.x = r.y;
 	p1.y = r.x;
 
-	double relative = r.relativeBearing;
-	double absolute = r.absoluteBearing;
+	p2.x = (odom.x + length*cos(bearing))/k + width/2;
+	p2.y = -(odom.y + length*sin(bearing))/k + height/2;
 
-	ROS_INFO("Relative bearing = %f",relative);
-	ROS_INFO("Absolute bearing = %f",absolute);
-
-	// Relative
-	p2.x = (odom.x + length*cos(relative+absolute))/k + width/2;
-	p2.y = -(odom.y + length*sin(relative+absolute))/k + height/2;
-	CvScalar color1 = cvScalar(0,255,0);
-	cvLine(img,p1,p2,color1,thickness,CV_AA,0);
-
-	// Absolute
-	p3.x = (odom.x + length*cos(absolute))/k + width/2;
-	p3.y = -(odom.y + length*sin(absolute))/k + height/2;
-	CvScalar color2 = cvScalar(255,0,0);
-	cvLine(img,p1,p3,color2,thickness,CV_AA,0);
+	cvLine(img,p1,p2,color,thickness,CV_AA,0);
 }
 
 
@@ -193,30 +181,6 @@ void computeOdometry(Robot* r, nao_behavior_tree::Odometry* odom, double* timest
 	}
 
 	return;
-}
-
-
-std::pair<double,double> particlesVariance(Particle* particles)
-{
-	std::pair<double,double> M; // Mean
-	std::pair<double,double> V;	// Variance
-
-	for(int i = 0; i < N; i++)
-	{
-		M.first += particles[i].x;
-		M.second += particles[i].y;
-
-		V.first += particles[i].x*particles[i].x;
-		V.second += particles[i].y*particles[i].y;
-	}
-
-	M.first = M.first/N;
-	M.second = M.second/N;
-
-	V.first = V.first/N - M.first*M.first;
-	V.second = V.second/N - M.second*M.second;
-
-	return V;
 }
 
 
@@ -593,8 +557,8 @@ int main(int argc, char** argv)
 		// Show results
 		showOdometry(img,odom1,r1,k);
 		showOdometry(img,odom2,r2,k);
-		if(robot2Detected) {showBearings(img,odom1,r1,k);}
-		if(robot1Detected) {showBearings(img,odom2,r2,k);}
+		if(robot2Detected) {showBearing(img,odom1,r1,k,r1.absoluteBearing); showBearing(img,odom1,r1,k,r1.absoluteBearing + r1.relativeBearing);}
+		if(robot1Detected) {showBearing(img,odom2,r2,k,r2.absoluteBearing); showBearing(img,odom1,r1,k,r2.absoluteBearing + r2.relativeBearing);}
 		cvShowImage("Odometry",img);
 
 		cvWaitKey(100);
