@@ -30,6 +30,45 @@
 #include <nao_behavior_tree/map/nao.hpp>
 
 
+void drawObstacle(IplImage* img, Obstacle obstacle)
+{
+	cv::Point p1,p2;
+	CvScalar color = cvScalar(0,0,255);
+	int thickness = 2;
+
+	std::vector<cv::Point> points = obstacle.pointsImage;
+
+	for(unsigned  int j = 0; j < points.size()-1; j++)
+	{
+		p1 = points.at(j);
+		p2 = points.at(j+1);
+		cvLine(img,p1,p2,color,thickness,CV_AA,0);
+	}
+	p1 = points.back();
+	p2 = points.at(0);
+	cvLine(img,p1,p2,color,thickness,CV_AA,0);
+}
+
+
+void drawCurrentObstacle(IplImage* img)
+{
+	if(!currentObstacle.pointsImage.empty())
+	{
+		cv::Point p1,p2;
+		CvScalar color = cvScalar(0,0,255);
+		int thickness = 2;
+
+		std::vector<cv::Point> points = currentObstacle.pointsImage;
+		for(unsigned  int j = 0; j < points.size()-1; j++)
+		{
+			p1 = points.at(j);
+			p2 = points.at(j+1);
+			cvLine(img,p1,p2,color,thickness,CV_AA,0);
+		}
+	}
+}
+
+
 void showObstacles(IplImage* img)
 {
 	cv::Point p1,p2;
@@ -38,18 +77,10 @@ void showObstacles(IplImage* img)
 
 	for(unsigned int i = 0; i < obstacles.size(); i++)
 	{
-		std::vector<cv::Point> points = obstacles.at(i).pointsImage;
-
-		for(unsigned  int j = 0; j < points.size()-1; j++)
-		{
-			p1 = points.at(j);
-			p2 = points.at(j+1);
-			cvLine(img,p1,p2,color,thickness,CV_AA,0);
-		}
-		p1 = points.back();
-		p2 = points.at(0);
-		cvLine(img,p1,p2,color,thickness,CV_AA,0);
+		drawObstacle(img,obstacles.at(i));
 	}
+
+	drawCurrentObstacle(img);
 
 	cvShowImage("Camera_Output",img);
 }
