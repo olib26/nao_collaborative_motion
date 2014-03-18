@@ -6,6 +6,7 @@
  */
 
 #include <ros/ros.h>
+#include "nao_behavior_tree/rosaction.h"
 
 #include <iostream>
 #include <opencv2/opencv.hpp>
@@ -24,6 +25,10 @@
 #include <nao_behavior_tree/map/nao.hpp>
 
 using namespace std;
+
+
+bool init;
+bool webcam;
 
 
 double uniformRandom()
@@ -364,11 +369,8 @@ void imageProcessing(IplImage* img)
 	//showParticles(hsv_mask,particles2);
 
 	// Draw robots
-	showRobot(hsv_mask,r1);
-	showRobot(hsv_mask,r2);
-
-	// Show result
-	cvShowImage("Camera_Output",hsv_mask);
+	//showRobot(hsv_mask,r1);
+	//showRobot(hsv_mask,r2);
 }
 
 
@@ -416,9 +418,88 @@ void receive_bearing2(const nao_behavior_tree::Bearing::ConstPtr &msg)
 }
 
 
+class Localization : ROSAction
+{
+public:
+	ros::Duration execute_time_;
+
+	Localization(std::string name) :
+		ROSAction(name),
+		execute_time_((ros::Duration) 0){}
+
+	void finalize()
+	{
+		deactivate();
+	}
+
+	int executeCB(ros::Duration dt)
+	{
+		std::cout << "**Localization -%- Executing Main Task, elapsed_time: "
+		          << dt.toSec() << std::endl;
+		std::cout << "**Localization -%- execute_time: "
+		          << execute_time_.toSec() << std::endl;
+		execute_time_ += dt;
+
+		if(!init)
+		{
+			set_feedback(RUNNING);
+
+			// Image
+			IplImage* img;
+
+			// Init robots positions
+			cv::Point p;
+			cv::setMouseCallback("Odometry",on_mouse,&p);
+
+			while(((r1.x == 0) | (r2.x == 0)) & ros::ok())
+			{
+				img = getImage(webcam);
+				cvShowImage("Odometry",img);
+
+				if((p.x != 0) & (p.y !=0))
+				{
+					if(r1.x == 0)
+					{
+						r1.x = p.x;
+						r1.y = p.y;
+						ROS_INFO("Robot 1 initialized: x = %i, y =%i",r1.x,r1.y);
+					}
+					else
+					{
+						r2.x = p.x;
+						r2.y = p.y;
+						ROS_INFO("Robot 2 initialized: x = %i, y =%i",r2.x,r2.y);
+					}
+
+					p.x = p.y = 0;
+				}
+
+				cvWaitKey(100);
+			}
+
+			init = true;
+		}
+
+		if(init)
+		{
+			set_feedback(SUCCESS);
+			finalize();
+			return 1;
+		}
+
+		return 0;
+	}
+
+	void resetCB()
+	{
+		execute_time_ = (ros::Duration) 0;
+	}
+};
+
+
 int main(int argc, char** argv)
 {
-	ros::init(argc, argv,"localization");
+	ros::init(argc, argv,"Localization");
 	ros::NodeHandle nh;
 
 	// Odometry publishers
@@ -428,9 +509,6 @@ int main(int argc, char** argv)
 	// Bearing subscribers
 	ros::Subscriber bearing1_sub = nh.subscribe("/bearing1",1,receive_bearing1);
 	ros::Subscriber bearing2_sub = nh.subscribe("/bearing2",1,receive_bearing2);
-
-	// Camera selection
-	bool webcam;
 
 	ros::NodeHandle pnh("~");
 	if(argc != 1)
@@ -483,43 +561,23 @@ int main(int argc, char** argv)
 		capture = cvCaptureFromCAM(camera);
 	}
 
-	// Window
-	cvNamedWindow("Camera_Output",1);
-	cvNamedWindow("Odometry",1);
-
-	// Image
-	IplImage* img;
-
 	sleep(1); // Wait for proxy init
 
-	// Init robots positions
-	cv::Point p;
-	cv::setMouseCallback("Camera_Output",on_mouse,&p);
+	// Images
+	IplImage* img;
 
-	while(((r1.x == 0) | (r2.x == 0)) & ros::ok())
+	// Window
+	cvNamedWindow("Odometry",1);
+
+	// Launch Server
+	Localization server(ros::this_node::getName());
+
+	// Wait for init
+	ros::Rate r(100);
+	while(!init)
 	{
-		img = getImage(webcam);
-		cvShowImage("Camera_Output",img);
-
-		if((p.x != 0) & (p.y !=0))
-		{
-			if(r1.x == 0)
-			{
-				r1.x = p.x;
-				r1.y = p.y;
-				ROS_INFO("Robot 1 initialized: x = %i, y =%i",r1.x,r1.y);
-			}
-			else
-			{
-				r2.x = p.x;
-				r2.y = p.y;
-				ROS_INFO("Robot 2 initialized: x = %i, y =%i",r2.x,r2.y);
-			}
-
-			p.x = p.y = 0;
-		}
-
-		cvWaitKey(100);
+		ros::spinOnce();
+		r.sleep();
 	}
 
 	// Init timers
@@ -551,9 +609,6 @@ int main(int argc, char** argv)
 		odom1_pub.publish(odom1);
 		odom2_pub.publish(odom2);
 
-		//ROS_INFO("x1 = %f; y1 = %f",odom1.x,odom1.y);
-		//ROS_INFO("x2 = %f; y2 = %f",odom2.x,odom2.y);
-
 		// Show results
 		showOdometry(img,odom1,r1,k);
 		showOdometry(img,odom2,r2,k);
@@ -576,7 +631,6 @@ int main(int argc, char** argv)
 	{
 		cvReleaseCapture(&capture); // Release capture
 	}
-	cvDestroyWindow("Camera_Output"); // Destroy Window
 	cvDestroyWindow("Odometry");
 
 	return 0;

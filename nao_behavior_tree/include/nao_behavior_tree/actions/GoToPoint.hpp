@@ -40,11 +40,12 @@ Point p;
 double dtheta,theta_temp;
 
 // Velocity threshold
-double velThreshold = 0.1;
+double velThreshold = 0.03;
 
 // Controller parameters
 const double rho = 0.5;
 const double k = 1;
+const double distThreshold = 0.1;
 const double angleThreshold = 10;
 
 

@@ -2,6 +2,7 @@
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/GoToPoint.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/Greet.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/HeadTracker.dir
+/home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/Localization.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/ROSBUILD_genaction_msgs.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/ROSBUILD_genmsg_cpp.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/ROSBUILD_genmsg_lisp.dir
@@ -13,7 +14,6 @@
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/TrackingAmongObstacles.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/bt_server.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/clean-test-results.dir
-/home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/localization.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/nao_behavior_tree.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/nao_leds.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/nao_sonar.dir

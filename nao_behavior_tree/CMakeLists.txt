@@ -140,8 +140,9 @@ rosbuild_add_library(bt_server ${PROJECT_SOURCE_DIR}/src/behavior_tree/rosaction
 
 
 # Map
-rosbuild_add_executable(localization src/map/localization.cpp)
-target_link_libraries(localization ${OpenCV_LIBS} alproxies alvalue alvision)
+rosbuild_add_executable(Localization src/map/localization.cpp src/behavior_tree/rosaction.cpp)
+target_link_libraries(Localization ${OpenCV_LIBS} alproxies alvalue alvision)
+rosbuild_link_boost(Localization thread)
 
 rosbuild_add_executable(obstacles src/map/obstacles.cpp)
 target_link_libraries(obstacles ${OpenCV_LIBS} alproxies alvalue alvision)

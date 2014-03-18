@@ -190,13 +190,48 @@ clean: CMakeFiles/HeadTracker.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/Localization.dir
+
+# All Build rule for target.
+CMakeFiles/Localization.dir/all: CMakeFiles/rosbuild_precompile.dir/all
+	$(MAKE) -f CMakeFiles/Localization.dir/build.make CMakeFiles/Localization.dir/depend
+	$(MAKE) -f CMakeFiles/Localization.dir/build.make CMakeFiles/Localization.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  9 10
+	@echo "Built target Localization"
+.PHONY : CMakeFiles/Localization.dir/all
+
+# Include target in all.
+all: CMakeFiles/Localization.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/Localization.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles 37
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Localization.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles 0
+.PHONY : CMakeFiles/Localization.dir/rule
+
+# Convenience name for target.
+Localization: CMakeFiles/Localization.dir/rule
+.PHONY : Localization
+
+# clean rule for target.
+CMakeFiles/Localization.dir/clean:
+	$(MAKE) -f CMakeFiles/Localization.dir/build.make CMakeFiles/Localization.dir/clean
+.PHONY : CMakeFiles/Localization.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/Localization.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/ROSBUILD_genaction_msgs.dir
 
 # All Build rule for target.
 CMakeFiles/ROSBUILD_genaction_msgs.dir/all:
 	$(MAKE) -f CMakeFiles/ROSBUILD_genaction_msgs.dir/build.make CMakeFiles/ROSBUILD_genaction_msgs.dir/depend
 	$(MAKE) -f CMakeFiles/ROSBUILD_genaction_msgs.dir/build.make CMakeFiles/ROSBUILD_genaction_msgs.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  9
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  11
 	@echo "Built target ROSBUILD_genaction_msgs"
 .PHONY : CMakeFiles/ROSBUILD_genaction_msgs.dir/all
 
@@ -231,7 +266,7 @@ clean: CMakeFiles/ROSBUILD_genaction_msgs.dir/clean
 CMakeFiles/ROSBUILD_genmsg_cpp.dir/all: CMakeFiles/rosbuild_premsgsrvgen.dir/all
 	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_cpp.dir/build.make CMakeFiles/ROSBUILD_genmsg_cpp.dir/depend
 	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_cpp.dir/build.make CMakeFiles/ROSBUILD_genmsg_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  10 11 12 13 14 15 16 17 18 19 20
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  12 13 14 15 16 17 18 19 20 21 22
 	@echo "Built target ROSBUILD_genmsg_cpp"
 .PHONY : CMakeFiles/ROSBUILD_genmsg_cpp.dir/all
 
@@ -262,7 +297,7 @@ clean: CMakeFiles/ROSBUILD_genmsg_cpp.dir/clean
 CMakeFiles/ROSBUILD_genmsg_lisp.dir/all: CMakeFiles/rosbuild_premsgsrvgen.dir/all
 	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_lisp.dir/build.make CMakeFiles/ROSBUILD_genmsg_lisp.dir/depend
 	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_lisp.dir/build.make CMakeFiles/ROSBUILD_genmsg_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  21 22 23 24 25 26 27 28 29 30 31
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  23 24 25 26 27 28 29 30 31 32 33
 	@echo "Built target ROSBUILD_genmsg_lisp"
 .PHONY : CMakeFiles/ROSBUILD_genmsg_lisp.dir/all
 
@@ -293,7 +328,7 @@ clean: CMakeFiles/ROSBUILD_genmsg_lisp.dir/clean
 CMakeFiles/ROSBUILD_genmsg_py.dir/all: CMakeFiles/rosbuild_premsgsrvgen.dir/all
 	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_py.dir/build.make CMakeFiles/ROSBUILD_genmsg_py.dir/depend
 	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_py.dir/build.make CMakeFiles/ROSBUILD_genmsg_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  32 33 34 35 36 37 38 39 40 41 42 43
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  34 35 36 37 38 39 40 41 42 43 44 45
 	@echo "Built target ROSBUILD_genmsg_py"
 .PHONY : CMakeFiles/ROSBUILD_genmsg_py.dir/all
 
@@ -386,7 +421,7 @@ clean: CMakeFiles/ROSBUILD_gensrv_lisp.dir/clean
 CMakeFiles/Search.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/depend
 	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  44 45
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  46 47
 	@echo "Built target Search"
 .PHONY : CMakeFiles/Search.dir/all
 
@@ -421,7 +456,7 @@ clean: CMakeFiles/Search.dir/clean
 CMakeFiles/Stop.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/Stop.dir/build.make CMakeFiles/Stop.dir/depend
 	$(MAKE) -f CMakeFiles/Stop.dir/build.make CMakeFiles/Stop.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  46 47
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  48 49
 	@echo "Built target Stop"
 .PHONY : CMakeFiles/Stop.dir/all
 
@@ -456,7 +491,7 @@ clean: CMakeFiles/Stop.dir/clean
 CMakeFiles/TrackingAmongObstacles.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/depend
 	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  48 49
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  50 51
 	@echo "Built target TrackingAmongObstacles"
 .PHONY : CMakeFiles/TrackingAmongObstacles.dir/all
 
@@ -491,7 +526,7 @@ clean: CMakeFiles/TrackingAmongObstacles.dir/clean
 CMakeFiles/bt_server.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/bt_server.dir/build.make CMakeFiles/bt_server.dir/depend
 	$(MAKE) -f CMakeFiles/bt_server.dir/build.make CMakeFiles/bt_server.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  50
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  52
 	@echo "Built target bt_server"
 .PHONY : CMakeFiles/bt_server.dir/all
 
@@ -551,48 +586,13 @@ clean: CMakeFiles/clean-test-results.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/localization.dir
-
-# All Build rule for target.
-CMakeFiles/localization.dir/all: CMakeFiles/rosbuild_precompile.dir/all
-	$(MAKE) -f CMakeFiles/localization.dir/build.make CMakeFiles/localization.dir/depend
-	$(MAKE) -f CMakeFiles/localization.dir/build.make CMakeFiles/localization.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  51
-	@echo "Built target localization"
-.PHONY : CMakeFiles/localization.dir/all
-
-# Include target in all.
-all: CMakeFiles/localization.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/localization.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles 36
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/localization.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles 0
-.PHONY : CMakeFiles/localization.dir/rule
-
-# Convenience name for target.
-localization: CMakeFiles/localization.dir/rule
-.PHONY : localization
-
-# clean rule for target.
-CMakeFiles/localization.dir/clean:
-	$(MAKE) -f CMakeFiles/localization.dir/build.make CMakeFiles/localization.dir/clean
-.PHONY : CMakeFiles/localization.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/localization.dir/clean
-.PHONY : clean
-
-#=============================================================================
 # Target rules for target CMakeFiles/nao_behavior_tree.dir
 
 # All Build rule for target.
 CMakeFiles/nao_behavior_tree.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/nao_behavior_tree.dir/build.make CMakeFiles/nao_behavior_tree.dir/depend
 	$(MAKE) -f CMakeFiles/nao_behavior_tree.dir/build.make CMakeFiles/nao_behavior_tree.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  52 53 54 55 56 57 58
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  53 54 55 56 57 58 59
 	@echo "Built target nao_behavior_tree"
 .PHONY : CMakeFiles/nao_behavior_tree.dir/all
 
@@ -627,7 +627,7 @@ clean: CMakeFiles/nao_behavior_tree.dir/clean
 CMakeFiles/nao_leds.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/nao_leds.dir/build.make CMakeFiles/nao_leds.dir/depend
 	$(MAKE) -f CMakeFiles/nao_leds.dir/build.make CMakeFiles/nao_leds.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  59
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  60
 	@echo "Built target nao_leds"
 .PHONY : CMakeFiles/nao_leds.dir/all
 
@@ -662,7 +662,7 @@ clean: CMakeFiles/nao_leds.dir/clean
 CMakeFiles/nao_sonar.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/nao_sonar.dir/build.make CMakeFiles/nao_sonar.dir/depend
 	$(MAKE) -f CMakeFiles/nao_sonar.dir/build.make CMakeFiles/nao_sonar.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  60
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  61
 	@echo "Built target nao_sonar"
 .PHONY : CMakeFiles/nao_sonar.dir/all
 
@@ -697,7 +697,7 @@ clean: CMakeFiles/nao_sonar.dir/clean
 CMakeFiles/obstacles.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/obstacles.dir/build.make CMakeFiles/obstacles.dir/depend
 	$(MAKE) -f CMakeFiles/obstacles.dir/build.make CMakeFiles/obstacles.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  61
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  62
 	@echo "Built target obstacles"
 .PHONY : CMakeFiles/obstacles.dir/all
 

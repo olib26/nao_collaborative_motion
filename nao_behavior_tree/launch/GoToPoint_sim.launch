@@ -1,45 +1,33 @@
 <launch>
   
   <arg name="nao_ip1" default="$(optenv NAO_IP 127.0.0.1)"/>
-  <arg name="nao_port1" default="$(optenv NAO_PORT 9560)"/>
+  <arg name="nao_port1" default="$(optenv NAO_PORT 9560)"/>  
   
   <!--
-    Top camera 1
+    Walker 1
   -->
-  <node pkg="nao_driver" type="nao_camera.py" name="nao_camera1" required="true" args="--pip=$(arg nao_ip1) --pport=$(arg nao_port1)" output="screen">
-    <param name="camera_switch" value="0"/>
-    <param name="resolution" value="2"/>
-    <remap from="image_raw" to="image_raw1"/>
+  <node pkg="nao_driver" type="nao_walker.py" name="nao_walker1" required="true" args="--pip=$(arg nao_ip1) --pport=$(arg nao_port1)" output="screen">
+  	<remap from="cmd_vel" to="cmd_vel1"/>
   </node>
   
   
   <!--
     Actions 1
   -->
-  <node pkg="nao_behavior_tree" type="TrackingAmongObstacles" name="TrackingAmongObstacles1" args="1" output="screen">
+  <node pkg="nao_behavior_tree" type="GoToPoint" name="GoToPoint1" args="1" output="screen">
     <param name="NAO_IP" value="$(arg nao_ip1)"/>
     <param name="NAO_PORT" value="$(arg nao_port1)"/>
-    <param name="H_MIN" value="0"/>
-    <param name="H_MAX" value="30"/>
-    <param name="S_MIN" value="180"/>
-    <param name="S_MAX" value="255"/>
-    <param name="V_MIN" value="90"/>
-    <param name="V_MAX" value="255"/>
+    <param name="x" value="1"/>
+    <param name="y" value="0.5"/>
   </node>
   
-
-  <!--
-    Behavior Tree 1
-  -->
-  <node pkg="nao_behavior_tree" type="nao_behavior_tree" name="nao_behavior_tree1" output="screen">
-    <param name="file" value="/home/olivier/ros_workspace/nao_behavior_tree/bt1_test_bearing.txt"/>
-  </node>
-
-
+  <node pkg="nao_behavior_tree" type="Stop" name="Stop1" args="1"/>
+  
+  
   <!--
     Localization
   -->
-  <node pkg="nao_behavior_tree" type="localization" name="localization" args="1" output="screen">
+  <node pkg="nao_behavior_tree" type="Localization" name="Localization" args="1" output="screen">
     <param name="NAO_IP" value="127.0.0.1"/>
     <param name="NAO_PORT" value="9561"/>
 
@@ -50,5 +38,13 @@
     <param name="V_MIN" value="90"/>
     <param name="V_MAX" value="255"/>
   </node>
-  
+
+
+  <!--
+    Behavior Tree 1
+  -->
+  <node pkg="nao_behavior_tree" type="nao_behavior_tree" name="nao_behavior_tree1" output="screen">
+    <param name="file" value="/home/olivier/ros_workspace/nao_behavior_tree/bt1_gotopoint.txt"/>
+  </node>
+
 </launch>

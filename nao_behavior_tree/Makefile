@@ -148,6 +148,19 @@ HeadTracker/fast:
 .PHONY : HeadTracker/fast
 
 #=============================================================================
+# Target rules for targets named Localization
+
+# Build rule for target.
+Localization: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Localization
+.PHONY : Localization
+
+# fast build rule for target.
+Localization/fast:
+	$(MAKE) -f CMakeFiles/Localization.dir/build.make CMakeFiles/Localization.dir/build
+.PHONY : Localization/fast
+
+#=============================================================================
 # Target rules for targets named ROSBUILD_genaction_msgs
 
 # Build rule for target.
@@ -289,19 +302,6 @@ clean-test-results: cmake_check_build_system
 clean-test-results/fast:
 	$(MAKE) -f CMakeFiles/clean-test-results.dir/build.make CMakeFiles/clean-test-results.dir/build
 .PHONY : clean-test-results/fast
-
-#=============================================================================
-# Target rules for targets named localization
-
-# Build rule for target.
-localization: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 localization
-.PHONY : localization
-
-# fast build rule for target.
-localization/fast:
-	$(MAKE) -f CMakeFiles/localization.dir/build.make CMakeFiles/localization.dir/build
-.PHONY : localization/fast
 
 #=============================================================================
 # Target rules for targets named nao_behavior_tree
@@ -699,6 +699,7 @@ src/behavior_tree/rosaction.o:
 	$(MAKE) -f CMakeFiles/GoToPoint.dir/build.make CMakeFiles/GoToPoint.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/Greet.dir/build.make CMakeFiles/Greet.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/HeadTracker.dir/build.make CMakeFiles/HeadTracker.dir/src/behavior_tree/rosaction.o
+	$(MAKE) -f CMakeFiles/Localization.dir/build.make CMakeFiles/Localization.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/Stop.dir/build.make CMakeFiles/Stop.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.o
@@ -712,6 +713,7 @@ src/behavior_tree/rosaction.i:
 	$(MAKE) -f CMakeFiles/GoToPoint.dir/build.make CMakeFiles/GoToPoint.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/Greet.dir/build.make CMakeFiles/Greet.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/HeadTracker.dir/build.make CMakeFiles/HeadTracker.dir/src/behavior_tree/rosaction.i
+	$(MAKE) -f CMakeFiles/Localization.dir/build.make CMakeFiles/Localization.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/Stop.dir/build.make CMakeFiles/Stop.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.i
@@ -725,6 +727,7 @@ src/behavior_tree/rosaction.s:
 	$(MAKE) -f CMakeFiles/GoToPoint.dir/build.make CMakeFiles/GoToPoint.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/Greet.dir/build.make CMakeFiles/Greet.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/HeadTracker.dir/build.make CMakeFiles/HeadTracker.dir/src/behavior_tree/rosaction.s
+	$(MAKE) -f CMakeFiles/Localization.dir/build.make CMakeFiles/Localization.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/Stop.dir/build.make CMakeFiles/Stop.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.s
@@ -749,17 +752,17 @@ src/leds/nao_leds.s:
 
 # target to build an object file
 src/map/localization.o:
-	$(MAKE) -f CMakeFiles/localization.dir/build.make CMakeFiles/localization.dir/src/map/localization.o
+	$(MAKE) -f CMakeFiles/Localization.dir/build.make CMakeFiles/Localization.dir/src/map/localization.o
 .PHONY : src/map/localization.o
 
 # target to preprocess a source file
 src/map/localization.i:
-	$(MAKE) -f CMakeFiles/localization.dir/build.make CMakeFiles/localization.dir/src/map/localization.i
+	$(MAKE) -f CMakeFiles/Localization.dir/build.make CMakeFiles/Localization.dir/src/map/localization.i
 .PHONY : src/map/localization.i
 
 # target to generate assembly for a file
 src/map/localization.s:
-	$(MAKE) -f CMakeFiles/localization.dir/build.make CMakeFiles/localization.dir/src/map/localization.s
+	$(MAKE) -f CMakeFiles/Localization.dir/build.make CMakeFiles/Localization.dir/src/map/localization.s
 .PHONY : src/map/localization.s
 
 # target to build an object file
@@ -802,6 +805,7 @@ help:
 	@echo "... GoToPoint"
 	@echo "... Greet"
 	@echo "... HeadTracker"
+	@echo "... Localization"
 	@echo "... ROSBUILD_genaction_msgs"
 	@echo "... ROSBUILD_genmsg_cpp"
 	@echo "... ROSBUILD_genmsg_lisp"
@@ -814,7 +818,6 @@ help:
 	@echo "... bt_server"
 	@echo "... clean-test-results"
 	@echo "... edit_cache"
-	@echo "... localization"
 	@echo "... nao_behavior_tree"
 	@echo "... nao_leds"
 	@echo "... nao_sonar"

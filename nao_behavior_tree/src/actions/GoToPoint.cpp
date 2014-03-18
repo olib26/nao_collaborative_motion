@@ -38,25 +38,24 @@ double angle(double dx, double dy)
 }
 
 
-void updateBearing()
-{
-	std::vector<float> odometry = motion_proxy_ptr->getRobotPosition(useSensorValues);
-	dtheta = odometry.at(2) - theta_temp;
-	r.theta += dtheta;
-}
-
-
 void estimateBearing()
 {
-	if(sqrt(r.vx*r.vx+r.vy*r.vy) > velThreshold)
+	std::vector<float> odometry = motion_proxy_ptr->getRobotPosition(useSensorValues);
+
+	if(sqrt(r.vx*r.vx + r.vy*r.vy) > velThreshold)
 	{		
 		r.theta = angle(r.vx,r.vy);
 	}
 	else
 	{
 		// Use MRE sensor
-		updateBearing();
+		dtheta = odometry.at(2) - theta_temp;
+		r.theta += dtheta;
+
+		//ROS_INFO("dtheta = %f",dtheta);
 	}
+
+	theta_temp = odometry.at(2);
 }
 
 
@@ -75,6 +74,8 @@ geometry_msgs::Twist controller()
 		linear = 0;
 	}
 	
+	//ROS_INFO("angular = %f, linear = %f",angular,linear);
+
 	// Command threshold
 	if(angular > 1) {angular = 1;}
 	if(angular < -1) {angular = -1;}
@@ -153,6 +154,20 @@ public:
 			set_feedback(RUNNING);
 			initialize();
 		}
+
+		if(sqrt((r.x-p.x)*(r.x-p.x) + (r.y-p.y)*(r.y-p.y)) > distThreshold)
+		{
+			geometry_msgs::Twist cmd = controller();
+			cmd_pub.publish(cmd);
+		}
+		else
+		{
+			set_feedback(SUCCESS);
+			finalize();
+			return 1;
+		}
+
+		//ROS_INFO("x = %f, y = %f, theta = %f",r.x,r.y,r.theta);
 
 		return 0;
 	}

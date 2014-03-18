@@ -1,3 +1,6 @@
 [*
-	A TrackingAmongObstacles1
+	A Localization
+	[*
+		A TrackingAmongObstacles1
+	]
 ]
