@@ -46,7 +46,6 @@ const int sy_min = 30;
 const int sx_max = 200;
 const int sy_max = 300;
 
-
 // Diffusion standard deviation
 const int sigma_diffusion = 50; // Position
 const int s_diffusion = 10; // Size
@@ -78,7 +77,8 @@ bool robotDetected;
 // Controller parameters
 const double alpha = 0.001;
 const double rho = 0.8;
-const double dist_threshold = 0.6;
+const double distThreshold = 0.6;
+const double yThreshold = 100;
 
 // Sonar
 bool sonar;

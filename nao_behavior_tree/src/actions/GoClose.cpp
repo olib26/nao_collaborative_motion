@@ -502,14 +502,14 @@ public:
 		bool sonarCond;
 		if(sonar)
 		{
-			sonarCond = ((right < dist_threshold) | (left < dist_threshold));
+			sonarCond = ((right < distThreshold) | (left < distThreshold));
 		}
 		else
 		{
 			sonarCond = true;
 		}
 
-		if(sonarCond & (depth < dist_threshold))
+		if(sonarCond & (depth < distThreshold))
 		{
 			set_feedback(SUCCESS);
 			finalize();
@@ -518,6 +518,10 @@ public:
 
 		// Controller
 		int y_rel = y - width/2;
+
+		double linear = rho;
+		if(fabs(y_rel) > yThreshold) {linear = 0;}
+
 		double angular = -alpha*y_rel;
 		// Thresholds
 		if(angular > 1) {angular = 1;}
@@ -525,7 +529,7 @@ public:
 
 		// Publish
 		geometry_msgs::Twist cmd;
-		cmd.linear.x = rho;
+		cmd.linear.x = linear;
 		cmd.angular.z = angular;
 		cmd_pub.publish(cmd);
 
