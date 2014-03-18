@@ -12,6 +12,7 @@
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/Search.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/Stop.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/TrackingAmongObstacles.dir
+/home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/Walk.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/bt_server.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/clean-test-results.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/nao_behavior_tree.dir
