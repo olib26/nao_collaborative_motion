@@ -75,7 +75,7 @@ void showObstacles(IplImage* img)
 
 	drawCurrentObstacle(img);
 
-	cvShowImage("Camera_Output",img);
+	cvShowImage("Obstacles",img);
 }
 
 
@@ -281,7 +281,7 @@ Edge closestEdge(Robot r, allEdges edges)
 }
 
 
-void showEdge(Edge edge, IplImage* img)
+void drawEdge(Edge edge, IplImage* img)
 {
 	cv::Point p1,p2;
 	CvScalar color = cvScalar(0,0,0);
@@ -299,13 +299,13 @@ void showEdge(Edge edge, IplImage* img)
 }
 
 
-void showAllEdges(std::vector<Edge> allEdges, IplImage* img)
+void drawAllEdges(std::vector<Edge> allEdges, IplImage* img)
 {
 	Edge edge;
 	for(unsigned int i = 0; i < allEdges.size(); i++)
 	{
 		edge = allEdges.at(i);
-		showEdge(edge,img);
+		drawEdge(edge,img);
 	}
 }
 
@@ -359,11 +359,11 @@ void on_mouse(int event, int x, int y, int d, void *ptr)
 
 void creation(IplImage* img)
 {
-	cvShowImage("Camera_Output",img);
+	cvShowImage("Obstacles",img);
 
 	// Init mouse callback
 	cv::Point p;
-	cv::setMouseCallback("Camera_Output",on_mouse,&p);
+	cv::setMouseCallback("Obstacles",on_mouse,&p);
 	
 	char key;
 	while(ros::ok())
@@ -480,7 +480,7 @@ int main(int argc, char** argv)
 	}
 
 	// Window
-	cvNamedWindow("Camera_Output",1);
+	cvNamedWindow("Obstacles",1);
 
 	// Image
 	IplImage* img;
@@ -540,9 +540,10 @@ int main(int argc, char** argv)
 		// Test
 		while(ros::ok())
 		{
-			showObstacles(img);
+			img = getImage(webcam);
 			allEdges edges = computeAllEdges(obstacles,r1);
-			showAllEdges(edges,img);
+			drawAllEdges(edges,img);
+			showObstacles(img);
 			ros::spinOnce();
 			cvWaitKey(100);
 		}
@@ -559,7 +560,7 @@ int main(int argc, char** argv)
 	{
 		cvReleaseCapture(&capture); // Release capture
 	}
-	cvDestroyWindow("Camera_Output"); // Destroy Window
+	cvDestroyWindow("Obstacles"); // Destroy Window
 
 	return 0;
 }

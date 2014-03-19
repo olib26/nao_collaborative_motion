@@ -1,6 +1,3 @@
-NAO_IP: $(arg nao_ip)
-NAO_PORT: $(arg nao_port)
-
 H_MIN: 0
 H_MAX: 30
 S_MIN: 180
