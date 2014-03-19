@@ -1,13 +1,13 @@
 <launch>
   
-  <arg name="nao_ip" default="$(optenv NAO_IP 192.168.1.19)"/>
-  <arg name="nao_port" default="$(optenv NAO_PORT 9559)"/>
+  <arg name="nao_ip" default="$(optenv NAO_IP 127.0.0.1)"/>
+  <arg name="nao_port" default="$(optenv NAO_PORT 9560)"/>
   
   <!--
     Top camera 1
   -->
   <node pkg="nao_driver" type="nao_camera.py" name="nao_camera1" required="true" args="--pip=$(arg nao_ip) --pport=$(arg nao_port)" output="screen">
-    <rosparam command="load" file="$(find nao_behavior_tree)/launch/parameters.yaml"/>
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/sim/parameters_sim.yaml"/>
     <remap from="image_raw" to="image_raw1"/>
   </node>
   
@@ -15,7 +15,7 @@
     Leds 1
   -->
   <node pkg="nao_behavior_tree" type="nao_leds" name="nao_leds" output="screen">
-    <rosparam command="load" file="$(find nao_behavior_tree)/launch/parameters.yaml"/>
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/sim/parameters_sim.yaml"/>
   </node>
   
   
@@ -23,11 +23,11 @@
     Actions 1
   -->
   <node pkg="nao_behavior_tree" type="TrackingAmongObstacles" name="TrackingAmongObstacles1" args="1" output="screen">
-    <rosparam command="load" file="$(find nao_behavior_tree)/launch/parameters.yaml"/>
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/sim/parameters_sim.yaml"/>
   </node>
   
   <node pkg="nao_behavior_tree" type="HeadTracker" name="HeadTracker1" args="1" output="screen">
-    <rosparam command="load" file="$(find nao_behavior_tree)/launch/parameters.yaml"/>
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/sim/parameters_sim.yaml"/>
   </node>
   
 
@@ -42,8 +42,10 @@
   <!--
     Localization
   -->
-  <node pkg="nao_behavior_tree" type="localization" name="localization" args="0" output="screen">
-	<rosparam command="load" file="$(find nao_behavior_tree)/launch/webcam.yaml"/>
+  <node pkg="nao_behavior_tree" type="localization" name="localization" args="1" output="screen">
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/sim/parameters_sim.yaml"/>
+    <param name="NAO_IP" value="127.0.0.1"/>
+    <param name="NAO_PORT" value="9561"/>
   </node>
   
 </launch>

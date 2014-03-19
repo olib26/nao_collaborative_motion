@@ -1,0 +1,11 @@
+camera: 1
+
+H_MIN: 0
+H_MAX: 16
+S_MIN: 110
+S_MAX: 255
+V_MIN: 30
+V_MAX: 255
+
+
+

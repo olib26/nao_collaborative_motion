@@ -447,7 +447,7 @@ int main(int argc, char** argv)
 		pnh.param("NAO_PORT",NAO_PORT,int(9559));
 
 		// Camera selection
-		pnh.param("webcam",webcam,bool(true));
+		pnh.param("webcam",webcam,bool(false));
 			
 		// Camera id
 		pnh.param("cameraId",cameraId,int(0));

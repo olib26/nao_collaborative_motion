@@ -10,8 +10,8 @@ WorldInfo {
   displayRefresh 1
 }
 Viewpoint {
-  orientation -0.00668491 -0.717684 -0.696337 3.14415
-  position 0.0813324 9.39797 -0.280964
+  orientation -0.00667179 -0.710685 -0.703479 3.14428
+  position 0.799108 5.4045 0.139023
   follow "NAO_H25_V40"
 }
 Background {
@@ -33,7 +33,7 @@ MetricFloor {
 WallGap {
 }
 Nao_H25_V40 {
-  translation 0.475985 0.34 0.452323
+  translation 0.119023 0.34 0.857016
   rotation -0.772035 0.449424 0.449422 1.82669
   controllerArgs "9560"
   cameraWidth 1024
@@ -43,8 +43,8 @@ Nao_H25_V40 {
   cameraPixelSize 0.15
 }
 Nao_H25_V40 {
-  translation 0.900486 0.32 -0.232286
-  rotation 0 0.707107 0.707107 3.14159
+  translation 1.0223 0.42 0.0740943
+  rotation -0.266423 0.68155 0.681549 2.62084
   cameraWidth 1024
   cameraHeight 960
   cameraPixelSize 0.15

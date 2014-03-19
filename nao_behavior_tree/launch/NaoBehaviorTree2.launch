@@ -1,14 +1,13 @@
 <launch>
   
-  <arg name="nao_ip2" default="$(optenv NAO_IP 192.168.1.242)"/>
-  <arg name="nao_port2" default="$(optenv NAO_PORT 9559)"/>
+  <arg name="nao_ip" default="$(optenv NAO_IP 192.168.1.242)"/>
+  <arg name="nao_port" default="$(optenv NAO_PORT 9559)"/>
 
   <!--
     Top camera 2
   -->
-  <node pkg="nao_driver" type="nao_camera.py" name="nao_camera2" required="true" args="--pip=$(arg nao_ip2) --pport=$(arg nao_port2)" output="screen">
-    <param name="camera_switch" value="0"/>
-    <param name="resolution" value="2"/>
+  <node pkg="nao_driver" type="nao_camera.py" name="nao_camera2" required="true" args="--pip=$(arg nao_ip) --pport=$(arg nao_port)" output="screen">
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/parameters.yaml"/>
     <remap from="image_raw" to="image_raw2"/>
   </node>
   
@@ -16,9 +15,7 @@
     Sonar 2
   -->
   <node pkg="nao_behavior_tree" type="nao_sonar" name="nao_sonar2" output="screen">
-    <param name="NAO_IP" value="$(arg nao_ip2)"/>
-    <param name="NAO_PORT" value="$(arg nao_port2)"/>
-    <param name="sonar" value="true"/>
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/parameters.yaml"/>
     <remap from="sonar" to="sonar2"/>
   </node>
   
@@ -26,14 +23,13 @@
     Leds 2
   -->
   <node pkg="nao_behavior_tree" type="nao_leds" name="nao_leds" output="screen">
-    <param name="NAO_IP" value="$(arg nao_ip2)"/>
-    <param name="NAO_PORT" value="$(arg nao_port2)"/>
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/parameters.yaml"/>
   </node>
   
   <!--
     Walker 2
   -->
-  <node pkg="nao_driver" type="nao_walker.py" name="nao_walker2" required="true" args="--pip=$(arg nao_ip2) --pport=$(arg nao_port2)" output="screen">
+  <node pkg="nao_driver" type="nao_walker.py" name="nao_walker2" required="true" args="--pip=$(arg nao_ip) --pport=$(arg nao_port)" output="screen">
   	<remap from="cmd_vel" to="cmd_vel2"/>
   </node>
   
@@ -42,30 +38,15 @@
     Actions 2
   -->
   <node pkg="nao_behavior_tree" type="Greet" name="Greet2" args="2">
-    <param name="NAO_IP" value="$(arg nao_ip2)"/>
-    <param name="NAO_PORT" value="$(arg nao_port2)"/>
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/parameters.yaml"/>
   </node>
   
   <node pkg="nao_behavior_tree" type="Search" name="Search2" args="2" output="screen">
-    <param name="NAO_IP" value="$(arg nao_ip2)"/>
-    <param name="NAO_PORT" value="$(arg nao_port2)"/>
-    <param name="H_MIN" value="0"/>
-    <param name="H_MAX" value="10"/>
-    <param name="S_MIN" value="160"/>
-    <param name="S_MAX" value="255"/>
-    <param name="V_MIN" value="160"/>
-    <param name="V_MAX" value="255"/>
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/parameters.yaml"/>
   </node>
   
   <node pkg="nao_behavior_tree" type="GoClose" name="GoClose2" args="2" output="screen">
-    <param name="NAO_IP" value="$(arg nao_ip2)"/>
-    <param name="NAO_PORT" value="$(arg nao_port2)"/>
-    <param name="H_MIN" value="0"/>
-    <param name="H_MAX" value="10"/>
-    <param name="S_MIN" value="160"/>
-    <param name="S_MAX" value="255"/>
-    <param name="V_MIN" value="160"/>
-    <param name="V_MAX" value="255"/>
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/parameters.yaml"/>
   </node>
   
   <node pkg="nao_behavior_tree" type="Stop" name="Stop2" args="2"/>  

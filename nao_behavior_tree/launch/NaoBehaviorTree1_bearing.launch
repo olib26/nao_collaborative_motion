@@ -1,14 +1,13 @@
 <launch>
   
-  <arg name="nao_ip1" default="$(optenv NAO_IP 192.168.1.19)"/>
-  <arg name="nao_port1" default="$(optenv NAO_PORT 9559)"/>
+  <arg name="nao_ip" default="$(optenv NAO_IP 192.168.1.19)"/>
+  <arg name="nao_port" default="$(optenv NAO_PORT 9559)"/>
   
   <!--
     Top camera 1
   -->
-  <node pkg="nao_driver" type="nao_camera.py" name="nao_camera1" required="true" args="--pip=$(arg nao_ip1) --pport=$(arg nao_port1)" output="screen">
-    <param name="camera_switch" value="0"/>
-    <param name="resolution" value="2"/>
+  <node pkg="nao_driver" type="nao_camera.py" name="nao_camera1" required="true" args="--pip=$(arg nao_ip) --pport=$(arg nao_port)" output="screen">
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/parameters.yaml"/>
     <remap from="image_raw" to="image_raw1"/>
   </node>
   
@@ -16,8 +15,7 @@
     Leds 1
   -->
   <node pkg="nao_behavior_tree" type="nao_leds" name="nao_leds" output="screen">
-    <param name="NAO_IP" value="$(arg nao_ip1)"/>
-    <param name="NAO_PORT" value="$(arg nao_port1)"/>
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/parameters.yaml"/>
   </node>
   
   
@@ -25,14 +23,7 @@
     Actions 1
   -->
   <node pkg="nao_behavior_tree" type="TrackingAmongObstacles" name="TrackingAmongObstacles1" args="1" output="screen">
-    <param name="NAO_IP" value="$(arg nao_ip1)"/>
-    <param name="NAO_PORT" value="$(arg nao_port1)"/>
-    <param name="H_MIN" value="0"/>
-    <param name="H_MAX" value="10"/>
-    <param name="S_MIN" value="160"/>
-    <param name="S_MAX" value="255"/>
-    <param name="V_MIN" value="160"/>
-    <param name="V_MAX" value="255"/>
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/parameters.yaml"/>
   </node>
   
 
@@ -48,14 +39,7 @@
     Localization
   -->
   <node pkg="nao_behavior_tree" type="localization" name="localization" args="0" output="screen">
-	<param name="camera" value="1"/>
-	
-    <param name="H_MIN" value="0"/>
-    <param name="H_MAX" value="16"/>
-    <param name="S_MIN" value="110"/>
-    <param name="S_MAX" value="255"/>
-    <param name="V_MIN" value="30"/>
-    <param name="V_MAX" value="255"/>
+	<rosparam command="load" file="$(find nao_behavior_tree)/launch/webcam.yaml"/>
   </node>
   
 </launch>

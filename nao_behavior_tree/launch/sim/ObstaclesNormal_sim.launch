@@ -1,8 +1,8 @@
 <launch>
   
   <node pkg="nao_behavior_tree" type="obstacles" name="obstacles" args="1" output="screen">
-    <param name="cameraId" value="1"/>
-    <param name="webcam" value="true"/>
+	<param name="NAO_IP" value="127.0.0.1"/>
+    <param name="NAO_PORT" value="9561"/>
   </node>
   
 </launch>
