@@ -302,10 +302,8 @@ void imageProcessing(IplImage* img)
 
 	// Compute standard deviation
 	std::pair<double,double> V = particlesStD();
-	if((V.first > StD_max) & (V.second > StD_max))
-	{
-		//robotDetected = false;
-	}
+	robotDetected = !((V.first > StD_max) & (V.second > StD_max));
+
 
 	// Draw robot
 	showRobot(hsv_mask);
@@ -466,8 +464,8 @@ public:
 		// Init moving
 		motion_proxy_ptr->moveInit();
 
-        // Robot detected
-        robotDetected = true;
+        // Robot not detected
+        robotDetected = false;
 	}
 
 	void finalize()

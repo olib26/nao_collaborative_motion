@@ -60,5 +60,8 @@ Robot r1,r2;
 
 bool robot1Detected,robot2Detected;
 
+// Velocity threshold
+double velThreshold = 0.03;
+
 
 #endif /* OBSTACLES_HPP_ */
