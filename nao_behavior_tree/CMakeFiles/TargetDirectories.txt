@@ -3,6 +3,7 @@
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/Greet.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/HeadTracker.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/Localization.dir
+/home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/Obstacles.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/ROSBUILD_genaction_msgs.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/ROSBUILD_genmsg_cpp.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/ROSBUILD_genmsg_lisp.dir
@@ -19,7 +20,6 @@
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/nao_behavior_tree.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/nao_leds.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/nao_sonar.dir
-/home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/obstacles.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/rosbuild_precompile.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/rosbuild_premsgsrvgen.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/rospack_genmsg.dir

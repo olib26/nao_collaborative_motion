@@ -21,7 +21,7 @@ void receive_bearing(const nao_behavior_tree::Bearing::ConstPtr &msg)
 	relative = msg->relative;
 	robotDetected = msg->robotDetected;
 
-	ROS_INFO("Angle = %f",relative);
+	//ROS_INFO("Angle = %f",relative);
 }
 
 
@@ -79,20 +79,21 @@ public:
 			initialize();
 		}
 
-		// Robot not detected
-		if(!robotDetected)
+		// Tracker
+		if(robotDetected)
 		{
-			set_feedback(FAILURE);
-			finalize();
-			return 1;
+			angle = (float)(-relative-motion_proxy_ptr->getAngles(name,useSensors).front());
+			if((fabs(relative) < 2) & (fabs((double)angle) > angleThreshold)) {motion_proxy_ptr->changeAngles(name,angle,fractionMaxSpeed);}
+
+			//angle = (float)(-relative);
+			//if(fabs(relative) < 2) {motion_proxy_ptr->setAngles(name,angle,fractionMaxSpeed);}
 		}
 
-		// Tracker
-		angle = (float)(-relative-motion_proxy_ptr->getAngles(name,useSensors).front());
-		if((fabs(relative) < 2) & (fabs((double)angle) > angleThreshold)) {motion_proxy_ptr->changeAngles(name,angle,fractionMaxSpeed);}
-
-		//angle = (float)(-relative);
-		//if(fabs(relative) < 2) {motion_proxy_ptr->setAngles(name,angle,fractionMaxSpeed);}
+		else
+		{
+			angle = 0;
+			motion_proxy_ptr->setAngles(name,angle,fractionMaxSpeed);
+		}
 
 		return 0;
 	}

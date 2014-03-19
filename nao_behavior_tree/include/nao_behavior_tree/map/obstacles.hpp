@@ -63,5 +63,8 @@ bool robot1Detected,robot2Detected;
 // Velocity threshold
 double velThreshold = 0.03;
 
+// Optimal velocity publishers
+ros::Publisher vel1_pub,vel2_pub;
+
 
 #endif /* OBSTACLES_HPP_ */

@@ -1,6 +1,6 @@
 <launch>
   
-  <node pkg="nao_behavior_tree" type="obstacles" name="obstacles" args="0" output="screen">
+  <node pkg="nao_behavior_tree" type="Obstacles" name="Obstacles" args="0" output="screen">
     <param name="cameraId" value="1"/>
     <param name="webcam" value="true"/>
   </node>

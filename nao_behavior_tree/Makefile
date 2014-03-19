@@ -161,6 +161,19 @@ Localization/fast:
 .PHONY : Localization/fast
 
 #=============================================================================
+# Target rules for targets named Obstacles
+
+# Build rule for target.
+Obstacles: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Obstacles
+.PHONY : Obstacles
+
+# fast build rule for target.
+Obstacles/fast:
+	$(MAKE) -f CMakeFiles/Obstacles.dir/build.make CMakeFiles/Obstacles.dir/build
+.PHONY : Obstacles/fast
+
+#=============================================================================
 # Target rules for targets named ROSBUILD_genaction_msgs
 
 # Build rule for target.
@@ -367,19 +380,6 @@ nao_sonar: cmake_check_build_system
 nao_sonar/fast:
 	$(MAKE) -f CMakeFiles/nao_sonar.dir/build.make CMakeFiles/nao_sonar.dir/build
 .PHONY : nao_sonar/fast
-
-#=============================================================================
-# Target rules for targets named obstacles
-
-# Build rule for target.
-obstacles: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 obstacles
-.PHONY : obstacles
-
-# fast build rule for target.
-obstacles/fast:
-	$(MAKE) -f CMakeFiles/obstacles.dir/build.make CMakeFiles/obstacles.dir/build
-.PHONY : obstacles/fast
 
 #=============================================================================
 # Target rules for targets named rosbuild_precompile
@@ -741,6 +741,7 @@ src/behavior_tree/rosaction.o:
 	$(MAKE) -f CMakeFiles/Greet.dir/build.make CMakeFiles/Greet.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/HeadTracker.dir/build.make CMakeFiles/HeadTracker.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/Localization.dir/build.make CMakeFiles/Localization.dir/src/behavior_tree/rosaction.o
+	$(MAKE) -f CMakeFiles/Obstacles.dir/build.make CMakeFiles/Obstacles.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/Stop.dir/build.make CMakeFiles/Stop.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.o
@@ -756,6 +757,7 @@ src/behavior_tree/rosaction.i:
 	$(MAKE) -f CMakeFiles/Greet.dir/build.make CMakeFiles/Greet.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/HeadTracker.dir/build.make CMakeFiles/HeadTracker.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/Localization.dir/build.make CMakeFiles/Localization.dir/src/behavior_tree/rosaction.i
+	$(MAKE) -f CMakeFiles/Obstacles.dir/build.make CMakeFiles/Obstacles.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/Stop.dir/build.make CMakeFiles/Stop.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.i
@@ -771,6 +773,7 @@ src/behavior_tree/rosaction.s:
 	$(MAKE) -f CMakeFiles/Greet.dir/build.make CMakeFiles/Greet.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/HeadTracker.dir/build.make CMakeFiles/HeadTracker.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/Localization.dir/build.make CMakeFiles/Localization.dir/src/behavior_tree/rosaction.s
+	$(MAKE) -f CMakeFiles/Obstacles.dir/build.make CMakeFiles/Obstacles.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/Stop.dir/build.make CMakeFiles/Stop.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.s
@@ -811,17 +814,17 @@ src/map/localization.s:
 
 # target to build an object file
 src/map/obstacles.o:
-	$(MAKE) -f CMakeFiles/obstacles.dir/build.make CMakeFiles/obstacles.dir/src/map/obstacles.o
+	$(MAKE) -f CMakeFiles/Obstacles.dir/build.make CMakeFiles/Obstacles.dir/src/map/obstacles.o
 .PHONY : src/map/obstacles.o
 
 # target to preprocess a source file
 src/map/obstacles.i:
-	$(MAKE) -f CMakeFiles/obstacles.dir/build.make CMakeFiles/obstacles.dir/src/map/obstacles.i
+	$(MAKE) -f CMakeFiles/Obstacles.dir/build.make CMakeFiles/Obstacles.dir/src/map/obstacles.i
 .PHONY : src/map/obstacles.i
 
 # target to generate assembly for a file
 src/map/obstacles.s:
-	$(MAKE) -f CMakeFiles/obstacles.dir/build.make CMakeFiles/obstacles.dir/src/map/obstacles.s
+	$(MAKE) -f CMakeFiles/Obstacles.dir/build.make CMakeFiles/Obstacles.dir/src/map/obstacles.s
 .PHONY : src/map/obstacles.s
 
 # target to build an object file
@@ -865,6 +868,7 @@ help:
 	@echo "... Greet"
 	@echo "... HeadTracker"
 	@echo "... Localization"
+	@echo "... Obstacles"
 	@echo "... ROSBUILD_genaction_msgs"
 	@echo "... ROSBUILD_genmsg_cpp"
 	@echo "... ROSBUILD_genmsg_lisp"
@@ -882,7 +886,6 @@ help:
 	@echo "... nao_behavior_tree"
 	@echo "... nao_leds"
 	@echo "... nao_sonar"
-	@echo "... obstacles"
 	@echo "... rebuild_cache"
 	@echo "... rosbuild_precompile"
 	@echo "... rosbuild_premsgsrvgen"

@@ -6,6 +6,7 @@
  */
 
 #include <ros/ros.h>
+#include "nao_behavior_tree/rosaction.h"
 
 #include <iostream>
 #include <iostream>
@@ -23,6 +24,7 @@
 #include <eigen3/Eigen/LU>
 
 #include <nao_behavior_tree/Odometry.h>
+#include <nao_behavior_tree/Velocity.h>
 #include <nao_behavior_tree/Bearing.h>
 
 #include <nao_behavior_tree/map/obstacles.hpp>
@@ -347,7 +349,7 @@ void on_mouse(int event, int x, int y, int d, void *ptr)
 		{
 			obstacles.push_back(currentObstacle);
 
-			ROS_INFO("Create obstacle %i",obstacles.size());
+			ROS_INFO("Create obstacle %i",(int)obstacles.size());
 
 			// New obstacle
 			currentObstacle.pointsWorld.clear();
@@ -419,9 +421,73 @@ void creation(IplImage* img)
 }
 
 
+class Obstacles : ROSAction
+{
+public:
+	bool init_;
+	ros::Duration execute_time_;
+
+	Obstacles(std::string name) :
+		ROSAction(name),
+		init_(false),
+		execute_time_((ros::Duration) 0)
+	{
+
+	}
+
+	~Obstacles()
+	{
+
+	}
+
+	void initialize()
+	{
+		init_ = true;
+
+	}
+
+	void finalize()
+	{
+
+		init_ = false;
+		deactivate();
+	}
+
+	int executeCB(ros::Duration dt)
+	{
+		std::cout << "**Obstacles -%- Executing Main Task, elapsed_time: "
+		          << dt.toSec() << std::endl;
+		std::cout << "**Obstacles -%- execute_time: "
+		          << execute_time_.toSec() << std::endl;
+		execute_time_ += dt;
+
+		if(!init_)
+		{
+			set_feedback(RUNNING);
+			initialize();
+
+		}
+
+		if(false)
+		{
+			//set_feedback(FAILURE);
+			//finalize();
+			//return 1;
+		}
+
+		return 0;
+	}
+
+	void resetCB()
+	{
+		execute_time_ = (ros::Duration) 0;
+	}
+};
+
+
 int main(int argc, char** argv)
 {
-	ros::init(argc, argv,"obstacles");
+	ros::init(argc, argv,"Obstacles");
 	ros::NodeHandle nh;
 
 	// Odometry subscribers
@@ -536,7 +602,6 @@ int main(int argc, char** argv)
 			}
 		}
 
-
 		// Test
 		while(ros::ok())
 		{
@@ -547,6 +612,13 @@ int main(int argc, char** argv)
 			ros::spinOnce();
 			cvWaitKey(100);
 		}
+
+		// Optimal velocities publishers
+		vel1_pub = nh.advertise<nao_behavior_tree::Velocity>("/vel1",1);
+		vel2_pub = nh.advertise<nao_behavior_tree::Velocity>("/vel2",1);
+
+		// Launch Server
+		Obstacles server(ros::this_node::getName());
 	}
 
 	

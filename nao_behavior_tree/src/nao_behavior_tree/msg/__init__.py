@@ -7,4 +7,5 @@ from ._ROSActionGoal import *
 from ._ROSGoal import *
 from ._ROSActionResult import *
 from ._Sonar import *
+from ._Velocity import *
 from ._ROSFeedback import *

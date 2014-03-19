@@ -148,8 +148,9 @@ rosbuild_add_executable(Localization src/map/localization.cpp src/behavior_tree/
 target_link_libraries(Localization ${OpenCV_LIBS} alproxies alvalue alvision)
 rosbuild_link_boost(Localization thread)
 
-rosbuild_add_executable(obstacles src/map/obstacles.cpp)
-target_link_libraries(obstacles ${OpenCV_LIBS} alproxies alvalue alvision)
+rosbuild_add_executable(Obstacles src/map/obstacles.cpp src/behavior_tree/rosaction.cpp)
+target_link_libraries(Obstacles ${OpenCV_LIBS} alproxies alvalue alvision)
+rosbuild_link_boost(Obstacles thread)
 
 
 # Sensors

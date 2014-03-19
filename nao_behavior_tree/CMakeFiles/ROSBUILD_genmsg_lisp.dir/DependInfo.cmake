@@ -27,6 +27,7 @@ SET(CMAKE_MULTIPLE_OUTPUT_PAIRS
   "/home/olivier/ros_workspace/nao_behavior_tree/msg_gen/lisp/_package_ROSGoal.lisp" "/home/olivier/ros_workspace/nao_behavior_tree/msg_gen/lisp/ROSGoal.lisp"
   "/home/olivier/ros_workspace/nao_behavior_tree/msg_gen/lisp/_package_ROSResult.lisp" "/home/olivier/ros_workspace/nao_behavior_tree/msg_gen/lisp/ROSResult.lisp"
   "/home/olivier/ros_workspace/nao_behavior_tree/msg_gen/lisp/_package_Sonar.lisp" "/home/olivier/ros_workspace/nao_behavior_tree/msg_gen/lisp/Sonar.lisp"
+  "/home/olivier/ros_workspace/nao_behavior_tree/msg_gen/lisp/_package_Velocity.lisp" "/home/olivier/ros_workspace/nao_behavior_tree/msg_gen/lisp/Velocity.lisp"
   )
 
 

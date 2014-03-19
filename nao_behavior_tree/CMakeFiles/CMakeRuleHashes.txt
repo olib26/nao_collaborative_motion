@@ -28,6 +28,7 @@ a7c1a99b780c96c77481b01a09d8547f msg_gen/cpp/include/nao_behavior_tree/ROSFeedba
 e7c4ed79233e3e3d8e8d41f5ed8eea97 msg_gen/cpp/include/nao_behavior_tree/ROSGoal.h
 bc0a576b00f1b90e9da7ae905d4d9b57 msg_gen/cpp/include/nao_behavior_tree/ROSResult.h
 034b016f9b6ad55273795c5f71c1ded3 msg_gen/cpp/include/nao_behavior_tree/Sonar.h
+d9a5c8c3ba1e5c394389ccc1ab83999f msg_gen/cpp/include/nao_behavior_tree/Velocity.h
 e5f4f338c64c80c187ed47072c332270 msg_gen/lisp/Bearing.lisp
 cd51fbfd08628aedb5203103aa7def4a msg_gen/lisp/Odometry.lisp
 fb9b107aa77d001bedb5bfd1d1ea01d2 msg_gen/lisp/ROSAction.lisp
@@ -38,6 +39,7 @@ fb9b107aa77d001bedb5bfd1d1ea01d2 msg_gen/lisp/ROSAction.lisp
 b5bd8bf08d63b3ed543862ee1920ea52 msg_gen/lisp/ROSGoal.lisp
 3574b48bee6ed9b492ed230322d33edc msg_gen/lisp/ROSResult.lisp
 48622e4a3defe59b43671d065dfb6c70 msg_gen/lisp/Sonar.lisp
+14801a9f1d644e2b00dad5c9735c4644 msg_gen/lisp/Velocity.lisp
 ab22f8e2632622610e14347f7c07fdcc src/nao_behavior_tree/msg/_Bearing.py
 1d466323484115cd6c360119e4992bf2 src/nao_behavior_tree/msg/_Odometry.py
 e350b1466d9adcd6a48f58c9ca631380 src/nao_behavior_tree/msg/_ROSAction.py
@@ -48,4 +50,5 @@ d567c8942edd2945bcf10d7ecc845967 src/nao_behavior_tree/msg/_ROSFeedback.py
 c6466c361c987620cdce8ad34a020293 src/nao_behavior_tree/msg/_ROSGoal.py
 e36069ba6d7f2d865e123a8e82c7aaf9 src/nao_behavior_tree/msg/_ROSResult.py
 b64ceff1fc821a990c4cc3642f0b2701 src/nao_behavior_tree/msg/_Sonar.py
-134e313dd4c1f95f77bc6a7d71db5cb2 src/nao_behavior_tree/msg/__init__.py
+41bd5fe7d6ad53a0fcb3c04704a86978 src/nao_behavior_tree/msg/_Velocity.py
+4321ecb1337dd4ed02966fe22c0702a8 src/nao_behavior_tree/msg/__init__.py
