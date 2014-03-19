@@ -317,6 +317,19 @@ clean-test-results/fast:
 .PHONY : clean-test-results/fast
 
 #=============================================================================
+# Target rules for targets named color_filter_calibration
+
+# Build rule for target.
+color_filter_calibration: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 color_filter_calibration
+.PHONY : color_filter_calibration
+
+# fast build rule for target.
+color_filter_calibration/fast:
+	$(MAKE) -f CMakeFiles/color_filter_calibration.dir/build.make CMakeFiles/color_filter_calibration.dir/build
+.PHONY : color_filter_calibration/fast
+
+#=============================================================================
 # Target rules for targets named nao_behavior_tree
 
 # Build rule for target.
@@ -826,6 +839,21 @@ src/sensors/nao_sonar.s:
 	$(MAKE) -f CMakeFiles/nao_sonar.dir/build.make CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.s
 .PHONY : src/sensors/nao_sonar.s
 
+# target to build an object file
+src/tools/color_filter_calibration.o:
+	$(MAKE) -f CMakeFiles/color_filter_calibration.dir/build.make CMakeFiles/color_filter_calibration.dir/src/tools/color_filter_calibration.o
+.PHONY : src/tools/color_filter_calibration.o
+
+# target to preprocess a source file
+src/tools/color_filter_calibration.i:
+	$(MAKE) -f CMakeFiles/color_filter_calibration.dir/build.make CMakeFiles/color_filter_calibration.dir/src/tools/color_filter_calibration.i
+.PHONY : src/tools/color_filter_calibration.i
+
+# target to generate assembly for a file
+src/tools/color_filter_calibration.s:
+	$(MAKE) -f CMakeFiles/color_filter_calibration.dir/build.make CMakeFiles/color_filter_calibration.dir/src/tools/color_filter_calibration.s
+.PHONY : src/tools/color_filter_calibration.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -849,6 +877,7 @@ help:
 	@echo "... Walk"
 	@echo "... bt_server"
 	@echo "... clean-test-results"
+	@echo "... color_filter_calibration"
 	@echo "... edit_cache"
 	@echo "... nao_behavior_tree"
 	@echo "... nao_leds"
@@ -923,6 +952,9 @@ help:
 	@echo "... src/sensors/nao_sonar.o"
 	@echo "... src/sensors/nao_sonar.i"
 	@echo "... src/sensors/nao_sonar.s"
+	@echo "... src/tools/color_filter_calibration.o"
+	@echo "... src/tools/color_filter_calibration.i"
+	@echo "... src/tools/color_filter_calibration.s"
 .PHONY : help
 
 

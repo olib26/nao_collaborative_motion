@@ -621,13 +621,48 @@ clean: CMakeFiles/clean-test-results.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/color_filter_calibration.dir
+
+# All Build rule for target.
+CMakeFiles/color_filter_calibration.dir/all: CMakeFiles/rosbuild_precompile.dir/all
+	$(MAKE) -f CMakeFiles/color_filter_calibration.dir/build.make CMakeFiles/color_filter_calibration.dir/depend
+	$(MAKE) -f CMakeFiles/color_filter_calibration.dir/build.make CMakeFiles/color_filter_calibration.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  55
+	@echo "Built target color_filter_calibration"
+.PHONY : CMakeFiles/color_filter_calibration.dir/all
+
+# Include target in all.
+all: CMakeFiles/color_filter_calibration.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/color_filter_calibration.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles 36
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/color_filter_calibration.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles 0
+.PHONY : CMakeFiles/color_filter_calibration.dir/rule
+
+# Convenience name for target.
+color_filter_calibration: CMakeFiles/color_filter_calibration.dir/rule
+.PHONY : color_filter_calibration
+
+# clean rule for target.
+CMakeFiles/color_filter_calibration.dir/clean:
+	$(MAKE) -f CMakeFiles/color_filter_calibration.dir/build.make CMakeFiles/color_filter_calibration.dir/clean
+.PHONY : CMakeFiles/color_filter_calibration.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/color_filter_calibration.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/nao_behavior_tree.dir
 
 # All Build rule for target.
 CMakeFiles/nao_behavior_tree.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/nao_behavior_tree.dir/build.make CMakeFiles/nao_behavior_tree.dir/depend
 	$(MAKE) -f CMakeFiles/nao_behavior_tree.dir/build.make CMakeFiles/nao_behavior_tree.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  55 56 57 58 59 60 61
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  56 57 58 59 60 61 62
 	@echo "Built target nao_behavior_tree"
 .PHONY : CMakeFiles/nao_behavior_tree.dir/all
 
@@ -662,7 +697,7 @@ clean: CMakeFiles/nao_behavior_tree.dir/clean
 CMakeFiles/nao_leds.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/nao_leds.dir/build.make CMakeFiles/nao_leds.dir/depend
 	$(MAKE) -f CMakeFiles/nao_leds.dir/build.make CMakeFiles/nao_leds.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  62
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  63
 	@echo "Built target nao_leds"
 .PHONY : CMakeFiles/nao_leds.dir/all
 
@@ -697,7 +732,7 @@ clean: CMakeFiles/nao_leds.dir/clean
 CMakeFiles/nao_sonar.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/nao_sonar.dir/build.make CMakeFiles/nao_sonar.dir/depend
 	$(MAKE) -f CMakeFiles/nao_sonar.dir/build.make CMakeFiles/nao_sonar.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  63
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  64
 	@echo "Built target nao_sonar"
 .PHONY : CMakeFiles/nao_sonar.dir/all
 
@@ -732,7 +767,7 @@ clean: CMakeFiles/nao_sonar.dir/clean
 CMakeFiles/obstacles.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/obstacles.dir/build.make CMakeFiles/obstacles.dir/depend
 	$(MAKE) -f CMakeFiles/obstacles.dir/build.make CMakeFiles/obstacles.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  64
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles  65
 	@echo "Built target obstacles"
 .PHONY : CMakeFiles/obstacles.dir/all
 

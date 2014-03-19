@@ -52,29 +52,22 @@ void drawObstacle(IplImage* img, Obstacle obstacle)
 
 void drawCurrentObstacle(IplImage* img)
 {
-	if(!currentObstacle.pointsImage.empty())
-	{
-		cv::Point p1,p2;
-		CvScalar color = cvScalar(0,0,255);
-		int thickness = 2;
+	cv::Point p1,p2;
+	CvScalar color = cvScalar(0,0,255);
+	int thickness = 2;
 
-		std::vector<cv::Point> points = currentObstacle.pointsImage;
-		for(unsigned  int j = 0; j < points.size()-1; j++)
-		{
-			p1 = points.at(j);
-			p2 = points.at(j+1);
-			cvLine(img,p1,p2,color,thickness,CV_AA,0);
-		}
+	std::vector<cv::Point> points = currentObstacle.pointsImage;
+	for(int j = 0; j < (int)(points.size()-1); j++)
+	{
+		p1 = points.at(j);
+		p2 = points.at(j+1);
+		cvLine(img,p1,p2,color,thickness,CV_AA,0);
 	}
 }
 
 
 void showObstacles(IplImage* img)
 {
-	cv::Point p1,p2;
-	CvScalar color = cvScalar(0,0,255);
-	int thickness = 2;
-
 	for(unsigned int i = 0; i < obstacles.size(); i++)
 	{
 		drawObstacle(img,obstacles.at(i));

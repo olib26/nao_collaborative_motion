@@ -160,3 +160,8 @@ target_link_libraries(nao_sonar alproxies alvalue)
 # Leds
 rosbuild_add_executable(nao_leds src/leds/nao_leds.cpp)
 target_link_libraries(nao_leds alproxies alvalue)
+
+
+# Tools
+rosbuild_add_executable(color_filter_calibration src/tools/color_filter_calibration.cpp)
+target_link_libraries(color_filter_calibration ${OpenCV_LIBS})

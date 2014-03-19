@@ -1,7 +1,7 @@
 /*
- * color_filter.cpp
+ * color_filter_calibration.cpp
  *
- *  Created on: Jan 24, 2014
+ *  Created on: Mar 19, 2014
  *      Author: Olivier BALLAND
  */
 
@@ -17,7 +17,7 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
-#include "headers/color_filter.hpp"
+#include "nao_behavior_tree/tools/color_filter_calibration.hpp"
 
 namespace enc = sensor_msgs::image_encodings;
 
@@ -87,7 +87,8 @@ void on_trackbar( int,void*)
 
 int main(int argc, char** argv)
 {
-	ros::init(argc, argv,"color_filter");
+	ros::init(argc, argv,"color_filter_calibration");
+	ros::NodeHandle pnh("~");
 
 	// Trackbars
 	cvNamedWindow("HSV Thresholds",1);
@@ -97,6 +98,15 @@ int main(int argc, char** argv)
 	cv::createTrackbar("SAT MAX:","HSV Thresholds",&S_MAX,255,on_trackbar);
 	cv::createTrackbar("VAL MIN:","HSV Thresholds",&V_MIN,255,on_trackbar);
 	cv::createTrackbar("VAL MAX:","HSV Thresholds",&V_MAX,255,on_trackbar);
+
+	// Init trackbars
+	pnh.param("H_MIN",H_MIN,int(0)); cv::setTrackbarPos("HUE MIN:","HSV Thresholds",H_MIN);
+	pnh.param("H_MAX",H_MAX,int(0)); cv::setTrackbarPos("HUE MAX:","HSV Thresholds",H_MAX);
+	pnh.param("S_MIN",S_MIN,int(0)); cv::setTrackbarPos("SAT MIN:","HSV Thresholds",S_MIN);
+	pnh.param("S_MAX",S_MAX,int(0)); cv::setTrackbarPos("SAT MAX:","HSV Thresholds",S_MAX);
+	pnh.param("V_MIN",V_MIN,int(0)); cv::setTrackbarPos("VAL MIN:","HSV Thresholds",V_MIN);
+	pnh.param("V_MAX",V_MAX,int(0)); cv::setTrackbarPos("VAL MAX:","HSV Thresholds",V_MAX);
+
 	cvWaitKey(10);
 
 	if(argc != 1)
@@ -117,7 +127,6 @@ int main(int argc, char** argv)
 		else
 		{
 			int id;
-			ros::NodeHandle pnh("~");
 			pnh.param("id",id,int(0));
 			CvCapture* capture = cvCaptureFromCAM(id);
 

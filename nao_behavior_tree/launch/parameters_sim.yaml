@@ -1,0 +1,13 @@
+NAO_IP: $(arg nao_ip)
+NAO_PORT: $(arg nao_port)
+
+H_MIN: 0
+H_MAX: 30
+S_MIN: 180
+S_MAX: 255
+V_MIN: 90
+V_MAX: 255
+
+camera_switch: 0
+resolution: 2
+

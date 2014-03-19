@@ -15,6 +15,7 @@
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/Walk.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/bt_server.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/clean-test-results.dir
+/home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/color_filter_calibration.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/nao_behavior_tree.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/nao_leds.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/nao_sonar.dir

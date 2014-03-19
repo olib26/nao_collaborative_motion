@@ -40,9 +40,9 @@
   <node pkg="nao_behavior_tree" type="Search" name="Search1" args="1" output="screen">
     <param name="NAO_IP" value="$(arg nao_ip1)"/>
     <param name="NAO_PORT" value="$(arg nao_port1)"/>
-    <param name="H_MIN" value="115"/>
-    <param name="H_MAX" value="180"/>
-    <param name="S_MIN" value="100"/>
+    <param name="H_MIN" value="0"/>
+    <param name="H_MAX" value="30"/>
+    <param name="S_MIN" value="180"/>
     <param name="S_MAX" value="255"/>
     <param name="V_MIN" value="90"/>
     <param name="V_MAX" value="255"/>
@@ -51,9 +51,9 @@
   <node pkg="nao_behavior_tree" type="GoClose" name="GoClose1" args="1" output="screen">
     <param name="NAO_IP" value="$(arg nao_ip1)"/>
     <param name="NAO_PORT" value="$(arg nao_port1)"/>
-    <param name="H_MIN" value="115"/>
-    <param name="H_MAX" value="180"/>
-    <param name="S_MIN" value="100"/>
+    <param name="H_MIN" value="0"/>
+    <param name="H_MAX" value="30"/>
+    <param name="S_MIN" value="180"/>
     <param name="S_MAX" value="255"/>
     <param name="V_MIN" value="90"/>
     <param name="V_MAX" value="255"/>
