@@ -6,12 +6,12 @@ WorldInfo {
     "Date: 06 Feb 2012"
   ]
   title "Aldebaran Nao H25 V4.0"
-  basicTimeStep 40
+  basicTimeStep 20
   displayRefresh 1
 }
 Viewpoint {
-  orientation -0.00667179 -0.710685 -0.703479 3.14428
-  position 0.799108 5.4045 0.139023
+  orientation -0.000677191 -0.997136 -0.075629 3.27459
+  position 1.12897 0.829303 -2.76395
   follow "NAO_H25_V40"
 }
 Background {
@@ -43,7 +43,7 @@ Nao_H25_V40 {
   cameraPixelSize 0.15
 }
 Nao_H25_V40 {
-  translation 1.0223 0.42 0.0740943
+  translation 1.0223 0.34 0.074094
   rotation -0.266423 0.68155 0.681549 2.62084
   cameraWidth 1024
   cameraHeight 960

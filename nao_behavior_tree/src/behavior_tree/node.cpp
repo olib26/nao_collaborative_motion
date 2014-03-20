@@ -225,9 +225,11 @@ STATE NodeParallel::execute()
 	}
 	if (number_error > 0)
 		return node_status_ = NODE_ERROR;
-	else if (number_success >= number_children_/2)
+	//else if (number_success >= number_children_/2)
+	else if (number_success >= 1)
 		return node_status_ = SUCCESS;
-	else if (number_failure >= number_children_/2)
+	//else if (number_failure >= number_children_/2)
+	else if (number_success >= 1)
 		return node_status_ = FAILURE;
 	else
 		return node_status_ = RUNNING;

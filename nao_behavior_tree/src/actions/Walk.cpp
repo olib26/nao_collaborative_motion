@@ -105,7 +105,7 @@ int main(int argc, char** argv)
 		if(atoi(argv[1]) == 1) {nao = "1";}
 		if(atoi(argv[1]) == 2) {nao = "2";}
 
-		ros::init(argc, argv,"GoClose" + nao);
+		ros::init(argc, argv,"Walk" + nao);
 		ros::NodeHandle nh;
 
 		ros::NodeHandle pnh("~");
