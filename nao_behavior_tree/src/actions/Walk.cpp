@@ -71,13 +71,12 @@ public:
 		{
 			set_feedback(RUNNING);
 			initialize();
-
-			// Walk forward
-			geometry_msgs::Twist cmd;
-			cmd.linear.x = 0.5;
-			cmd_pub.publish(cmd);
 		}
 
+		// Walk forward
+		geometry_msgs::Twist cmd;
+		cmd.linear.x = 0.5;
+		cmd_pub.publish(cmd);
 
 		if(motion_proxy_ptr->getRobotPosition(true).front() > dist)
 		{

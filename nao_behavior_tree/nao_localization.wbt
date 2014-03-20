@@ -10,8 +10,8 @@ WorldInfo {
   displayRefresh 1
 }
 Viewpoint {
-  orientation -0.000677191 -0.997136 -0.075629 3.27459
-  position 1.12897 0.829303 -2.76395
+  orientation -0.0236696 -0.734773 -0.6779 3.10707
+  position 0.418721 4.62024 -0.0786199
   follow "NAO_H25_V40"
 }
 Background {

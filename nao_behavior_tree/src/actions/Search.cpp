@@ -376,12 +376,12 @@ public:
 
 			// Launch Particle Filter
 			ic = new ImageConverter();
-
-			// Start rotating
-			geometry_msgs::Twist cmd;
-			cmd.angular.z = 0.5;
-			cmd_pub.publish(cmd);
 		}
+
+		// Rotate
+		geometry_msgs::Twist cmd;
+		cmd.angular.z = 0.5;
+		cmd_pub.publish(cmd);
 
 		if(robotDetected)
 		{
