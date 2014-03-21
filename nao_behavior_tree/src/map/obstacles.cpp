@@ -68,7 +68,7 @@ void drawCurrentObstacle(IplImage* img)
 }
 
 
-void showObstacles(IplImage* img)
+void drawObstacles(IplImage* img)
 {
 	for(unsigned int i = 0; i < obstacles.size(); i++)
 	{
@@ -76,8 +76,6 @@ void showObstacles(IplImage* img)
 	}
 
 	drawCurrentObstacle(img);
-
-	cvShowImage("Obstacles",img);
 }
 
 
@@ -99,17 +97,10 @@ void receive_odometry2(const nao_behavior_tree::Odometry::ConstPtr &msg)
 }
 
 
-void receive_bearing1(const nao_behavior_tree::Bearing::ConstPtr &msg)
+void receive_bearing(const nao_behavior_tree::Bearing::ConstPtr &msg)
 {
 	r1.theta = msg->absolute;
 	robot2Detected = msg->robotDetected;
-}
-
-
-void receive_bearing2(const nao_behavior_tree::Bearing::ConstPtr &msg)
-{
-	r2.theta = msg->absolute;
-	robot1Detected = msg->robotDetected;
 }
 
 
@@ -238,6 +229,9 @@ allEdges computeAllEdges(std::vector<Obstacle> obstacles, Robot r)
 
 bool intersectEdge(Robot r, Edge edge)
 {
+	// Is the robot moving
+	if(sqrt(r.vel.x*r.vel.x + r.vel.y*r.vel.y) > velThreshold) {return false;}
+
 	Point p0;
 	double V = angle(p0,r.vel);
 	double alpha = angle(r.pos,edge.p);
@@ -283,10 +277,10 @@ Edge closestEdge(Robot r, allEdges edges)
 }
 
 
-void drawEdge(Edge edge, IplImage* img)
+void drawEdge(Edge edge, IplImage* img, int b, int g, int r)
 {
 	cv::Point p1,p2;
-	CvScalar color = cvScalar(0,0,0);
+	CvScalar color = cvScalar(b,g,r);
 	int thickness = 1;
 
 	p1 = pointToPixel(edge.p);
@@ -307,7 +301,7 @@ void drawAllEdges(std::vector<Edge> allEdges, IplImage* img)
 	for(unsigned int i = 0; i < allEdges.size(); i++)
 	{
 		edge = allEdges.at(i);
-		drawEdge(edge,img);
+		drawEdge(edge,img,0,0,0);
 	}
 }
 
@@ -370,7 +364,8 @@ void creation(IplImage* img)
 	char key;
 	while(ros::ok())
 	{
-		showObstacles(img);
+		drawObstacles(img);
+		cvShowImage("Obstacles",img);
 		key = cvWaitKey(100);
 		if(key == 27) {break;} // Esc key
 	}
@@ -443,12 +438,10 @@ public:
 	void initialize()
 	{
 		init_ = true;
-
 	}
 
 	void finalize()
 	{
-
 		init_ = false;
 		deactivate();
 	}
@@ -465,15 +458,73 @@ public:
 		{
 			set_feedback(RUNNING);
 			initialize();
-
 		}
 
-		if(false)
+		// Update image
+		img = getImage(webcam);
+
+		allEdges edges = computeAllEdges(obstacles,r1);
+		allEdges intersected;
+		for(unsigned int i = 0; i < edges.size(); i++)
 		{
-			//set_feedback(FAILURE);
-			//finalize();
-			//return 1;
+			if(intersectEdge(r2,edges.at(i))) {intersected.push_back(edges.at(i));}
 		}
+
+		// Draw all edges (black)
+		drawAllEdges(edges,img);
+
+		Edge edge;
+		if(!intersected.empty()) {edge = closestEdge(r2,intersected);}
+
+		// Draw interesting edge (green)
+		drawEdge(edge,img,0,255,0);
+
+		// Draw obstacles
+		drawObstacles(img);
+
+		cvShowImage("Obstacles",img);
+		cvWaitKey(1);
+
+
+		// Strategies
+		nao_behavior_tree::Velocity vel;
+
+		// Simple follower
+		if(intersected.empty())
+		{
+			vel.theta = r1.theta;
+		}
+		else
+		{
+			Eigen::Vector2d vec(r2.pos.x-edge.p.x,r2.pos.y-edge.p.y);
+			Eigen::Vector2d r(cos(edge.theta),sin(edge.theta));
+			Eigen::Vector2d t(sin(edge.theta),-cos(edge.theta));
+			Eigen::MatrixXd r_proj = vec.transpose()*r;
+			Eigen::MatrixXd t_proj = vec.transpose()*t;
+
+			// Zone 1
+			if(r_proj(0,0) >= 0)
+			{
+				double d1 = sqrt((edge.p.x-r1.pos.x)*(edge.p.x-r1.pos.x) + (edge.p.y-r1.pos.y)*(edge.p.y-r1.pos.y));
+				double d2 = r_proj(0,0);
+
+				Point p0;
+				Point p;
+				p.x = d2/d1;
+				p.y = 1;
+				vel.theta = modulo2Pi(angle(p0,p)+edge.theta-M_PI/2);
+			}
+
+			// Zone 2
+			// Go towards edge point
+			else
+			{
+				vel.theta = edge.theta;
+			}
+		}
+
+		vel.norm = 0.5;
+		vel_pub.publish(vel);
 
 		return 0;
 	}
@@ -485,28 +536,24 @@ public:
 };
 
 
+
 int main(int argc, char** argv)
 {
 	ros::init(argc, argv,"Obstacles");
 	ros::NodeHandle nh;
 
-	// Odometry subscribers
-	ros::Subscriber odom1_sub = nh.subscribe("/odometry1",1,receive_odometry1);
-	ros::Subscriber odom2_sub = nh.subscribe("/odometry2",1,receive_odometry2);
-
-	// Bearing subscribers
-	ros::Subscriber bearing1_sub = nh.subscribe("/bearing1",1,receive_bearing1);
-	ros::Subscriber bearing2_sub = nh.subscribe("/bearing2",1,receive_bearing2);
-
 	// Mode
-	int mode = NORMAL;
+	int mode;
 
 	ros::NodeHandle pnh("~");
 	if(argc != 1)
 	{
 		// Mode selection
-		if(atoi(argv[1]) == 0) {mode = CREATION;}
-		if(atoi(argv[1]) == 1) {mode = NORMAL;}
+		if(atoi(argv[1]) == 1) {r1.id = "1"; r2.id = "2";}
+		if(atoi(argv[1]) == 2) {r1.id = "2"; r2.id = "1";}
+
+		// Mode selection
+		pnh.param("mode",mode,int(NORMAL));
 
 		// Robot parameters
 		pnh.param("NAO_IP",NAO_IP,std::string("127.0.0.1"));
@@ -523,6 +570,18 @@ int main(int argc, char** argv)
 		puts("Error, not enough arguments");
 		return 0;
 	}
+
+
+	// Odometry subscribers
+	ros::Subscriber odom1_sub = nh.subscribe("/odometry" + r1.id,1,receive_odometry1);
+	ros::Subscriber odom2_sub = nh.subscribe("/odometry" + r2.id,1,receive_odometry2);
+
+	// Bearing subscribers
+	ros::Subscriber bearing_sub = nh.subscribe("/bearing" + r1.id,1,receive_bearing);
+
+	// Optimal velocities publishers
+	vel_pub = nh.advertise<nao_behavior_tree::Velocity>("/vel" + r1.id,1);
+
 
 	// Init proxy
 	if(!webcam)
@@ -547,9 +606,6 @@ int main(int argc, char** argv)
 
 	// Window
 	cvNamedWindow("Obstacles",1);
-
-	// Image
-	IplImage* img;
 
 	 // Wait for proxy init
 	sleep(1);
@@ -602,23 +658,10 @@ int main(int argc, char** argv)
 			}
 		}
 
-		// Test
-		while(ros::ok())
-		{
-			img = getImage(webcam);
-			allEdges edges = computeAllEdges(obstacles,r1);
-			drawAllEdges(edges,img);
-			showObstacles(img);
-			ros::spinOnce();
-			cvWaitKey(100);
-		}
-
-		// Optimal velocities publishers
-		vel1_pub = nh.advertise<nao_behavior_tree::Velocity>("/vel1",1);
-		vel2_pub = nh.advertise<nao_behavior_tree::Velocity>("/vel2",1);
-
 		// Launch Server
 		Obstacles server(ros::this_node::getName());
+
+		ros::spin();
 	}
 
 	

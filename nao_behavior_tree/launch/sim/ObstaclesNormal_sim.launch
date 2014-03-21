@@ -11,6 +11,23 @@
     <remap from="image_raw" to="image_raw1"/>
   </node>
   
+  <!--
+	Walker 1
+  -->
+  <node pkg="nao_driver" type="nao_walker.py" name="nao_walker1" required="true" args="--pip=$(arg nao_ip) --pport=$(arg nao_port)" output="screen">
+   <remap from="cmd_vel" to="cmd_vel1"/>
+  </node>
+  
+  <!--
+	Sonar 1
+  -->
+  <node pkg="nao_behavior_tree" type="nao_sonar" name="nao_sonar1" output="screen">
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/sim/parameters_sim.yaml"/>
+    <param name="NAO_IP" value="$(arg nao_ip)"/>
+    <param name="NAO_PORT" value="$(arg nao_port)"/>
+    <remap from="sonar" to="sonar1"/>
+  </node>
+  
   
   <!--
     Actions 1
@@ -26,6 +43,20 @@
     <param name="NAO_IP" value="$(arg nao_ip)"/>
     <param name="NAO_PORT" value="$(arg nao_port)"/>
   </node>
+  
+  <node pkg="nao_behavior_tree" type="Greet" name="Greet1" args="1">
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/sim/parameters_sim.yaml"/>
+    <param name="NAO_IP" value="$(arg nao_ip)"/>
+    <param name="NAO_PORT" value="$(arg nao_port)"/>
+  </node>
+  
+  <node pkg="nao_behavior_tree" type="Search" name="Search1" args="1" output="screen">
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/sim/parameters_sim.yaml"/>
+    <param name="NAO_IP" value="$(arg nao_ip)"/>
+    <param name="NAO_PORT" value="$(arg nao_port)"/>
+  </node>
+  
+  <node pkg="nao_behavior_tree" type="Stop" name="Stop1" args="1"/>
   
 
   <!--

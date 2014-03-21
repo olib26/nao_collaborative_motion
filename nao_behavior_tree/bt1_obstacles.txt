@@ -1,8 +1,13 @@
 [*
 	A Localization
-	/
-		A TrackingAmongObstacles1
-		A HeadTracker1
-		A Obstacles
-	|
+	[*
+		A Search1
+		/
+			A TrackingAmongObstacles1
+			A HeadTracker1
+			A Obstacles
+		|
+		A Greet1
+		A Stop1
+	]
 ]

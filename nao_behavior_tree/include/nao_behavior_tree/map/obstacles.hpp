@@ -19,6 +19,9 @@ enum MODES {
 int cameraId;
 bool webcam;
 
+// Image
+IplImage* img;
+
 // Image size
 int height,width;
 
@@ -53,6 +56,7 @@ typedef std::vector<Edge> allEdges;
 // Robot odometry
 struct Robot
 {
+	std::string id;
 	Point pos,vel;
 	double theta;
 };
@@ -63,8 +67,8 @@ bool robot1Detected,robot2Detected;
 // Velocity threshold
 double velThreshold = 0.03;
 
-// Optimal velocity publishers
-ros::Publisher vel1_pub,vel2_pub;
+// Optimal velocity publisher
+ros::Publisher vel_pub;
 
 
 #endif /* OBSTACLES_HPP_ */
