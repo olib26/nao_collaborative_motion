@@ -18,6 +18,10 @@ struct Robot{
 };
 Robot r1,r2;
 
+// Optimal velocity
+ros::Subscriber vel_sub;
+nao_behavior_tree::Velocity V;
+
 // Motion proxy
 AL::ALMotionProxy* motion_proxy_ptr;
 
@@ -81,7 +85,13 @@ bool robotDetected;
 // Controller parameters
 const double alpha = 0.001;
 const double rho = 0.8;
-const double dist_threshold = 0.8;
+const double distThreshold = 0.6;
+const double angularThreshold = 15*M_PI/180;
+
+// Sonar
+bool sonar;
+double right = INFINITY;
+double left = INFINITY;
 
 // HSV Thresholds
 int H_MIN,H_MAX,S_MIN,S_MAX,V_MIN,V_MAX;

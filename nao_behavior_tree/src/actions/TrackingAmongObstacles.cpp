@@ -1,7 +1,7 @@
 #include "nao_behavior_tree/rosaction.h"
 
 #include <alproxies/almotionproxy.h>
-#include <nao_behavior_tree/Sonar.h>
+#include <alproxies/alrobotpostureproxy.h>
 
 #include <opencv/cv.h>
 #include <opencv/cxcore.h>
@@ -18,6 +18,8 @@
 #include <geometry_msgs/Twist.h>
 #include <nao_behavior_tree/Odometry.h>
 #include <nao_behavior_tree/Bearing.h>
+#include <nao_behavior_tree/Velocity.h>
+#include <nao_behavior_tree/Sonar.h>
 
 #include "nao_behavior_tree/actions/TrackingAmongObstacles.hpp"
 
@@ -361,6 +363,36 @@ public:
 };
 
 
+double modulo2Pi(double theta)
+{
+	// Angle between ]-pi,pi]
+	while(theta > M_PI) {theta -= 2*M_PI;}
+	while(theta <= -M_PI) {theta += 2*M_PI;}
+	return theta;
+}
+
+
+double angle(double dx, double dy)
+{
+	double theta;
+
+	if(dx == 0)
+	{
+		if(dy < 0) {theta = -M_PI/2;}
+		if(dy > 0) {theta = M_PI/2;}
+	}
+	else
+	{
+		theta = atan(dy/dx);
+		if(dx < 0) {theta += M_PI;}
+	}
+
+	modulo2Pi(theta);
+
+	return theta;
+}
+
+
 float computeDistance()
 {
 	return sqrt((r1.x-r2.x)*(r1.x-r2.x) + (r1.y-r2.y)*(r1.y-r2.y));
@@ -410,23 +442,7 @@ double relativeBearing()
 
 double absoluteBearing()
 {
-	double theta;
-	if(r1.x == r2.x)
-	{
-		if((r2.y-r1.y) < 0) {theta = -M_PI/2;}
-		if((r2.y-r1.y) > 0) {theta = M_PI/2;}
-	}
-	else
-	{
-		theta = atan((r2.y-r1.y)/(r2.x-r1.x));
-		if((r2.x-r1.x) < 0) {theta += M_PI;}
-	}
-
-	// Angle between ]-pi,pi]
-	while(theta > M_PI) {theta -= 2*M_PI;}
-	while(theta <= -M_PI) {theta += 2*M_PI;}
-
-	return theta;
+	return angle(r2.x+r1.x,r2.y-r1.y);
 }
 
 
@@ -435,6 +451,8 @@ class TrackingAmongObstacles : ROSAction
 public:
 	bool init_;
 	ros::Duration execute_time_;
+	AL::ALMotionProxy* motion_proxy_ptr;
+	AL::ALRobotPostureProxy* robotPosture;
 	ImageConverter* ic;
 
 	TrackingAmongObstacles(std::string name,std::string NAO_IP,int NAO_PORT) :
@@ -443,11 +461,13 @@ public:
 		execute_time_((ros::Duration) 0)
 	{
 		motion_proxy_ptr = new AL::ALMotionProxy(NAO_IP,NAO_PORT);
+		robotPosture = new AL::ALRobotPostureProxy(NAO_IP,NAO_PORT);
 	}
 
 	~TrackingAmongObstacles()
 	{
 		delete motion_proxy_ptr;
+		delete robotPosture;
 		delete ic;
 	}
 
@@ -461,11 +481,14 @@ public:
 		AL::ALValue stiffness_time(1.0f);
 		motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
 
+		// Stand
+		robotPosture->goToPosture("Stand",0.5f);
+
 		// Init moving
 		motion_proxy_ptr->moveInit();
 
-        // Robot not detected
-        robotDetected = false;
+        // Robot detected
+        robotDetected = true;
 	}
 
 	void finalize()
@@ -497,20 +520,49 @@ public:
 			ic = new ImageConverter();
 		}
 
-		// Robot not detected
-		if(!robotDetected)
+		// Close to the other robot
+		//ROS_INFO("Depth = %f, r = %f, l = %f",depth,right,left);
+		bool sonarCond;
+		if(sonar)
 		{
-			//set_feedback(FAILURE);
-			//finalize();
-			//return 1;
+			sonarCond = ((right < distThreshold) | (left < distThreshold));
+		}
+		else
+		{
+			sonarCond = true;
 		}
 
-		// Publish angles
+		if(sonarCond & (depth < distThreshold))
+		{
+			set_feedback(SUCCESS);
+			finalize();
+			return 1;
+		}
+
+		// Publish bearings
 		nao_behavior_tree::Bearing bearing;
 		bearing.relative = relativeBearing();
 		bearing.absolute = absoluteBearing();
 		bearing.robotDetected = robotDetected;
 		bearing_pub.publish(bearing);
+
+		// Robot not detected
+		if(!robotDetected)
+		{
+			set_feedback(FAILURE);
+			finalize();
+			return 1;
+		}
+
+		// Controller
+		double angular = alpha*modulo2Pi(V.theta-(bearing.relative+bearing.absolute));
+		double linear;
+		if(fabs(angular) < angularThreshold) {linear = V.norm;}
+
+		geometry_msgs::Twist cmd;
+		cmd.linear.x = linear;
+		cmd.angular.z = angular;
+		cmd_pub.publish(cmd);
 
 		return 0;
 	}
@@ -520,6 +572,13 @@ public:
 		execute_time_ = (ros::Duration) 0;
 	}
 };
+
+
+void receive_sonar(const nao_behavior_tree::Sonar::ConstPtr &msg)
+{
+	right = msg->right;
+	left = msg->left;
+}
 
 
 void receive_odometry1(const nao_behavior_tree::Odometry::ConstPtr &msg)
@@ -537,6 +596,13 @@ void receive_odometry2(const nao_behavior_tree::Odometry::ConstPtr &msg)
 	r2.y = msg->y;
 	r2.vx = msg->vx;
 	r2.vy = msg->vy;
+}
+
+
+void receive_velocity(const nao_behavior_tree::Velocity::ConstPtr &msg)
+{
+	V.norm = msg->norm;
+	V.theta = msg->theta;
 }
 
 
@@ -567,9 +633,15 @@ int main(int argc, char** argv)
 		hsv_min = cvScalar(H_MIN,S_MIN,V_MIN,0);
 		hsv_max = cvScalar(H_MAX,S_MAX,V_MAX,0);
 
+		// Sonar subscriber
+		ros::Subscriber sonar_sub = nh.subscribe("/sonar" + r1.id,1000,receive_sonar);
+
 		// Odometry subscribers
 		ros::Subscriber odom1_sub = nh.subscribe("/odometry" + r1.id,1,receive_odometry1);
 		ros::Subscriber odom2_sub = nh.subscribe("/odometry" + r2.id,1,receive_odometry2);
+
+		// Velocity subscriber
+		ros::Subscriber vel_sub = nh.subscribe("/vel" + r1.id,1,receive_velocity);
 
 		// Walker publisher
 		cmd_pub = nh.advertise<geometry_msgs::Twist>("/cmd_vel" + r1.id,1);

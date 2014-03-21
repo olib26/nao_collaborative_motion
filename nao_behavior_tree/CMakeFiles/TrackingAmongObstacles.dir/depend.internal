@@ -4,6 +4,8 @@
 CMakeFiles/TrackingAmongObstacles.dir/src/actions/TrackingAmongObstacles.o
  /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/almotionproxy.h
  /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/almotionproxyposthandler.h
+ /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/alrobotpostureproxy.h
+ /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/alrobotpostureproxyposthandler.h
  /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/api.h
  /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alvalue/alvalue.h
  /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alvalue/config.h
@@ -1088,6 +1090,7 @@ CMakeFiles/TrackingAmongObstacles.dir/src/actions/TrackingAmongObstacles.o
  msg_gen/cpp/include/nao_behavior_tree/ROSGoal.h
  msg_gen/cpp/include/nao_behavior_tree/ROSResult.h
  msg_gen/cpp/include/nao_behavior_tree/Sonar.h
+ msg_gen/cpp/include/nao_behavior_tree/Velocity.h
 CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.o
  /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/boost/algorithm/string/compare.hpp
  /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/boost/algorithm/string/concept.hpp
