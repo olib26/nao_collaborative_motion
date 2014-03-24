@@ -3,6 +3,7 @@
   <arg name="nao_ip" default="$(optenv NAO_IP 127.0.0.1)"/>
   <arg name="nao_port" default="$(optenv NAO_PORT 9560)"/>
   
+
   <!--
     Top camera 1
   -->
@@ -84,6 +85,12 @@
   <node pkg="nao_behavior_tree" type="nao_behavior_tree" name="nao_behavior_tree1" output="screen">
     <param name="file" value="/home/olivier/ros_workspace/nao_behavior_tree/bt1_obstacles.txt"/>
   </node>
-
+  
+  
+  
+  <!--
+    Nao 2
+  -->
+  <include file="$(find nao_behavior_tree)/launch/sim/Walk_sim.launch"/>
   
 </launch>

@@ -1,4 +1,7 @@
 [*
-	A Walk2
-	A Stop2
+	A Localization
+	[*
+		A Walk2
+		A Stop2
+	]
 ]

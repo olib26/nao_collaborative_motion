@@ -451,7 +451,7 @@ public:
 		motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
 
 		// Stand
-		robotPosture->goToPosture("Stand",0.5f);
+		//robotPosture->goToPosture("Stand",0.5f);
 
 		// Init moving
 		motion_proxy_ptr->moveInit();

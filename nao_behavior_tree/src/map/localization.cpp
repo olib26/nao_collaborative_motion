@@ -27,7 +27,7 @@
 using namespace std;
 
 
-bool init;
+bool initRobots;
 bool webcam;
 
 
@@ -421,10 +421,12 @@ void receive_bearing2(const nao_behavior_tree::Bearing::ConstPtr &msg)
 class Localization : ROSAction
 {
 public:
+	bool init_;
 	ros::Duration execute_time_;
 
 	Localization(std::string name) :
 		ROSAction(name),
+		init_(false),
 		execute_time_((ros::Duration) 0){}
 
 	void finalize()
@@ -440,9 +442,10 @@ public:
 		          << execute_time_.toSec() << std::endl;
 		execute_time_ += dt;
 
-		if(!init)
+		if(!init_)
 		{
 			set_feedback(RUNNING);
+			init_ = true;
 
 			// Image
 			IplImage* img;
@@ -477,10 +480,10 @@ public:
 				cvWaitKey(100);
 			}
 
-			init = true;
+			initRobots = true;
 		}
 
-		if(init)
+		if(initRobots)
 		{
 			set_feedback(SUCCESS);
 			finalize();
@@ -574,7 +577,7 @@ int main(int argc, char** argv)
 
 	// Wait for init
 	ros::Rate r(100);
-	while(!init)
+	while(!initRobots)
 	{
 		ros::spinOnce();
 		r.sleep();
