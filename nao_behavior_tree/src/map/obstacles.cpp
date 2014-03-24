@@ -490,7 +490,7 @@ public:
 		nao_behavior_tree::Velocity vel;
 
 		// Simple follower
-		if(intersected.empty())
+		if(intersected.empty() & (distanceToEdge(r2.pos,edge) < distanceToEdge(r1.pos,edge)))
 		{
 			vel.theta = r1.theta;
 		}

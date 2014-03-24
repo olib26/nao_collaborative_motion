@@ -4,6 +4,7 @@ FILE(REMOVE_RECURSE
   "msg_gen"
   "CMakeFiles/GoClose.dir/src/actions/GoClose.o"
   "CMakeFiles/GoClose.dir/src/behavior_tree/rosaction.o"
+  "CMakeFiles/GoClose.dir/src/filters/particleFilter.o"
   "bin/GoClose.pdb"
   "bin/GoClose"
 )

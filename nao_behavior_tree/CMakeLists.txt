@@ -116,15 +116,15 @@ rosbuild_link_boost(Greet thread)
 rosbuild_add_executable(Stop src/actions/Stop.cpp src/behavior_tree/rosaction.cpp)
 rosbuild_link_boost(Stop thread)
 
-rosbuild_add_executable(Search src/actions/Search.cpp src/behavior_tree/rosaction.cpp)
+rosbuild_add_executable(Search src/actions/Search.cpp src/behavior_tree/rosaction.cpp src/filters/particleFilter.cpp)
 target_link_libraries(Search alproxies alvalue ${OpenCV_LIBS})
 rosbuild_link_boost(Search thread)
 
-rosbuild_add_executable(GoClose src/actions/GoClose.cpp src/behavior_tree/rosaction.cpp)
+rosbuild_add_executable(GoClose src/actions/GoClose.cpp src/behavior_tree/rosaction.cpp src/filters/particleFilter.cpp)
 target_link_libraries(GoClose alproxies alvalue ${OpenCV_LIBS})
 rosbuild_link_boost(GoClose thread)
 
-rosbuild_add_executable(TrackingAmongObstacles src/actions/TrackingAmongObstacles.cpp src/behavior_tree/rosaction.cpp)
+rosbuild_add_executable(TrackingAmongObstacles src/actions/TrackingAmongObstacles.cpp src/behavior_tree/rosaction.cpp src/filters/particleFilter.cpp)
 target_link_libraries(TrackingAmongObstacles alproxies alvalue ${OpenCV_LIBS})
 rosbuild_link_boost(TrackingAmongObstacles thread)
 
@@ -144,7 +144,7 @@ rosbuild_add_library(bt_server ${PROJECT_SOURCE_DIR}/src/behavior_tree/rosaction
 
 
 # Map
-rosbuild_add_executable(Localization src/map/localization.cpp src/behavior_tree/rosaction.cpp)
+rosbuild_add_executable(Localization src/map/localization.cpp src/behavior_tree/rosaction.cpp src/filters/particleFilter.cpp)
 target_link_libraries(Localization ${OpenCV_LIBS} alproxies alvalue alvision)
 rosbuild_link_boost(Localization thread)
 

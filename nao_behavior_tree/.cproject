@@ -412,4 +412,5 @@
 		<pathentry excluding="**/CMakeFiles/" kind="out" path=""/>
 		<pathentry kind="src" path=""/>
 	</storageModule>
+	<storageModule moduleId="refreshScope"/>
 </cproject>

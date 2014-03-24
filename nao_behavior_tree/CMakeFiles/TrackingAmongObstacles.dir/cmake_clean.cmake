@@ -4,6 +4,7 @@ FILE(REMOVE_RECURSE
   "msg_gen"
   "CMakeFiles/TrackingAmongObstacles.dir/src/actions/TrackingAmongObstacles.o"
   "CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.o"
+  "CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o"
   "bin/TrackingAmongObstacles.pdb"
   "bin/TrackingAmongObstacles"
 )

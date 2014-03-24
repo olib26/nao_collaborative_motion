@@ -4,6 +4,7 @@ FILE(REMOVE_RECURSE
   "msg_gen"
   "CMakeFiles/Localization.dir/src/map/localization.o"
   "CMakeFiles/Localization.dir/src/behavior_tree/rosaction.o"
+  "CMakeFiles/Localization.dir/src/filters/particleFilter.o"
   "bin/Localization.pdb"
   "bin/Localization"
 )

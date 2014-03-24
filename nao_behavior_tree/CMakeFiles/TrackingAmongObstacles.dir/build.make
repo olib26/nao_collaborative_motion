@@ -111,16 +111,60 @@ CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.o.provides: CM
 
 CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.o.provides.build: CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.o
 
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o: CMakeFiles/TrackingAmongObstacles.dir/flags.make
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o: src/filters/particleFilter.cpp
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o: manifest.xml
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o: /opt/ros/fuerte/share/roslang/manifest.xml
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o: /opt/ros/fuerte/share/roscpp/manifest.xml
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o: /opt/ros/fuerte/share/std_msgs/manifest.xml
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o: /opt/ros/fuerte/share/rospy/manifest.xml
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o: /opt/ros/fuerte/share/rostest/manifest.xml
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o: /opt/ros/fuerte/share/actionlib/manifest.xml
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o: /opt/ros/fuerte/share/roslib/manifest.xml
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o: /opt/ros/fuerte/share/rosconsole/manifest.xml
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o: /opt/ros/fuerte/share/message_filters/manifest.xml
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o -c /home/olivier/ros_workspace/nao_behavior_tree/src/filters/particleFilter.cpp
+
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -E /home/olivier/ros_workspace/nao_behavior_tree/src/filters/particleFilter.cpp > CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.i
+
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -S /home/olivier/ros_workspace/nao_behavior_tree/src/filters/particleFilter.cpp -o CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.s
+
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o.requires:
+.PHONY : CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o.requires
+
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o.provides: CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o.requires
+	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o.provides.build
+.PHONY : CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o.provides
+
+CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o.provides.build: CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o
+
 # Object files for target TrackingAmongObstacles
 TrackingAmongObstacles_OBJECTS = \
 "CMakeFiles/TrackingAmongObstacles.dir/src/actions/TrackingAmongObstacles.o" \
-"CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.o"
+"CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.o" \
+"CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o"
 
 # External object files for target TrackingAmongObstacles
 TrackingAmongObstacles_EXTERNAL_OBJECTS =
 
 bin/TrackingAmongObstacles: CMakeFiles/TrackingAmongObstacles.dir/src/actions/TrackingAmongObstacles.o
 bin/TrackingAmongObstacles: CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.o
+bin/TrackingAmongObstacles: CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o
 bin/TrackingAmongObstacles: /usr/local/lib/libopencv_calib3d.so.2.4.8
 bin/TrackingAmongObstacles: /usr/local/lib/libopencv_contrib.so.2.4.8
 bin/TrackingAmongObstacles: /usr/local/lib/libopencv_core.so.2.4.8
@@ -182,6 +226,7 @@ CMakeFiles/TrackingAmongObstacles.dir/build: bin/TrackingAmongObstacles
 
 CMakeFiles/TrackingAmongObstacles.dir/requires: CMakeFiles/TrackingAmongObstacles.dir/src/actions/TrackingAmongObstacles.o.requires
 CMakeFiles/TrackingAmongObstacles.dir/requires: CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.o.requires
+CMakeFiles/TrackingAmongObstacles.dir/requires: CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o.requires
 .PHONY : CMakeFiles/TrackingAmongObstacles.dir/requires
 
 CMakeFiles/TrackingAmongObstacles.dir/clean:

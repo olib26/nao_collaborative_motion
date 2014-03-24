@@ -783,6 +783,30 @@ src/behavior_tree/rosaction.s:
 .PHONY : src/behavior_tree/rosaction.s
 
 # target to build an object file
+src/filters/particleFilter.o:
+	$(MAKE) -f CMakeFiles/GoClose.dir/build.make CMakeFiles/GoClose.dir/src/filters/particleFilter.o
+	$(MAKE) -f CMakeFiles/Localization.dir/build.make CMakeFiles/Localization.dir/src/filters/particleFilter.o
+	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/src/filters/particleFilter.o
+	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.o
+.PHONY : src/filters/particleFilter.o
+
+# target to preprocess a source file
+src/filters/particleFilter.i:
+	$(MAKE) -f CMakeFiles/GoClose.dir/build.make CMakeFiles/GoClose.dir/src/filters/particleFilter.i
+	$(MAKE) -f CMakeFiles/Localization.dir/build.make CMakeFiles/Localization.dir/src/filters/particleFilter.i
+	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/src/filters/particleFilter.i
+	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.i
+.PHONY : src/filters/particleFilter.i
+
+# target to generate assembly for a file
+src/filters/particleFilter.s:
+	$(MAKE) -f CMakeFiles/GoClose.dir/build.make CMakeFiles/GoClose.dir/src/filters/particleFilter.s
+	$(MAKE) -f CMakeFiles/Localization.dir/build.make CMakeFiles/Localization.dir/src/filters/particleFilter.s
+	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/src/filters/particleFilter.s
+	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/filters/particleFilter.s
+.PHONY : src/filters/particleFilter.s
+
+# target to build an object file
 src/leds/nao_leds.o:
 	$(MAKE) -f CMakeFiles/nao_leds.dir/build.make CMakeFiles/nao_leds.dir/src/leds/nao_leds.o
 .PHONY : src/leds/nao_leds.o
@@ -943,6 +967,9 @@ help:
 	@echo "... src/behavior_tree/rosaction.o"
 	@echo "... src/behavior_tree/rosaction.i"
 	@echo "... src/behavior_tree/rosaction.s"
+	@echo "... src/filters/particleFilter.o"
+	@echo "... src/filters/particleFilter.i"
+	@echo "... src/filters/particleFilter.s"
 	@echo "... src/leds/nao_leds.o"
 	@echo "... src/leds/nao_leds.i"
 	@echo "... src/leds/nao_leds.s"
