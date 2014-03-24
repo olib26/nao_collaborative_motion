@@ -37,7 +37,7 @@ public:
 		motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
 
 		// Install the behavior
-		behavior_proxy_ptr->installBehavior("/home/olivier/nao_behavior_tree/actions/behaviors/behavior_hello/behavior.xar");
+		behavior_proxy_ptr->installBehavior("/home/olivier/ros_workspace/nao_behavior_tree/actions/behaviors/behavior_hello/behavior.xar");
 	}
 
 	void finalize()

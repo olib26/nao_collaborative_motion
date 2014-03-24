@@ -473,22 +473,24 @@ public:
 
 	void initialize()
 	{
+		ROS_INFO("Test21");
 		init_ = true;
-
+		ROS_INFO("Test22");
 		// Enable stiffness
 		AL::ALValue stiffness_name("Body");
 		AL::ALValue stiffness(1.0f);
 		AL::ALValue stiffness_time(1.0f);
 		motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
-
+		ROS_INFO("Test23");
 		// Stand
-		robotPosture->goToPosture("Stand",0.5f);
+		//robotPosture->goToPosture("Stand",0.5f);
 
 		// Init moving
-		motion_proxy_ptr->moveInit();
+		//motion_proxy_ptr->moveInit();
 
         // Robot detected
         robotDetected = true;
+        ROS_INFO("Test24");
 	}
 
 	void finalize()
@@ -511,17 +513,23 @@ public:
 		          << execute_time_.toSec() << std::endl;
 		execute_time_ += dt;
 
+		ROS_INFO("Test0");
 		if(!init_)
 		{
+			ROS_INFO("Test1");
 			set_feedback(RUNNING);
+			ROS_INFO("Test2");
 			initialize();
+			ROS_INFO("Test3");
 
 			// Launch Particle Filter
 			ic = new ImageConverter();
+			ROS_INFO("Test4");
 		}
 
 		// Close to the other robot
-		//ROS_INFO("Depth = %f, r = %f, l = %f",depth,right,left);
+		ROS_INFO("Depth = %f, r = %f, l = %f",depth,right,left);
+		/*
 		bool sonarCond;
 		if(sonar)
 		{
@@ -531,28 +539,37 @@ public:
 		{
 			sonarCond = true;
 		}
+		*/
 
+		/*
 		if(sonarCond & (depth < distThreshold))
 		{
 			set_feedback(SUCCESS);
 			finalize();
 			return 1;
 		}
+		*/
 
+		ROS_INFO("Test5");
 		// Publish bearings
 		nao_behavior_tree::Bearing bearing;
 		bearing.relative = relativeBearing();
 		bearing.absolute = absoluteBearing();
 		bearing.robotDetected = robotDetected;
+		ROS_INFO("Test6");
 		bearing_pub.publish(bearing);
+		ROS_INFO("Test7");
 
 		// Robot not detected
 		if(!robotDetected)
 		{
+			ROS_INFO("Not detected");
+
 			set_feedback(FAILURE);
 			finalize();
 			return 1;
 		}
+		ROS_INFO("Detected");
 
 		// Controller
 		double angular = alpha*modulo2Pi(V.theta-(bearing.relative+bearing.absolute));
@@ -562,7 +579,7 @@ public:
 		geometry_msgs::Twist cmd;
 		cmd.linear.x = linear;
 		cmd.angular.z = angular;
-		cmd_pub.publish(cmd);
+		//cmd_pub.publish(cmd);
 
 		return 0;
 	}
@@ -623,6 +640,8 @@ int main(int argc, char** argv)
 		int NAO_PORT;
 		pnh.param("NAO_IP",NAO_IP,std::string("127.0.0.1"));
 		pnh.param("NAO_PORT",NAO_PORT,int(9559));
+		// Sonar ON/OFF
+		pnh.param("sonar",sonar,bool(false));
 		// HSV parameters
 		pnh.param("H_MIN",H_MIN,int(0));
 		pnh.param("H_MAX",H_MAX,int(0));
@@ -634,7 +653,7 @@ int main(int argc, char** argv)
 		hsv_max = cvScalar(H_MAX,S_MAX,V_MAX,0);
 
 		// Sonar subscriber
-		ros::Subscriber sonar_sub = nh.subscribe("/sonar" + r1.id,1000,receive_sonar);
+		ros::Subscriber sonar_sub = nh.subscribe("/sonar" + r1.id,1,receive_sonar);
 
 		// Odometry subscribers
 		ros::Subscriber odom1_sub = nh.subscribe("/odometry" + r1.id,1,receive_odometry1);

@@ -6,7 +6,7 @@ WorldInfo {
     "Date: 06 Feb 2012"
   ]
   title "Aldebaran Nao H25 V4.0"
-  basicTimeStep 20
+  basicTimeStep 40
   displayRefresh 1
 }
 Viewpoint {

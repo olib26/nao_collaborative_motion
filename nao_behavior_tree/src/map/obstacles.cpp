@@ -473,11 +473,17 @@ public:
 		// Draw all edges (black)
 		drawAllEdges(edges,img);
 
-		Edge edge;
-		if(!intersected.empty()) {edge = closestEdge(r2,intersected);}
+		// Debug
+		ROS_INFO("r2 velocity = %f",sqrt(r2.vel.x*r2.vel.x + r2.vel.y*r2.vel.y));
 
-		// Draw interesting edge (green)
-		drawEdge(edge,img,0,255,0);
+		Edge edge;
+		if(!intersected.empty())
+		{
+			edge = closestEdge(r2,intersected);
+
+			// Draw interesting edge (green)
+			drawEdge(edge,img,0,255,0);
+		}
 
 		// Draw obstacles
 		drawObstacles(img);

@@ -229,7 +229,7 @@ STATE NodeParallel::execute()
 	else if (number_success >= 1)
 		return node_status_ = SUCCESS;
 	//else if (number_failure >= number_children_/2)
-	else if (number_success >= 1)
+	else if (number_failure >= 1)
 		return node_status_ = FAILURE;
 	else
 		return node_status_ = RUNNING;
