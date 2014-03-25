@@ -362,7 +362,7 @@ void imageProcessing(IplImage* img)
 	showParticles(hsv_mask);
 
 	// Show result
-	cvNamedWindow("GoClose",1); cvShowImage("GoClose",hsv_mask);
+	//cvNamedWindow("GoClose",1); cvShowImage("GoClose",hsv_mask);
 
 	cvWaitKey(10);
 }
