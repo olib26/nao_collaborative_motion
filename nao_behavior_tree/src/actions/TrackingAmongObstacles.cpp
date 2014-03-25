@@ -485,6 +485,12 @@ public:
 		// Init moving
 		motion_proxy_ptr->moveInit();
 
+		// Head pitch
+		AL::ALValue name = "HeadPitch";
+		float angle = 0;
+		float fractionMaxSpeed = 0.05;
+		motion_proxy_ptr->setAngles(name,angle,fractionMaxSpeed);
+
         // Robot detected
         robotDetected = true;
 	}
