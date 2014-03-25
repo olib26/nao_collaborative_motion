@@ -3,6 +3,7 @@
 	[*
 		A Search1
 		/
+			A TrackingAmongObstacles1
 			A HeadTracker1
 			A Obstacles
 		|

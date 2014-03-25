@@ -68,7 +68,7 @@ int H_MIN,H_MAX,S_MIN,S_MAX,V_MIN,V_MAX;
 CvScalar hsv_min,hsv_max;
 
 // Velocity
-const int nbSamples = 10;
+const int nbSamples = 100;
 
 
 #endif /* PF_HPP_ */

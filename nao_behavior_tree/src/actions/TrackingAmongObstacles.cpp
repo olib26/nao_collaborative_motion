@@ -526,7 +526,6 @@ public:
 
 		// Close to the other robot
 		ROS_INFO("Depth = %f, r = %f, l = %f",depth,right,left);
-		/*
 		bool sonarCond;
 		if(sonar)
 		{
@@ -543,7 +542,6 @@ public:
 			finalize();
 			return 1;
 		}
-		*/
 
 		// Publish bearings
 		nao_behavior_tree::Bearing bearing;

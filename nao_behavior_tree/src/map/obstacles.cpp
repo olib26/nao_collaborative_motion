@@ -229,9 +229,6 @@ allEdges computeAllEdges(std::vector<Obstacle> obstacles, Robot r)
 
 bool intersectEdge(Robot r, Edge edge)
 {
-	// Is the robot moving
-	if(sqrt(r.vel.x*r.vel.x + r.vel.y*r.vel.y) > velThreshold) {return false;}
-
 	Point p0;
 	double V = angle(p0,r.vel);
 	double alpha = angle(r.pos,edge.p);
@@ -465,9 +462,15 @@ public:
 
 		allEdges edges = computeAllEdges(obstacles,r1);
 		allEdges intersected;
-		for(unsigned int i = 0; i < edges.size(); i++)
+
+		// Is the robot moving
+		ROS_INFO("r2 vel intersect = %f",sqrt(r2.vel.x*r2.vel.x + r2.vel.y*r2.vel.y));
+		if(sqrt(r2.vel.x*r2.vel.x + r2.vel.y*r2.vel.y) > velThreshold)
 		{
-			if(intersectEdge(r2,edges.at(i))) {intersected.push_back(edges.at(i));}
+			for(unsigned int i = 0; i < edges.size(); i++)
+			{
+				if(intersectEdge(r2,edges.at(i))) {intersected.push_back(edges.at(i));}
+			}
 		}
 
 		// Draw all edges (black)
