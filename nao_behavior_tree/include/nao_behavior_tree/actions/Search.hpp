@@ -30,7 +30,7 @@ struct Point
 // Detector frame size
 int sx,sy;
 const int sx_min = 20;
-const int sy_min = 30;
+const int sy_min = 20;
 const int sx_max = 200;
 const int sy_max = 300;
 
