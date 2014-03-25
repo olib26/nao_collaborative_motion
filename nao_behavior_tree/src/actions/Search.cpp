@@ -345,6 +345,12 @@ public:
 		// Init moving
 		motion_proxy_ptr->moveInit();
 
+		// Head pitch
+		AL::ALValue name = "HeadPitch";
+		float angle = 0;
+		float fractionMaxSpeed = 0.05;
+		motion_proxy_ptr->setAngles(name,angle,fractionMaxSpeed);
+
 		// Robot not detected
 		robotDetected = false;
 	}
@@ -380,7 +386,7 @@ public:
 
 		// Rotate
 		geometry_msgs::Twist cmd;
-		cmd.angular.z = 0.5;
+		cmd.angular.z = 0.1;
 		cmd_pub.publish(cmd);
 
 		if(robotDetected)

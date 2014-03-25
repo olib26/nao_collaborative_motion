@@ -18,7 +18,7 @@ ros::Publisher cmd_pub;
 
 // Image size
 int height,width;
-const int cutHeight = 200;
+const int cutHeight = 150;
 
 // Camera parameters
 const double VFOV = 47.6*M_PI/180;
@@ -42,7 +42,7 @@ struct Point
 // Detector frame size
 int sx,sy;
 const int sx_min = 20;
-const int sy_min = 20;
+const int sy_min = 30;
 const int sx_max = 200;
 const int sy_max = 300;
 
