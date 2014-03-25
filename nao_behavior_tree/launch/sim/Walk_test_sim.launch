@@ -1,0 +1,34 @@
+<launch>
+  
+  <arg name="nao_ip" default="$(optenv NAO_IP 127.0.0.1)"/>
+  <arg name="nao_port" default="$(optenv NAO_PORT 9559)"/>
+
+
+  <!--
+    Walker 2
+  -->
+  <node pkg="nao_driver" type="nao_walker.py" name="nao_walker2" required="true" args="--pip=$(arg nao_ip) --pport=$(arg nao_port)" output="screen">
+  	<remap from="cmd_vel" to="cmd_vel2"/>
+  </node>
+  
+  
+  <!--
+    Actions 2
+  -->
+  <node pkg="nao_behavior_tree" type="Walk" name="Walk2" args="2" output="screen">
+    <param name="NAO_IP" value="$(arg nao_ip)"/>
+    <param name="NAO_PORT" value="$(arg nao_port)"/>
+    <param name="distance" value="1"/>
+  </node>
+  
+  <node pkg="nao_behavior_tree" type="Stop" name="Stop2" args="2" output="screen"/>
+  
+
+  <!--
+    Behavior Tree 2
+  -->
+  <node pkg="nao_behavior_tree" type="nao_behavior_tree" name="nao_behavior_tree2" output="screen">
+    <param name="file" value="/home/olivier/ros_workspace/nao_behavior_tree/bt2_walk_test.txt"/>
+  </node>
+
+</launch>
