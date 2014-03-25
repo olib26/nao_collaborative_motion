@@ -442,7 +442,7 @@ double relativeBearing()
 
 double absoluteBearing()
 {
-	return angle(r2.x+r1.x,r2.y-r1.y);
+	return angle(r2.x-r1.x,r2.y-r1.y);
 }
 
 
@@ -483,7 +483,7 @@ public:
 		//robotPosture->goToPosture("Stand",0.5f);
 
 		// Init moving
-		//motion_proxy_ptr->moveInit();
+		motion_proxy_ptr->moveInit();
 
         // Robot detected
         robotDetected = true;
@@ -520,7 +520,7 @@ public:
 
 		// Close to the other robot
 		ROS_INFO("Depth = %f, r = %f, l = %f",depth,right,left);
-
+		/*
 		bool sonarCond;
 		if(sonar)
 		{
@@ -537,6 +537,7 @@ public:
 			finalize();
 			return 1;
 		}
+		*/
 
 		// Publish bearings
 		nao_behavior_tree::Bearing bearing;
@@ -545,6 +546,7 @@ public:
 		bearing.robotDetected = robotDetected;
 		bearing_pub.publish(bearing);
 
+		/*
 		// Robot not detected
 		if(!robotDetected)
 		{
@@ -552,6 +554,7 @@ public:
 			finalize();
 			return 1;
 		}
+		*/
 
 		// Controller
 		double angular = alpha*modulo2Pi(V.theta-(bearing.relative+bearing.absolute));

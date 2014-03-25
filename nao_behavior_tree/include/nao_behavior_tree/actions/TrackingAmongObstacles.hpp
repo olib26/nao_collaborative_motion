@@ -49,7 +49,7 @@ struct Point
 // Detector frame size
 int sx,sy;
 const int sx_min = 20;
-const int sy_min = 30;
+const int sy_min = 20;
 const int sx_max = 200;
 const int sy_max = 300;
 
@@ -60,7 +60,7 @@ const int s_diffusion = 10; // Size
 
 // Object coordinate
 int x,y;
-double depth;
+double depth = INFINITY;
 
 // Number of particles
 const int N = 2000;
