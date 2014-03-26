@@ -65,7 +65,7 @@ Robot r1,r2;
 bool robot1Detected,robot2Detected;
 
 // Velocity threshold
-double velThreshold = 0.03;
+double velThreshold = 0.01; //0.03
 
 // Optimal velocity publisher
 ros::Publisher vel_pub;
