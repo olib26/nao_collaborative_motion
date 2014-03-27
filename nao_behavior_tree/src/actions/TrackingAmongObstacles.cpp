@@ -415,26 +415,18 @@ double relativeBearing()
 	int space = 2; //FRAME_ROBOT
 	bool useSensorValues = true;
 	std::vector<float> transVec = motion_proxy_ptr->getTransform(cameraName,space,useSensorValues);
-	Eigen::Matrix4f transMat;
+	Eigen::Matrix3f transMat;
 	transMat <<
-		transVec[0] , transVec[1] , transVec[2] , transVec[3] ,
-		transVec[4] , transVec[5] , transVec[6] , transVec[7] ,
-		transVec[8] , transVec[9] , transVec[10], transVec[11],
-		transVec[12], transVec[13], transVec[14], transVec[15];
-
-	Eigen::Vector4f vec(v(0),v(1),v(2),1);
-	vec = transMat*vec;
-
-	// Change norm
-	v = d/sqrt((double)(vec(0)*vec(0) + vec(1)*vec(1)))*v;
+		transVec[0] , transVec[1] , transVec[2] ,
+		transVec[4] , transVec[5] , transVec[6] ,
+		transVec[8] , transVec[9] , transVec[10];
 
 	// Change frame
-	Eigen::Vector4f vec2(v(0),v(1),v(2),1);
-	vec2 = transMat*vec2;
+	v = transMat*v;
 
 	// Projection on the floor
 	// -HFOV/2 <= alpha <= HFOV/2
-	double alpha = atan((double)(vec2(1)/vec2(0)));
+	double alpha = atan((double)(v(1)/v(0)));
 
 	return -alpha;
 }
