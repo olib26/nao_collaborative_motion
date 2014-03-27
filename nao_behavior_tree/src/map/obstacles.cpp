@@ -464,6 +464,7 @@ public:
 		allEdges intersected;
 
 		// Is the robot moving
+		ROS_INFO("r2 velocity = %f",sqrt(r2.vel.x*r2.vel.x + r2.vel.y*r2.vel.y));
 		if(sqrt(r2.vel.x*r2.vel.x + r2.vel.y*r2.vel.y) > velThreshold)
 		{
 			for(unsigned int i = 0; i < edges.size(); i++)

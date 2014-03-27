@@ -619,7 +619,7 @@ int main(int argc, char** argv)
 		if(robot1Detected) {showBearing(img,odom2,r2,k,r2.absoluteBearing); showBearing(img,odom1,r1,k,r2.absoluteBearing + r2.relativeBearing);}
 		cvShowImage("Odometry",img);
 
-		cvWaitKey(10);
+		cvWaitKey(50);
 		ros::spinOnce();
 	}
 
