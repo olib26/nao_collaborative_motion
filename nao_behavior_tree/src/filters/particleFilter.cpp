@@ -327,11 +327,13 @@ void particleFilter::PF(int** integral, int idObject)
 	double r = uniformRandom()/N;
 	for(int i = 0; i < N; i++)
 	{
-		for(int j = 0; j < N; j++)
+		int index;
+		for(int j = index; j < N; j++)
 		{
 			if(cdf[j] >= r)
 			{
 				objects[idObject].particles[i] = objects[idObject].particles[j];
+				index = j;
 				break;
 			}
 		}
