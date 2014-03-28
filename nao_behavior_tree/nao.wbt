@@ -10,8 +10,8 @@ WorldInfo {
   displayRefresh 1
 }
 Viewpoint {
-  orientation 0.0528805 -0.968369 -0.243857 3.60247
-  position 3.41474 2.97353 -3.87167
+  orientation 0.0567316 -0.968141 -0.243893 3.63152
+  position 3.51724 2.86383 -3.74544
   follow "NAO_H25_V40"
 }
 Background {
@@ -32,7 +32,7 @@ MetricFloor {
 }
 Nao_H25_V40 {
   translation 0.475985 0.34 0.452323
-  rotation -0.772035 0.449424 0.449422 1.82669
+  rotation -0.81548 -0.409265 -0.409261 1.77339
   controllerArgs "9560"
   cameraWidth 1024
   cameraHeight 960
@@ -43,7 +43,6 @@ Nao_H25_V40 {
 Nao_H25_V40 {
   translation 2 0.32 1
   rotation 0 0.707107 0.707107 3.14159
-  color 0 0 1
   cameraWidth 1024
   cameraHeight 960
   cameraPixelSize 0.15

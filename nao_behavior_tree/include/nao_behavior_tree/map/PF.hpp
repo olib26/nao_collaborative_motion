@@ -70,5 +70,8 @@ CvScalar hsv_min,hsv_max;
 // Velocity
 const int nbSamples = 20;
 
+// Optimal velocity
+nao_behavior_tree::Velocity vel1;
+
 
 #endif /* PF_HPP_ */

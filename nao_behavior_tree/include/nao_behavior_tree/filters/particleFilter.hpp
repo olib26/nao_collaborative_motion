@@ -88,10 +88,11 @@ public:
 	
 	// Functions
 	void imageProcessing(IplImage* img);
-	IplImage* drawObject(IplImage* img, Object object);
-	IplImage* drawParticles(IplImage* img, Object object);
-	std::pair<double,double> particlesStD(Object object);
+	IplImage* drawObject(IplImage* img, int idObject);
+	IplImage* drawParticles(IplImage* img, int idObject);
+	std::pair<double,double> particlesStD(int idObject);
 	void initParticles();
+	Object getObject(int idObject);
 };
 
 

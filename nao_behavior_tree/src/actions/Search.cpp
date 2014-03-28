@@ -12,6 +12,8 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
+#include "nao_behavior_tree/filters/particleFilter.hpp"
+
 #include <geometry_msgs/Twist.h>
 
 #include "nao_behavior_tree/actions/Search.hpp"
@@ -19,6 +21,7 @@
 namespace enc = sensor_msgs::image_encodings;
 
 
+/*
 double uniformRandom()
 {
 	return (double)(rand())/(double)(RAND_MAX);
@@ -214,42 +217,58 @@ void particleFilter(IplImage* img)
 		r += (double)1/N;
 	}
 }
+*/
 
 
 void imageProcessing(IplImage* img)
 {
-	// Create temporary images
+	// Remove top
 	CvSize sz = cvGetSize(img);
+	CvPoint p1 = cvPoint(0,0);
+	CvPoint p2 = cvPoint(sz.width-1,cutHeight-1);
+	CvScalar color = cvScalar(0,0,0);
+	cvRectangle(img,p1,p2,color,CV_FILLED);
+
+	// Create temporary images
 	IplImage* hsv_image = cvCreateImage(sz,8,3);
 	IplImage* hsv_mask = cvCreateImage(sz,8,1);
 
 	// HSV Conversion and Thresholding
 	cvCvtColor(img,hsv_image,CV_BGR2HSV);
-	cvInRangeS(hsv_image,hsv_min,hsv_max, hsv_mask);
+	cvInRangeS(hsv_image,hsv_min,hsv_max,hsv_mask);
 
+	/*
 	// Init
 	if((height != sz.height) | (width != sz.width))
 	{
 		height = sz.height;
 		width = sz.width;
 
-		initParticles();
+		//initParticles();
 	}
+	*/
 
-	// Filter
-	particleFilter(hsv_mask);
+	// Particle Filter
+	PF.imageProcessing(hsv_mask);
 
 	// Compute standard deviation
-	std::pair<double,double> V = particlesStD();
+	std::pair<double,double> V = PF.particlesStD(0);
+	//std::pair<double,double> V = particlesStD();
 	ROS_INFO("Standard deviation:  Vx = %f, Vy = %f",V.first,V.second);
 	if((V.first < StD_minx) & (V.second < StD_miny))
 	{
 		//ROS_INFO("DETECTED");
+		//hsv_mask = PF.drawObject(hsv_mask,0);
 		robotDetected = true;
 	}
 
+	//Object obj = PF.getObject(0);
+	//ROS_INFO("sx = %i",obj.sx);
+
 	// Draw particles
-	showParticles(hsv_mask);
+	hsv_mask = PF.drawParticles(hsv_mask,0);
+	//showParticles(hsv_mask);
+
 
 	// Show result
 	cvNamedWindow("Search",1); cvShowImage("Search",hsv_mask);
@@ -291,14 +310,6 @@ public:
 		}
 
 		img = new IplImage(cv_ptr->image);
-
-		// Remove top
-		CvSize sz = cvGetSize(img);
-		CvPoint p1 = cvPoint(0,0);
-		CvPoint p2 = cvPoint(sz.width-1,cutHeight-1);
-		CvScalar color = cvScalar(0,0,0);
-		cvRectangle(img,p1,p2,color,CV_FILLED);
-
 		imageProcessing(img);
 	}
 };
@@ -380,7 +391,7 @@ public:
 			set_feedback(RUNNING);
 			initialize();
 
-			// Launch Particle Filter
+			// Launch Image Converter
 			ic = new ImageConverter();
 		}
 

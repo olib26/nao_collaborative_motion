@@ -6,6 +6,8 @@
  */
 
 
+#include <ros/ros.h>
+
 #include <opencv/cv.h>
 #include <opencv/cxcore.h>
 #include <opencv/highgui.h>
@@ -40,6 +42,7 @@ double particleFilter::normalRandom()
 {
 	// Box-Muller transform
 	double u1,u2;
+	u1 = u2 = 0;
 	while(u1 == 0) {u1 = uniformRandom();}
 	while(u2 == 0) {u2 = uniformRandom();}
 	return cos(2*M_PI*u2)*sqrt(-2.*log(u1));
@@ -51,6 +54,8 @@ void particleFilter::updateObject(int idObject)
 	if(estimator == MMSE)
 	{
 		double x,y,sx,sy;
+		x = y = sx = sy = 0;
+
 		for(int i = 0; i < N; i++)
 		{
 			x += objects[idObject].particles[i].x + objects[idObject].particles[i].sx/2;
@@ -87,37 +92,37 @@ void particleFilter::updateObject(int idObject)
 }
 
 
-IplImage* particleFilter::drawObject(IplImage* img, Object object)
+IplImage* particleFilter::drawObject(IplImage* img, int idObject)
 {
 	IplImage* copy = cvCloneImage(img);
 	CvPoint c1,c2;
 
-	c1 = cvPoint(object.y-object.sy/2,object.x-object.sx/2);
-	if((object.x-object.sx/2) < 0) {c1.y = 0;}
-	if((object.y-object.sy/2) < 0) {c1.x = 0;}
-	if((object.x-object.sx/2) >= height) {c1.y = height-1;}
-	if((object.y-object.sy/2) >= width) {c1.x = width-1;}
+	c1 = cvPoint(objects[idObject].y-objects[idObject].sy/2,objects[idObject].x-objects[idObject].sx/2);
+	if((objects[idObject].x-objects[idObject].sx/2) < 0) {c1.y = 0;}
+	if((objects[idObject].y-objects[idObject].sy/2) < 0) {c1.x = 0;}
+	if((objects[idObject].x-objects[idObject].sx/2) >= height) {c1.y = height-1;}
+	if((objects[idObject].y-objects[idObject].sy/2) >= width) {c1.x = width-1;}
 
-	c2 = cvPoint(object.y+object.sy/2,object.x+object.sx/2);
-	if((object.x+object.sx/2) < 0) {c2.y = 0;}
-	if((object.y+object.sy/2) < 0) {c2.x = 0;}
-	if((object.x+object.sx/2) >= height) {c2.y = height-1;}
-	if((object.y+object.sy/2) >= width) {c2.x = width-1;}
+	c2 = cvPoint(objects[idObject].y+objects[idObject].sy/2,objects[idObject].x+objects[idObject].sx/2);
+	if((objects[idObject].x+objects[idObject].sx/2) < 0) {c2.y = 0;}
+	if((objects[idObject].y+objects[idObject].sy/2) < 0) {c2.x = 0;}
+	if((objects[idObject].x+objects[idObject].sx/2) >= height) {c2.y = height-1;}
+	if((objects[idObject].y+objects[idObject].sy/2) >= width) {c2.x = width-1;}
 
 	cvRectangle(copy,c1,c2,cvScalar(130),2);
 	return copy;
 }
 
 
-IplImage* particleFilter::drawParticles(IplImage* img, Object object)
+IplImage* particleFilter::drawParticles(IplImage* img, int idObject)
 {
 	IplImage* copy = cvCloneImage(img);
 
 	for(int i = 0; i < N; i++)
 	{
-		if((((object.particles[i].x+object.particles[i].sx/2) < height) & ((object.particles[i].y+object.particles[i].sy/2) < width)) & (((object.particles[i].x+object.particles[i].sx/2) >= 0) & ((object.particles[i].y+object.particles[i].sy/2) >= 0)))
+		if((((objects[idObject].particles[i].x+objects[idObject].particles[i].sx/2) < height) & ((objects[idObject].particles[i].y+objects[idObject].particles[i].sy/2) < width)) & (((objects[idObject].particles[i].x+objects[idObject].particles[i].sx/2) >= 0) & ((objects[idObject].particles[i].y+objects[idObject].particles[i].sy/2) >= 0)))
 		{
-			copy->imageData[((object.particles[i].x+object.particles[i].sx/2)*img->widthStep)+(object.particles[i].y+object.particles[i].sy/2)] = 130;
+			copy->imageData[((objects[idObject].particles[i].x+objects[idObject].particles[i].sx/2)*img->widthStep)+(objects[idObject].particles[i].y+objects[idObject].particles[i].sy/2)] = 130;
 		}
 	}
 
@@ -125,18 +130,24 @@ IplImage* particleFilter::drawParticles(IplImage* img, Object object)
 }
 
 
-std::pair<double,double> particleFilter::particlesStD(Object object)
+Object particleFilter::getObject(int idObject)
+{
+	return objects[idObject];
+}
+
+
+std::pair<double,double> particleFilter::particlesStD(int idObject)
 {
 	std::pair<double,double> M; // Mean
 	std::pair<double,double> V;	// Standard deviation
 
 	for(int i = 0; i < N; i++)
 	{
-		M.first += object.particles[i].x;
-		M.second += object.particles[i].y;
+		M.first += objects[idObject].particles[i].x;
+		M.second += objects[idObject].particles[i].y;
 
-		V.first += object.particles[i].x*object.particles[i].x;
-		V.second += object.particles[i].y*object.particles[i].y;
+		V.first += objects[idObject].particles[i].x*objects[idObject].particles[i].x;
+		V.second += objects[idObject].particles[i].y*objects[idObject].particles[i].y;
 	}
 
 	M.first = M.first/N;
@@ -207,7 +218,7 @@ double particleFilter::evaluate(int x, int y, int sx, int sy, int** integral)
 	if(x > height) {x = height;}
 	if(y > width) {y = width;}
 
-	int weight = integral[p.x][p.y] - integral[x-1][p.y] - integral[p.x][y-1] + integral[x-1][y-1];
+	double weight = integral[p.x][p.y] - integral[x-1][p.y] - integral[p.x][y-1] + integral[x-1][y-1];
 	if(weight <= 0) {weight = eps;}
 	return weight;
 }
@@ -258,6 +269,8 @@ void particleFilter::initParticles()
 {
 	for(int t = 0; t < T; t++)
 	{
+		objects[t].particles = new Particle [N];
+
 		for(int i = 0; i < N; i++)
 		{
 			// Position
@@ -309,6 +322,7 @@ void particleFilter::PF(int** integral, int idObject)
 	{
 		if(T > 1) {objects[idObject].particles[i].w = evaluateMultiple(objects[idObject].particles[i].x,objects[idObject].particles[i].y,objects[idObject].particles[i].sx,objects[idObject].particles[i].sy,integral,idObject);}
 		else {objects[idObject].particles[i].w = evaluate(objects[idObject].particles[i].x,objects[idObject].particles[i].y,objects[idObject].particles[i].sx,objects[idObject].particles[i].sy,integral);}
+		//ROS_INFO("weight %i = %f",i,objects[idObject].particles[i].w);
 		norm += objects[idObject].particles[i].w;
 	}
 	for(int i = 0; i < N; i++)
@@ -325,20 +339,25 @@ void particleFilter::PF(int** integral, int idObject)
 	}
 
 	double r = uniformRandom()/N;
+	int index = 0;
+	Particle* temp = new Particle [N];
 	for(int i = 0; i < N; i++)
 	{
-		int index;
 		for(int j = index; j < N; j++)
 		{
 			if(cdf[j] >= r)
 			{
-				objects[idObject].particles[i] = objects[idObject].particles[j];
+				temp[i] = objects[idObject].particles[j];
 				index = j;
 				break;
 			}
 		}
 
 		r += (double)1/N;
+	}
+	for(int i = 0; i < N; i++)
+	{
+		objects[idObject].particles[i] = temp[i];
 	}
 	
 	// Update object

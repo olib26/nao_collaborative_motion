@@ -19,6 +19,7 @@
 
 #include <nao_behavior_tree/Odometry.h>
 #include <nao_behavior_tree/Bearing.h>
+#include <nao_behavior_tree/Velocity.h>
 
 #include <nao_behavior_tree/map/PF.hpp>
 #include <nao_behavior_tree/map/webcam.hpp>
@@ -128,6 +129,23 @@ void showBearing(IplImage* img, nao_behavior_tree::Odometry odom, Robot r, doubl
 
 	p2.x = (odom.x + length*cos(bearing))/k + width/2;
 	p2.y = -(odom.y + length*sin(bearing))/k + height/2;
+
+	cvLine(img,p1,p2,color,thickness,CV_AA,0);
+}
+
+
+void showVelocity(IplImage* img, nao_behavior_tree::Velocity vel, Robot r, double k)
+{
+	CvPoint p1,p2;
+	CvScalar color = cvScalar(255,0,0);
+	int thickness = 2;
+	double length = 0.2;
+
+	p1.x = r.y;
+	p1.y = r.x;
+
+	p2.x = length*cos(vel.theta)/k + r.y;
+	p2.y = -length*sin(vel.theta)/k + r.x;
 
 	cvLine(img,p1,p2,color,thickness,CV_AA,0);
 }
@@ -418,6 +436,13 @@ void receive_bearing2(const nao_behavior_tree::Bearing::ConstPtr &msg)
 }
 
 
+void receive_vel1(const nao_behavior_tree::Velocity::ConstPtr &msg)
+{
+	vel1.norm = msg->norm;
+	vel1.theta = msg->theta;
+}
+
+
 class Localization : ROSAction
 {
 public:
@@ -512,6 +537,9 @@ int main(int argc, char** argv)
 	// Bearing subscribers
 	ros::Subscriber bearing1_sub = nh.subscribe("/bearing1",1,receive_bearing1);
 	ros::Subscriber bearing2_sub = nh.subscribe("/bearing2",1,receive_bearing2);
+
+	// Optimal velocity subscriber
+	ros::Subscriber vel1_sub = nh.subscribe("/vel1",1,receive_vel1);
 
 	ros::NodeHandle pnh("~");
 	if(argc != 1)
@@ -617,6 +645,7 @@ int main(int argc, char** argv)
 		showOdometry(img,odom2,r2,k);
 		if(robot2Detected) {showBearing(img,odom1,r1,k,r1.absoluteBearing); showBearing(img,odom1,r1,k,r1.absoluteBearing + r1.relativeBearing);}
 		if(robot1Detected) {showBearing(img,odom2,r2,k,r2.absoluteBearing); showBearing(img,odom1,r1,k,r2.absoluteBearing + r2.relativeBearing);}
+		showVelocity(img,vel1,r1,k);
 		cvShowImage("Odometry",img);
 
 		cvWaitKey(50);
