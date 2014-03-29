@@ -32,15 +32,7 @@ double depth_temp;
 int counter;
 const int nbSamplesMean = 3;
 
-// Point in integral image
-struct Point
-{
-	int x,y;
-	Point(int x,int y) : x(x),y(y){}
-};
-
 // Detector frame size
-int sx,sy;
 const int sx_min = 20;
 const int sy_min = 30;
 const int sx_max = 200;
@@ -50,23 +42,17 @@ const int sy_max = 300;
 const int sigma_diffusion = 50; // Position
 const int s_diffusion = 10; // Size
 
-// Object coordinate
-int x,y;
+// Object depth
 double depth = INFINITY;
 
 // Number of particles
 const int N = 2500;
 
-// Generate N random particles
-struct Particle{
-	int x,y;
-	int sx,sy;
-	double w;
-};
-Particle* particles = new Particle[N];
+// Object
+Object* objects = new Object;
 
-// Minimum weight
-const double eps = 1E-3;
+// Particle Filter
+particleFilter PF(N,1,MAP,objects,sx_min,sy_min,sx_max,sy_max,sigma_diffusion,s_diffusion);
 
 // Variance Threshold
 const double StD_max = 2000;

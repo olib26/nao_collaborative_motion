@@ -15,6 +15,8 @@
 #include <eigen3/Eigen/Core>
 #include <eigen3/Eigen/LU>
 
+#include "nao_behavior_tree/filters/particleFilter.hpp"
+
 #include <geometry_msgs/Twist.h>
 #include <nao_behavior_tree/Odometry.h>
 #include <nao_behavior_tree/Bearing.h>
@@ -26,263 +28,20 @@
 namespace enc = sensor_msgs::image_encodings;
 
 
-double uniformRandom()
-{
-	return (double)(rand())/(double)(RAND_MAX);
-}
-
-
-double normalRandom()
-{
-	// Box-Muller transform
-	double u1,u2;
-	u1 = u2 = 0;
-	while(u1 == 0) {u1 = uniformRandom();}
-	while(u2 == 0) {u2 = uniformRandom();}
-	return cos(2*M_PI*u2)*sqrt(-2.*log(u1));
-}
-
-
-void robotCoordinate()
-{
-	x = y = sx = sy = 0;
-	for(int i = 0; i < N; i++)
-	{
-		x += particles[i].x + particles[i].sx/2;
-		y += particles[i].y + particles[i].sy/2;
-		sx += particles[i].sx;
-		sy += particles[i].sy;
-	}
-	x = x/N;
-	y = y/N;
-	sx = sx/N;
-	sy = sy/N;
-}
-
-
-void showRobot(IplImage* img)
-{
-	CvPoint c1,c2;
-
-	c1 = cvPoint(y-sy/2,x-sx/2);
-	if((x-sx/2) < 0) {c1.y = 0;}
-	if((y-sy/2) < 0) {c1.x = 0;}
-	if((x-sx/2) >= height) {c1.y = height-1;}
-	if((y-sy/2) >= width) {c1.x = width-1;}
-
-	c2 = cvPoint(y+sy/2,x+sx/2);
-	if((x+sx/2) < 0) {c2.y = 0;}
-	if((y+sy/2) < 0) {c2.x = 0;}
-	if((x+sx/2) >= height) {c2.y = height-1;}
-	if((y+sy/2) >= width) {c2.x = width-1;}
-
-	cvRectangle(img,c1,c2,cvScalar(130),2);
-}
-
-
-void showParticles(IplImage* img)
-{
-	for(int i = 0; i < N; i++)
-	{
-		if((((particles[i].x+particles[i].sx/2) < height) & ((particles[i].y+particles[i].sy/2) < width)) & (((particles[i].x+particles[i].sx/2) >= 0) & ((particles[i].y+particles[i].sy/2) >= 0)))
-		{
-			img->imageData[((particles[i].x+particles[i].sx/2)*img->widthStep)+(particles[i].y+particles[i].sy/2)] = 130;
-		}
-	}
-}
-
-
-std::pair<double,double> particlesStD()
-{
-	std::pair<double,double> M; // Mean
-	std::pair<double,double> V;	// Standard deviation
-
-	for(int i = 0; i < N; i++)
-	{
-		M.first += particles[i].x;
-		M.second += particles[i].y;
-
-		V.first += particles[i].x*particles[i].x;
-		V.second += particles[i].y*particles[i].y;
-	}
-
-	M.first = M.first/N;
-	M.second = M.second/N;
-
-	V.first = V.first/N - M.first*M.first;
-	V.second = V.second/N - M.second*M.second;
-
-	return V;
-}
-
-
-int getPixelValue(IplImage* img,int i,int j)
-{
-	if(cvGet2D(img,i,j).val[0] == 255)
-	{
-		return 1;
-	}
-	return -1;
-}
-
-
-int** integralImage(IplImage* img)
-{
-	// Init integral image
-	int** integral = 0;
-	integral = new int*[height];
-	for(int i = 0; i < height; i++) {integral[i] = new int[width];};
-	int cumSum = getPixelValue(img,0,0);
-	integral[0][0] = cumSum;
-
-	for(int i = 1; i < height; i++)
-	{
-		cumSum += getPixelValue(img,i,0);
-		integral[i][0] = cumSum;
-	}
-
-	cumSum = getPixelValue(img,0,0);
-	for(int j = 1; j < width; j++)
-	{
-		cumSum += getPixelValue(img,0,j);
-		integral[0][j] = cumSum;
-	}
-
-	for(int i = 1; i < height; i++)
-	{
-		for(int j = 1; j < width; j++)
-		{
-			integral[i][j] = integral[i-1][j] + integral[i][j-1] - integral[i-1][j-1] + getPixelValue(img,i,j);
-		}
-	}
-
-	return integral;
-}
-
-
-double evaluate(int x, int y, int sx, int sy, int** integral)
-{
-	Point p(x+sx-1,y+sy-1);
-
-	if((x+sx-1) < 0) {p.x = 0;}
-	if((y+sy-1) < 0) {p.y = 0;}
-	if((x+sx-1) >= height) {p.x = height-1;}
-	if((y+sy-1) >= width) {p.y = width-1;}
-
-	if(x < 1) {x = 1;}
-	if(y < 1) {y = 1;}
-	if(x > height) {x = height;}
-	if(y > width) {y = width;}
-
-	int weight = integral[p.x][p.y] - integral[x-1][p.y] - integral[p.x][y-1] + integral[x-1][y-1];
-	if(weight <= 0) {weight = eps;}
-	return weight;
-}
-
-
-void initParticles()
-{
-	for(int i = 0; i < N; i++)
-	{
-		// Position
-		particles[i].x = rand() % height;
-		particles[i].y = rand() % width;
-
-		// Weight
-		particles[i].w = 1;
-
-		// Size
-		particles[i].sx = sx_min;
-		particles[i].sy = sy_min;
-	}
-}
-
-
-void particleFilter(IplImage* img)
-{
-	// Diffusion
-	for(int i = 0; i < N; i++)
-	{
-		// Position
-		particles[i].x += sigma_diffusion*normalRandom();
-		if(particles[i].x < 0) {particles[i].x = 0;}
-		if(particles[i].x > height-1) {particles[i].x = height-1;}
-
-		particles[i].y += sigma_diffusion*normalRandom();
-		if(particles[i].y < 0) {particles[i].y = 0;}
-		if(particles[i].y > width-1) {particles[i].y = width-1;}
-
-		// Size
-		particles[i].sx += s_diffusion*normalRandom();
-		if(particles[i].sx < sx_min) {particles[i].sx = sx_min;}
-		if(particles[i].sx > sx_max) {particles[i].sx = sx_max;}
-
-		particles[i].sy += s_diffusion*normalRandom();
-		if(particles[i].sy < sy_min) {particles[i].sy = sy_min;}
-		if(particles[i].sy > sy_max) {particles[i].sy = sy_max;}
-	}
-
-	// Weighting
-	double norm = 0;
-	int** integral = integralImage(img);
-	for(int i = 0; i < N; i++)
-	{
-		particles[i].w = evaluate(particles[i].x,particles[i].y,particles[i].sx,particles[i].sy,integral);
-		norm += particles[i].w;
-	}
-	for(int i = 0; i < N; i++)
-	{
-		particles[i].w = particles[i].w/norm;
-	}
-
-	// Resampling
-	double cdf[N];
-	cdf[0] = particles[0].w;
-	for(int i = 1; i < N; i++)
-	{
-		cdf[i] = cdf[i-1] + particles[i].w;
-	}
-
-	// Reset robot parameters
-	x = y = sx = sy = 0;
-	double maxWeight;
-
-	double r = uniformRandom()/N;
-	for(int i = 0; i < N; i++)
-	{
-		for(int j = 0; j < N; j++)
-		{
-			if(cdf[j] >= r)
-			{
-				particles[i] = particles[j];
-				break;
-			}
-		}
-
-		// Keep particle with maximum weight
-		if(particles[i].w > maxWeight)
-		{
-			x = particles[i].x + particles[i].sx/2;
-			y = particles[i].y + particles[i].sy/2;
-			sx = particles[i].sx;
-			sy = particles[i].sy;
-			maxWeight = particles[i].w;
-		}
-
-		// Change weight
-		particles[i].w = (double)1/N;
-		r += (double)1/N;
-	}
-
-	// Update object coordinate
-	//robotCoordinate();
-}
-
-
 void imageProcessing(IplImage* img)
 {
-	// Create temporary images
+	// Remove top
 	CvSize sz = cvGetSize(img);
+	CvPoint p1 = cvPoint(0,0);
+	CvPoint p2 = cvPoint(sz.width-1,cutHeight-1);
+	CvScalar color = cvScalar(0,0,0);
+	cvRectangle(img,p1,p2,color,CV_FILLED);
+
+	// Image size
+	height = sz.height;
+	width = sz.width;
+
+	// Create temporary images
 	IplImage* hsv_image = cvCreateImage(sz,8,3);
 	IplImage* hsv_mask = cvCreateImage(sz,8,1);
 
@@ -290,28 +49,18 @@ void imageProcessing(IplImage* img)
 	cvCvtColor(img,hsv_image,CV_BGR2HSV);
 	cvInRangeS(hsv_image,hsv_min,hsv_max, hsv_mask);
 
-	// Init
-	if((height != sz.height) | (width != sz.width))
-	{
-		height = sz.height;
-		width = sz.width;
-
-		initParticles();
-	}
-
-	// Filter
-	particleFilter(hsv_mask);
+	// Particle Filter
+	PF.imageProcessing(hsv_mask);
 
 	// Compute standard deviation
-	std::pair<double,double> V = particlesStD();
+	std::pair<double,double> V = PF.particlesStD(0);
 	robotDetected = !((V.first > StD_max) & (V.second > StD_max));
 
-
 	// Draw robot
-	showRobot(hsv_mask);
+	hsv_mask = PF.drawObject(hsv_mask,0);
 
 	// Show result
-	cvNamedWindow("Robot",1); cvShowImage("Robot",hsv_mask);
+	cvNamedWindow("TAO",1); cvShowImage("TAO",hsv_mask);
 
 	cvWaitKey(10);
 }
@@ -350,14 +99,6 @@ public:
 		}
 
 		img = new IplImage(cv_ptr->image);
-
-		// Remove top
-		CvSize sz = cvGetSize(img);
-		CvPoint p1 = cvPoint(0,0);
-		CvPoint p2 = cvPoint(sz.width-1,cutHeight-1);
-		CvScalar color = cvScalar(0,0,0);
-		cvRectangle(img,p1,p2,color,CV_FILLED);
-
 		imageProcessing(img);
 	}
 };
@@ -399,11 +140,11 @@ float computeDistance()
 }
 
 
-double relativeBearing()
+double relativeBearing(Object object)
 {
 	// Other robot parameters
-	float p_x = -(y - width/2);
-	float p_y = -(x - height/2);
+	float p_x = -(object.y - width/2);
+	float p_y = -(object.x - height/2);
 	float f = (float)width/2/tan(HFOV/2.);
 	float d = computeDistance();
 
@@ -516,6 +257,9 @@ public:
 			ic = new ImageConverter();
 		}
 
+		// Depth
+		depth = computeDistance();
+
 		// Close to the other robot
 		ROS_INFO("Depth = %f, r = %f, l = %f",depth,right,left);
 		bool sonarCond;
@@ -537,7 +281,7 @@ public:
 
 		// Publish bearings
 		nao_behavior_tree::Bearing bearing;
-		bearing.relative = relativeBearing();
+		bearing.relative = relativeBearing(PF.getObject(0));
 		bearing.absolute = absoluteBearing();
 		bearing.robotDetected = robotDetected;
 		bearing_pub.publish(bearing);

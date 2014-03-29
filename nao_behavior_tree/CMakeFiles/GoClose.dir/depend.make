@@ -1076,6 +1076,7 @@ CMakeFiles/GoClose.dir/src/actions/GoClose.o: /opt/ros/fuerte/stacks/image_commo
 CMakeFiles/GoClose.dir/src/actions/GoClose.o: /opt/ros/fuerte/stacks/image_common/image_transport/include/image_transport/transport_hints.h
 CMakeFiles/GoClose.dir/src/actions/GoClose.o: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/include/cv_bridge/cv_bridge.h
 CMakeFiles/GoClose.dir/src/actions/GoClose.o: include/nao_behavior_tree/actions/GoClose.hpp
+CMakeFiles/GoClose.dir/src/actions/GoClose.o: include/nao_behavior_tree/filters/particleFilter.hpp
 CMakeFiles/GoClose.dir/src/actions/GoClose.o: include/nao_behavior_tree/node.h
 CMakeFiles/GoClose.dir/src/actions/GoClose.o: include/nao_behavior_tree/parameters.h
 CMakeFiles/GoClose.dir/src/actions/GoClose.o: include/nao_behavior_tree/rosaction.h

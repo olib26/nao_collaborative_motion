@@ -20,17 +20,7 @@ ros::Publisher cmd_pub;
 int height,width;
 const int cutHeight = 150;
 
-/*
-// Point in integral image
-struct Point
-{
-	int x,y;
-	Point(int x,int y) : x(x),y(y){}
-};
-*/
-
 // Detector frame size
-//int sx,sy;
 const int sx_min = 10; //20
 const int sy_min = 10; //30
 const int sx_max = 200;
@@ -48,19 +38,6 @@ Object* objects = new Object;
 
 // Particle Filter
 particleFilter PF(N,1,MAP,objects,sx_min,sy_min,sx_max,sy_max,sigma_diffusion,s_diffusion);
-
-/*
-// Generate N random particles
-struct Particle{
-	int x,y;
-	int sx,sy;
-	double w;
-};
-Particle* particles = new Particle[N];
-
-// Minimum weight
-const double eps = 1E-3;
-*/
 
 // Variance Threshold
 const double StD_minx = 2000;
