@@ -10080,6 +10080,22 @@ nao_behavior_tree/Sonar.h
 nao_behavior_tree/actions/GoClose.hpp
 /home/olivier/ros_workspace/nao_behavior_tree/src/actions/nao_behavior_tree/actions/GoClose.hpp
 
+/home/olivier/ros_workspace/nao_behavior_tree/src/filters/particleFilter.cpp
+ros/ros.h
+-
+opencv/cv.h
+-
+opencv/cxcore.h
+-
+opencv/highgui.h
+-
+opencv2/imgproc/imgproc.hpp
+-
+opencv2/highgui/highgui.hpp
+-
+nao_behavior_tree/filters/particleFilter.hpp
+/home/olivier/ros_workspace/nao_behavior_tree/src/filters/nao_behavior_tree/filters/particleFilter.hpp
+
 /opt/ros/fuerte/include/XmlRpcDecl.h
 ros/macros.h
 -

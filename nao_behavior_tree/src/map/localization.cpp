@@ -17,6 +17,8 @@
 #include <alvision/alimage.h>
 #include <alvision/alvisiondefinitions.h>
 
+#include "nao_behavior_tree/filters/particleFilter.hpp"
+
 #include <nao_behavior_tree/Odometry.h>
 #include <nao_behavior_tree/Bearing.h>
 #include <nao_behavior_tree/Velocity.h>
@@ -30,23 +32,6 @@ using namespace std;
 
 bool initRobots;
 bool webcam;
-
-
-double uniformRandom()
-{
-	return (double)(rand())/(double)(RAND_MAX);
-}
-
-
-double normalRandom()
-{
-	// Box-Muller transform
-	double u1,u2;
-	u1 = u2 = 0;
-	while(u1 == 0) {u1 = uniformRandom();}
-	while(u2 == 0) {u2 = uniformRandom();}
-	return cos(2*M_PI*u2)*sqrt(-2.*log(u1));
-}
 
 
 void robotCoordinate(Particle* particles, Robot* r)
@@ -80,27 +65,7 @@ void robotCoordinate(Particle* particles, Robot* r)
 }
 
 
-void showRobot(IplImage* img, Robot r)
-{
-	CvPoint c1,c2;
-
-	c1 = cvPoint(r.y-r.sy/2,r.x-r.sx/2);
-	if((r.x-r.sx/2) < 0) {c1.y = 0;}
-	if((r.y-r.sy/2) < 0) {c1.x = 0;}
-	if((r.x-r.sx/2) >= height) {c1.y = height-1;}
-	if((r.y-r.sy/2) >= width) {c1.x = width-1;}
-
-	c2 = cvPoint(r.y+r.sy/2,r.x+r.sx/2);
-	if((r.x+r.sx/2) < 0) {c2.y = 0;}
-	if((r.y+r.sy/2) < 0) {c2.x = 0;}
-	if((r.x+r.sx/2) >= height) {c2.y = height-1;}
-	if((r.y+r.sy/2) >= width) {c2.x = width-1;}
-
-	cvRectangle(img,c1,c2,cvScalar(130),2);
-}
-
-
-void showOdometry(IplImage* img, nao_behavior_tree::Odometry odom, Robot r, double k)
+void drawOdometry(IplImage* img, nao_behavior_tree::Odometry odom, Robot r, double k)
 {
 	CvPoint p1,p2;
 	CvScalar color = cvScalar(0,0,255);
@@ -117,7 +82,7 @@ void showOdometry(IplImage* img, nao_behavior_tree::Odometry odom, Robot r, doub
 }
 
 
-void showBearing(IplImage* img, nao_behavior_tree::Odometry odom, Robot r, double k, double bearing)
+void drawBearing(IplImage* img, nao_behavior_tree::Odometry odom, Robot r, double k, double bearing)
 {
 	CvPoint p1,p2;
 	CvScalar color = cvScalar(0,255,0);
@@ -134,7 +99,7 @@ void showBearing(IplImage* img, nao_behavior_tree::Odometry odom, Robot r, doubl
 }
 
 
-void showVelocity(IplImage* img, nao_behavior_tree::Velocity vel, Robot r, double k)
+void drawVelocity(IplImage* img, nao_behavior_tree::Velocity vel, Robot r, double k)
 {
 	CvPoint p1,p2;
 	CvScalar color = cvScalar(255,0,0);
@@ -148,18 +113,6 @@ void showVelocity(IplImage* img, nao_behavior_tree::Velocity vel, Robot r, doubl
 	p2.y = -length*sin(vel.theta)/k + r.x;
 
 	cvLine(img,p1,p2,color,thickness,CV_AA,0);
-}
-
-
-void showParticles(IplImage* img, Particle* particles)
-{
-	for(int i = 0; i < N; i++)
-	{
-		if((((particles[i].x+particles[i].sx/2) < height) & ((particles[i].y+particles[i].sy/2) < width)) & (((particles[i].x+particles[i].sx/2) >= 0) & ((particles[i].y+particles[i].sy/2) >= 0)))
-		{
-			img->imageData[((particles[i].x+particles[i].sx/2)*img->widthStep)+(particles[i].y+particles[i].sy/2)] = 130;
-		}
-	}
 }
 
 
@@ -207,101 +160,7 @@ void computeOdometry(Robot* r, nao_behavior_tree::Odometry* odom, double* timest
 }
 
 
-int getPixelValue(IplImage* img,int i,int j)
-{
-	if(cvGet2D(img,i,j).val[0] == 255)
-	{
-		return 1;
-	}
-	return -1;
-}
-
-
-int** integralImage(IplImage* img)
-{
-	// Init integral image
-	int** integral = 0;
-	integral = new int*[height];
-	for(int i = 0; i < height; i++) {integral[i] = new int[width];};
-	int cumSum = getPixelValue(img,0,0);
-	integral[0][0] = cumSum;
-
-	for(int i = 1; i < height; i++)
-	{
-		cumSum += getPixelValue(img,i,0);
-		integral[i][0] = cumSum;
-	}
-
-	cumSum = getPixelValue(img,0,0);
-	for(int j = 1; j < width; j++)
-	{
-		cumSum += getPixelValue(img,0,j);
-		integral[0][j] = cumSum;
-	}
-
-	for(int i = 1; i < height; i++)
-	{
-		for(int j = 1; j < width; j++)
-		{
-			integral[i][j] = integral[i-1][j] + integral[i][j-1] - integral[i-1][j-1] + getPixelValue(img,i,j);
-		}
-	}
-
-	return integral;
-}
-
-
-double evaluate(int x, int y, int sx, int sy, int** integral, Robot* robot, Robot* other)
-{
-	// Distance between the particle and the other robot
-	double distanceOther = sqrt((x+sx/2-other->x)*(x+sx/2-other->x) + (y+sy/2-other->y)*(y+sy/2-other->y));
-	if(distanceOther < sqrt(other->sx*other->sx + other->sy*other->sy)) {return eps;}
-
-	// Distance between the particle and the robot
-	double distanceRobot = (x+sx/2-robot->x)*(x+sx/2-robot->x) + (y+sy/2-robot->y)*(y+sy/2-robot->y);
-	double sigma = robot->sx*robot->sx + robot->sy*robot->sy;
-
-	// Number of pixels
-	CvPoint p = cvPoint(x+sx-1,y+sy-1);
-
-	if((x+sx-1) < 0) {p.x = 0;}
-	if((y+sy-1) < 0) {p.y = 0;}
-	if((x+sx-1) >= height) {p.x = height-1;}
-	if((y+sy-1) >= width) {p.y = width-1;}
-
-	if(x < 1) {x = 1;}
-	if(y < 1) {y = 1;}
-	if(x > height) {x = height;}
-	if(y > width) {y = width;}
-
-	int weight = integral[p.x][p.y] - integral[x-1][p.y] - integral[p.x][y-1] + integral[x-1][y-1];
-
-	// Data association
-	weight = weight*exp(-distanceRobot/sigma/2);
-
-	if(weight <= 0) {weight = eps;}
-	return weight;
-}
-
-
-void initParticles(Particle* particles, Robot r)
-{
-	for(int i = 0; i < N; i++)
-	{
-		// Position
-		particles[i].x = r.x + sigma_diffusion*normalRandom();
-		particles[i].y = r.y + sigma_diffusion*normalRandom();
-
-		// Weight
-		particles[i].w = 1;
-
-		// Size
-		particles[i].sx = sx_min;
-		particles[i].sy = sy_min;
-	}
-}
-
-
+/*
 void particleFilter(IplImage* img, Particle* particles, Robot* robot, Robot* other)
 {
 	// Diffusion
@@ -365,6 +224,7 @@ void particleFilter(IplImage* img, Particle* particles, Robot* robot, Robot* oth
 	// Update object coordinate
 	robotCoordinate(particles,robot);
 }
+*/
 
 
 void imageProcessing(IplImage* img)
@@ -378,17 +238,12 @@ void imageProcessing(IplImage* img)
 	cvCvtColor(img,hsv_image,CV_BGR2HSV);
 	cvInRangeS(hsv_image,hsv_min,hsv_max,hsv_mask);
 
-	// Filter
-	particleFilter(hsv_mask,particles1,&r1,&r2);
-	particleFilter(hsv_mask,particles2,&r2,&r1);
+	// Particle Filter
+	PF.imageProcessing(hsv_mask);
 
-	// Draw particles
-	//showParticles(hsv_mask,particles1);
-	//showParticles(hsv_mask,particles2);
-
-	// Draw robots
-	//showRobot(hsv_mask,r1);
-	//showRobot(hsv_mask,r2);
+	// Update robot coordinate
+	robotCoordinate(PF.getObject(0).particles,&r1);
+	robotCoordinate(PF.getObject(1).particles,&r2);
 }
 
 
@@ -505,6 +360,15 @@ public:
 				cvWaitKey(10);
 			}
 
+			// Init objects
+			Object* objects = new Object [2];
+			objects[0].x = r1.x;
+			objects[0].y = r1.y;
+			objects[1].x = r2.x;
+			objects[1].y = r2.y;
+
+			PF = particleFilter(N,2,MMSE,objects,sx_min,sy_min,sx_max,sy_max,sigma_diffusion,s_diffusion);
+
 			initRobots = true;
 		}
 
@@ -618,20 +482,13 @@ int main(int argc, char** argv)
 		img = getImage(webcam);
 
 		CvSize sz = cvGetSize(img);
-		// Init
-		if((height != sz.height) | (width != sz.width))
-		{
-			height = sz.height;
-			width = sz.width;
 
-			k = cameraCoef(webcam);
-
-			initParticles(particles1,r1);
-			initParticles(particles2,r2);
-		}
+		// Image size
+		height = sz.height;
+		width = sz.width;
 
 		// Image processing
-		imageProcessing(img);
+		PF.imageProcessing(img);
 
 		// Publish odometry
 		computeOdometry(&r1,&odom1,&timestamp1,&counter1,k);
@@ -641,11 +498,11 @@ int main(int argc, char** argv)
 		odom2_pub.publish(odom2);
 
 		// Show results
-		showOdometry(img,odom1,r1,k);
-		showOdometry(img,odom2,r2,k);
-		if(robot2Detected) {showBearing(img,odom1,r1,k,r1.absoluteBearing); showBearing(img,odom1,r1,k,r1.absoluteBearing + r1.relativeBearing);}
-		if(robot1Detected) {showBearing(img,odom2,r2,k,r2.absoluteBearing); showBearing(img,odom1,r1,k,r2.absoluteBearing + r2.relativeBearing);}
-		showVelocity(img,vel1,r1,k);
+		drawOdometry(img,odom1,r1,k);
+		drawOdometry(img,odom2,r2,k);
+		if(robot2Detected) {drawBearing(img,odom1,r1,k,r1.absoluteBearing); drawBearing(img,odom1,r1,k,r1.absoluteBearing + r1.relativeBearing);}
+		if(robot1Detected) {drawBearing(img,odom2,r2,k,r2.absoluteBearing); drawBearing(img,odom1,r1,k,r2.absoluteBearing + r2.relativeBearing);}
+		drawVelocity(img,vel1,r1,k);
 		cvShowImage("Odometry",img);
 
 		cvWaitKey(50);

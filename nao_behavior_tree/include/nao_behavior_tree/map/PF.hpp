@@ -51,17 +51,8 @@ int counter1,counter2;
 // Number of particles
 const int N = 1000;
 
-// Generate N random particles
-struct Particle{
-	int x,y;
-	int sx,sy;
-	double w;
-};
-Particle* particles1 = new Particle[N];
-Particle* particles2 = new Particle[N];
-
-// Minimum weight
-const double eps = 1E-3;
+// Particle Filter
+particleFilter PF;
 
 // HSV Thresholds
 int H_MIN,H_MAX,S_MIN,S_MAX,V_MIN,V_MAX;

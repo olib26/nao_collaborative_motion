@@ -84,6 +84,7 @@ private:
 	
 public:
 	// Creator
+	particleFilter(){};
 	particleFilter(int N0, int T0, ESTIMATOR estimator, Object* initObjects, int sx_min0, int sy_min0, int sx_max0, int sy_max0, int sigma_diffusion0, int s_diffusion0);
 	
 	// Functions
