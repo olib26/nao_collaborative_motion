@@ -146,6 +146,9 @@ public:
 
 		// Robot not detected
 		robotDetected = false;
+
+		// Init particles
+		//PF.initParticles();
 	}
 
 	void finalize()

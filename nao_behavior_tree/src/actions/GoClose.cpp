@@ -195,6 +195,9 @@ public:
 
         // Robot detected
         robotDetected = true;
+
+		// Init particles
+		//PF.initParticles();
 	}
 
 	void finalize()
