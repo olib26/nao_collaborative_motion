@@ -21,8 +21,8 @@ int height,width;
 const int cutHeight = 150;
 
 // Detector frame size
-const int sx_min = 10; //20
-const int sy_min = 10; //30
+const int sx_min = 20;
+const int sy_min = 30;
 const int sx_max = 200;
 const int sy_max = 300;
 

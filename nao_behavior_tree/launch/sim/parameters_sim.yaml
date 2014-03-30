@@ -8,3 +8,5 @@ V_MAX: 255
 camera_switch: 0
 resolution: 2
 
+sonar: true
+

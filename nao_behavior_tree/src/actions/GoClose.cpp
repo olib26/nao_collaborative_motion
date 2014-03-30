@@ -85,9 +85,6 @@ void imageProcessing(IplImage* img)
 	// Particle Filter
 	PF.imageProcessing(hsv_mask);
 
-	// Compute depth
-	depth = objectDepth(PF.getObject(0));
-
 	// Compute standard deviation
 	std::pair<double,double> V = PF.particlesStD(0);
 	ROS_INFO("Standard deviation:  Vx = %f, Vy = %f",V.first,V.second);
@@ -96,8 +93,16 @@ void imageProcessing(IplImage* img)
 		robotDetected = false;
 	}
 
-	// Draw robot and particles
-	hsv_mask = PF.drawObject(hsv_mask,0);
+	if(robotDetected)
+	{
+		// Draw robot
+		hsv_mask = PF.drawObject(hsv_mask,0);
+
+		// Compute depth
+		depth = objectDepth(PF.getObject(0));
+	}
+
+	// Draw particles
 	hsv_mask = PF.drawParticles(hsv_mask,0);
 
 	// Show result
