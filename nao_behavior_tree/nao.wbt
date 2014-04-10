@@ -31,7 +31,7 @@ PointLight {
 MetricFloor {
 }
 Nao_H25_V40 {
-  translation 0.7452 0.34 0.60908
+  translation 1.39556 0.34 0.51237
   rotation -0.81548 -0.409265 -0.409261 1.77339
   controllerArgs "9560"
   cameraWidth 1024
