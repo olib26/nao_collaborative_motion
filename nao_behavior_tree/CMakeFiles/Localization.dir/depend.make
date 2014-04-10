@@ -2466,7 +2466,7 @@ CMakeFiles/Localization.dir/src/map/localization.o: /opt/ros/fuerte/include/ros/
 CMakeFiles/Localization.dir/src/map/localization.o: /opt/ros/fuerte/include/rosconsole/macros_generated.h
 CMakeFiles/Localization.dir/src/map/localization.o: /opt/ros/fuerte/include/std_msgs/Header.h
 CMakeFiles/Localization.dir/src/map/localization.o: include/nao_behavior_tree/filters/particleFilter.hpp
-CMakeFiles/Localization.dir/src/map/localization.o: include/nao_behavior_tree/map/PF.hpp
+CMakeFiles/Localization.dir/src/map/localization.o: include/nao_behavior_tree/map/localization.hpp
 CMakeFiles/Localization.dir/src/map/localization.o: include/nao_behavior_tree/map/nao.hpp
 CMakeFiles/Localization.dir/src/map/localization.o: include/nao_behavior_tree/map/webcam.hpp
 CMakeFiles/Localization.dir/src/map/localization.o: include/nao_behavior_tree/node.h

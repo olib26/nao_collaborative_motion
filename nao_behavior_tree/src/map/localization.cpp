@@ -23,7 +23,7 @@
 #include <nao_behavior_tree/Bearing.h>
 #include <nao_behavior_tree/Velocity.h>
 
-#include <nao_behavior_tree/map/PF.hpp>
+#include <nao_behavior_tree/map/localization.hpp>
 #include <nao_behavior_tree/map/webcam.hpp>
 #include <nao_behavior_tree/map/nao.hpp>
 
@@ -34,26 +34,17 @@ bool initRobots;
 bool webcam;
 
 
-void robotCoordinate(Particle* particles, Robot* r)
+void updateCoordinate(Object object, Robot* r)
 {
 	// Save previous values
 	r->x_temp = r->x;
 	r->y_temp = r->y;
 
-	r->x = r->y = r->sx = r->sy = 0;
-	for(int i = 0; i < N; i++)
-	{
-		r->x += particles[i].x + particles[i].sx/2;
-		r->y += particles[i].y + particles[i].sy/2;
-		r->sx += particles[i].sx;
-		r->sy += particles[i].sy;
-	}
-
 	// Update
-	r->x = r->x/N;
-	r->y = r->y/N;
-	r->sx = r->sx/N;
-	r->sy = r->sy/N;
+	r->x = object.x;
+	r->y = object.y;
+	r->sx = object.sx;
+	r->sy = object.sy;
 
 	// Init temp position
 	if(!r->initTempPosition)
@@ -242,8 +233,8 @@ void imageProcessing(IplImage* img)
 	PF.imageProcessing(hsv_mask);
 
 	// Update robot coordinate
-	robotCoordinate(PF.getObject(0).particles,&r1);
-	robotCoordinate(PF.getObject(1).particles,&r2);
+	updateCoordinate(PF.getObject(0),&r1);
+	updateCoordinate(PF.getObject(1),&r2);
 }
 
 
@@ -487,10 +478,13 @@ int main(int argc, char** argv)
 		height = sz.height;
 		width = sz.width;
 
-		// Image processing
-		PF.imageProcessing(img);
+		// Camera coefficient
+		k = cameraCoef(webcam);
 
-		// Publish odometry
+		// Image processing
+		imageProcessing(img);
+
+		// Compute and Publish odometry
 		computeOdometry(&r1,&odom1,&timestamp1,&counter1,k);
 		computeOdometry(&r2,&odom2,&timestamp2,&counter2,k);
 
@@ -502,7 +496,7 @@ int main(int argc, char** argv)
 		drawOdometry(img,odom2,r2,k);
 		if(robot2Detected) {drawBearing(img,odom1,r1,k,r1.absoluteBearing); drawBearing(img,odom1,r1,k,r1.absoluteBearing + r1.relativeBearing);}
 		if(robot1Detected) {drawBearing(img,odom2,r2,k,r2.absoluteBearing); drawBearing(img,odom1,r1,k,r2.absoluteBearing + r2.relativeBearing);}
-		drawVelocity(img,vel1,r1,k);
+		if(robot2Detected) {drawVelocity(img,vel1,r1,k);}
 		cvShowImage("Odometry",img);
 
 		cvWaitKey(50);
