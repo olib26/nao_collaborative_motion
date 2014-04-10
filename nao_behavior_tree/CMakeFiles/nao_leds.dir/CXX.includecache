@@ -6186,7 +6186,7 @@ boost/smart_ptr/weak_ptr.hpp
 
 /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/qi/macro.hpp
 
-/home/olivier/ros_workspace/nao_behavior_tree/src/leds/nao_leds.cpp
+/home/olivier/ros_workspace/nao_behavior_tree/src/nao/nao_leds.cpp
 ros/ros.h
 -
 alproxies/alledsproxy.h

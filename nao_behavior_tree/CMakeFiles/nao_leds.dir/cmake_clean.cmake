@@ -2,7 +2,7 @@ FILE(REMOVE_RECURSE
   "msg_gen"
   "src/nao_behavior_tree/msg"
   "msg_gen"
-  "CMakeFiles/nao_leds.dir/src/leds/nao_leds.o"
+  "CMakeFiles/nao_leds.dir/src/nao/nao_leds.o"
   "bin/nao_leds.pdb"
   "bin/nao_leds"
 )

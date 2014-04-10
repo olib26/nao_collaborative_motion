@@ -2,7 +2,7 @@ FILE(REMOVE_RECURSE
   "msg_gen"
   "src/nao_behavior_tree/msg"
   "msg_gen"
-  "CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o"
+  "CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o"
   "bin/nao_sonar.pdb"
   "bin/nao_sonar"
 )

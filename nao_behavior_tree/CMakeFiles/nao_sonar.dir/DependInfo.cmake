@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/olivier/ros_workspace/nao_behavior_tree/src/sensors/nao_sonar.cpp" "/home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o"
+  "/home/olivier/ros_workspace/nao_behavior_tree/src/nao/nao_sonar.cpp" "/home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

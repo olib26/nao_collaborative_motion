@@ -43,7 +43,7 @@ CMAKE_BINARY_DIR = /home/olivier/ros_workspace/nao_behavior_tree
 include CMakeFiles/clean-test-results.dir/progress.make
 
 CMakeFiles/clean-test-results:
-	if ! rm -rf /home/olivier/.ros/test_results/nao_behavior_tree; then echo WARNING:\ failed\ to\ remove\ test-results\ directory ; fi
+	if ! rm -rf /home/olivier/ros_workspace/test_results/nao_behavior_tree; then echo WARNING:\ failed\ to\ remove\ test-results\ directory ; fi
 
 clean-test-results: CMakeFiles/clean-test-results
 clean-test-results: CMakeFiles/clean-test-results.dir/build.make

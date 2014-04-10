@@ -807,21 +807,6 @@ src/filters/particleFilter.s:
 .PHONY : src/filters/particleFilter.s
 
 # target to build an object file
-src/leds/nao_leds.o:
-	$(MAKE) -f CMakeFiles/nao_leds.dir/build.make CMakeFiles/nao_leds.dir/src/leds/nao_leds.o
-.PHONY : src/leds/nao_leds.o
-
-# target to preprocess a source file
-src/leds/nao_leds.i:
-	$(MAKE) -f CMakeFiles/nao_leds.dir/build.make CMakeFiles/nao_leds.dir/src/leds/nao_leds.i
-.PHONY : src/leds/nao_leds.i
-
-# target to generate assembly for a file
-src/leds/nao_leds.s:
-	$(MAKE) -f CMakeFiles/nao_leds.dir/build.make CMakeFiles/nao_leds.dir/src/leds/nao_leds.s
-.PHONY : src/leds/nao_leds.s
-
-# target to build an object file
 src/map/localization.o:
 	$(MAKE) -f CMakeFiles/Localization.dir/build.make CMakeFiles/Localization.dir/src/map/localization.o
 .PHONY : src/map/localization.o
@@ -852,19 +837,34 @@ src/map/obstacles.s:
 .PHONY : src/map/obstacles.s
 
 # target to build an object file
-src/sensors/nao_sonar.o:
-	$(MAKE) -f CMakeFiles/nao_sonar.dir/build.make CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o
-.PHONY : src/sensors/nao_sonar.o
+src/nao/nao_leds.o:
+	$(MAKE) -f CMakeFiles/nao_leds.dir/build.make CMakeFiles/nao_leds.dir/src/nao/nao_leds.o
+.PHONY : src/nao/nao_leds.o
 
 # target to preprocess a source file
-src/sensors/nao_sonar.i:
-	$(MAKE) -f CMakeFiles/nao_sonar.dir/build.make CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.i
-.PHONY : src/sensors/nao_sonar.i
+src/nao/nao_leds.i:
+	$(MAKE) -f CMakeFiles/nao_leds.dir/build.make CMakeFiles/nao_leds.dir/src/nao/nao_leds.i
+.PHONY : src/nao/nao_leds.i
 
 # target to generate assembly for a file
-src/sensors/nao_sonar.s:
-	$(MAKE) -f CMakeFiles/nao_sonar.dir/build.make CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.s
-.PHONY : src/sensors/nao_sonar.s
+src/nao/nao_leds.s:
+	$(MAKE) -f CMakeFiles/nao_leds.dir/build.make CMakeFiles/nao_leds.dir/src/nao/nao_leds.s
+.PHONY : src/nao/nao_leds.s
+
+# target to build an object file
+src/nao/nao_sonar.o:
+	$(MAKE) -f CMakeFiles/nao_sonar.dir/build.make CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o
+.PHONY : src/nao/nao_sonar.o
+
+# target to preprocess a source file
+src/nao/nao_sonar.i:
+	$(MAKE) -f CMakeFiles/nao_sonar.dir/build.make CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.i
+.PHONY : src/nao/nao_sonar.i
+
+# target to generate assembly for a file
+src/nao/nao_sonar.s:
+	$(MAKE) -f CMakeFiles/nao_sonar.dir/build.make CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.s
+.PHONY : src/nao/nao_sonar.s
 
 # target to build an object file
 src/tools/color_filter_calibration.o:
@@ -970,18 +970,18 @@ help:
 	@echo "... src/filters/particleFilter.o"
 	@echo "... src/filters/particleFilter.i"
 	@echo "... src/filters/particleFilter.s"
-	@echo "... src/leds/nao_leds.o"
-	@echo "... src/leds/nao_leds.i"
-	@echo "... src/leds/nao_leds.s"
 	@echo "... src/map/localization.o"
 	@echo "... src/map/localization.i"
 	@echo "... src/map/localization.s"
 	@echo "... src/map/obstacles.o"
 	@echo "... src/map/obstacles.i"
 	@echo "... src/map/obstacles.s"
-	@echo "... src/sensors/nao_sonar.o"
-	@echo "... src/sensors/nao_sonar.i"
-	@echo "... src/sensors/nao_sonar.s"
+	@echo "... src/nao/nao_leds.o"
+	@echo "... src/nao/nao_leds.i"
+	@echo "... src/nao/nao_leds.s"
+	@echo "... src/nao/nao_sonar.o"
+	@echo "... src/nao/nao_sonar.i"
+	@echo "... src/nao/nao_sonar.s"
 	@echo "... src/tools/color_filter_calibration.o"
 	@echo "... src/tools/color_filter_calibration.i"
 	@echo "... src/tools/color_filter_calibration.s"

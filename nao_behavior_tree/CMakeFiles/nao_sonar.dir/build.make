@@ -46,56 +46,56 @@ include CMakeFiles/nao_sonar.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/nao_sonar.dir/flags.make
 
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: CMakeFiles/nao_sonar.dir/flags.make
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: src/sensors/nao_sonar.cpp
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: manifest.xml
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: /opt/ros/fuerte/share/roslang/manifest.xml
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: /opt/ros/fuerte/share/roscpp/manifest.xml
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: /opt/ros/fuerte/share/std_msgs/manifest.xml
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: /opt/ros/fuerte/share/rospy/manifest.xml
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: /opt/ros/fuerte/share/rostest/manifest.xml
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: /opt/ros/fuerte/share/actionlib/manifest.xml
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: /opt/ros/fuerte/share/roslib/manifest.xml
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: /opt/ros/fuerte/share/nav_msgs/manifest.xml
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: /opt/ros/fuerte/share/rosconsole/manifest.xml
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: /opt/ros/fuerte/share/message_filters/manifest.xml
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o: CMakeFiles/nao_sonar.dir/flags.make
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o: src/nao/nao_sonar.cpp
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o: manifest.xml
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o: /opt/ros/fuerte/share/roslang/manifest.xml
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o: /opt/ros/fuerte/share/roscpp/manifest.xml
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o: /opt/ros/fuerte/share/std_msgs/manifest.xml
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o: /opt/ros/fuerte/share/rospy/manifest.xml
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o: /opt/ros/fuerte/share/rostest/manifest.xml
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o: /opt/ros/fuerte/share/actionlib/manifest.xml
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o: /opt/ros/fuerte/share/roslib/manifest.xml
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o: /opt/ros/fuerte/share/rosconsole/manifest.xml
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o: /opt/ros/fuerte/share/message_filters/manifest.xml
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o -c /home/olivier/ros_workspace/nao_behavior_tree/src/sensors/nao_sonar.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o -c /home/olivier/ros_workspace/nao_behavior_tree/src/nao/nao_sonar.cpp
 
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -E /home/olivier/ros_workspace/nao_behavior_tree/src/sensors/nao_sonar.cpp > CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.i
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -E /home/olivier/ros_workspace/nao_behavior_tree/src/nao/nao_sonar.cpp > CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.i
 
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -S /home/olivier/ros_workspace/nao_behavior_tree/src/sensors/nao_sonar.cpp -o CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.s
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -S /home/olivier/ros_workspace/nao_behavior_tree/src/nao/nao_sonar.cpp -o CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.s
 
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o.requires:
-.PHONY : CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o.requires
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o.requires:
+.PHONY : CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o.requires
 
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o.provides: CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o.requires
-	$(MAKE) -f CMakeFiles/nao_sonar.dir/build.make CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o.provides.build
-.PHONY : CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o.provides
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o.provides: CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o.requires
+	$(MAKE) -f CMakeFiles/nao_sonar.dir/build.make CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o.provides.build
+.PHONY : CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o.provides
 
-CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o.provides.build: CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o
+CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o.provides.build: CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o
 
 # Object files for target nao_sonar
 nao_sonar_OBJECTS = \
-"CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o"
+"CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o"
 
 # External object files for target nao_sonar
 nao_sonar_EXTERNAL_OBJECTS =
 
-bin/nao_sonar: CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o
+bin/nao_sonar: CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o
 bin/nao_sonar: /usr/local/lib/libopencv_calib3d.so.2.4.8
 bin/nao_sonar: /usr/local/lib/libopencv_contrib.so.2.4.8
 bin/nao_sonar: /usr/local/lib/libopencv_core.so.2.4.8
@@ -136,7 +136,7 @@ bin/nao_sonar: CMakeFiles/nao_sonar.dir/link.txt
 CMakeFiles/nao_sonar.dir/build: bin/nao_sonar
 .PHONY : CMakeFiles/nao_sonar.dir/build
 
-CMakeFiles/nao_sonar.dir/requires: CMakeFiles/nao_sonar.dir/src/sensors/nao_sonar.o.requires
+CMakeFiles/nao_sonar.dir/requires: CMakeFiles/nao_sonar.dir/src/nao/nao_sonar.o.requires
 .PHONY : CMakeFiles/nao_sonar.dir/requires
 
 CMakeFiles/nao_sonar.dir/clean:

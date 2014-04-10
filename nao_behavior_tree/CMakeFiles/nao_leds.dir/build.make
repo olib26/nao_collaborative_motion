@@ -46,56 +46,56 @@ include CMakeFiles/nao_leds.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/nao_leds.dir/flags.make
 
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.o: CMakeFiles/nao_leds.dir/flags.make
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.o: src/leds/nao_leds.cpp
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.o: manifest.xml
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.o: /opt/ros/fuerte/share/roslang/manifest.xml
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.o: /opt/ros/fuerte/share/roscpp/manifest.xml
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.o: /opt/ros/fuerte/share/std_msgs/manifest.xml
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.o: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.o: /opt/ros/fuerte/share/rospy/manifest.xml
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.o: /opt/ros/fuerte/share/rostest/manifest.xml
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.o: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.o: /opt/ros/fuerte/share/actionlib/manifest.xml
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.o: /opt/ros/fuerte/share/roslib/manifest.xml
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.o: /opt/ros/fuerte/share/nav_msgs/manifest.xml
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.o: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.o: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.o: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.o: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.o: /opt/ros/fuerte/share/rosconsole/manifest.xml
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.o: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.o: /opt/ros/fuerte/share/message_filters/manifest.xml
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.o: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.o: CMakeFiles/nao_leds.dir/flags.make
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.o: src/nao/nao_leds.cpp
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.o: manifest.xml
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.o: /opt/ros/fuerte/share/roslang/manifest.xml
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.o: /opt/ros/fuerte/share/roscpp/manifest.xml
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.o: /opt/ros/fuerte/share/std_msgs/manifest.xml
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.o: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.o: /opt/ros/fuerte/share/rospy/manifest.xml
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.o: /opt/ros/fuerte/share/rostest/manifest.xml
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.o: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.o: /opt/ros/fuerte/share/actionlib/manifest.xml
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.o: /opt/ros/fuerte/share/roslib/manifest.xml
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.o: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.o: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.o: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.o: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.o: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.o: /opt/ros/fuerte/share/rosconsole/manifest.xml
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.o: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.o: /opt/ros/fuerte/share/message_filters/manifest.xml
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.o: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nao_leds.dir/src/leds/nao_leds.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/nao_leds.dir/src/leds/nao_leds.o -c /home/olivier/ros_workspace/nao_behavior_tree/src/leds/nao_leds.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nao_leds.dir/src/nao/nao_leds.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/nao_leds.dir/src/nao/nao_leds.o -c /home/olivier/ros_workspace/nao_behavior_tree/src/nao/nao_leds.cpp
 
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nao_leds.dir/src/leds/nao_leds.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -E /home/olivier/ros_workspace/nao_behavior_tree/src/leds/nao_leds.cpp > CMakeFiles/nao_leds.dir/src/leds/nao_leds.i
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nao_leds.dir/src/nao/nao_leds.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -E /home/olivier/ros_workspace/nao_behavior_tree/src/nao/nao_leds.cpp > CMakeFiles/nao_leds.dir/src/nao/nao_leds.i
 
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nao_leds.dir/src/leds/nao_leds.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -S /home/olivier/ros_workspace/nao_behavior_tree/src/leds/nao_leds.cpp -o CMakeFiles/nao_leds.dir/src/leds/nao_leds.s
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nao_leds.dir/src/nao/nao_leds.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -S /home/olivier/ros_workspace/nao_behavior_tree/src/nao/nao_leds.cpp -o CMakeFiles/nao_leds.dir/src/nao/nao_leds.s
 
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.o.requires:
-.PHONY : CMakeFiles/nao_leds.dir/src/leds/nao_leds.o.requires
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.o.requires:
+.PHONY : CMakeFiles/nao_leds.dir/src/nao/nao_leds.o.requires
 
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.o.provides: CMakeFiles/nao_leds.dir/src/leds/nao_leds.o.requires
-	$(MAKE) -f CMakeFiles/nao_leds.dir/build.make CMakeFiles/nao_leds.dir/src/leds/nao_leds.o.provides.build
-.PHONY : CMakeFiles/nao_leds.dir/src/leds/nao_leds.o.provides
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.o.provides: CMakeFiles/nao_leds.dir/src/nao/nao_leds.o.requires
+	$(MAKE) -f CMakeFiles/nao_leds.dir/build.make CMakeFiles/nao_leds.dir/src/nao/nao_leds.o.provides.build
+.PHONY : CMakeFiles/nao_leds.dir/src/nao/nao_leds.o.provides
 
-CMakeFiles/nao_leds.dir/src/leds/nao_leds.o.provides.build: CMakeFiles/nao_leds.dir/src/leds/nao_leds.o
+CMakeFiles/nao_leds.dir/src/nao/nao_leds.o.provides.build: CMakeFiles/nao_leds.dir/src/nao/nao_leds.o
 
 # Object files for target nao_leds
 nao_leds_OBJECTS = \
-"CMakeFiles/nao_leds.dir/src/leds/nao_leds.o"
+"CMakeFiles/nao_leds.dir/src/nao/nao_leds.o"
 
 # External object files for target nao_leds
 nao_leds_EXTERNAL_OBJECTS =
 
-bin/nao_leds: CMakeFiles/nao_leds.dir/src/leds/nao_leds.o
+bin/nao_leds: CMakeFiles/nao_leds.dir/src/nao/nao_leds.o
 bin/nao_leds: /usr/local/lib/libopencv_calib3d.so.2.4.8
 bin/nao_leds: /usr/local/lib/libopencv_contrib.so.2.4.8
 bin/nao_leds: /usr/local/lib/libopencv_core.so.2.4.8
@@ -136,7 +136,7 @@ bin/nao_leds: CMakeFiles/nao_leds.dir/link.txt
 CMakeFiles/nao_leds.dir/build: bin/nao_leds
 .PHONY : CMakeFiles/nao_leds.dir/build
 
-CMakeFiles/nao_leds.dir/requires: CMakeFiles/nao_leds.dir/src/leds/nao_leds.o.requires
+CMakeFiles/nao_leds.dir/requires: CMakeFiles/nao_leds.dir/src/nao/nao_leds.o.requires
 .PHONY : CMakeFiles/nao_leds.dir/requires
 
 CMakeFiles/nao_leds.dir/clean:

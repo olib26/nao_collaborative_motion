@@ -154,12 +154,12 @@ rosbuild_link_boost(Obstacles thread)
 
 
 # Sensors
-rosbuild_add_executable(nao_sonar src/sensors/nao_sonar.cpp)
+rosbuild_add_executable(nao_sonar src/nao/nao_sonar.cpp)
 target_link_libraries(nao_sonar alproxies alvalue)
 
 
 # Leds
-rosbuild_add_executable(nao_leds src/leds/nao_leds.cpp)
+rosbuild_add_executable(nao_leds src/nao/nao_leds.cpp)
 target_link_libraries(nao_leds alproxies alvalue)
 
 
