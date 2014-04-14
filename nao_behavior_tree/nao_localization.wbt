@@ -11,7 +11,7 @@ WorldInfo {
 }
 Viewpoint {
   orientation -0.545853 -0.635574 -0.545976 2.03016
-  position 0.414724 4.46092 0.179101
+  position 0.218296 4.43162 0.0568
   follow "NAO_H25_V40"
 }
 Background {
@@ -33,7 +33,7 @@ MetricFloor {
 WallGap {
 }
 Nao_H25_V40 {
-  translation 0.119023 0.34 0.857016
+  translation 0.23841 0.34 0.765771
   rotation -0.772035 0.449424 0.449422 1.82669
   controllerArgs "9560"
   cameraWidth 1024

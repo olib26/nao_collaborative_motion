@@ -57,7 +57,7 @@ void imageProcessing(IplImage* img)
 	robotDetected = !((V.first > StD_max) & (V.second > StD_max));
 
 	// Draw robot
-	hsv_mask = PF.drawObject(hsv_mask,0);
+	if(robotDetected) {hsv_mask = PF.drawObject(hsv_mask,0);}
 
 	// Show result
 	cvNamedWindow("TAO",1); cvShowImage("TAO",hsv_mask);
