@@ -13,7 +13,7 @@
 // Parameters
 AL::ALValue name = "HeadYaw";
 bool useSensors = true;
-float fractionMaxSpeed = 0.05;
+float fractionMaxSpeed = 0.01;
 AL::ALValue angle;
 double angleThreshold = 5*M_PI/180;
 
