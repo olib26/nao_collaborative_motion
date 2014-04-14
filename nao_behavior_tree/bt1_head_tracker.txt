@@ -1,7 +1,4 @@
-[*
-	A Localization
-	/
-		A TrackingAmongObstacles1
-		A HeadTracker1
-	|
-]
+/
+	A TrackingAmongObstacles1
+	A HeadTracker1
+|

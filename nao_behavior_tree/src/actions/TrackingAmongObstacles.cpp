@@ -146,7 +146,6 @@ double relativeBearing(Object object)
 	float p_x = -(object.y - width/2);
 	float p_y = -(object.x - height/2);
 	float f = (float)width/2/tan(HFOV/2.);
-	float d = computeDistance();
 
 	// Vector pointing to the other robot
 	Eigen::Vector3f v(f,p_x,p_y);
