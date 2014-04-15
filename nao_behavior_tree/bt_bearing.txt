@@ -1,6 +1,7 @@
 [*
 	A Localization
-	[*
+	/
+		A TrackingAmongObstacles1
 		A TrackingAmongObstacles2
-	]
+	|
 ]

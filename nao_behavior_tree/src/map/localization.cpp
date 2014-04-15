@@ -30,7 +30,7 @@
 using namespace std;
 
 
-bool initRobots;
+bool initRobots = false;
 bool webcam;
 
 
@@ -251,8 +251,8 @@ public:
 
 		if(!init_)
 		{
-			set_feedback(RUNNING);
 			init_ = true;
+			set_feedback(RUNNING);
 
 			// Image
 			IplImage* img;
@@ -431,8 +431,8 @@ int main(int argc, char** argv)
 		drawOdometry(img,odom1,r1,k);
 		drawOdometry(img,odom2,r2,k);
 		if(robot2Detected) {drawBearing(img,odom1,r1,k,r1.absoluteBearing); drawBearing(img,odom1,r1,k,r1.absoluteBearing + r1.relativeBearing);}
-		if(robot1Detected) {drawBearing(img,odom2,r2,k,r2.absoluteBearing); drawBearing(img,odom1,r1,k,r2.absoluteBearing + r2.relativeBearing);}
-		if(robot2Detected) {drawVelocity(img,vel1,r1,k);}
+		if(robot1Detected) {drawBearing(img,odom2,r2,k,r2.absoluteBearing); drawBearing(img,odom2,r2,k,r2.absoluteBearing + r2.relativeBearing);}
+		//if(robot2Detected) {drawVelocity(img,vel1,r1,k);}
 		cvShowImage("Localization",img);
 
 		cvWaitKey(50);
