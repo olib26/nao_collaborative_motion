@@ -53,7 +53,7 @@ public:
 		AL::ALValue stiffness_name("Body");
 		AL::ALValue stiffness(1.0f);
 		AL::ALValue stiffness_time(1.0f);
-		//motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
+		motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
 	}
 
 	void finalize()

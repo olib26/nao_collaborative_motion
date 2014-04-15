@@ -168,6 +168,9 @@ void imageProcessing(IplImage* img)
 	// Update robot coordinate
 	updateCoordinate(PF.getObject(0),&r1);
 	updateCoordinate(PF.getObject(1),&r2);
+
+	// Show hsv_mask
+	//cvNamedWindow("Localization_HSV",1); cvShowImage("Localization_HSV",hsv_mask);
 }
 
 
@@ -256,12 +259,12 @@ public:
 
 			// Init robots positions
 			cv::Point p;
-			cv::setMouseCallback("Odometry",on_mouse,&p);
+			cv::setMouseCallback("Localization",on_mouse,&p);
 
 			while(((r1.x == 0) | (r2.x == 0)) & ros::ok())
 			{
 				img = getImage(webcam);
-				cvShowImage("Odometry",img);
+				cvShowImage("Localization",img);
 
 				if((p.x != 0) & (p.y !=0))
 				{
@@ -386,7 +389,7 @@ int main(int argc, char** argv)
 	IplImage* img;
 
 	// Window
-	cvNamedWindow("Odometry",1);
+	cvNamedWindow("Localization",1);
 
 	// Launch Server
 	Localization server(ros::this_node::getName());
@@ -430,7 +433,7 @@ int main(int argc, char** argv)
 		if(robot2Detected) {drawBearing(img,odom1,r1,k,r1.absoluteBearing); drawBearing(img,odom1,r1,k,r1.absoluteBearing + r1.relativeBearing);}
 		if(robot1Detected) {drawBearing(img,odom2,r2,k,r2.absoluteBearing); drawBearing(img,odom1,r1,k,r2.absoluteBearing + r2.relativeBearing);}
 		if(robot2Detected) {drawVelocity(img,vel1,r1,k);}
-		cvShowImage("Odometry",img);
+		cvShowImage("Localization",img);
 
 		cvWaitKey(50);
 		ros::spinOnce();
@@ -447,7 +450,7 @@ int main(int argc, char** argv)
 	{
 		cvReleaseCapture(&capture); // Release capture
 	}
-	cvDestroyWindow("Odometry");
+	cvDestroyWindow("Localization");
 
 	return 0;
 }
