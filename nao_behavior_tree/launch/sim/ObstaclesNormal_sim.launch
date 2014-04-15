@@ -91,6 +91,6 @@
   <!--
     Nao 2
   -->
-  <include file="$(find nao_behavior_tree)/launch/sim/Walk_sim.launch"/>
+  <!--include file="$(find nao_behavior_tree)/launch/sim/Walk_sim.launch"/-->
   
 </launch>
