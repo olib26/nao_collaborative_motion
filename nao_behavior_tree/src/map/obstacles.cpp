@@ -368,48 +368,51 @@ void creation(IplImage* img)
 	}
 	
 	// Save obstacles
-	// World
-	std::vector<Point> saveWorld;
-	for(unsigned int i = 0; i < obstacles.size(); i++)
+	if(!obstacles.empty())
 	{
-		Obstacle obstacle = obstacles.at(i);
-		for(unsigned int j = 0; j < obstacle.pointsWorld.size(); j++)
+		// World
+		std::vector<Point> saveWorld;
+		for(unsigned int i = 0; i < obstacles.size(); i++)
 		{
-			saveWorld.push_back(obstacle.pointsWorld.at(j));
+			Obstacle obstacle = obstacles.at(i);
+			for(unsigned int j = 0; j < obstacle.pointsWorld.size(); j++)
+			{
+				saveWorld.push_back(obstacle.pointsWorld.at(j));
+			}
+
+			Point space;
+			space.x = 0;
+			space.y = 0;
+			saveWorld.push_back(space);
 		}
 
-		Point space;
-		space.x = 0;
-		space.y = 0;
-		saveWorld.push_back(space);
-	}
-
-	saveWorld.resize(maxPoints);
-	std::ofstream os_world("/home/olivier/ros_workspace/map/world.dat",std::ios::binary);
-	os_world.write(reinterpret_cast<const char*>(&(saveWorld[0])),saveWorld.size()*sizeof(Point));
-	os_world.close();
+		saveWorld.resize(maxPoints);
+		std::ofstream os_world("/home/olivier/ros_workspace/map/world.dat",std::ios::binary);
+		os_world.write(reinterpret_cast<const char*>(&(saveWorld[0])),saveWorld.size()*sizeof(Point));
+		os_world.close();
 
 
-	// Image
-	std::vector<cv::Point> saveImage;
-	for(unsigned int i = 0; i < obstacles.size(); i++)
-	{
-		Obstacle obstacle = obstacles.at(i);
-		for(unsigned int j = 0; j < obstacle.pointsImage.size(); j++)
+		// Image
+		std::vector<cv::Point> saveImage;
+		for(unsigned int i = 0; i < obstacles.size(); i++)
 		{
-			saveImage.push_back(obstacle.pointsImage.at(j));
+			Obstacle obstacle = obstacles.at(i);
+			for(unsigned int j = 0; j < obstacle.pointsImage.size(); j++)
+			{
+				saveImage.push_back(obstacle.pointsImage.at(j));
+			}
+
+			cv::Point space;
+			space.x = -1;
+			space.y = -1;
+			saveImage.push_back(space);
 		}
 
-		cv::Point space;
-		space.x = -1;
-		space.y = -1;
-		saveImage.push_back(space);
+		saveImage.resize(maxPoints);
+		std::ofstream os_image("/home/olivier/ros_workspace/map/image.dat",std::ios::binary);
+		os_image.write(reinterpret_cast<const char*>(&(saveImage[0])),saveImage.size()*sizeof(cv::Point));
+		os_image.close();
 	}
-
-	saveImage.resize(maxPoints);
-	std::ofstream os_image("/home/olivier/ros_workspace/map/image.dat",std::ios::binary);
-	os_image.write(reinterpret_cast<const char*>(&(saveImage[0])),saveImage.size()*sizeof(cv::Point));
-	os_image.close();
 }
 
 
@@ -496,7 +499,7 @@ public:
 		nao_behavior_tree::Velocity vel;
 
 		// Zone 3 - Simple follower
-		if(intersected.empty() & (distanceToEdge(r2.pos,edge) < distanceToEdge(r1.pos,edge)))
+		if(intersected.empty() | (distanceToEdge(r2.pos,edge) < distanceToEdge(r1.pos,edge)))
 		{
 			vel.theta = r1.theta;
 		}

@@ -1,6 +1,7 @@
 <launch>
   
-  <node pkg="nao_behavior_tree" type="Obstacles" name="Obstacles" args="0" output="screen">
+  <node pkg="nao_behavior_tree" type="Obstacles" name="Obstacles" args="1" output="screen">
+  	<param name="mode" value="0"/>
 	<param name="NAO_IP" value="127.0.0.1"/>
     <param name="NAO_PORT" value="9561"/>
   </node>
