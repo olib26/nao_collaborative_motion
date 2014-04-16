@@ -7,6 +7,7 @@
 
 
 #include <ros/ros.h>
+#include <alproxies/almotionproxy.h>
 #include <nao_msgs/TorsoOdometry.h>
 #include <geometry_msgs/Twist.h>
 #include "headers/nao_tracker_odometry.hpp"
@@ -73,9 +74,15 @@ int main(int argc, char** argv)
 {
 	ros::init(argc, argv,"nao_tracker_odometry");
 	ros::NodeHandle nh;
+	ros::NodeHandle pnh("~");
+
+	// Robot parameters
+	std::string NAO_IP;
+	int NAO_PORT;
+	pnh.param("NAO_IP",NAO_IP,std::string("127.0.0.1"));
+	pnh.param("NAO_PORT",NAO_PORT,int(9559));
 
 	// Initial odometry of the two robots
-	ros::NodeHandle pnh("~");
 	pnh.param("x_01",x_01,double(0.0));
 	pnh.param("y_01",y_01,double(0.0));
 	pnh.param("theta_01",theta_01,double(0.0));
@@ -104,6 +111,15 @@ int main(int argc, char** argv)
 
 		// Publisher
 		cmd_pub = nh.advertise<Twist>("/cmd_vel" + nao1,100);
+
+		// Enable stiffness
+		AL::ALMotionProxy* motion_proxy_ptr;
+		motion_proxy_ptr = new AL::ALMotionProxy(NAO_IP,NAO_PORT);
+		AL::ALValue stiffness_name("Body");
+		AL::ALValue stiffness(1.0f);
+		AL::ALValue stiffness_time(1.0f);
+		motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
+
 
 		ros::Rate loop_rate(100);
 		while(ros::ok())

@@ -183,7 +183,7 @@ ROSPACK_EXE:FILEPATH=/opt/ros/fuerte/bin/rospack
 USERCONFIG:FILEPATH=USERCONFIG-NOTFOUND
 
 //Path to a file.
-_file_name:FILEPATH=/home/olivier/ros_workspace/collaborative_motion/src/nao_controller.cpp
+_file_name:FILEPATH=/home/olivier/ros_workspace/collaborative_motion/src/nao_tracker_odometry.cpp
 
 //Value Computed by CMake
 collaborative_motion_BINARY_DIR:STATIC=/home/olivier/ros_workspace/collaborative_motion
@@ -320,7 +320,7 @@ FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python][v2.7.3()]
 //ADVANCED property for variable: PYTHON_EXECUTABLE
 PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
 _rosbuild_EXPORTS:INTERNAL=
-_rosbuild_cached_flag_time:INTERNAL=1394721742.64
+_rosbuild_cached_flag_time:INTERNAL=1397646555.33
 _roslang_LANGS:INTERNAL=roslisp;rospy;roscpp
 _rospack_deps_manifests_invoke_result:INTERNAL=/opt/ros/fuerte/share/geometry_msgs/manifest.xml;/opt/ros/fuerte/share/actionlib_msgs/manifest.xml;/opt/ros/fuerte/share/sensor_msgs/manifest.xml;/opt/ros/fuerte/share/trajectory_msgs/manifest.xml;/opt/ros/fuerte/share/nav_msgs/manifest.xml;/opt/ros/fuerte/share/std_msgs/manifest.xml;/home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml;/opt/ros/fuerte/share/roslang/manifest.xml;/opt/ros/fuerte/share/roscpp/manifest.xml;/home/olivier/ros_workspace/nao_custom/manifest.xml;/opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml;/opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml;/opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml;/opt/ros/fuerte/share/roslib/manifest.xml;/opt/ros/fuerte/share/rosconsole/manifest.xml;/opt/ros/fuerte/stacks/pluginlib/manifest.xml;/opt/ros/fuerte/share/message_filters/manifest.xml;/opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml;/opt/ros/fuerte/share/std_srvs/manifest.xml
 _rospack_msgsrv_gen_invoke_result:INTERNAL=/home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated;/home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated;/home/olivier/ros_workspace/nao_custom/msg_gen/generated

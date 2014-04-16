@@ -30,7 +30,6 @@ rosbuild_genmsg()
 
 rosbuild_add_executable(color_filter src/color_filter.cpp)
 rosbuild_add_executable(nao_detection src/nao_detection.cpp)
-rosbuild_add_executable(nao_tracker_odometry src/nao_tracker_odometry.cpp)
 
 #target_link_libraries(example ${PROJECT_NAME})
 
@@ -60,3 +59,6 @@ target_link_libraries(nao_hello alproxies alvalue)
 
 rosbuild_add_executable(nao_controller src/nao_controller.cpp)
 target_link_libraries(nao_controller alproxies alvalue)
+
+rosbuild_add_executable(nao_tracker_odometry src/nao_tracker_odometry.cpp)
+target_link_libraries(nao_tracker_odometry alproxies alvalue)

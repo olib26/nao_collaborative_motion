@@ -43,7 +43,7 @@ CMAKE_BINARY_DIR = /home/olivier/ros_workspace/collaborative_motion
 include CMakeFiles/clean-test-results.dir/progress.make
 
 CMakeFiles/clean-test-results:
-	if ! rm -rf /home/olivier/.ros/test_results/collaborative_motion; then echo WARNING:\ failed\ to\ remove\ test-results\ directory ; fi
+	if ! rm -rf /home/olivier/ros_workspace/test_results/collaborative_motion; then echo WARNING:\ failed\ to\ remove\ test-results\ directory ; fi
 
 clean-test-results: CMakeFiles/clean-test-results
 clean-test-results: CMakeFiles/clean-test-results.dir/build.make
