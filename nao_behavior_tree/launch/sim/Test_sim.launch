@@ -1,0 +1,31 @@
+<launch>
+
+  <!--
+    Localization
+  -->
+  <node pkg="nao_behavior_tree" type="Localization" name="Localization" args="1" output="screen">
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/sim/parameters_sim.yaml"/>
+    <param name="NAO_IP" value="127.0.0.1"/>
+    <param name="NAO_PORT" value="9561"/>
+  </node>
+  
+  
+  <!--
+    Actions
+  -->
+  <node pkg="nao_behavior_tree" type="Stop" name="Stop1" args="1"/>
+  <node pkg="nao_behavior_tree" type="Stop" name="Stop2" args="2"/>  
+  
+  
+  <!--
+    Behavior Trees
+  -->
+  <node pkg="nao_behavior_tree" type="nao_behavior_tree" name="nao_behavior_tree1" output="screen">
+    <param name="file" value="/home/olivier/ros_workspace/nao_behavior_tree/bt1_test.txt"/>
+  </node>
+  
+  <node pkg="nao_behavior_tree" type="nao_behavior_tree" name="nao_behavior_tree2" output="screen">
+    <param name="file" value="/home/olivier/ros_workspace/nao_behavior_tree/bt2_test.txt"/>
+  </node>
+  
+</launch>
