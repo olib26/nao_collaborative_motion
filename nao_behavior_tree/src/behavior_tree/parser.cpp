@@ -53,6 +53,12 @@ int process_substring(std::string sub)
 	case 'D': std::cout << "Decorator Close Detected" << std::endl;
 		node = node->get_parent(); break;
 
+	// Subtrees Launcher
+	case 'p': std::cout << "Launcher Open Detected" << std::endl;
+		node = new NodeLauncher(node); break;
+	case 'P': std::cout << "Launcher Close Detected" << std::endl;
+		node = node->get_parent(); break;
+
 	default: break;
 	}
 	return 0;

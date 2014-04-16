@@ -17,6 +17,7 @@ enum NODE_TYPE
 	SEQUENCE,
 	SEQUENCE_STAR,
 	PARALLEL,
+	LAUNCHER,
 	DECORATOR,
 	ACTION,
 	CONDITION,
@@ -146,6 +147,16 @@ private:
 	STATE execute();
 	inline NODE_TYPE get_node_type() { return PARALLEL; }
 	inline std::string get_node_name() { return "Parallel"; }
+};
+
+class NodeLauncher : public Node
+{
+public:
+	NodeLauncher(Node* node);
+private:
+	STATE execute();
+	inline NODE_TYPE get_node_type() { return LAUNCHER; }
+	inline std::string get_node_name() { return "Launcher"; }
 };
 
 class NodeRoot : public Node

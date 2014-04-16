@@ -235,6 +235,21 @@ STATE NodeParallel::execute()
 		return node_status_ = RUNNING;
 }
 
+NodeLauncher::NodeLauncher(Node* node)
+	: Node(node) {}
+
+STATE NodeLauncher::execute()
+{
+	std::cout << "Executing Launcher" << std::endl;
+	exec_child_ = first_child_;
+	for (int i = 0; i < number_children_; i++)
+	{
+		child_status_ = exec_child_->execute();
+		exec_child_ = exec_child_->get_next_brother();
+	}
+	return node_status_ = RUNNING;
+}
+
 STATE NodeRoot::execute()
 {
 	// there is no need to reset status because the nodes should
