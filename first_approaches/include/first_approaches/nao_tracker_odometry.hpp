@@ -13,7 +13,7 @@ using namespace nao_msgs;
 
 
 // Publisher
-ros::Publisher cmd_pub;
+ros::Publisher cmd1_pub,cmd2_pub;
 
 // Initial odometry of the two robots
 double x_01,y_01,theta_01,x_02,y_02,theta_02;

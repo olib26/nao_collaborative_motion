@@ -48,9 +48,6 @@ int main(int argc, char** argv)
 		// Behavior manager proxy
 		behavior_proxy_ptr = new AL::ALBehaviorManagerProxy(NAO_IP,NAO_PORT);
 
-		// Install behavior
-		behavior_proxy_ptr->installBehavior("/home/olivier/ros_workspace/collaborative_motion/behaviors/behavior_hello/behavior.xar");
-
 		// Service
 		ros::ServiceServer service = nh.advertiseService("nao_hello" + nao,startService);
 

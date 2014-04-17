@@ -57,7 +57,7 @@ void receive_odometry1(const TorsoOdometry::ConstPtr &msg)
 		cmd.angular.z = angular;
 	}
 
-	cmd_pub.publish(cmd);
+	cmd1_pub.publish(cmd);
 }
 
 
@@ -67,6 +67,42 @@ void receive_odometry2(const TorsoOdometry::ConstPtr &msg)
 	x_2 = x_02 + msg->x*cos(theta_02) - msg->y*sin(theta_02);
 	y_2 = y_02 + msg->x*sin(theta_02) + msg->y*cos(theta_02);
 	theta_2 = theta_02 + msg->wz;
+
+	// Controller
+	Twist cmd;
+
+	double dist = sqrt((x_2-x_1)*(x_2-x_1)+(y_2-y_1)*(y_2-y_1));
+	if(dist > dist_min)
+	{
+		double dtheta;
+
+		if(x_1 == x_2)
+		{
+			if((y_1-y_2) < 0) {dtheta = -M_PI/2;}
+			if((y_1-y_2) > 0) {dtheta = M_PI/2;}
+		}
+		else
+		{
+			dtheta = atan((y_1-y_2)/(x_1-x_2));
+			if((x_1-x_2) < 0) {dtheta += M_PI;}
+		}
+
+		dtheta -= theta_1;
+		while(dtheta >= M_PI) {dtheta -= 2*M_PI;}
+		while(dtheta < -M_PI) {dtheta += 2*M_PI;}
+
+		double linear = rho*dist;
+		double angular = alpha*dtheta;
+		// Thresholds
+		if(linear > 1) {linear = 1;}
+		if(angular > 1) {angular = 1;}
+		if(angular < -1) {angular = -1;}
+
+		cmd.linear.x = linear;
+		cmd.angular.z = angular;
+	}
+
+	cmd2_pub.publish(cmd);
 }
 
 
@@ -77,10 +113,12 @@ int main(int argc, char** argv)
 	ros::NodeHandle pnh("~");
 
 	// Robot parameters
-	std::string NAO_IP;
-	int NAO_PORT;
-	pnh.param("NAO_IP",NAO_IP,std::string("127.0.0.1"));
-	pnh.param("NAO_PORT",NAO_PORT,int(9559));
+	std::string NAO_IP1,NAO_IP2;
+	int NAO_PORT1,NAO_PORT2;
+	pnh.param("NAO_IP1",NAO_IP1,std::string("127.0.0.1"));
+	pnh.param("NAO_PORT1",NAO_PORT1,int(9559));
+	pnh.param("NAO_IP2",NAO_IP2,std::string("127.0.0.1"));
+	pnh.param("NAO_PORT2",NAO_PORT2,int(9560));
 
 	// Initial odometry of the two robots
 	pnh.param("x_01",x_01,double(0.0));
@@ -110,16 +148,19 @@ int main(int argc, char** argv)
 		ros::Subscriber odometry2_sub = nh.subscribe("/torso_odometry" + nao2,1000,receive_odometry2);
 
 		// Publisher
-		cmd_pub = nh.advertise<Twist>("/cmd_vel" + nao1,100);
+		cmd1_pub = nh.advertise<Twist>("/cmd_vel" + nao1,100);
+		cmd2_pub = nh.advertise<Twist>("/cmd_vel" + nao2,100);
 
 		// Enable stiffness
 		AL::ALMotionProxy* motion_proxy_ptr;
-		motion_proxy_ptr = new AL::ALMotionProxy(NAO_IP,NAO_PORT);
 		AL::ALValue stiffness_name("Body");
 		AL::ALValue stiffness(1.0f);
 		AL::ALValue stiffness_time(1.0f);
-		motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
 
+		motion_proxy_ptr = new AL::ALMotionProxy(NAO_IP1,NAO_PORT1);
+		motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
+		motion_proxy_ptr = new AL::ALMotionProxy(NAO_IP2,NAO_PORT2);
+		motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
 
 		ros::Rate loop_rate(100);
 		while(ros::ok())

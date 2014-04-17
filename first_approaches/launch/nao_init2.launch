@@ -4,7 +4,7 @@
     Start Nao 2
   -->
   <arg name="nao_ip2" default="$(optenv NAO_IP 127.0.0.1)" />
-  <arg name="nao_port2" default="$(optenv NAO_PORT 9559)" />
+  <arg name="nao_port2" default="$(optenv NAO_PORT 9560)" />
   
   <node pkg="nao_driver" type="nao_walker.py" name="nao_walker2" required="true" args="--pip=$(arg nao_ip2) --pport=$(arg nao_port2)" output="screen">
   	<remap from="cmd_vel" to="cmd_vel2"/>
@@ -22,6 +22,40 @@
     <param name="camera_switch" value="0"/>
     <param name="resolution" value="2"/>
     <remap from="image_raw" to="image_raw2"/>
+  </node>
+  
+  
+  <!--
+    Sonar 2
+  -->
+  <node pkg="first_approaches" type="nao_sonar" name="nao_sonar2" output="screen">
+    <param name="NAO_IP" value="$(arg nao_ip2)"/>
+    <param name="NAO_PORT" value="$(arg nao_port2)"/>
+    <remap from="sonar" to="sonar2"/>
+  </node>
+  
+  
+  <!--
+    Nao detection 2
+  -->
+  <node pkg="first_approaches" type="nao_detection" name="nao_d2" args="2" output="screen">
+    <param name="H_MIN" value="0"/>
+    <param name="H_MAX" value="30"/>
+    <param name="S_MIN" value="180"/>
+    <param name="S_MAX" value="255"/>
+    <param name="V_MIN" value="90"/>
+    <param name="V_MAX" value="255"/>
+  </node>
+  
+  <node pkg="first_approaches" type="nao_tracker_camera" name="nao_t_c2" args="2" output="screen"/>
+
+
+  <!--
+    Nao behavior 2 (hello)
+  -->
+  <node pkg="first_approaches" type="nao_hello" name="nao_hello2" args="2" output="screen">
+    <param name="NAO_IP" value="$(arg nao_ip2)"/>
+    <param name="NAO_PORT" value="$(arg nao_port2)"/>
   </node>
 
 </launch>

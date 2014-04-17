@@ -1,6 +1,19 @@
 <launch>
 
-	<include file="$(find collaborative_motion)/launch/nao_tracker_camera1.launch"/>
-	<include file="$(find collaborative_motion)/launch/nao_tracker_camera2.launch"/>
+  <include file="$(find first_approaches)/launch/nao_init1.launch"/>
+  <include file="$(find first_approaches)/launch/nao_init2.launch"/>
+  
+  <!--
+    Controllers
+  -->
+  <node pkg="first_approaches" type="nao_controller" name="nao_c1" args="1" output="screen">
+    <param name="NAO_IP" value="127.0.0.1"/>
+    <param name="NAO_PORT" value="9559"/>
+  </node>
+
+  <node pkg="first_approaches" type="nao_controller" name="nao_c2" args="2" output="screen">
+    <param name="NAO_IP" value="127.0.0.1"/>
+    <param name="NAO_PORT" value="9560"/>
+  </node>
   
 </launch>
