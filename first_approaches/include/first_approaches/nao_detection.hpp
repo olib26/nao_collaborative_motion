@@ -39,16 +39,16 @@ struct Point
 
 // Detector frame size
 int sx,sy;
-const int sx_min = 10;
-const int sy_min = 15;
-const int s_diffusion = 3;
+const int sx_min = 5;
+const int sy_min = 10;
+const int s_diffusion = 10;
 
 // Object coordinate
 int x,y;
 double depth;
 
 // Diffusion variance
-const int sigma_diffusion = 8;
+const int sigma_diffusion = 50;
 
 // Number of particles
 const int N = 2000;

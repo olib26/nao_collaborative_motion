@@ -24,7 +24,6 @@ int main(int argc, char** argv)
 	pnh.param("NAO_IP",NAO_IP,std::string("127.0.0.1"));
 	pnh.param("NAO_PORT",NAO_PORT,int(9559));
 
-	/*
 	// Enable stiffness
 	AL::ALMotionProxy* motion_proxy_ptr;
 	motion_proxy_ptr = new AL::ALMotionProxy(NAO_IP,NAO_PORT);
@@ -32,7 +31,15 @@ int main(int argc, char** argv)
 	AL::ALValue stiffness(1.0f);
 	AL::ALValue stiffness_time(1.0f);
 	motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
-	 */
+
+	// Init moving
+	motion_proxy_ptr->moveInit();
+
+	// Head pitch
+	AL::ALValue name = "HeadPitch";
+	float angle = 0;
+	float fractionMaxSpeed = 0.05;
+	motion_proxy_ptr->setAngles(name,angle,fractionMaxSpeed);
 
 	if(argc != 1)
 	{
