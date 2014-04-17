@@ -87,7 +87,7 @@ void receive_odometry2(const TorsoOdometry::ConstPtr &msg)
 			if((x_1-x_2) < 0) {dtheta += M_PI;}
 		}
 
-		dtheta -= theta_1;
+		dtheta -= theta_2;
 		while(dtheta >= M_PI) {dtheta -= 2*M_PI;}
 		while(dtheta < -M_PI) {dtheta += 2*M_PI;}
 

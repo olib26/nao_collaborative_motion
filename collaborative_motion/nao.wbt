@@ -32,7 +32,6 @@ MetricFloor {
 }
 Nao_H25_V40 {
   rotation -1 0 0 1.57
-  controllerArgs "9560"
   cameraWidth 1024
   cameraHeight 960
   topCameraWindowPosition 1 0
@@ -42,6 +41,7 @@ Nao_H25_V40 {
 Nao_H25_V40 {
   translation 2 0.32 1
   rotation 0 0.707107 0.707107 3.14159
+  controllerArgs "9560"
   cameraWidth 1024
   cameraHeight 960
   cameraPixelSize 0.15
