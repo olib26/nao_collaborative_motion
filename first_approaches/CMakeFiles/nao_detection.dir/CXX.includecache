@@ -6871,10 +6871,10 @@ opencv2/highgui/highgui.hpp
 -
 std_srvs/Empty.h
 -
-collaborative_motion/PosImage.h
+first_approaches/PosImage.h
 -
-headers/nao_detection.hpp
-/home/olivier/ros_workspace/first_approaches/src/headers/nao_detection.hpp
+first_approaches/nao_detection.hpp
+/home/olivier/ros_workspace/first_approaches/src/first_approaches/nao_detection.hpp
 
 /opt/ros/fuerte/include/XmlRpcDecl.h
 ros/macros.h
@@ -7723,4 +7723,28 @@ opencv2/core/core.hpp
 -
 stdexcept
 -
+
+include/first_approaches/nao_detection.hpp
+
+msg_gen/cpp/include/first_approaches/PosImage.h
+string
+-
+vector
+-
+map
+-
+ostream
+-
+ros/serialization.h
+msg_gen/cpp/include/first_approaches/ros/serialization.h
+ros/builtin_message_traits.h
+msg_gen/cpp/include/first_approaches/ros/builtin_message_traits.h
+ros/message_operations.h
+msg_gen/cpp/include/first_approaches/ros/message_operations.h
+ros/time.h
+msg_gen/cpp/include/first_approaches/ros/time.h
+ros/macros.h
+msg_gen/cpp/include/first_approaches/ros/macros.h
+ros/assert.h
+msg_gen/cpp/include/first_approaches/ros/assert.h
 

@@ -161,7 +161,7 @@ double evaluate(int x, int y, int sx, int sy, int** integral)
 	if(y > width) {y = width;}
 
 	int weight = integral[p.x][p.y] - integral[x-1][p.y] - integral[p.x][y-1] + integral[x-1][y-1];
-	if(weight < 0) {weight = 0;}
+	if(weight <= 0) {weight = 1E-5;}
 	return weight;
 }
 
@@ -231,18 +231,26 @@ void particleFilter(IplImage* img)
 	}
 
 	double r = uniformRandom()/N;
+	int index = 0;
+	Particle* temp = new Particle [N];
 	for(int i = 0; i < N; i++)
 	{
-		for(int j = 0; j < N; j++)
+		for(int j = index; j < N; j++)
 		{
 			if(cdf[j] >= r)
 			{
-				particles[i] = particles[j];
+				temp[i] = particles[j];
+				index = j;
 				break;
 			}
 		}
-		particles[i].w = (double)1/N;
 		r += (double)1/N;
+	}
+
+	for(int i = 0; i < N; i++)
+	{
+		particles[i] = temp[i];
+		particles[i].w = (double)1/N;
 	}
 
 	// Update object coordinate

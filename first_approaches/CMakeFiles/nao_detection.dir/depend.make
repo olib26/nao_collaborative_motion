@@ -695,4 +695,6 @@ CMakeFiles/nao_detection.dir/src/nao_detection.o: /opt/ros/fuerte/stacks/image_c
 CMakeFiles/nao_detection.dir/src/nao_detection.o: /opt/ros/fuerte/stacks/image_common/image_transport/include/image_transport/subscriber.h
 CMakeFiles/nao_detection.dir/src/nao_detection.o: /opt/ros/fuerte/stacks/image_common/image_transport/include/image_transport/transport_hints.h
 CMakeFiles/nao_detection.dir/src/nao_detection.o: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/include/cv_bridge/cv_bridge.h
+CMakeFiles/nao_detection.dir/src/nao_detection.o: include/first_approaches/nao_detection.hpp
+CMakeFiles/nao_detection.dir/src/nao_detection.o: msg_gen/cpp/include/first_approaches/PosImage.h
 
