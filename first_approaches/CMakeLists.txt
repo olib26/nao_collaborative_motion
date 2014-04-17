@@ -17,7 +17,7 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
 #uncomment if you have defined messages
-#rosbuild_genmsg()
+rosbuild_genmsg()
 #uncomment if you have defined services
 #rosbuild_gensrv()
 
@@ -28,3 +28,38 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 #rosbuild_link_boost(${PROJECT_NAME} thread)
 #rosbuild_add_executable(example examples/example.cpp)
 #target_link_libraries(example ${PROJECT_NAME})
+
+
+rosbuild_add_executable(nao_detection src/nao_detection.cpp)
+
+include_directories(
+$ENV{AL_DIR_SDK}/include
+$ENV{AL_DIR_SDK}/include/alcommon
+$ENV{AL_DIR_SDK}/include/alvision
+$ENV{AL_DIR_SDK}/include/alcore
+$ENV{AL_DIR_SDK}/include/alproxies
+$ENV{AL_DIR_SDK}/include/alvalue
+$ENV{AL_DIR_SDK}/include/altools
+$ENV{AL_DIR_SDK}/include/alfactory
+$ENV{AL_DIR_SDK}/include/libthread
+$ENV{AL_DIR_SDK}/include/alvision
+)
+
+link_directories(
+$ENV{AL_DIR_SDK}/lib
+)
+
+rosbuild_add_executable(nao_tracker_camera src/nao_tracker_camera.cpp)
+target_link_libraries(nao_tracker_camera alproxies alvalue)
+
+rosbuild_add_executable(nao_hello src/nao_hello.cpp)
+target_link_libraries(nao_hello alproxies alvalue)
+
+rosbuild_add_executable(nao_controller src/nao_controller.cpp)
+target_link_libraries(nao_controller alproxies alvalue)
+
+rosbuild_add_executable(nao_tracker_odometry src/nao_tracker_odometry.cpp)
+target_link_libraries(nao_tracker_odometry alproxies alvalue)
+
+rosbuild_add_executable(nao_sonar src/nao_sonar.cpp)
+target_link_libraries(nao_sonar alproxies alvalue)

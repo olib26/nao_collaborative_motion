@@ -1,0 +1,20 @@
+<launch>
+
+  <include file="$(find first_approaches)/launch/nao_init1.launch"/>
+  <include file="$(find first_approaches)/launch/nao_init2.launch"/>
+	 
+  <!--
+    Controller
+  -->
+  <node pkg="collaborative_motion" type="nao_tracker_odometry" name="nao_tracker_odometry2" args="2" output="screen">
+    <param name="NAO_IP" value="$(arg nao_ip2)"/>
+    <param name="NAO_PORT" value="$(arg nao_port2)"/>
+    <param name="x_01" value="1"/>
+    <param name="y_01" value="-1"/>
+    <param name="theta_01" value="3.14159265"/>
+    <param name="x_02" value="0"/>
+    <param name="y_02" value="0"/>
+    <param name="theta_02" value="0"/>
+  </node>
+
+</launch>
