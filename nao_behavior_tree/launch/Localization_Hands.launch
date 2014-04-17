@@ -1,0 +1,24 @@
+<launch>
+
+  <!--
+    Localization
+  -->
+  <node pkg="nao_behavior_tree" type="Localization" name="Localization" args="0" output="screen">
+    <param name="camera" value="0"/>
+    <param name="H_MIN" value="0"/>
+    <param name="H_MAX" value="20"/>
+    <param name="S_MIN" value="30"/>
+    <param name="S_MAX" value="150"/>
+    <param name="V_MIN" value="80"/>
+    <param name="V_MAX" value="255"/>
+  </node>
+  
+  
+  <!--
+    Behavior Tree
+  -->
+  <node pkg="nao_behavior_tree" type="nao_behavior_tree" name="nao_behavior_tree" output="screen">
+    <param name="file" value="/home/olivier/ros_workspace/nao_behavior_tree/bt_localization.txt"/>
+  </node>
+  
+</launch>

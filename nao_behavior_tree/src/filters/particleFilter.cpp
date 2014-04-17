@@ -255,10 +255,12 @@ double particleFilter::evaluateMultiple(int x, int y, int sx, int sy, int** inte
 	}
 	
 	// Distance between the particle and the object
-	double distanceRobot = (x+sx/2-objects[idObject].x)*(x+sx/2-objects[idObject].x) + (y+sy/2-objects[idObject].y)*(y+sy/2-objects[idObject].y);
-	double sigma = objects[idObject].sx*objects[idObject].sx + objects[idObject].sy*objects[idObject].sy;
+	double distanceRobot_x = (x+sx/2-objects[idObject].x)*(x+sx/2-objects[idObject].x);
+	double distanceRobot_y = (y+sy/2-objects[idObject].y)*(y+sy/2-objects[idObject].y);
+	double sigma_x = objects[idObject].sx*objects[idObject].sx;
+	double sigma_y = objects[idObject].sy*objects[idObject].sy;
 	
-	weight = weight*exp(-distanceRobot/sigma/2);
+	weight = weight*exp(-distanceRobot_x/sigma_x/2-distanceRobot_y/sigma_y/2);
 
 	if(weight <= 0) {weight = eps;}
 	return weight;

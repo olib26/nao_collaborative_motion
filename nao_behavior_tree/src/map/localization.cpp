@@ -170,7 +170,7 @@ void imageProcessing(IplImage* img)
 	updateCoordinate(PF.getObject(1),&r2);
 
 	// Show hsv_mask
-	//cvNamedWindow("Localization_HSV",1); cvShowImage("Localization_HSV",hsv_mask);
+	cvNamedWindow("Localization_HSV",1); cvShowImage("Localization_HSV",hsv_mask);
 }
 
 
