@@ -300,7 +300,7 @@ public:
 
 		// Controller
 		double angular = alpha*modulo2Pi(V.theta-(bearing.relative+bearing.absolute));
-		double linear;
+		double linear = 0;
 		if(fabs(angular) < angularThreshold) {linear = V.norm;}
 
 		geometry_msgs::Twist cmd;

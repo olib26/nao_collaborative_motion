@@ -222,6 +222,7 @@ void receive_vel1(const nao_behavior_tree::Velocity::ConstPtr &msg)
 {
 	vel1.norm = msg->norm;
 	vel1.theta = msg->theta;
+	vel1.area = msg->area;
 }
 
 
@@ -433,6 +434,12 @@ int main(int argc, char** argv)
 		if(robot2Detected) {drawBearing(img,odom1,r1,k,r1.absoluteBearing); drawBearing(img,odom1,r1,k,r1.absoluteBearing + r1.relativeBearing);}
 		if(robot1Detected) {drawBearing(img,odom2,r2,k,r2.absoluteBearing); drawBearing(img,odom2,r2,k,r2.absoluteBearing + r2.relativeBearing);}
 		if(robot2Detected) {drawVelocity(img,vel1,r1,k);}
+
+		// Areas information
+		CvFont font;
+		cvInitFont( &font, CV_FONT_HERSHEY_SIMPLEX,1.0,1.0,0,1,8);
+		cvPutText(img,"Area: " + vel1.area,cvPoint(20,10),&font,cvScalar(0,0,255));
+
 		cvShowImage("Localization",img);
 
 		cvWaitKey(50);

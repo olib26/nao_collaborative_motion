@@ -5,4 +5,6 @@
           NORM
           THETA-VAL
           THETA
+          AREA-VAL
+          AREA
 ))

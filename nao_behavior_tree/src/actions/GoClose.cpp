@@ -268,6 +268,7 @@ public:
 		int y_rel = object.y - width/2;
 
 		double linear = rho;
+		if((right < 0.8) | (left < 0.8)) {linear = rho/4;}
 		if(fabs(y_rel) > yThreshold) {linear = 0;}
 
 		double angular = -alpha*y_rel;

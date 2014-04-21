@@ -7,7 +7,7 @@ import struct
 import std_msgs.msg
 
 class Velocity(genpy.Message):
-  _md5sum = "1b7fe3312b176a60126a2063c0e05cd6"
+  _md5sum = "f19174f975dea025748fb3b544fee219"
   _type = "nao_behavior_tree/Velocity"
   _has_header = True #flag to mark the presence of a Header object
   _full_text = """
@@ -16,6 +16,9 @@ Header header
 # Velocity
 float32 norm
 float32 theta
+
+# Area
+int8 area
 ================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
@@ -35,8 +38,8 @@ time stamp
 string frame_id
 
 """
-  __slots__ = ['header','norm','theta']
-  _slot_types = ['std_msgs/Header','float32','float32']
+  __slots__ = ['header','norm','theta','area']
+  _slot_types = ['std_msgs/Header','float32','float32','int8']
 
   def __init__(self, *args, **kwds):
     """
@@ -46,7 +49,7 @@ string frame_id
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       header,norm,theta
+       header,norm,theta,area
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -61,10 +64,13 @@ string frame_id
         self.norm = 0.
       if self.theta is None:
         self.theta = 0.
+      if self.area is None:
+        self.area = 0
     else:
       self.header = std_msgs.msg.Header()
       self.norm = 0.
       self.theta = 0.
+      self.area = 0
 
   def _get_types(self):
     """
@@ -87,7 +93,7 @@ string frame_id
         length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
-      buff.write(_struct_2f.pack(_x.norm, _x.theta))
+      buff.write(_struct_2fb.pack(_x.norm, _x.theta, _x.area))
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
 
@@ -115,8 +121,8 @@ string frame_id
         self.header.frame_id = str[start:end]
       _x = self
       start = end
-      end += 8
-      (_x.norm, _x.theta,) = _struct_2f.unpack(str[start:end])
+      end += 9
+      (_x.norm, _x.theta, _x.area,) = _struct_2fb.unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -138,7 +144,7 @@ string frame_id
         length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
-      buff.write(_struct_2f.pack(_x.norm, _x.theta))
+      buff.write(_struct_2fb.pack(_x.norm, _x.theta, _x.area))
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
 
@@ -167,12 +173,12 @@ string frame_id
         self.header.frame_id = str[start:end]
       _x = self
       start = end
-      end += 8
-      (_x.norm, _x.theta,) = _struct_2f.unpack(str[start:end])
+      end += 9
+      (_x.norm, _x.theta, _x.area,) = _struct_2fb.unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
 
 _struct_I = genpy.struct_I
+_struct_2fb = struct.Struct("<2fb")
 _struct_3I = struct.Struct("<3I")
-_struct_2f = struct.Struct("<2f")

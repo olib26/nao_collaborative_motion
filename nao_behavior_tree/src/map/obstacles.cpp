@@ -233,8 +233,8 @@ bool intersectEdge(Robot r, Edge edge)
 	double V = angle(p0,r.vel);
 	double alpha = angle(r.pos,edge.p);
 
-	if((edge.theta-alpha) >= 0) {return (((V-alpha) >= 0) & ((V-alpha) <= (edge.theta-alpha)));}
-	else {return (((V-alpha) <= 0) & ((V-alpha) >= (edge.theta-alpha)));}
+	if((edge.theta-alpha) >= 0) {return (((V-alpha) >= 0) & (V <= edge.theta));}
+	else {return (((V-alpha) <= 0) & (V >= edge.theta));}
 }
 
 
@@ -502,6 +502,7 @@ public:
 		if(intersected.empty() | (distanceToEdge(r2.pos,edge) < distanceToEdge(r1.pos,edge)))
 		{
 			vel.theta = r1.theta;
+			vel.area = 3;
 		}
 		else
 		{
@@ -522,6 +523,7 @@ public:
 				p.x = d2/d1;
 				p.y = 1;
 				vel.theta = modulo2Pi(angle(p0,p)+edge.theta-M_PI/2);
+				vel.area = 1;
 			}
 
 			// Zone 2
@@ -529,6 +531,7 @@ public:
 			else
 			{
 				vel.theta = edge.theta;
+				vel.area = 2;
 			}
 		}
 

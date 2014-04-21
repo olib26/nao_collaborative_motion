@@ -26,6 +26,7 @@ struct Velocity_ {
   : header()
   , norm(0.0)
   , theta(0.0)
+  , area(0)
   {
   }
 
@@ -33,6 +34,7 @@ struct Velocity_ {
   : header(_alloc)
   , norm(0.0)
   , theta(0.0)
+  , area(0)
   {
   }
 
@@ -44,6 +46,9 @@ struct Velocity_ {
 
   typedef float _theta_type;
   float theta;
+
+  typedef int8_t _area_type;
+  int8_t area;
 
 
   typedef boost::shared_ptr< ::nao_behavior_tree::Velocity_<ContainerAllocator> > Ptr;
@@ -74,12 +79,12 @@ template<class ContainerAllocator>
 struct MD5Sum< ::nao_behavior_tree::Velocity_<ContainerAllocator> > {
   static const char* value() 
   {
-    return "1b7fe3312b176a60126a2063c0e05cd6";
+    return "f19174f975dea025748fb3b544fee219";
   }
 
   static const char* value(const  ::nao_behavior_tree::Velocity_<ContainerAllocator> &) { return value(); } 
-  static const uint64_t static_value1 = 0x1b7fe3312b176a60ULL;
-  static const uint64_t static_value2 = 0x126a2063c0e05cd6ULL;
+  static const uint64_t static_value1 = 0xf19174f975dea025ULL;
+  static const uint64_t static_value2 = 0x748fb3b544fee219ULL;
 };
 
 template<class ContainerAllocator>
@@ -102,6 +107,9 @@ Header header\n\
 # Velocity\n\
 float32 norm\n\
 float32 theta\n\
+\n\
+# Area\n\
+int8 area\n\
 ================================================================================\n\
 MSG: std_msgs/Header\n\
 # Standard metadata for higher-level stamped data types.\n\
@@ -143,6 +151,7 @@ template<class ContainerAllocator> struct Serializer< ::nao_behavior_tree::Veloc
     stream.next(m.header);
     stream.next(m.norm);
     stream.next(m.theta);
+    stream.next(m.area);
   }
 
   ROS_DECLARE_ALLINONE_SERIALIZER;
@@ -167,6 +176,8 @@ s << std::endl;
     Printer<float>::stream(s, indent + "  ", v.norm);
     s << indent << "theta: ";
     Printer<float>::stream(s, indent + "  ", v.theta);
+    s << indent << "area: ";
+    Printer<int8_t>::stream(s, indent + "  ", v.area);
   }
 };
 
