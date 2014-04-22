@@ -107,6 +107,18 @@ void drawVelocity(IplImage* img, nao_behavior_tree::Velocity vel, Robot r, doubl
 }
 
 
+void drawPath(IplImage* img, Robot r)
+{
+	CvPoint p1,p2;
+	CvScalar color = cvScalar(0,0,255);
+	int thickness = 1;
+
+	p1 = cvPoint(r.y_temp,r.x_temp);
+	p2 = cvPoint(r.y,r.x);
+	cvLine(img,p1,p2,color,thickness,CV_AA,0);
+}
+
+
 double cameraCoef(bool webcam)
 {
 	double k;
@@ -403,20 +415,23 @@ int main(int argc, char** argv)
 		r.sleep();
 	}
 
+	img = getImage(webcam);
+	CvSize sz = cvGetSize(img);
+	// Image size
+	height = sz.height;
+	width = sz.width;
+	// Camera coefficient
+	k = cameraCoef(webcam);
+	// Init image path
+	IplImage* paths = cvCreateImage(sz,8,3);
+	cvSet(paths,cvScalar(255,255,255));
+	cvNamedWindow("Paths",1);
+
 	// Init timers
 	timestamp1 = timestamp2 = ros::Time::now().toSec();
 
 	while(ros::ok()){
 		img = getImage(webcam);
-
-		CvSize sz = cvGetSize(img);
-
-		// Image size
-		height = sz.height;
-		width = sz.width;
-
-		// Camera coefficient
-		k = cameraCoef(webcam);
 
 		// Image processing
 		imageProcessing(img);
@@ -437,10 +452,16 @@ int main(int argc, char** argv)
 
 		// Areas information
 		CvFont font;
-		cvInitFont( &font, CV_FONT_HERSHEY_SIMPLEX,1.0,1.0,0,1,8);
-		cvPutText(img,"Area: " + vel1.area,cvPoint(20,10),&font,cvScalar(0,0,255));
+		cvInitFont(&font,CV_FONT_HERSHEY_SIMPLEX,1.0,1.0,0,1,8);
+		if(robot2Detected) {cvPutText(img,"Area: " + vel1.area,cvPoint(20,10),&font,cvScalar(0,0,255));}
 
 		cvShowImage("Localization",img);
+
+		// Draw paths
+		drawPath(paths,r1);
+		drawPath(paths,r2);
+
+		cvShowImage("Paths",paths);
 
 		cvWaitKey(50);
 		ros::spinOnce();
@@ -458,6 +479,7 @@ int main(int argc, char** argv)
 		cvReleaseCapture(&capture); // Release capture
 	}
 	cvDestroyWindow("Localization");
+	cvDestroyWindow("Paths");
 
 	return 0;
 }

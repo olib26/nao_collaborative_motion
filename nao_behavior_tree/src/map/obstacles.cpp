@@ -413,6 +413,14 @@ void creation(IplImage* img)
 		os_image.write(reinterpret_cast<const char*>(&(saveImage[0])),saveImage.size()*sizeof(cv::Point));
 		os_image.close();
 	}
+
+	// Save image parameters
+	std::vector<int> size;
+	size.push_back(height);
+	size.push_back(width);
+	std::ofstream os_camera("/home/olivier/ros_workspace/map/camera.dat",std::ios::binary);
+	os_camera.write(reinterpret_cast<const char*>(&(size[0])),2*sizeof(int));
+	os_camera.close();
 }
 
 
@@ -460,8 +468,8 @@ public:
 			initialize();
 		}
 
-		// Update image
-		img = getImage(webcam);
+		// Clear image
+		cvSet(img,cvScalar(255,255,255));
 
 		allEdges edges = computeAllEdges(obstacles,r1);
 		allEdges intersected;
@@ -595,44 +603,48 @@ int main(int argc, char** argv)
 	vel_pub = nh.advertise<nao_behavior_tree::Velocity>("/vel" + r1.id,1);
 
 
-	// Init proxy
-	if(!webcam)
+	if(mode == CREATION)
 	{
-		camera_proxy_ptr = new AL::ALVideoDeviceProxy(NAO_IP,NAO_PORT);
-		// Select top camera
-		camera_proxy_ptr->setParam(AL::kCameraSelectID,0);
-		// Set Resolution, Color space and FPS
-		// Resolution = 640x480
-		// Color space = BGR
-		// FPS = 30
-		clientName = camera_proxy_ptr->subscribe("obstacles",AL::kVGA,AL::kBGRColorSpace,30);
-		// Init image
-		imgHeader = cvCreateImageHeader(cvSize(640,480),8,3);
+		// Init proxy
+		if(!webcam)
+		{
+			camera_proxy_ptr = new AL::ALVideoDeviceProxy(NAO_IP,NAO_PORT);
+			// Select top camera
+			camera_proxy_ptr->setParam(AL::kCameraSelectID,0);
+			// Set Resolution, Color space and FPS
+			// Resolution = 640x480
+			// Color space = BGR
+			// FPS = 30
+			clientName = camera_proxy_ptr->subscribe("obstacles",AL::kVGA,AL::kBGRColorSpace,30);
+			// Init image
+			imgHeader = cvCreateImageHeader(cvSize(640,480),8,3);
+		}
+
+		// Init webcam
+		if(webcam)
+		{
+			capture = cvCaptureFromCAM(cameraId);
+		}
+
+		// Window
+		cvNamedWindow("Obstacles",1);
+
+		 // Wait for proxy init
+		sleep(1);
+
+		// Init image size
+		img = getImage(webcam);
+		CvSize sz = cvGetSize(img);
+		height = sz.height;
+		width = sz.width;
+
+		// Camera Coef
+		k = cameraCoef(webcam);
+
+		creation(img);
 	}
-
-	// Init webcam
-	if(webcam)
-	{
-		capture = cvCaptureFromCAM(cameraId);
-	}
-
-	// Window
-	cvNamedWindow("Obstacles",1);
-
-	 // Wait for proxy init
-	sleep(1);
-
-	// Init image size
-	img = getImage(webcam);
-	CvSize sz = cvGetSize(img);
-	height = sz.height;
-	width = sz.width;
-
-	// Camera Coef
-	k = cameraCoef(webcam);
 
 	
-	if(mode == CREATION) {creation(img);}
 	if(mode == NORMAL)
 	{
 		// Load obstacles
@@ -649,6 +661,16 @@ int main(int argc, char** argv)
 		std::ifstream is_world("/home/olivier/ros_workspace/map/world.dat",std::ios::binary);
 		is_world.read(reinterpret_cast<char*>(&(saveWorld[0])),saveWorld.size()*sizeof(Point));
 		is_world.close();
+
+		// Load image parameters
+		std::vector<int> size;
+		size.resize(2);
+		std::ifstream is_camera("/home/olivier/ros_workspace/map/camera.dat",std::ios::binary);
+		is_camera.read(reinterpret_cast<char*>(&(size[0])),2*sizeof(int));
+		is_camera.close();
+
+		height = size.at(0);
+		width = size.at(1);
 
 		for(int i = 0; i < maxPoints; i++)
 		{
@@ -669,6 +691,9 @@ int main(int argc, char** argv)
 				currentObstacle.pointsWorld.clear();
 			}
 		}
+
+		// Create image
+		img = cvCreateImage(cvSize(width,height),8,3);
 
 		// Launch Server
 		Obstacles server(ros::this_node::getName());

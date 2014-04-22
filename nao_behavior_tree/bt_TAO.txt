@@ -1,0 +1,19 @@
+[*
+	A Localization
+	p
+		[*
+			A Search1
+			/
+				A TrackingAmongObstacles1
+				A HeadTracker1
+				A Obstacles
+			|
+			A Greet1
+			A Stop1
+		]
+		[*
+			A Walk2
+			A Stop2
+		]
+	P
+]

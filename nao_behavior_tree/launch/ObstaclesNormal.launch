@@ -1,16 +1,112 @@
 <launch>
   
+  <arg name="nao_ip" default="$(optenv NAO_IP 192.168.1.127)"/>
+  <arg name="nao_port" default="$(optenv NAO_PORT 9559)"/>
+  
+
+  <!--
+    Top camera 1
+  -->
+  <node pkg="nao_driver" type="nao_camera.py" name="nao_camera1" required="true" args="--pip=$(arg nao_ip) --pport=$(arg nao_port)" output="screen">
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/sim/parameters_sim.yaml"/>
+    <remap from="image_raw" to="image_raw1"/>
+  </node>
+  
+  <!--
+	Walker 1
+  -->
+  <node pkg="nao_driver" type="nao_walker.py" name="nao_walker1" required="true" args="--pip=$(arg nao_ip) --pport=$(arg nao_port)" output="screen">
+   <remap from="cmd_vel" to="cmd_vel1"/>
+  </node>
+  
+  <!--
+	Sonar 1
+  -->
+  <node pkg="nao_behavior_tree" type="nao_sonar" name="nao_sonar1" output="screen">
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/sim/parameters_sim.yaml"/>
+    <param name="NAO_IP" value="$(arg nao_ip)"/>
+    <param name="NAO_PORT" value="$(arg nao_port)"/>
+    <remap from="sonar" to="sonar1"/>
+  </node>
+  
+  
+  <!--
+    Actions 1
+  -->
+  <node pkg="nao_behavior_tree" type="TrackingAmongObstacles" name="TrackingAmongObstacles1" args="1" output="screen">
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/sim/parameters_sim.yaml"/>
+    <param name="NAO_IP" value="$(arg nao_ip)"/>
+    <param name="NAO_PORT" value="$(arg nao_port)"/>
+  </node>
+  
+  <node pkg="nao_behavior_tree" type="HeadTracker" name="HeadTracker1" args="1" output="screen">
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/sim/parameters_sim.yaml"/>
+    <param name="NAO_IP" value="$(arg nao_ip)"/>
+    <param name="NAO_PORT" value="$(arg nao_port)"/>
+  </node>
+  
+  <node pkg="nao_behavior_tree" type="Greet" name="Greet1" args="1">
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/sim/parameters_sim.yaml"/>
+    <param name="NAO_IP" value="$(arg nao_ip)"/>
+    <param name="NAO_PORT" value="$(arg nao_port)"/>
+  </node>
+  
+  <node pkg="nao_behavior_tree" type="Search" name="Search1" args="1" output="screen">
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/sim/parameters_sim.yaml"/>
+    <param name="NAO_IP" value="$(arg nao_ip)"/>
+    <param name="NAO_PORT" value="$(arg nao_port)"/>
+  </node>
+  
+  <node pkg="nao_behavior_tree" type="Stop" name="Stop1" args="1"/>
+  
+
+  <!--
+    Leds 1
+  -->
+  <node pkg="nao_behavior_tree" type="nao_leds" name="nao_leds1" output="screen">
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/parameters.yaml"/>
+    <param name="NAO_IP" value="192.168.1.19"/>
+    <param name="NAO_PORT" value="9559"/>
+  </node>
+  
+  <!--
+    Leds 2
+  -->
+  <node pkg="nao_behavior_tree" type="nao_leds" name="nao_leds2" output="screen">
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/parameters.yaml"/>
+    <param name="NAO_IP" value="192.168.1.127"/>
+    <param name="NAO_PORT" value="9559"/>
+  </node>
+  
+  <!--
+    Obstacles
+  -->
   <node pkg="nao_behavior_tree" type="Obstacles" name="Obstacles" args="1" output="screen">
     <param name="cameraId" value="1"/>
     <param name="webcam" value="true"/>
   </node>
   
+  <!--
+    Localization
+  -->
+  <node pkg="nao_behavior_tree" type="Localization" name="Localization" args="0" output="screen">
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/webcam.yaml"/>
+  </node>
+  
+  
+  
+  <!--
+    Nao 2
+  -->
+  <include file="$(find nao_behavior_tree)/launch/Walk.launch"/>
+  
+  
   
   <!--
     Behavior Tree
   -->
-  <node pkg="nao_behavior_tree" type="nao_behavior_tree" name="nao_behavior_tree" output="screen">
-    <param name="file" value="/home/olivier/ros_workspace/nao_behavior_tree/bt_obstacles.txt"/>
+  <node pkg="nao_behavior_tree" type="nao_behavior_tree" name="nao_behavior_tree1" output="screen">
+    <param name="file" value="/home/olivier/ros_workspace/nao_behavior_tree/bt_TAO.txt"/>
   </node>
   
 </launch>

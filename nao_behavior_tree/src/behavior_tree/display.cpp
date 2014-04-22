@@ -76,6 +76,9 @@ void draw_node(GLfloat x, GLfloat y, NODE_TYPE node_type)
 	case SEQUENCE:      glColor3f(0.0, 0.0, 1.0); break;
 	case SEQUENCE_STAR: glColor3f(0.0, 0.0, 0.6); break;
 	case PARALLEL:      glColor3f(0.0, 1.0, 1.0); break;
+
+	case LAUNCHER:      glColor3f(0.0, 1.0, 1.0); break;
+
 	case DECORATOR:     glColor3f(1.0, 0.0, 1.0); break;
 	case ACTION:        glColor3f(0.0, 1.0, 0.0); break;
 	case CONDITION:     glColor3f(1.0, 1.0, 0.0); break;
