@@ -71,4 +71,8 @@ double velThreshold = 0.02;
 ros::Publisher vel_pub;
 
 
+// Functions
+cv::Point pointToPixel(Point p);
+
+
 #endif /* OBSTACLES_HPP_ */

@@ -82,7 +82,6 @@
     Obstacles
   -->
   <node pkg="nao_behavior_tree" type="Obstacles" name="Obstacles" args="1" output="screen">
-    <param name="cameraId" value="1"/>
     <param name="webcam" value="true"/>
   </node>
   

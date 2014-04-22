@@ -453,7 +453,8 @@ int main(int argc, char** argv)
 		// Areas information
 		CvFont font;
 		cvInitFont(&font,CV_FONT_HERSHEY_SIMPLEX,1.0,1.0,0,1,8);
-		if(robot2Detected) {cvPutText(img,"Area: " + vel1.area,cvPoint(20,10),&font,cvScalar(0,0,255));}
+		std::string text = "Area: " + std::to_string(vel1.area);
+		if(robot2Detected) {cvPutText(img,text.c_str(),cvPoint(30,30),&font,cvScalar(0,0,255));}
 
 		cvShowImage("Localization",img);
 

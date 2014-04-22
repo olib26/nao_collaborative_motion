@@ -79,6 +79,14 @@ void drawObstacles(IplImage* img)
 }
 
 
+void drawRobot(IplImage* img, Robot r)
+{
+	CvScalar color = cvScalar(255,0,0);
+	int thickness = 2;
+
+	cvCircle(img,pointToPixel(r.pos),4,color,thickness,8,0);
+}
+
 void receive_odometry1(const nao_behavior_tree::Odometry::ConstPtr &msg)
 {
 	r1.pos.x = msg->x;
@@ -499,6 +507,10 @@ public:
 		// Draw obstacles
 		drawObstacles(img);
 
+		// Draw robots
+		drawRobot(img,r1);
+		drawRobot(img,r2);
+
 		cvShowImage("Obstacles",img);
 		cvWaitKey(1);
 
@@ -691,6 +703,9 @@ int main(int argc, char** argv)
 				currentObstacle.pointsWorld.clear();
 			}
 		}
+
+		// Camera Coef
+		k = cameraCoef(webcam);
 
 		// Create image
 		img = cvCreateImage(cvSize(width,height),8,3);
