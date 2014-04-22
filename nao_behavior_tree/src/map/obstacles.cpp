@@ -241,8 +241,8 @@ bool intersectEdge(Robot r, Edge edge)
 	double V = angle(p0,r.vel);
 	double alpha = angle(r.pos,edge.p);
 
-	if((edge.theta-alpha) >= 0) {return (((V-alpha) >= 0) & (V <= edge.theta));}
-	else {return (((V-alpha) <= 0) & (V >= edge.theta));}
+	if(modulo2Pi(edge.theta-alpha) >= 0) {return ((modulo2Pi(V-alpha) >= 0) & (modulo2Pi(V-alpha) <= modulo2Pi(edge.theta-alpha)));}
+	else {return ((modulo2Pi(V-alpha) <= 0) & (modulo2Pi(V-alpha) >= modulo2Pi(edge.theta-alpha)));}
 }
 
 
@@ -275,7 +275,7 @@ Edge closestEdge(Robot r, allEdges edges)
 		Edge edge = edges.at(i);
 		dist = distanceToEdge(r.pos,edge);
 
-		if(dist < minDist) {closest = edge;}
+		if(dist < minDist) {closest = edge; minDist = dist;}
 	}
 
 	return closest;

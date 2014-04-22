@@ -136,7 +136,7 @@ public:
 		//robotPosture->goToPosture("Stand",0.5f);
 
 		// Init moving
-		motion_proxy_ptr->moveInit();
+		//motion_proxy_ptr->moveInit();
 
 		// Head pitch
 		AL::ALValue name = "HeadPitch";
