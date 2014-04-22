@@ -519,7 +519,7 @@ public:
 		nao_behavior_tree::Velocity vel;
 
 		// Zone 3 - Simple follower
-		if(intersected.empty() | (distanceToEdge(r2.pos,edge) < distanceToEdge(r1.pos,edge)))
+		if(intersected.empty() | (distanceToEdge(r1.pos,edge) < distanceToEdge(r2.pos,edge)))
 		{
 			vel.theta = r1.theta;
 			vel.area = 3;
@@ -537,6 +537,8 @@ public:
 			{
 				double d1 = sqrt((edge.p.x-r1.pos.x)*(edge.p.x-r1.pos.x) + (edge.p.y-r1.pos.y)*(edge.p.y-r1.pos.y));
 				double d2 = r_proj(0,0);
+
+				if(t_proj(0,0) < 0) {d2 = -d2;}
 
 				Point p0;
 				Point p;
