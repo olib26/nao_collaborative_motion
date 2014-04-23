@@ -14,8 +14,24 @@ export AL_DIR_SDK=$HOME/Downloads/webots-for-nao/resources/projects/robots/nao/a
 export PYTHONPATH="$PYTHONPATH:$AL_DIR/lib"
 
 - First Approaches: <br/>
-Launch Controller.launch or Vision_Tracking.launch. <br/> 
+Launch Controller.launch (uses accelerometers) or Vision_Tracking.launch (use camera). <br/> 
 Algorithms can be tested with Webots (load the environment /first_approaches/nao.wbt). 
 
-- Example to execute a ROS Launch file: <br/>
-LD_LIBRARY_PATH=$PYTHONPATH:$LD_LIBRARY_PATH roslaunch nao_behavior_tree NaoBehaviorTree1.launch 
+<UL TYPE="disc">
+<LI> Nao Behavior Tree:
+	<UL type="square">
+	<LI> Tracking without obstacles: <br/>
+	Launch CollaborativeMotion.launch (change robots IP in NaoBehaviorTree1/2).
+
+	<LI> Tracking among obstacles: <br/>
+	Create the obstacles map running ObstaclesCreation.launch (select the correct webcam). <br/>
+	Launch ObstaclesNormal.launch.
+
+	<LI> Example to execute a ROS Launch file: <br/>
+	LD_LIBRARY_PATH=$PYTHONPATH:$LD_LIBRARY_PATH roslaunch nao_behavior_tree NaoBehaviorTree1.launch
+
+	<LI> Color Filter calibration: <br/>
+	Run ColorFilterCalibration.launch to choose the right HSV parameters. <br/>
+	You can change then the values in parameters.yaml.
+	</UL>
+</UL>
