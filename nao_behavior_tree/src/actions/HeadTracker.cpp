@@ -89,11 +89,13 @@ public:
 			//if(fabs(relative) < 2) {motion_proxy_ptr->setAngles(name,angle,fractionMaxSpeed);}
 		}
 
+		/*
 		else
 		{
 			angle = 0;
 			motion_proxy_ptr->setAngles(name,angle,fractionMaxSpeed);
 		}
+		*/
 
 		return 0;
 	}

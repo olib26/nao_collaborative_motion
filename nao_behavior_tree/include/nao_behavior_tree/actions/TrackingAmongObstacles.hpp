@@ -53,7 +53,7 @@ const int s_diffusion = 10; // Size
 double depth = INFINITY;
 
 // Number of particles
-const int N = 2000;
+const int N = 2500;
 
 // Object
 Object* objects = new Object;
