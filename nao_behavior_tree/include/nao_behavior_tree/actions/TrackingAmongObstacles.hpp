@@ -68,7 +68,7 @@ const double StD_max = 2000;
 bool robotDetected;
 
 // Controller parameters
-const double alpha = 0.001;
+const double alpha = 0.5;
 const double rho = 0.8;
 const double distThreshold = 0.6;
 const double angularThreshold = 15*M_PI/180;

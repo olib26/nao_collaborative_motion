@@ -107,15 +107,18 @@ void drawVelocity(IplImage* img, nao_behavior_tree::Velocity vel, Robot r, doubl
 }
 
 
-void drawPath(IplImage* img, Robot r)
+void drawPath(IplImage* img, Robot r, int* x_temp, int* y_temp)
 {
 	CvPoint p1,p2;
 	CvScalar color = cvScalar(0,0,255);
 	int thickness = 1;
 
-	p1 = cvPoint(r.y_temp,r.x_temp);
+	p1 = cvPoint(*y_temp,*x_temp);
 	p2 = cvPoint(r.y,r.x);
 	cvLine(img,p1,p2,color,thickness,CV_AA,0);
+
+	*x_temp = r.x;
+	*y_temp = r.y;
 }
 
 
@@ -459,8 +462,20 @@ int main(int argc, char** argv)
 		cvShowImage("Localization",img);
 
 		// Draw paths
-		drawPath(paths,r1);
-		drawPath(paths,r2);
+		if(counter >= nb)
+		{
+			if(x_temp1 == 0)
+			{
+				x_temp1 = r1.x; y_temp1 = r1.y;
+				x_temp2 = r2.x; y_temp2 = r2.y;
+			}
+
+			drawPath(paths,r1,&x_temp1,&y_temp1);
+			drawPath(paths,r2,&x_temp2,&y_temp2);
+
+			counter = 0;
+		}
+		else {counter++;}
 
 		cvShowImage("Paths",paths);
 

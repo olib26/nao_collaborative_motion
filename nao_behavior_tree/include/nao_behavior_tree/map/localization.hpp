@@ -64,5 +64,10 @@ const int nbSamples = 20;
 // Optimal velocity
 nao_behavior_tree::Velocity vel1;
 
+// Path samples
+int counter = 0;
+const int nb = 10;
+int x_temp1,x_temp2,y_temp1,y_temp2;
+
 
 #endif /* LOCALIZATION_HPP_ */

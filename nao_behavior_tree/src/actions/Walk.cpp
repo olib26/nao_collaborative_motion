@@ -7,6 +7,7 @@
 
 
 ros::Publisher cmd_pub;
+double x_0,y_0;
 
 class Walk : ROSAction
 {
@@ -48,6 +49,10 @@ public:
 
 		// Init moving
 		motion_proxy_ptr->moveInit();
+
+		// Initial Position
+		x_0 = motion_proxy_ptr->getRobotPosition(true).at(0);
+		y_0 = motion_proxy_ptr->getRobotPosition(true).at(1);
 	}
 
 	void finalize()
@@ -75,10 +80,13 @@ public:
 
 		// Walk forward
 		geometry_msgs::Twist cmd;
-		cmd.linear.x = 0.5;
+		cmd.linear.x = 0.3; //0.5
 		cmd_pub.publish(cmd);
 
-		if(motion_proxy_ptr->getRobotPosition(true).front() > dist)
+		double x = motion_proxy_ptr->getRobotPosition(true).at(0);
+		double y = motion_proxy_ptr->getRobotPosition(true).at(1);
+
+		if(sqrt((x-x_0)*(x-x_0) + (y-y_0)*(y-y_0)) > dist)
 		{
 			set_feedback(SUCCESS);
 			finalize();

@@ -288,7 +288,6 @@ public:
 		bearing.robotDetected = robotDetected;
 		bearing_pub.publish(bearing);
 
-		/*
 		// Robot not detected
 		if(!robotDetected)
 		{
@@ -296,17 +295,20 @@ public:
 			finalize();
 			return 1;
 		}
-		*/
 
 		// Controller
-		double angular = alpha*modulo2Pi(V.theta-(bearing.relative+bearing.absolute));
+		double angular = modulo2Pi(V.theta-(bearing.relative+bearing.absolute));
 		double linear = 0;
 		if(fabs(angular) < angularThreshold) {linear = V.norm;}
+		angular = alpha*angular;
+		// Thresholds
+		if(angular > 1) {angular = 1;}
+		if(angular < -1) {angular = -1;}
 
 		geometry_msgs::Twist cmd;
 		cmd.linear.x = linear;
 		cmd.angular.z = angular;
-		//cmd_pub.publish(cmd);
+		cmd_pub.publish(cmd);
 
 		return 0;
 	}
