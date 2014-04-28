@@ -13,8 +13,10 @@ export AL_DIR=$HOME/Downloads/webots-for-nao/resources/projects/robots/nao/aldeb
 export AL_DIR_SDK=$HOME/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk <br/>
 export PYTHONPATH="$PYTHONPATH:$AL_DIR/lib"
 
+- Install nao_behavior_tree/src/actions/behaviors/behavior_hello on Naos.
+
 - First Approaches: <br/>
-Launch Controller.launch (uses accelerometers) or Vision_Tracking.launch (use camera). <br/> 
+Launch Controller.launch (uses accelerometers) or Vision_Tracking.launch (uses camera). <br/> 
 Algorithms can be tested with Webots (load the environment /first_approaches/nao.wbt). 
 
 <UL TYPE="disc">
