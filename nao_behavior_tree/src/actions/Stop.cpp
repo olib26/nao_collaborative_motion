@@ -4,12 +4,35 @@
 class Stop : ROSAction
 {
 public:
+	bool init_;
 	ros::Duration execute_time_;
+	AL::ALMotionProxy* motion_proxy_ptr;
+	AL::ALBehaviorManagerProxy* behavior_proxy_ptr;
 
-	Stop(std::string name) :
+	Stop(std::string name,std::string NAO_IP,int NAO_PORT) :
 		ROSAction(name),
 		execute_time_((ros::Duration) 0)
-	{}
+	{
+		behavior_proxy_ptr = new AL::ALBehaviorManagerProxy(NAO_IP,NAO_PORT);
+		motion_proxy_ptr  = new AL::ALMotionProxy(NAO_IP,NAO_PORT);
+	}
+
+	void initialize()
+	{
+		init_ = true;
+
+		// Enable stiffness
+		AL::ALValue stiffness_name("Body");
+		AL::ALValue stiffness(1.0f);
+		AL::ALValue stiffness_time(1.0f);
+		motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
+
+		// Crouch
+
+
+		// Disable siffness
+
+	}
 
 	int executeCB(ros::Duration dt)
 	{
