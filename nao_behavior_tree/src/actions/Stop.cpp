@@ -1,4 +1,6 @@
 #include "nao_behavior_tree/rosaction.h"
+#include <alproxies/almotionproxy.h>
+#include <alproxies/albehaviormanagerproxy.h>
 
 
 class Stop : ROSAction
@@ -11,6 +13,7 @@ public:
 
 	Stop(std::string name,std::string NAO_IP,int NAO_PORT) :
 		ROSAction(name),
+		init_(false),
 		execute_time_((ros::Duration) 0)
 	{
 		behavior_proxy_ptr = new AL::ALBehaviorManagerProxy(NAO_IP,NAO_PORT);
@@ -28,10 +31,17 @@ public:
 		motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
 
 		// Crouch
+		behavior_proxy_ptr->runBehavior("crouch");
 
+		// Check if it is finished
+		while(behavior_proxy_ptr->isBehaviorRunning("crouch"))
+		{
+			sleep(0.5);
+		}
 
 		// Disable siffness
-
+	    stiffness = 0.0f;
+	    motion_proxy_ptr->stiffnessInterpolation(stiffness_name,stiffness,stiffness_time);
 	}
 
 	int executeCB(ros::Duration dt)
@@ -43,6 +53,12 @@ public:
 		execute_time_ += dt;
 
 		set_feedback(RUNNING);
+
+		if (!init_)
+		{
+			initialize();
+		}
+
 		return 0;
 	}
 
@@ -64,7 +80,14 @@ int main(int argc, char** argv)
 
 		ros::init(argc, argv,"Stop" + nao);
 
-		Stop server(ros::this_node::getName());
+		// Robot parameters
+		ros::NodeHandle pnh("~");
+		std::string NAO_IP;
+		int NAO_PORT;
+		pnh.param("NAO_IP",NAO_IP,std::string("127.0.0.1"));
+		pnh.param("NAO_PORT",NAO_PORT,int(9559));
+
+		Stop server(ros::this_node::getName(),NAO_IP,NAO_PORT);
 
 		ros::spin();
 	}

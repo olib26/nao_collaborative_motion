@@ -59,6 +59,12 @@ public:
 			// Run behavior
 			behavior_proxy_ptr->runBehavior("behavior_hello");
 
+			// Check if it is finished
+			while(behavior_proxy_ptr->isBehaviorRunning("behavior_hello"))
+			{
+				sleep(0.5);
+			}
+
 			set_feedback(SUCCESS);
 			finalize();
 			return 1;

@@ -21,7 +21,10 @@
     <param name="distance" value="1"/>
   </node>
   
-  <node pkg="nao_behavior_tree" type="Stop" name="Stop2" args="2" output="screen"/>
+  <node pkg="nao_behavior_tree" type="Stop" name="Stop2" args="2">
+    <param name="NAO_IP" value="$(arg nao_ip)"/>
+    <param name="NAO_PORT" value="$(arg nao_port)"/>
+  </node> 
   
 
   <!--

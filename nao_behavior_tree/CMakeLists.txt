@@ -114,6 +114,7 @@ target_link_libraries(Greet alproxies alvalue)
 rosbuild_link_boost(Greet thread)
 
 rosbuild_add_executable(Stop src/actions/Stop.cpp src/behavior_tree/rosaction.cpp)
+target_link_libraries(Stop alproxies alvalue)
 rosbuild_link_boost(Stop thread)
 
 rosbuild_add_executable(Search src/actions/Search.cpp src/behavior_tree/rosaction.cpp src/filters/particleFilter.cpp)

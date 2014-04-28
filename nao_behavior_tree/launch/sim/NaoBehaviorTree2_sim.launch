@@ -33,7 +33,6 @@
     Actions 2
   -->
   <node pkg="nao_behavior_tree" type="Greet" name="Greet2" args="2">
-    <rosparam command="load" file="$(find nao_behavior_tree)/launch/sim/parameters_sim.yaml"/>
     <param name="NAO_IP" value="$(arg nao_ip)"/>
     <param name="NAO_PORT" value="$(arg nao_port)"/>
   </node>
@@ -50,7 +49,10 @@
     <param name="NAO_PORT" value="$(arg nao_port)"/>
   </node>
   
-  <node pkg="nao_behavior_tree" type="Stop" name="Stop2" args="2"/>  
+  <node pkg="nao_behavior_tree" type="Stop" name="Stop2" args="2">
+    <param name="NAO_IP" value="$(arg nao_ip)"/>
+    <param name="NAO_PORT" value="$(arg nao_port)"/>
+  </node> 
   
 
   <!--
