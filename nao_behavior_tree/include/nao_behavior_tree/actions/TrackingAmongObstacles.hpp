@@ -33,7 +33,7 @@ ros::Publisher bearing_pub;
 
 // Image size
 int height,width;
-const int cutHeight = 150;
+const int cutHeight = 100; //150
 
 // Camera parameters
 const double VFOV = 47.6*M_PI/180;

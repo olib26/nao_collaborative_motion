@@ -44,10 +44,22 @@ void imageProcessing(IplImage* img)
 	// Create temporary images
 	IplImage* hsv_image = cvCreateImage(sz,8,3);
 	IplImage* hsv_mask = cvCreateImage(sz,8,1);
+	IplImage* hsv_mask_int = cvCreateImage(sz,8,1);
 
 	// HSV Conversion and Thresholding
 	cvCvtColor(img,hsv_image,CV_BGR2HSV);
-	cvInRangeS(hsv_image,hsv_min,hsv_max, hsv_mask);
+
+	if(H_MIN > H_MAX)
+	{
+		CvScalar hsv_min_int = cvScalar(0,S_MIN,V_MIN,0);
+		CvScalar hsv_max_int = cvScalar(180,S_MAX,V_MAX,0);
+
+		cvInRangeS(hsv_image,hsv_min_int,hsv_max,hsv_mask);
+		cvInRangeS(hsv_image,hsv_min,hsv_max_int,hsv_mask_int);
+
+		cvAdd(hsv_mask,hsv_mask_int,hsv_mask);
+	}
+	else {cvInRangeS(hsv_image,hsv_min,hsv_max,hsv_mask);}
 
 	// Particle Filter
 	PF.imageProcessing(hsv_mask);
@@ -215,7 +227,7 @@ public:
 		//robotPosture->goToPosture("Stand",0.5f);
 
 		// Init moving
-		motion_proxy_ptr->moveInit();
+		//motion_proxy_ptr->moveInit();
 
 		// Head pitch
 		AL::ALValue name = "HeadPitch";
@@ -274,12 +286,14 @@ public:
 			sonarCond = true;
 		}
 
+		/*
 		if(sonarCond & (depth < distThreshold))
 		{
 			set_feedback(SUCCESS);
 			finalize();
 			return 1;
 		}
+		*/
 
 		// Publish bearings
 		nao_behavior_tree::Bearing bearing;
@@ -288,6 +302,7 @@ public:
 		bearing.robotDetected = robotDetected;
 		bearing_pub.publish(bearing);
 
+		/*
 		// Robot not detected
 		if(!robotDetected)
 		{
@@ -295,6 +310,7 @@ public:
 			finalize();
 			return 1;
 		}
+		*/
 
 		// Controller
 		double angular = modulo2Pi(V.theta-(bearing.relative+bearing.absolute));

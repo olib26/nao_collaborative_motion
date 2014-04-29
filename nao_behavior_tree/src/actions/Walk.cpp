@@ -7,7 +7,16 @@
 
 
 ros::Publisher cmd_pub;
-double x_0,y_0;
+double x_0,y_0,z_0;
+
+double modulo2Pi(double theta)
+{
+	// Angle between ]-pi,pi]
+	while(theta > M_PI) {theta -= 2*M_PI;}
+	while(theta <= -M_PI) {theta += 2*M_PI;}
+	return theta;
+}
+
 
 class Walk : ROSAction
 {
@@ -50,9 +59,10 @@ public:
 		// Init moving
 		motion_proxy_ptr->moveInit();
 
-		// Initial Position
+		// Initial Odometry
 		x_0 = motion_proxy_ptr->getRobotPosition(true).at(0);
 		y_0 = motion_proxy_ptr->getRobotPosition(true).at(1);
+		z_0 = motion_proxy_ptr->getRobotPosition(true).at(2);
 	}
 
 	void finalize()
@@ -78,13 +88,18 @@ public:
 			initialize();
 		}
 
-		// Walk forward
-		geometry_msgs::Twist cmd;
-		cmd.linear.x = 0.3; //0.5
-		cmd_pub.publish(cmd);
-
 		double x = motion_proxy_ptr->getRobotPosition(true).at(0);
 		double y = motion_proxy_ptr->getRobotPosition(true).at(1);
+		double z = motion_proxy_ptr->getRobotPosition(true).at(2);
+
+		// Walk forward
+		double angular = 5*modulo2Pi(z_0-z);
+		if(angular > 1) {angular = 1;}
+		if(angular < -1) {angular = -1;}
+		geometry_msgs::Twist cmd;
+		cmd.linear.x = 0.3; //0.5
+		cmd.angular.z = angular;
+		cmd_pub.publish(cmd);
 
 		if(sqrt((x-x_0)*(x-x_0) + (y-y_0)*(y-y_0)) > dist)
 		{
