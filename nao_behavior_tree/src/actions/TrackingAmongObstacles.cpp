@@ -286,14 +286,12 @@ public:
 			sonarCond = true;
 		}
 
-		/*
 		if(sonarCond & (depth < distThreshold))
 		{
 			set_feedback(SUCCESS);
 			finalize();
 			return 1;
 		}
-		*/
 
 		// Publish bearings
 		nao_behavior_tree::Bearing bearing;
@@ -302,7 +300,6 @@ public:
 		bearing.robotDetected = robotDetected;
 		bearing_pub.publish(bearing);
 
-		/*
 		// Robot not detected
 		if(!robotDetected)
 		{
@@ -310,7 +307,6 @@ public:
 			finalize();
 			return 1;
 		}
-		*/
 
 		// Controller
 		double angular = modulo2Pi(V.theta-(bearing.relative+bearing.absolute));
