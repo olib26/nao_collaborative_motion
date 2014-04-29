@@ -93,7 +93,7 @@ public:
 		double z = motion_proxy_ptr->getRobotPosition(true).at(2);
 
 		// Walk forward
-		double angular = 5*modulo2Pi(z_0-z);
+		double angular = 0.1*modulo2Pi(z_0-z);
 		if(angular > 1) {angular = 1;}
 		if(angular < -1) {angular = -1;}
 		geometry_msgs::Twist cmd;
