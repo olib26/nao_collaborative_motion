@@ -1,0 +1,18 @@
+<launch>
+
+  <include file="$(find first_approaches)/launch/nao_init1.launch"/>
+  <include file="$(find first_approaches)/launch/nao_init2.launch"/>
+	 
+  <!--
+    Controller
+  -->
+  <node pkg="first_approaches" type="nao_tracker_odometry" name="controller" args="1" output="screen">
+    <param name="x_01" value="0"/>
+    <param name="y_01" value="0"/>
+    <param name="theta_01" value="0"/>
+    <param name="x_02" value="2"/>
+    <param name="y_02" value="-0.75"/>
+    <param name="theta_02" value="3.14159265"/>
+  </node>
+
+</launch>

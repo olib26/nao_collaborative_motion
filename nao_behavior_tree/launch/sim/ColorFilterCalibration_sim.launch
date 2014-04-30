@@ -1,7 +1,7 @@
 <launch>
 
   <arg name="nao_ip" default="$(optenv NAO_IP 127.0.0.1)"/>
-  <arg name="nao_port" default="$(optenv NAO_PORT 9560)"/>
+  <arg name="nao_port" default="$(optenv NAO_PORT 9561)"/>
 
   <!--
     Top camera

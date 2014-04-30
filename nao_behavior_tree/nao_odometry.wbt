@@ -10,8 +10,8 @@ WorldInfo {
   displayRefresh 1
 }
 Viewpoint {
-  orientation 0.0835914 -0.938841 -0.334052 3.63729
-  position 2.46762 2.51964 -1.9982
+  orientation -0.545853 -0.635574 -0.545976 2.03016
+  position 0.218296 4.43162 0.0568
   follow "NAO_H25_V40"
 }
 Background {
@@ -30,20 +30,34 @@ PointLight {
 }
 MetricFloor {
 }
+WallGap {
+}
 Nao_H25_V40 {
-  rotation -1 0 0 1.57
+  translation 0.25 0.34 1
+  rotation -0.587023 0.572454 0.572451 2.07995
   controllerArgs "9560"
   cameraWidth 1024
   cameraHeight 960
   topCameraWindowPosition 1 0
-  bottomCameraWindowPosition 0.890286 0.897436
+  bottomCameraWindowPosition 1 1
   cameraPixelSize 0.15
 }
 Nao_H25_V40 {
-  translation 2 0.32 1
-  rotation 0 0.707107 0.707107 3.14159
+  translation 1 0.34 -1
+  rotation 0.558697 0.586454 0.586455 4.16058
   cameraWidth 1024
   cameraHeight 960
+  cameraPixelSize 0.15
+}
+Nao_H25_V40 {
+  translation 0.12 2.46 0
+  rotation -0.577143 0.582947 -0.571909 2.10336
+  color 0 0 1
+  controllerArgs "9561"
+  cameraWidth 1024
+  cameraHeight 960
+  topCameraWindowPosition 0.5 0
+  bottomCameraWindowPosition 0.5 1
   cameraPixelSize 0.15
 }
 SphericalSkyDome {

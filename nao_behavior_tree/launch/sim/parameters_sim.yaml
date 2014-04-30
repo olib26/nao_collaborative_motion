@@ -1,8 +1,8 @@
 H_MIN: 0
 H_MAX: 30
-S_MIN: 180
+S_MIN: 60
 S_MAX: 255
-V_MIN: 90
+V_MIN: 50
 V_MAX: 255
 
 camera_switch: 0
