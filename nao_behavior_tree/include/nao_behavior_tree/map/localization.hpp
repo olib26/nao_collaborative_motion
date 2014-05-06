@@ -49,7 +49,7 @@ double timestamp1,timestamp2;
 int counter1,counter2;
 
 // Number of particles
-const int N = 1000;
+const int N = 2000;
 
 // Particle Filter
 particleFilter PF;
@@ -68,6 +68,18 @@ nao_behavior_tree::Velocity vel1;
 int counter = 0;
 const int nb = 25; //100
 int x_temp1,x_temp2,y_temp1,y_temp2;
+
+// Estimated position
+bool estimatedPosition;
+AL::ALMotionProxy* motion_proxy_ptr1;
+AL::ALMotionProxy* motion_proxy_ptr2;
+std::string NAO_IP1,NAO_IP2;
+int NAO_PORT1,NAO_PORT2;
+double x_10,y_10,theta_10,x_20,y_20,theta_20;
+double x_01,y_01,theta_01,x_02,y_02,theta_02;
+double x_1,y_1,theta_1,x_2,y_2,theta_2;
+bool init1,init2;
+double x_temp_est1,y_temp_est1,x_temp_est2,y_temp_est2;
 
 
 #endif /* LOCALIZATION_HPP_ */

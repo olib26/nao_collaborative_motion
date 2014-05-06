@@ -67,6 +67,10 @@ CMakeFiles/Localization.dir/src/map/localization.o: /opt/ros/fuerte/share/roscon
 CMakeFiles/Localization.dir/src/map/localization.o: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
 CMakeFiles/Localization.dir/src/map/localization.o: /opt/ros/fuerte/share/message_filters/manifest.xml
 CMakeFiles/Localization.dir/src/map/localization.o: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+CMakeFiles/Localization.dir/src/map/localization.o: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+CMakeFiles/Localization.dir/src/map/localization.o: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+CMakeFiles/Localization.dir/src/map/localization.o: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+CMakeFiles/Localization.dir/src/map/localization.o: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Localization.dir/src/map/localization.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/Localization.dir/src/map/localization.o -c /home/olivier/ros_workspace/nao_behavior_tree/src/map/localization.cpp
@@ -132,6 +136,10 @@ CMakeFiles/Localization.dir/src/filters/particleFilter.o: /opt/ros/fuerte/share/
 CMakeFiles/Localization.dir/src/filters/particleFilter.o: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
 CMakeFiles/Localization.dir/src/filters/particleFilter.o: /opt/ros/fuerte/share/message_filters/manifest.xml
 CMakeFiles/Localization.dir/src/filters/particleFilter.o: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+CMakeFiles/Localization.dir/src/filters/particleFilter.o: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+CMakeFiles/Localization.dir/src/filters/particleFilter.o: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+CMakeFiles/Localization.dir/src/filters/particleFilter.o: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+CMakeFiles/Localization.dir/src/filters/particleFilter.o: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Localization.dir/src/filters/particleFilter.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/Localization.dir/src/filters/particleFilter.o -c /home/olivier/ros_workspace/nao_behavior_tree/src/filters/particleFilter.cpp

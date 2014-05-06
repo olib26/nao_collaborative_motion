@@ -97,6 +97,10 @@ src/nao_behavior_tree/msg/_ROSAction.py: /opt/ros/fuerte/share/rosconsole/manife
 src/nao_behavior_tree/msg/_ROSAction.py: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
 src/nao_behavior_tree/msg/_ROSAction.py: /opt/ros/fuerte/share/message_filters/manifest.xml
 src/nao_behavior_tree/msg/_ROSAction.py: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+src/nao_behavior_tree/msg/_ROSAction.py: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+src/nao_behavior_tree/msg/_ROSAction.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+src/nao_behavior_tree/msg/_ROSAction.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+src/nao_behavior_tree/msg/_ROSAction.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating src/nao_behavior_tree/msg/_ROSAction.py"
 	/opt/ros/fuerte/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSAction.msg
@@ -123,6 +127,10 @@ src/nao_behavior_tree/msg/_ROSGoal.py: /opt/ros/fuerte/share/rosconsole/manifest
 src/nao_behavior_tree/msg/_ROSGoal.py: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
 src/nao_behavior_tree/msg/_ROSGoal.py: /opt/ros/fuerte/share/message_filters/manifest.xml
 src/nao_behavior_tree/msg/_ROSGoal.py: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+src/nao_behavior_tree/msg/_ROSGoal.py: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+src/nao_behavior_tree/msg/_ROSGoal.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+src/nao_behavior_tree/msg/_ROSGoal.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+src/nao_behavior_tree/msg/_ROSGoal.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating src/nao_behavior_tree/msg/_ROSGoal.py"
 	/opt/ros/fuerte/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSGoal.msg
@@ -152,6 +160,10 @@ src/nao_behavior_tree/msg/_ROSActionGoal.py: /opt/ros/fuerte/share/rosconsole/ma
 src/nao_behavior_tree/msg/_ROSActionGoal.py: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
 src/nao_behavior_tree/msg/_ROSActionGoal.py: /opt/ros/fuerte/share/message_filters/manifest.xml
 src/nao_behavior_tree/msg/_ROSActionGoal.py: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+src/nao_behavior_tree/msg/_ROSActionGoal.py: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+src/nao_behavior_tree/msg/_ROSActionGoal.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+src/nao_behavior_tree/msg/_ROSActionGoal.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+src/nao_behavior_tree/msg/_ROSActionGoal.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating src/nao_behavior_tree/msg/_ROSActionGoal.py"
 	/opt/ros/fuerte/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSActionGoal.msg
@@ -178,6 +190,10 @@ src/nao_behavior_tree/msg/_ROSResult.py: /opt/ros/fuerte/share/rosconsole/manife
 src/nao_behavior_tree/msg/_ROSResult.py: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
 src/nao_behavior_tree/msg/_ROSResult.py: /opt/ros/fuerte/share/message_filters/manifest.xml
 src/nao_behavior_tree/msg/_ROSResult.py: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+src/nao_behavior_tree/msg/_ROSResult.py: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+src/nao_behavior_tree/msg/_ROSResult.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+src/nao_behavior_tree/msg/_ROSResult.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+src/nao_behavior_tree/msg/_ROSResult.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating src/nao_behavior_tree/msg/_ROSResult.py"
 	/opt/ros/fuerte/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSResult.msg
@@ -208,6 +224,10 @@ src/nao_behavior_tree/msg/_ROSActionResult.py: /opt/ros/fuerte/share/rosconsole/
 src/nao_behavior_tree/msg/_ROSActionResult.py: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
 src/nao_behavior_tree/msg/_ROSActionResult.py: /opt/ros/fuerte/share/message_filters/manifest.xml
 src/nao_behavior_tree/msg/_ROSActionResult.py: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+src/nao_behavior_tree/msg/_ROSActionResult.py: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+src/nao_behavior_tree/msg/_ROSActionResult.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+src/nao_behavior_tree/msg/_ROSActionResult.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+src/nao_behavior_tree/msg/_ROSActionResult.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating src/nao_behavior_tree/msg/_ROSActionResult.py"
 	/opt/ros/fuerte/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSActionResult.msg
@@ -234,6 +254,10 @@ src/nao_behavior_tree/msg/_ROSFeedback.py: /opt/ros/fuerte/share/rosconsole/mani
 src/nao_behavior_tree/msg/_ROSFeedback.py: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
 src/nao_behavior_tree/msg/_ROSFeedback.py: /opt/ros/fuerte/share/message_filters/manifest.xml
 src/nao_behavior_tree/msg/_ROSFeedback.py: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+src/nao_behavior_tree/msg/_ROSFeedback.py: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+src/nao_behavior_tree/msg/_ROSFeedback.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+src/nao_behavior_tree/msg/_ROSFeedback.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+src/nao_behavior_tree/msg/_ROSFeedback.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating src/nao_behavior_tree/msg/_ROSFeedback.py"
 	/opt/ros/fuerte/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSFeedback.msg
@@ -264,6 +288,10 @@ src/nao_behavior_tree/msg/_ROSActionFeedback.py: /opt/ros/fuerte/share/rosconsol
 src/nao_behavior_tree/msg/_ROSActionFeedback.py: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
 src/nao_behavior_tree/msg/_ROSActionFeedback.py: /opt/ros/fuerte/share/message_filters/manifest.xml
 src/nao_behavior_tree/msg/_ROSActionFeedback.py: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+src/nao_behavior_tree/msg/_ROSActionFeedback.py: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+src/nao_behavior_tree/msg/_ROSActionFeedback.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+src/nao_behavior_tree/msg/_ROSActionFeedback.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+src/nao_behavior_tree/msg/_ROSActionFeedback.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating src/nao_behavior_tree/msg/_ROSActionFeedback.py"
 	/opt/ros/fuerte/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSActionFeedback.msg
@@ -291,6 +319,10 @@ src/nao_behavior_tree/msg/_Odometry.py: /opt/ros/fuerte/share/rosconsole/manifes
 src/nao_behavior_tree/msg/_Odometry.py: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
 src/nao_behavior_tree/msg/_Odometry.py: /opt/ros/fuerte/share/message_filters/manifest.xml
 src/nao_behavior_tree/msg/_Odometry.py: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+src/nao_behavior_tree/msg/_Odometry.py: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+src/nao_behavior_tree/msg/_Odometry.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+src/nao_behavior_tree/msg/_Odometry.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+src/nao_behavior_tree/msg/_Odometry.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating src/nao_behavior_tree/msg/_Odometry.py"
 	/opt/ros/fuerte/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/olivier/ros_workspace/nao_behavior_tree/msg/Odometry.msg
@@ -318,6 +350,10 @@ src/nao_behavior_tree/msg/_Velocity.py: /opt/ros/fuerte/share/rosconsole/manifes
 src/nao_behavior_tree/msg/_Velocity.py: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
 src/nao_behavior_tree/msg/_Velocity.py: /opt/ros/fuerte/share/message_filters/manifest.xml
 src/nao_behavior_tree/msg/_Velocity.py: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+src/nao_behavior_tree/msg/_Velocity.py: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+src/nao_behavior_tree/msg/_Velocity.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+src/nao_behavior_tree/msg/_Velocity.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+src/nao_behavior_tree/msg/_Velocity.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating src/nao_behavior_tree/msg/_Velocity.py"
 	/opt/ros/fuerte/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/olivier/ros_workspace/nao_behavior_tree/msg/Velocity.msg
@@ -345,6 +381,10 @@ src/nao_behavior_tree/msg/_Bearing.py: /opt/ros/fuerte/share/rosconsole/manifest
 src/nao_behavior_tree/msg/_Bearing.py: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
 src/nao_behavior_tree/msg/_Bearing.py: /opt/ros/fuerte/share/message_filters/manifest.xml
 src/nao_behavior_tree/msg/_Bearing.py: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+src/nao_behavior_tree/msg/_Bearing.py: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+src/nao_behavior_tree/msg/_Bearing.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+src/nao_behavior_tree/msg/_Bearing.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+src/nao_behavior_tree/msg/_Bearing.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating src/nao_behavior_tree/msg/_Bearing.py"
 	/opt/ros/fuerte/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/olivier/ros_workspace/nao_behavior_tree/msg/Bearing.msg
@@ -372,6 +412,10 @@ src/nao_behavior_tree/msg/_Sonar.py: /opt/ros/fuerte/share/rosconsole/manifest.x
 src/nao_behavior_tree/msg/_Sonar.py: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
 src/nao_behavior_tree/msg/_Sonar.py: /opt/ros/fuerte/share/message_filters/manifest.xml
 src/nao_behavior_tree/msg/_Sonar.py: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+src/nao_behavior_tree/msg/_Sonar.py: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+src/nao_behavior_tree/msg/_Sonar.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+src/nao_behavior_tree/msg/_Sonar.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+src/nao_behavior_tree/msg/_Sonar.py: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating src/nao_behavior_tree/msg/_Sonar.py"
 	/opt/ros/fuerte/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/olivier/ros_workspace/nao_behavior_tree/msg/Sonar.msg

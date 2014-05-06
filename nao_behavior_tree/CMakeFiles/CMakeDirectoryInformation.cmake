@@ -18,6 +18,8 @@ SET(CMAKE_C_INCLUDE_PATH
   "/opt/ros/fuerte/stacks/image_common/image_transport/include"
   "/opt/ros/fuerte/stacks/pluginlib/include"
   "/opt/ros/fuerte/stacks/pluginlib"
+  "/home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/cpp/include"
+  "/home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/cpp/include"
   "src"
   "msg_gen/cpp/include"
   "/home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include"

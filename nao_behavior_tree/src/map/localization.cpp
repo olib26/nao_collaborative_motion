@@ -13,6 +13,7 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
+#include <alproxies/almotionproxy.h>
 #include <alproxies/alvideodeviceproxy.h>
 #include <alvision/alimage.h>
 #include <alvision/alvisiondefinitions.h>
@@ -119,6 +120,25 @@ void drawPath(IplImage* img, Robot r, int* x_temp, int* y_temp)
 
 	*x_temp = r.x;
 	*y_temp = r.y;
+}
+
+
+void drawPathEst(IplImage* img, double x, double y, double* x_temp, double* y_temp)
+{
+	CvPoint p1,p2;
+	CvScalar color = cvScalar(0,255,0);
+	int thickness = 1;
+
+	p1.x = *x_temp/k + width/2;
+	p1.y = -*y_temp/k + height/2;
+
+	p2.x = x/k + width/2;
+	p2.y = -y/k + height/2;
+
+	cvLine(img,p1,p2,color,thickness,CV_AA,0);
+
+	*x_temp = x;
+	*y_temp = y;
 }
 
 
@@ -250,6 +270,42 @@ void receive_vel1(const nao_behavior_tree::Velocity::ConstPtr &msg)
 	vel1.norm = msg->norm;
 	vel1.theta = msg->theta;
 	vel1.area = msg->area;
+}
+
+
+void updateEstimation1(AL::ALMotionProxy* motion)
+{
+	// Init odometry
+	if(!init1)
+	{
+		x_10 = motion->getRobotPosition(true).at(0);
+		y_10 = motion->getRobotPosition(true).at(1);
+		theta_10 = motion->getRobotPosition(true).at(2);
+
+		init1 = true;
+	}
+
+	// Estimate odometry
+	x_1 = x_01 + (motion->getRobotPosition(true).at(0)-x_10)*cos(theta_10+theta_01) + (motion->getRobotPosition(true).at(1)-y_10)*sin(theta_10+theta_01);
+	y_1 = y_01 - (motion->getRobotPosition(true).at(0)-x_10)*sin(theta_10+theta_01) + (motion->getRobotPosition(true).at(1)-y_10)*cos(theta_10+theta_01);
+}
+
+
+void updateEstimation2(AL::ALMotionProxy* motion)
+{
+	// Init odometry
+	if(!init2)
+	{
+		x_20 = motion->getRobotPosition(true).at(0);
+		y_20 = motion->getRobotPosition(true).at(1);
+		theta_20 = motion->getRobotPosition(true).at(2);
+
+		init2 = true;
+	}
+
+	// Estimate odometry
+	x_2 = x_02 + (motion->getRobotPosition(true).at(0)-x_20)*cos(theta_20+theta_02) + (motion->getRobotPosition(true).at(1)-y_20)*sin(theta_20+theta_02);
+	y_2 = y_02 - (motion->getRobotPosition(true).at(0)-x_20)*sin(theta_20+theta_02) + (motion->getRobotPosition(true).at(1)-y_20)*cos(theta_20+theta_02);
 }
 
 
@@ -390,6 +446,25 @@ int main(int argc, char** argv)
 	hsv_min = cvScalar(H_MIN,S_MIN,V_MIN,0);
 	hsv_max = cvScalar(H_MAX,S_MAX,V_MAX,0);
 
+	// Estimted position
+	pnh.param("estimatedPosition",estimatedPosition,bool(false));
+	if(estimatedPosition)
+	{
+		pnh.param("NAO_IP1",NAO_IP1,std::string("127.0.0.1"));
+		pnh.param("NAO_PORT1",NAO_PORT1,int(9559));
+		pnh.param("NAO_IP2",NAO_IP2,std::string("127.0.0.1"));
+		pnh.param("NAO_PORT2",NAO_PORT2,int(9560));
+
+		// Initial odometry of the two robots
+		pnh.param("theta_01",theta_01,double(0.0));
+		pnh.param("theta_02",theta_02,double(0.0));
+
+		init1 = init2 = false;
+
+		motion_proxy_ptr1 = new AL::ALMotionProxy(NAO_IP1,NAO_PORT1);
+		motion_proxy_ptr2 = new AL::ALMotionProxy(NAO_IP2,NAO_PORT2);
+	}
+
 	// Init proxy
 	if(!webcam)
 	{
@@ -473,6 +548,7 @@ int main(int argc, char** argv)
 
 		cvShowImage("Localization",img);
 
+
 		// Draw paths
 		if(counter >= nb)
 		{
@@ -480,16 +556,32 @@ int main(int argc, char** argv)
 			{
 				x_temp1 = r1.x; y_temp1 = r1.y;
 				x_temp2 = r2.x; y_temp2 = r2.y;
+
+				if(estimatedPosition)
+				{
+					x_temp_est1 = x_01 = odom1.x; y_temp_est1 = y_01 = odom1.y;
+					x_temp_est2 = x_02 = odom2.x; y_temp_est2 = y_02 = odom2.y;
+				}
 			}
 
 			drawPath(paths,r1,&x_temp1,&y_temp1);
 			drawPath(paths,r2,&x_temp2,&y_temp2);
+
+			if(estimatedPosition)
+			{
+				updateEstimation1(motion_proxy_ptr1);
+				updateEstimation2(motion_proxy_ptr2);
+
+				drawPathEst(paths,x_1,y_1,&x_temp_est1,&y_temp_est1);
+				drawPathEst(paths,x_2,y_2,&x_temp_est2,&y_temp_est2);
+			}
 
 			counter = 0;
 		}
 		else {counter++;}
 
 		cvShowImage("Paths",paths);
+
 
 		cvWaitKey(50);
 		ros::spinOnce();

@@ -14,7 +14,7 @@
   <!--
     Actions 2
   -->
-  <node pkg="nao_behavior_tree" type="Walk" name="Walk2" args="2" output="log">
+  <node pkg="nao_behavior_tree" type="Walk" name="Walk2" args="2" output="screen">
     <param name="NAO_IP" value="$(arg nao_ip)"/>
     <param name="NAO_PORT" value="$(arg nao_port)"/>
     <param name="distance" value="1"/>

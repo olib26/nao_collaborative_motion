@@ -94,6 +94,7 @@ public:
 
 		// Walk forward
 		double angular = 0.1*modulo2Pi(z_0-z);
+		//ROS_INFO("theta = %f",angular);
 		if(angular > 1) {angular = 1;}
 		if(angular < -1) {angular = -1;}
 		geometry_msgs::Twist cmd;

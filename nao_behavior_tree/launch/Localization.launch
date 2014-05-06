@@ -24,6 +24,14 @@
   -->
   <node pkg="nao_behavior_tree" type="Localization" name="Localization" args="0" output="screen">
     <rosparam command="load" file="$(find nao_behavior_tree)/launch/webcam.yaml"/>
+    
+    <param name="estimatedPosition" value="true"/>
+    <param name="theta_01" value="0"/>
+    <param name="theta_02" value="3.14159265"/>
+    <param name="NAO_IP1" value="192.168.1.19"/>
+    <param name="NAO_PORT1" value="9559"/>
+    <param name="NAO_IP2" value="192.168.1.127"/>
+    <param name="NAO_PORT2" value="9559"/>
   </node>
   
   

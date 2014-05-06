@@ -128,6 +128,10 @@ msg_gen/lisp/ROSAction.lisp: /opt/ros/fuerte/share/rosconsole/manifest.xml
 msg_gen/lisp/ROSAction.lisp: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
 msg_gen/lisp/ROSAction.lisp: /opt/ros/fuerte/share/message_filters/manifest.xml
 msg_gen/lisp/ROSAction.lisp: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+msg_gen/lisp/ROSAction.lisp: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+msg_gen/lisp/ROSAction.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+msg_gen/lisp/ROSAction.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+msg_gen/lisp/ROSAction.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/lisp/ROSAction.lisp, msg_gen/lisp/_package.lisp, msg_gen/lisp/_package_ROSAction.lisp"
 	/opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSAction.msg
@@ -158,6 +162,10 @@ msg_gen/lisp/ROSGoal.lisp: /opt/ros/fuerte/share/rosconsole/manifest.xml
 msg_gen/lisp/ROSGoal.lisp: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
 msg_gen/lisp/ROSGoal.lisp: /opt/ros/fuerte/share/message_filters/manifest.xml
 msg_gen/lisp/ROSGoal.lisp: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+msg_gen/lisp/ROSGoal.lisp: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+msg_gen/lisp/ROSGoal.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+msg_gen/lisp/ROSGoal.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+msg_gen/lisp/ROSGoal.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/lisp/ROSGoal.lisp, msg_gen/lisp/_package.lisp, msg_gen/lisp/_package_ROSGoal.lisp"
 	/opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSGoal.msg
@@ -191,6 +199,10 @@ msg_gen/lisp/ROSActionGoal.lisp: /opt/ros/fuerte/share/rosconsole/manifest.xml
 msg_gen/lisp/ROSActionGoal.lisp: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
 msg_gen/lisp/ROSActionGoal.lisp: /opt/ros/fuerte/share/message_filters/manifest.xml
 msg_gen/lisp/ROSActionGoal.lisp: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+msg_gen/lisp/ROSActionGoal.lisp: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+msg_gen/lisp/ROSActionGoal.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+msg_gen/lisp/ROSActionGoal.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+msg_gen/lisp/ROSActionGoal.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/lisp/ROSActionGoal.lisp, msg_gen/lisp/_package.lisp, msg_gen/lisp/_package_ROSActionGoal.lisp"
 	/opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSActionGoal.msg
@@ -221,6 +233,10 @@ msg_gen/lisp/ROSResult.lisp: /opt/ros/fuerte/share/rosconsole/manifest.xml
 msg_gen/lisp/ROSResult.lisp: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
 msg_gen/lisp/ROSResult.lisp: /opt/ros/fuerte/share/message_filters/manifest.xml
 msg_gen/lisp/ROSResult.lisp: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+msg_gen/lisp/ROSResult.lisp: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+msg_gen/lisp/ROSResult.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+msg_gen/lisp/ROSResult.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+msg_gen/lisp/ROSResult.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/lisp/ROSResult.lisp, msg_gen/lisp/_package.lisp, msg_gen/lisp/_package_ROSResult.lisp"
 	/opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSResult.msg
@@ -255,6 +271,10 @@ msg_gen/lisp/ROSActionResult.lisp: /opt/ros/fuerte/share/rosconsole/manifest.xml
 msg_gen/lisp/ROSActionResult.lisp: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
 msg_gen/lisp/ROSActionResult.lisp: /opt/ros/fuerte/share/message_filters/manifest.xml
 msg_gen/lisp/ROSActionResult.lisp: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+msg_gen/lisp/ROSActionResult.lisp: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+msg_gen/lisp/ROSActionResult.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+msg_gen/lisp/ROSActionResult.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+msg_gen/lisp/ROSActionResult.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/lisp/ROSActionResult.lisp, msg_gen/lisp/_package.lisp, msg_gen/lisp/_package_ROSActionResult.lisp"
 	/opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSActionResult.msg
@@ -285,6 +305,10 @@ msg_gen/lisp/ROSFeedback.lisp: /opt/ros/fuerte/share/rosconsole/manifest.xml
 msg_gen/lisp/ROSFeedback.lisp: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
 msg_gen/lisp/ROSFeedback.lisp: /opt/ros/fuerte/share/message_filters/manifest.xml
 msg_gen/lisp/ROSFeedback.lisp: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+msg_gen/lisp/ROSFeedback.lisp: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+msg_gen/lisp/ROSFeedback.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+msg_gen/lisp/ROSFeedback.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+msg_gen/lisp/ROSFeedback.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/lisp/ROSFeedback.lisp, msg_gen/lisp/_package.lisp, msg_gen/lisp/_package_ROSFeedback.lisp"
 	/opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSFeedback.msg
@@ -319,6 +343,10 @@ msg_gen/lisp/ROSActionFeedback.lisp: /opt/ros/fuerte/share/rosconsole/manifest.x
 msg_gen/lisp/ROSActionFeedback.lisp: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
 msg_gen/lisp/ROSActionFeedback.lisp: /opt/ros/fuerte/share/message_filters/manifest.xml
 msg_gen/lisp/ROSActionFeedback.lisp: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+msg_gen/lisp/ROSActionFeedback.lisp: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+msg_gen/lisp/ROSActionFeedback.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+msg_gen/lisp/ROSActionFeedback.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+msg_gen/lisp/ROSActionFeedback.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/lisp/ROSActionFeedback.lisp, msg_gen/lisp/_package.lisp, msg_gen/lisp/_package_ROSActionFeedback.lisp"
 	/opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/ROSActionFeedback.msg
@@ -350,6 +378,10 @@ msg_gen/lisp/Odometry.lisp: /opt/ros/fuerte/share/rosconsole/manifest.xml
 msg_gen/lisp/Odometry.lisp: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
 msg_gen/lisp/Odometry.lisp: /opt/ros/fuerte/share/message_filters/manifest.xml
 msg_gen/lisp/Odometry.lisp: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+msg_gen/lisp/Odometry.lisp: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+msg_gen/lisp/Odometry.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+msg_gen/lisp/Odometry.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+msg_gen/lisp/Odometry.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/lisp/Odometry.lisp, msg_gen/lisp/_package.lisp, msg_gen/lisp/_package_Odometry.lisp"
 	/opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/Odometry.msg
@@ -381,6 +413,10 @@ msg_gen/lisp/Velocity.lisp: /opt/ros/fuerte/share/rosconsole/manifest.xml
 msg_gen/lisp/Velocity.lisp: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
 msg_gen/lisp/Velocity.lisp: /opt/ros/fuerte/share/message_filters/manifest.xml
 msg_gen/lisp/Velocity.lisp: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+msg_gen/lisp/Velocity.lisp: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+msg_gen/lisp/Velocity.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+msg_gen/lisp/Velocity.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+msg_gen/lisp/Velocity.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/lisp/Velocity.lisp, msg_gen/lisp/_package.lisp, msg_gen/lisp/_package_Velocity.lisp"
 	/opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/Velocity.msg
@@ -412,6 +448,10 @@ msg_gen/lisp/Bearing.lisp: /opt/ros/fuerte/share/rosconsole/manifest.xml
 msg_gen/lisp/Bearing.lisp: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
 msg_gen/lisp/Bearing.lisp: /opt/ros/fuerte/share/message_filters/manifest.xml
 msg_gen/lisp/Bearing.lisp: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+msg_gen/lisp/Bearing.lisp: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+msg_gen/lisp/Bearing.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+msg_gen/lisp/Bearing.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+msg_gen/lisp/Bearing.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/lisp/Bearing.lisp, msg_gen/lisp/_package.lisp, msg_gen/lisp/_package_Bearing.lisp"
 	/opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/Bearing.msg
@@ -443,6 +483,10 @@ msg_gen/lisp/Sonar.lisp: /opt/ros/fuerte/share/rosconsole/manifest.xml
 msg_gen/lisp/Sonar.lisp: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
 msg_gen/lisp/Sonar.lisp: /opt/ros/fuerte/share/message_filters/manifest.xml
 msg_gen/lisp/Sonar.lisp: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+msg_gen/lisp/Sonar.lisp: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+msg_gen/lisp/Sonar.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+msg_gen/lisp/Sonar.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+msg_gen/lisp/Sonar.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating msg_gen/lisp/Sonar.lisp, msg_gen/lisp/_package.lisp, msg_gen/lisp/_package_Sonar.lisp"
 	/opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/olivier/ros_workspace/nao_behavior_tree/msg/Sonar.msg

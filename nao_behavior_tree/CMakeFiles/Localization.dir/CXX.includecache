@@ -6,6 +6,22 @@
 
 #IncludeRegexTransform: 
 
+/home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/almotionproxy.h
+alproxies/almotionproxyposthandler.h
+-
+alproxies/api.h
+-
+
+/home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/almotionproxyposthandler.h
+boost/shared_ptr.hpp
+-
+alvalue/alvalue.h
+-
+string
+-
+vector
+-
+
 /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/alvideodeviceproxy.h
 alproxies/alvideodeviceproxyposthandler.h
 -
@@ -9046,6 +9062,8 @@ opencv2/opencv.hpp
 opencv2/imgproc/imgproc.hpp
 -
 opencv2/highgui/highgui.hpp
+-
+alproxies/almotionproxy.h
 -
 alproxies/alvideodeviceproxy.h
 -

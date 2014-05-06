@@ -1560,6 +1560,8 @@ CMakeFiles/Localization.dir/src/filters/particleFilter.o: /opt/ros/fuerte/includ
 CMakeFiles/Localization.dir/src/filters/particleFilter.o: /opt/ros/fuerte/include/rosconsole/macros_generated.h
 CMakeFiles/Localization.dir/src/filters/particleFilter.o: include/nao_behavior_tree/filters/particleFilter.hpp
 
+CMakeFiles/Localization.dir/src/map/localization.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/almotionproxy.h
+CMakeFiles/Localization.dir/src/map/localization.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/almotionproxyposthandler.h
 CMakeFiles/Localization.dir/src/map/localization.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/alvideodeviceproxy.h
 CMakeFiles/Localization.dir/src/map/localization.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/alvideodeviceproxyposthandler.h
 CMakeFiles/Localization.dir/src/map/localization.o: /home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alproxies/api.h

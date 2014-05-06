@@ -152,13 +152,6 @@ int main(int argc, char** argv)
 	pnh.param("y_02",y_02,double(0.0));
 	pnh.param("theta_02",theta_02,double(0.0));
 
-	x_1 = x_01;
-	y_1 = y_01;
-	theta_1 = theta_01;
-	x_2 = x_02;
-	y_2 = y_02;
-	theta_2 = theta_02;
-
 	init1 = init2 = false;
 
 	if(argc != 1)

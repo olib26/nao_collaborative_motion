@@ -67,6 +67,10 @@ CMakeFiles/Stop.dir/src/actions/Stop.o: /opt/ros/fuerte/share/rosconsole/manifes
 CMakeFiles/Stop.dir/src/actions/Stop.o: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
 CMakeFiles/Stop.dir/src/actions/Stop.o: /opt/ros/fuerte/share/message_filters/manifest.xml
 CMakeFiles/Stop.dir/src/actions/Stop.o: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+CMakeFiles/Stop.dir/src/actions/Stop.o: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+CMakeFiles/Stop.dir/src/actions/Stop.o: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+CMakeFiles/Stop.dir/src/actions/Stop.o: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+CMakeFiles/Stop.dir/src/actions/Stop.o: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Stop.dir/src/actions/Stop.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/Stop.dir/src/actions/Stop.o -c /home/olivier/ros_workspace/nao_behavior_tree/src/actions/Stop.cpp

@@ -141,7 +141,7 @@ int main(int argc, char** argv)
 		else
 		{
 			int id;
-			pnh.param("id",id,int(0));
+			pnh.param("camera",id,int(0));
 			CvCapture* capture = cvCaptureFromCAM(id);
 
 			while(ros::ok())

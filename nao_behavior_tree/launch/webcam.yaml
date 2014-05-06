@@ -1,6 +1,6 @@
 camera: 1
 
-H_MIN: 0
+H_MIN: 170
 H_MAX: 16
 S_MIN: 110
 S_MAX: 255
