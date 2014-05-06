@@ -18,10 +18,22 @@ using namespace geometry_msgs;
 
 void receive_odometry1(const TorsoOdometry::ConstPtr &msg)
 {
+	// Init odometry
+	if(!init1)
+	{
+		x_10 = msg->x;
+		y_10 = msg->y;
+		theta_10 = msg->wz;
+
+		init1 = true;
+	}
+
 	// Estimate odometry
-	x_1 = x_01 + msg->x*cos(theta_01) - msg->y*sin(theta_01);
-	y_1 = y_01 + msg->x*sin(theta_01) + msg->y*cos(theta_01);
-	theta_1 = theta_01 + msg->wz;
+	x_1 = x_01 + (msg->x-x_10)*cos(theta_10+theta_01) + (msg->y-y_10)*sin(theta_10+theta_01);
+	y_1 = y_01 - (msg->x-x_10)*sin(theta_10+theta_01) + (msg->y-y_10)*cos(theta_10+theta_01);
+	theta_1 = theta_01 + msg->wz - theta_10;
+
+	ROS_INFO("x_1 = %f, y_1 = %f, theta_1 = %f",x_1,y_1,theta_1);
 
 	// Controller
 	Twist cmd;
@@ -63,10 +75,22 @@ void receive_odometry1(const TorsoOdometry::ConstPtr &msg)
 
 void receive_odometry2(const TorsoOdometry::ConstPtr &msg)
 {
+	// Init odometry
+	if(!init2)
+	{
+		x_20 = msg->x;
+		y_20 = msg->y;
+		theta_20 = msg->wz;
+
+		init2 = true;
+	}
+
 	// Estimate odometry
-	x_2 = x_02 + msg->x*cos(theta_02) - msg->y*sin(theta_02);
-	y_2 = y_02 + msg->x*sin(theta_02) + msg->y*cos(theta_02);
-	theta_2 = theta_02 + msg->wz;
+	x_2 = x_02 + (msg->x-x_20)*cos(theta_20+theta_02) + (msg->y-y_20)*sin(theta_20+theta_02);
+	y_2 = y_02 - (msg->x-x_20)*sin(theta_20+theta_02) + (msg->y-y_20)*cos(theta_20+theta_02);
+	theta_2 = theta_02 + msg->wz - theta_20;
+
+	ROS_INFO("x_2 = %f, y_2 = %f, theta_2 = %f",x_2,y_2,theta_2);
 
 	// Controller
 	Twist cmd;
@@ -134,6 +158,8 @@ int main(int argc, char** argv)
 	x_2 = x_02;
 	y_2 = y_02;
 	theta_2 = theta_02;
+
+	init1 = init2 = false;
 
 	if(argc != 1)
 	{

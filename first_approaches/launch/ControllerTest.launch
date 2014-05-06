@@ -1,7 +1,7 @@
 <launch>
 
-  <include file="$(find first_approaches)/launch/nao_init1.launch"/>
-  <include file="$(find first_approaches)/launch/nao_init2.launch"/>
+  <include file="$(find first_approaches)/launch/nao_init1_test.launch"/>
+  <include file="$(find first_approaches)/launch/nao_init2_test.launch"/>
 	 
   <!--
     Controller
@@ -10,9 +10,15 @@
     <param name="x_01" value="0"/>
     <param name="y_01" value="0"/>
     <param name="theta_01" value="0"/>
-    <param name="x_02" value="2"/>
-    <param name="y_02" value="-0.75"/>
+    
+    <param name="x_02" value="1.6"/>
+    <param name="y_02" value="-1.2"/>
     <param name="theta_02" value="3.14159265"/>
+    
+    <param name="NAO_IP1" value="192.168.1.19"/>
+    <param name="NAO_PORT1" value="9559"/>
+    <param name="NAO_IP2" value="192.168.1.127"/>
+    <param name="NAO_PORT2" value="9559"/>
   </node>
 
 </launch>
