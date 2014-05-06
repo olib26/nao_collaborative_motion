@@ -66,7 +66,7 @@ nao_behavior_tree::Velocity vel1;
 
 // Path samples
 int counter = 0;
-const int nb = 100;
+const int nb = 25; //100
 int x_temp1,x_temp2,y_temp1,y_temp2;
 
 

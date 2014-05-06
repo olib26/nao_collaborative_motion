@@ -18,7 +18,7 @@ ros::Publisher cmd_pub;
 
 // Image size
 int height,width;
-const int cutHeight = 150;
+const int cutHeight = 100; //150
 
 // Detector frame size
 const int sx_min = 20;

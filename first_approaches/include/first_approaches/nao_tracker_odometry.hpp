@@ -26,7 +26,7 @@ double x_01,y_01,theta_01,x_02,y_02,theta_02;
 double x_1,y_1,theta_1,x_2,y_2,theta_2;
 
 // Controller parameters
-const double alpha = 0.1;
+const double alpha = 0.3; //0.1
 const double rho = 1;
 const double dist_min = 0.4;
 
