@@ -9,7 +9,15 @@
   
   
   <include file="$(find nao_behavior_tree)/launch/NaoBehaviorTree1_bearing.launch"/>
-  <include file="$(find nao_behavior_tree)/launch/NaoBehaviorTree2_bearing.launch"/>
+  
+  
+  <!--
+    Leds 2
+  -->
+  <node pkg="nao_behavior_tree" type="nao_leds" name="nao_leds2" output="screen">
+    <param name="NAO_IP" value="192.168.1.127"/>
+    <param name="NAO_PORT" value="9559"/>
+  </node>
   
   
   <!--

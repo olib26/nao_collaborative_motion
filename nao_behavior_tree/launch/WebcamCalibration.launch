@@ -1,0 +1,7 @@
+<launch>
+  
+  <node pkg="nao_behavior_tree" type="color_filter_calibration" name="color_filter_calibration" required="true" args="0" output="screen">
+  	<rosparam command="load" file="$(find nao_behavior_tree)/launch/webcam.yaml"/>
+  </node>
+
+</launch>

@@ -167,3 +167,7 @@ target_link_libraries(nao_leds alproxies alvalue)
 # Tools
 rosbuild_add_executable(color_filter_calibration src/tools/color_filter_calibration.cpp)
 target_link_libraries(color_filter_calibration ${OpenCV_LIBS})
+
+rosbuild_add_executable(remote src/tools/remote.cpp)
+target_link_libraries(remote alproxies alvalue)
+rosbuild_link_boost(remote thread)

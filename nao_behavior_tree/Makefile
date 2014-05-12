@@ -382,6 +382,19 @@ nao_sonar/fast:
 .PHONY : nao_sonar/fast
 
 #=============================================================================
+# Target rules for targets named remote
+
+# Build rule for target.
+remote: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 remote
+.PHONY : remote
+
+# fast build rule for target.
+remote/fast:
+	$(MAKE) -f CMakeFiles/remote.dir/build.make CMakeFiles/remote.dir/build
+.PHONY : remote/fast
+
+#=============================================================================
 # Target rules for targets named rosbuild_precompile
 
 # Build rule for target.
@@ -881,6 +894,21 @@ src/tools/color_filter_calibration.s:
 	$(MAKE) -f CMakeFiles/color_filter_calibration.dir/build.make CMakeFiles/color_filter_calibration.dir/src/tools/color_filter_calibration.s
 .PHONY : src/tools/color_filter_calibration.s
 
+# target to build an object file
+src/tools/remote.o:
+	$(MAKE) -f CMakeFiles/remote.dir/build.make CMakeFiles/remote.dir/src/tools/remote.o
+.PHONY : src/tools/remote.o
+
+# target to preprocess a source file
+src/tools/remote.i:
+	$(MAKE) -f CMakeFiles/remote.dir/build.make CMakeFiles/remote.dir/src/tools/remote.i
+.PHONY : src/tools/remote.i
+
+# target to generate assembly for a file
+src/tools/remote.s:
+	$(MAKE) -f CMakeFiles/remote.dir/build.make CMakeFiles/remote.dir/src/tools/remote.s
+.PHONY : src/tools/remote.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -911,6 +939,7 @@ help:
 	@echo "... nao_leds"
 	@echo "... nao_sonar"
 	@echo "... rebuild_cache"
+	@echo "... remote"
 	@echo "... rosbuild_precompile"
 	@echo "... rosbuild_premsgsrvgen"
 	@echo "... rospack_genmsg"
@@ -985,6 +1014,9 @@ help:
 	@echo "... src/tools/color_filter_calibration.o"
 	@echo "... src/tools/color_filter_calibration.i"
 	@echo "... src/tools/color_filter_calibration.s"
+	@echo "... src/tools/remote.o"
+	@echo "... src/tools/remote.i"
+	@echo "... src/tools/remote.s"
 .PHONY : help
 
 

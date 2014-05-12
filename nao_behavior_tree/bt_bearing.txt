@@ -2,6 +2,6 @@
 	A Localization
 	p
 		A TrackingAmongObstacles1
-		A TrackingAmongObstacles2
+		A HeadTracker1
 	P
 ]
