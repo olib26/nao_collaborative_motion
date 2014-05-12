@@ -117,7 +117,7 @@ int main(int argc, char** argv)
 
 			cmd_pub.publish(cmd);
 			ros::spinOnce();
-			ros::Duration(1).sleep();
+			ros::Duration(0.02).sleep();
 		}
 	}
 
