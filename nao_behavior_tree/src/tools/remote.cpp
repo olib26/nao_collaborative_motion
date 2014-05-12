@@ -16,6 +16,7 @@
 #include <termios.h>
 #include <stdio.h>
 
+#define KEYCODE_ENTER 0x0D
 #define KEYCODE_R 0x43
 #define KEYCODE_L 0x44
 #define KEYCODE_U 0x41
@@ -45,8 +46,8 @@ int main(int argc, char** argv)
 	{
 		// Robot selection
 		std::string id;
-		if(atoi(argv[1]) == 1) {id = "1";}
-		if(atoi(argv[1]) == 2) {id = "2";}
+		if(atoi(argv[1]) == 1) {id = "3";}
+		if(atoi(argv[1]) == 2) {id = "4";}
 
 		ros::init(argc, argv,"remote" + id);
 		ros::NodeHandle nh;
@@ -107,6 +108,10 @@ int main(int argc, char** argv)
 			case KEYCODE_D:
 				ROS_DEBUG("DOWN");
 				cmd.linear.x = -beta;
+				break;
+			case KEYCODE_ENTER:
+				cmd.linear.x = 0;
+				cmd.angular.z = 0;
 				break;
 			}
 
