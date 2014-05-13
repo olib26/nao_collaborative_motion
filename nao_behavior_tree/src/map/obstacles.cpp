@@ -557,6 +557,12 @@ public:
 			}
 		}
 
+		/*
+		// Test GoClose
+		vel.theta = r1.theta;
+		vel.area = 3;
+		*/
+
 		vel.norm = 0.5;
 		vel_pub.publish(vel);
 
