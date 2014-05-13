@@ -1,35 +1,29 @@
 <launch>
-
+  
   <!--
     Localization
   -->
-  <node pkg="nao_behavior_tree" type="Localization" name="Localization" args="0" output="log">
-    <param name="camera" value="0"/>
-    <param name="H_MIN" value="0"/>
-    <param name="H_MAX" value="20"/>
-    <param name="S_MIN" value="30"/>
-    <param name="S_MAX" value="150"/>
-    <param name="V_MIN" value="80"/>
-    <param name="V_MAX" value="255"/>
+  <node pkg="nao_behavior_tree" type="Localization" name="Localization" args="1" output="screen">
+    <rosparam command="load" file="$(find nao_behavior_tree)/launch/sim/parameters_sim.yaml"/>
+    <param name="NAO_IP" value="127.0.0.1"/>
+    <param name="NAO_PORT" value="9561"/>
   </node>
   
   
   <!--
-    Actions
+    Obstacles
   -->
-  <node pkg="nao_behavior_tree" type="Stop" name="Stop1" args="1"/>
-  <node pkg="nao_behavior_tree" type="Stop" name="Stop2" args="2"/>  
-  
-  
-  <!--
-    Behavior Trees
-  -->
-  <node pkg="nao_behavior_tree" type="nao_behavior_tree" name="nao_behavior_tree1" output="log">
-    <param name="file" value="/home/olivier/ros_workspace/nao_behavior_tree/bt1_test.txt"/>
+  <node pkg="nao_behavior_tree" type="Obstacles" name="Obstacles" args="1" output="screen">
+	<param name="NAO_IP" value="127.0.0.1"/>
+    <param name="NAO_PORT" value="9561"/>
   </node>
-  
-  <node pkg="nao_behavior_tree" type="nao_behavior_tree" name="nao_behavior_tree2" output="log">
-    <param name="file" value="/home/olivier/ros_workspace/nao_behavior_tree/bt2_test.txt"/>
+ 
+ 
+  <!--
+    Behavior Tree 1
+  -->
+  <node pkg="nao_behavior_tree" type="nao_behavior_tree" name="nao_behavior_tree1" output="screen">
+    <param name="file" value="/home/olivier/ros_workspace/nao_behavior_tree/bt_test.txt"/>
   </node>
   
 </launch>
