@@ -28,12 +28,12 @@ Algorithms can be tested with Webots (load the environment /first_approaches/nao
 	<LI> Tracking among obstacles: <br/>
 	Create the obstacles map running ObstaclesCreation.launch (select the correct webcam). <br/>
 	Launch ObstaclesNormal.launch.
-
-	<LI> Example to execute a ROS Launch file: <br/>
-	LD_LIBRARY_PATH=$PYTHONPATH:$LD_LIBRARY_PATH roslaunch nao_behavior_tree NaoBehaviorTree1.launch
-
-	<LI> Color Filter calibration: <br/>
-	Run ColorFilterCalibration.launch to choose the right HSV parameters. <br/>
-	You can change then the values in parameters.yaml.
 	</UL>
 </UL>
+
+- Example to execute a ROS Launch file: <br/>
+LD_LIBRARY_PATH=$PYTHONPATH:$LD_LIBRARY_PATH roslaunch nao_behavior_tree NaoBehaviorTree1.launch
+
+- Color Filter calibration: <br/>
+Run ColorFilterCalibration.launch to choose the right HSV parameters. <br/>
+You can change then the values in parameters.yaml.
