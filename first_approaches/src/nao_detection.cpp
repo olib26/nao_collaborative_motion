@@ -22,6 +22,9 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
+#include <eigen3/Eigen/Core>
+#include <eigen3/Eigen/LU>
+
 #include <std_srvs/Empty.h>
 
 #include <first_approaches/PosImage.h>
@@ -52,21 +55,50 @@ double normalRandom()
 void robotCoordinate()
 {
 	x = y = sx = sy = 0;
+	double maxWeight = 0;
 	for(int i = 0; i < N; i++)
 	{
-		x += particles[i].x + particles[i].sx/2;
-		y += particles[i].y + particles[i].sy/2;
-		sx += particles[i].sx;
-		sy += particles[i].sy;
+		if(particles[i].w > maxWeight)
+		{
+			x = particles[i].x + particles[i].sx/2;
+			y = particles[i].y + particles[i].sy/2;
+			sx = particles[i].sx;
+			sy = particles[i].sy;
+			maxWeight = particles[i].w;
+		}
 	}
-	x = x/N;
-	y = y/N;
-	sx = sx/N;
-	sy = sy/N;
-	
-	// Evaluate depth
-	double alpha = (double)sx/height*VFOV;
-	depth = H/tan(alpha/2)/2;
+
+	// Derive distance between the two robots
+	// Two interesting points
+	float p_u1 = -(x + (sx-height)/2);
+	float p_u2 = -(x - (sx+height)/2);
+	float p_v = -(y - width/2);
+	float f = (float)width/2/tan(HFOV/2.);
+
+	// Vectors
+	Eigen::Vector3f v1(f,p_v,p_u1);
+	Eigen::Vector3f v2(f,p_v,p_u2);
+
+	// Normalization
+	v1 = v1/v1.norm();
+	v2 = v2/v2.norm();
+
+	// Center
+	Eigen::Vector3f c = (v1+v2)/2.;
+	float c_norm = c.norm();
+
+	// Projection
+	Eigen::MatrixXf proj_mat = c.transpose()*v1;
+	float proj = proj_mat(0,0);
+
+	// Orthogonal part in v1
+	Eigen::Vector3f orth = v1 - proj/c_norm*c;
+
+	// Norm
+	float orth_norm = orth.norm();
+
+	// Approximate depth
+	depth = H/2.*proj/orth_norm;
 }
 
 
@@ -250,11 +282,15 @@ void particleFilter(IplImage* img)
 	for(int i = 0; i < N; i++)
 	{
 		particles[i] = temp[i];
-		particles[i].w = (double)1/N;
 	}
 
 	// Update object coordinate
 	robotCoordinate();
+
+	for(int i = 0; i < N; i++)
+	{
+		particles[i].w = (double)1/N;
+	}
 }
 
 

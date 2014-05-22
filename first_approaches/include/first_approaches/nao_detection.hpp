@@ -25,10 +25,10 @@ bool init = false;
 int height,width;
 
 // Camera parameters
-const double VFOV = 47.6*M_PI/180;
+const double HFOV = 60.9*M_PI/180;
 
 // Nao head spot
-const double H = 0.036;
+const double H = 0.043;
 
 // Point in integral image
 struct Point
@@ -51,7 +51,7 @@ double depth;
 const int sigma_diffusion = 50;
 
 // Number of particles
-const int N = 2000;
+const int N = 2500;
 
 // Generate N random particles
 struct Particle{
