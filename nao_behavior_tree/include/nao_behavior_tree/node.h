@@ -16,6 +16,7 @@ enum NODE_TYPE
 	SELECTOR_STAR,
 	SEQUENCE,
 	SEQUENCE_STAR,
+	SEQUENCE_TILDE,
 	PARALLEL,
 	LAUNCHER,
 	DECORATOR,
@@ -149,6 +150,8 @@ private:
 	inline std::string get_node_name() { return "Parallel"; }
 };
 
+
+
 class NodeLauncher : public Node
 {
 public:
@@ -158,6 +161,8 @@ private:
 	inline NODE_TYPE get_node_type() { return LAUNCHER; }
 	inline std::string get_node_name() { return "Launcher"; }
 };
+
+
 
 class NodeRoot : public Node
 {
@@ -193,6 +198,20 @@ private:
 	inline std::string get_node_name() { return "Sequence Star"; }
 	Node *current_running_child_;
 };
+
+
+class NodeSequenceTilde : public Node
+{
+public:
+	NodeSequenceTilde(Node* node);
+private:
+	STATE execute();
+	inline NODE_TYPE get_node_type() { return SEQUENCE_TILDE; }
+	inline std::string get_node_name() { return "Sequence Tilde"; }
+	Node *current_running_child_;
+};
+
+
 
 /* -------------------------------------------------------------------------- */
 /* ------------------------------ROS Nodes----------------------------------- */

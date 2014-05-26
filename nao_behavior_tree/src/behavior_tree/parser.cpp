@@ -59,6 +59,12 @@ int process_substring(std::string sub)
 	case 'P': std::cout << "Launcher Close Detected" << std::endl;
 		node = node->get_parent(); break;
 
+	// Subtrees Sequence Tilde
+	case 's': std::cout << "Sequence Tilde Open Detected" << std::endl;
+		node = new NodeSequenceTilde(node); break;
+	case 'S': std::cout << "Sequence Tilde Close Detected" << std::endl;
+		node = node->get_parent(); break;
+
 	default: break;
 	}
 	return 0;

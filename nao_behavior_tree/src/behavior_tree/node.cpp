@@ -183,7 +183,6 @@ STATE NodeSelector::execute()
 NodeSequence::NodeSequence(Node* node)
 	: Node(node) {}
 
-
 STATE NodeSequence::execute()
 {
 	std::cout << "Executing Sequence" << std::endl;
@@ -235,6 +234,8 @@ STATE NodeParallel::execute()
 		return node_status_ = RUNNING;
 }
 
+
+
 NodeLauncher::NodeLauncher(Node* node)
 	: Node(node) {}
 
@@ -249,6 +250,8 @@ STATE NodeLauncher::execute()
 	}
 	return node_status_ = RUNNING;
 }
+
+
 
 STATE NodeRoot::execute()
 {
@@ -342,6 +345,48 @@ STATE NodeSequenceStar::execute()
 	current_running_child_ = NULL;
 	return node_status_ = SUCCESS;
 }
+
+
+NodeSequenceTilde::NodeSequenceTilde(Node* node)
+	: 	Node(node),
+		current_running_child_(first_child_) {}
+
+STATE NodeSequenceTilde::execute()
+{
+	std::cout << "Executing Sequence Tilde" << std::endl;
+
+	if (current_running_child_ == NULL) {
+		current_running_child_ = first_child_;
+	}
+
+	exec_child_ = current_running_child_;
+
+
+	do
+	{
+		child_status_ = exec_child_->execute();
+		if (child_status_ == NODE_ERROR)
+		{
+			current_running_child_ = exec_child_;
+			return node_status_ = NODE_ERROR;
+		}
+		else if (child_status_ == RUNNING)
+		{
+			current_running_child_ = exec_child_;
+			return node_status_ =  RUNNING;
+		}
+		else if (child_status_ == FAILURE)
+		{
+			return node_status_ = FAILURE;
+		}
+		exec_child_=exec_child_->get_next_brother();
+	} while (exec_child_ != NULL);
+
+	current_running_child_ = NULL;
+	return node_status_ = SUCCESS;
+}
+
+
 
 /* -------------------------------------------------------------------------- */
 /* ------------------------------ROS Nodes----------------------------------- */
