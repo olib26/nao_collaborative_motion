@@ -1,4 +1,0 @@
-[*
-	A Greet2
-	A Stop2
-]

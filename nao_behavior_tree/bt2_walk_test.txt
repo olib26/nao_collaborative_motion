@@ -1,4 +1,0 @@
-[*
-	A Walk2
-	A Stop2
-]

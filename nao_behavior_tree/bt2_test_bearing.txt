@@ -1,6 +1,0 @@
-[*
-	A Localization
-	[*
-		A TrackingAmongObstacles2
-	]
-]

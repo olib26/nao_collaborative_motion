@@ -1,4 +1,0 @@
-[*
-	A Localization
-	A Stop1
-]
