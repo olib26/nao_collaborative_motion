@@ -1,0 +1,13 @@
+<launch>
+  
+	<include file="$(find nao_behavior_tree)/launch/exchange/nao1.launch"/>
+	<include file="$(find nao_behavior_tree)/launch/exchange/nao2.launch"/>
+  
+  <!--
+    Behavior Tree 
+  -->
+  <node pkg="nao_behavior_tree" type="nao_behavior_tree" name="nao_behavior_tree" output="screen">
+    <param name="file" value="/home/olivier/ros_workspace/nao_behavior_tree/src/exchange/bt_exchange.txt"/>
+  </node>
+
+</launch>

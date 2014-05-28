@@ -1,4 +1,25 @@
 s
-	A
-
+	A ExchangeHN
+	/
+		[*
+			A Search1
+			A GoClose1
+		]
+		[*	
+			A Search2
+			A GoClose2
+		]
+	|
+	[*
+		A Lever
+		A Placer
+		/
+			A Ouvrir
+			A Fermer
+		|
+	]
+	p
+		A Stop1
+		A Stop2
+	P
 S
