@@ -1,0 +1,16 @@
+s
+	/
+		[*
+			A Search1
+			A GoClose1
+		]
+		[*	
+			A Search2
+			A GoClose2
+		]
+	|
+	p
+		A Stop1
+		A Stop2
+	P
+S
