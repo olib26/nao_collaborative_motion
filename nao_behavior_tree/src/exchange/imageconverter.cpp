@@ -1247,7 +1247,7 @@ public:
 			nao_behavior_tree::BallPosForHead::Response &res){
 		ROS_INFO("FIND HEAD");
 		//finds ball in low res
-		Mat lowResBall = lowResBallFindingHSV(imgcam,req.min_h,req.max_h,70,255,70,255,3);
+		Mat lowResBall = lowResBallFindingHSV(imgcam,req.min_h,req.max_h,80,255,80,255,3);
 		publishImage(zoom2(zoom2(lowResBall)),WINDOW2);
 		sleep(2);
 		res.pos = isBallInScreen(lowResBall,30);
@@ -1258,9 +1258,9 @@ public:
 	bool ballPosForHand(nao_behavior_tree::BallPosForHand::Request &req,
 			nao_behavior_tree::BallPosForHand::Response &res){
 
-		Mat color = colorDetectionHSV(imgcam, req.min_h,req.max_h,145,255,70,255);
+		Mat color = colorDetectionHSV(imgcam, req.min_h,req.max_h,80,255,80,255);
 		//get the chain of the ball
-		Mat contours=getContourBall3(imgcam, req.min_h,req.max_h,145,255,70,255);
+		Mat contours=getContourBall3(imgcam, req.min_h,req.max_h,80,255,80,255);
 		//vector<vector<vector<int> > > chains=getChains2(getContourBall3(imgcam, req.min_h,req.max_h,120,255,120,255));
 		vector<vector<vector<int> > > chains=getChains2(contours);
 		vector<vector<vector<int> > >  meltedchainlist =meltChains(chains,meltingList);
