@@ -1,7 +1,10 @@
 FILE(REMOVE_RECURSE
   "msg_gen"
+  "srv_gen"
   "src/nao_behavior_tree/msg"
+  "src/nao_behavior_tree/srv"
   "msg_gen"
+  "srv_gen"
   "CMakeFiles/GoClose.dir/src/actions/GoClose.o"
   "CMakeFiles/GoClose.dir/src/behavior_tree/rosaction.o"
   "CMakeFiles/GoClose.dir/src/filters/particleFilter.o"

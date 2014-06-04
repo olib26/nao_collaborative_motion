@@ -1,7 +1,10 @@
 FILE(REMOVE_RECURSE
   "msg_gen"
+  "srv_gen"
   "src/nao_behavior_tree/msg"
+  "src/nao_behavior_tree/srv"
   "msg_gen"
+  "srv_gen"
   "CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/navigation.o"
   "CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.o"
   "CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/node.o"

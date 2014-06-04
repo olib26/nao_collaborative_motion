@@ -251,6 +251,37 @@ STATE NodeLauncher::execute()
 	return node_status_ = RUNNING;
 }
 
+NodeParallelM::NodeParallelM(Node* node)
+	: Node(node) {}
+
+STATE NodeParallelM::execute()
+{
+	int number_failure = 0;
+	int number_success = 0;
+	int number_error = 0;
+	std::cout << "Executing ParallelM" << std::endl;
+	exec_child_ = first_child_;
+	for (int i = 0; i < number_children_; i++)
+	{
+		child_status_ = exec_child_->execute();
+		if (child_status_ == NODE_ERROR)
+			number_error++;
+		else if (child_status_ == FAILURE)
+			number_failure++;
+		else if (child_status_ == SUCCESS)
+			number_success++;
+		exec_child_ = exec_child_->get_next_brother();
+	}
+	if (number_error > 0)
+		return node_status_ = NODE_ERROR;
+	else if (number_success > 1)
+		return node_status_ = SUCCESS;
+	else if (number_failure > 1)
+		return node_status_ = FAILURE;
+	else
+		return node_status_ = RUNNING;
+}
+
 
 
 STATE NodeRoot::execute()

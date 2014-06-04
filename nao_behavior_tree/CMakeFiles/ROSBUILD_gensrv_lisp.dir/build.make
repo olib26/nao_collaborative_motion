@@ -42,9 +42,248 @@ CMAKE_BINARY_DIR = /home/olivier/ros_workspace/nao_behavior_tree
 # Include the progress variables for this target.
 include CMakeFiles/ROSBUILD_gensrv_lisp.dir/progress.make
 
-CMakeFiles/ROSBUILD_gensrv_lisp:
+CMakeFiles/ROSBUILD_gensrv_lisp: srv_gen/lisp/BallPosForHead.lisp
+CMakeFiles/ROSBUILD_gensrv_lisp: srv_gen/lisp/_package.lisp
+CMakeFiles/ROSBUILD_gensrv_lisp: srv_gen/lisp/_package_BallPosForHead.lisp
+CMakeFiles/ROSBUILD_gensrv_lisp: srv_gen/lisp/GetArmReadyBT.lisp
+CMakeFiles/ROSBUILD_gensrv_lisp: srv_gen/lisp/_package.lisp
+CMakeFiles/ROSBUILD_gensrv_lisp: srv_gen/lisp/_package_GetArmReadyBT.lisp
+CMakeFiles/ROSBUILD_gensrv_lisp: srv_gen/lisp/ArmReadyBT.lisp
+CMakeFiles/ROSBUILD_gensrv_lisp: srv_gen/lisp/_package.lisp
+CMakeFiles/ROSBUILD_gensrv_lisp: srv_gen/lisp/_package_ArmReadyBT.lisp
+CMakeFiles/ROSBUILD_gensrv_lisp: srv_gen/lisp/BallPosForHand.lisp
+CMakeFiles/ROSBUILD_gensrv_lisp: srv_gen/lisp/_package.lisp
+CMakeFiles/ROSBUILD_gensrv_lisp: srv_gen/lisp/_package_BallPosForHand.lisp
+CMakeFiles/ROSBUILD_gensrv_lisp: srv_gen/lisp/BallPosGetBT.lisp
+CMakeFiles/ROSBUILD_gensrv_lisp: srv_gen/lisp/_package.lisp
+CMakeFiles/ROSBUILD_gensrv_lisp: srv_gen/lisp/_package_BallPosGetBT.lisp
+CMakeFiles/ROSBUILD_gensrv_lisp: srv_gen/lisp/BallPosChangeBT.lisp
+CMakeFiles/ROSBUILD_gensrv_lisp: srv_gen/lisp/_package.lisp
+CMakeFiles/ROSBUILD_gensrv_lisp: srv_gen/lisp/_package_BallPosChangeBT.lisp
+
+srv_gen/lisp/BallPosForHead.lisp: srv/BallPosForHead.srv
+srv_gen/lisp/BallPosForHead.lisp: /opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py
+srv_gen/lisp/BallPosForHead.lisp: /opt/ros/fuerte/share/roslib/bin/gendeps
+srv_gen/lisp/BallPosForHead.lisp: manifest.xml
+srv_gen/lisp/BallPosForHead.lisp: /opt/ros/fuerte/share/roslang/manifest.xml
+srv_gen/lisp/BallPosForHead.lisp: /opt/ros/fuerte/share/roscpp/manifest.xml
+srv_gen/lisp/BallPosForHead.lisp: /opt/ros/fuerte/share/std_msgs/manifest.xml
+srv_gen/lisp/BallPosForHead.lisp: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+srv_gen/lisp/BallPosForHead.lisp: /opt/ros/fuerte/share/rospy/manifest.xml
+srv_gen/lisp/BallPosForHead.lisp: /opt/ros/fuerte/share/rostest/manifest.xml
+srv_gen/lisp/BallPosForHead.lisp: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
+srv_gen/lisp/BallPosForHead.lisp: /opt/ros/fuerte/share/actionlib/manifest.xml
+srv_gen/lisp/BallPosForHead.lisp: /opt/ros/fuerte/share/roslib/manifest.xml
+srv_gen/lisp/BallPosForHead.lisp: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+srv_gen/lisp/BallPosForHead.lisp: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+srv_gen/lisp/BallPosForHead.lisp: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+srv_gen/lisp/BallPosForHead.lisp: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+srv_gen/lisp/BallPosForHead.lisp: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+srv_gen/lisp/BallPosForHead.lisp: /opt/ros/fuerte/share/rosconsole/manifest.xml
+srv_gen/lisp/BallPosForHead.lisp: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+srv_gen/lisp/BallPosForHead.lisp: /opt/ros/fuerte/share/message_filters/manifest.xml
+srv_gen/lisp/BallPosForHead.lisp: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+srv_gen/lisp/BallPosForHead.lisp: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+srv_gen/lisp/BallPosForHead.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+srv_gen/lisp/BallPosForHead.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+srv_gen/lisp/BallPosForHead.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating srv_gen/lisp/BallPosForHead.lisp, srv_gen/lisp/_package.lisp, srv_gen/lisp/_package_BallPosForHead.lisp"
+	/opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/olivier/ros_workspace/nao_behavior_tree/srv/BallPosForHead.srv
+
+srv_gen/lisp/_package.lisp: srv_gen/lisp/BallPosForHead.lisp
+
+srv_gen/lisp/_package_BallPosForHead.lisp: srv_gen/lisp/BallPosForHead.lisp
+
+srv_gen/lisp/GetArmReadyBT.lisp: srv/GetArmReadyBT.srv
+srv_gen/lisp/GetArmReadyBT.lisp: /opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py
+srv_gen/lisp/GetArmReadyBT.lisp: /opt/ros/fuerte/share/roslib/bin/gendeps
+srv_gen/lisp/GetArmReadyBT.lisp: manifest.xml
+srv_gen/lisp/GetArmReadyBT.lisp: /opt/ros/fuerte/share/roslang/manifest.xml
+srv_gen/lisp/GetArmReadyBT.lisp: /opt/ros/fuerte/share/roscpp/manifest.xml
+srv_gen/lisp/GetArmReadyBT.lisp: /opt/ros/fuerte/share/std_msgs/manifest.xml
+srv_gen/lisp/GetArmReadyBT.lisp: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+srv_gen/lisp/GetArmReadyBT.lisp: /opt/ros/fuerte/share/rospy/manifest.xml
+srv_gen/lisp/GetArmReadyBT.lisp: /opt/ros/fuerte/share/rostest/manifest.xml
+srv_gen/lisp/GetArmReadyBT.lisp: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
+srv_gen/lisp/GetArmReadyBT.lisp: /opt/ros/fuerte/share/actionlib/manifest.xml
+srv_gen/lisp/GetArmReadyBT.lisp: /opt/ros/fuerte/share/roslib/manifest.xml
+srv_gen/lisp/GetArmReadyBT.lisp: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+srv_gen/lisp/GetArmReadyBT.lisp: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+srv_gen/lisp/GetArmReadyBT.lisp: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+srv_gen/lisp/GetArmReadyBT.lisp: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+srv_gen/lisp/GetArmReadyBT.lisp: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+srv_gen/lisp/GetArmReadyBT.lisp: /opt/ros/fuerte/share/rosconsole/manifest.xml
+srv_gen/lisp/GetArmReadyBT.lisp: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+srv_gen/lisp/GetArmReadyBT.lisp: /opt/ros/fuerte/share/message_filters/manifest.xml
+srv_gen/lisp/GetArmReadyBT.lisp: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+srv_gen/lisp/GetArmReadyBT.lisp: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+srv_gen/lisp/GetArmReadyBT.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+srv_gen/lisp/GetArmReadyBT.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+srv_gen/lisp/GetArmReadyBT.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating srv_gen/lisp/GetArmReadyBT.lisp, srv_gen/lisp/_package.lisp, srv_gen/lisp/_package_GetArmReadyBT.lisp"
+	/opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/olivier/ros_workspace/nao_behavior_tree/srv/GetArmReadyBT.srv
+
+srv_gen/lisp/_package.lisp: srv_gen/lisp/GetArmReadyBT.lisp
+
+srv_gen/lisp/_package_GetArmReadyBT.lisp: srv_gen/lisp/GetArmReadyBT.lisp
+
+srv_gen/lisp/ArmReadyBT.lisp: srv/ArmReadyBT.srv
+srv_gen/lisp/ArmReadyBT.lisp: /opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py
+srv_gen/lisp/ArmReadyBT.lisp: /opt/ros/fuerte/share/roslib/bin/gendeps
+srv_gen/lisp/ArmReadyBT.lisp: manifest.xml
+srv_gen/lisp/ArmReadyBT.lisp: /opt/ros/fuerte/share/roslang/manifest.xml
+srv_gen/lisp/ArmReadyBT.lisp: /opt/ros/fuerte/share/roscpp/manifest.xml
+srv_gen/lisp/ArmReadyBT.lisp: /opt/ros/fuerte/share/std_msgs/manifest.xml
+srv_gen/lisp/ArmReadyBT.lisp: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+srv_gen/lisp/ArmReadyBT.lisp: /opt/ros/fuerte/share/rospy/manifest.xml
+srv_gen/lisp/ArmReadyBT.lisp: /opt/ros/fuerte/share/rostest/manifest.xml
+srv_gen/lisp/ArmReadyBT.lisp: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
+srv_gen/lisp/ArmReadyBT.lisp: /opt/ros/fuerte/share/actionlib/manifest.xml
+srv_gen/lisp/ArmReadyBT.lisp: /opt/ros/fuerte/share/roslib/manifest.xml
+srv_gen/lisp/ArmReadyBT.lisp: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+srv_gen/lisp/ArmReadyBT.lisp: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+srv_gen/lisp/ArmReadyBT.lisp: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+srv_gen/lisp/ArmReadyBT.lisp: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+srv_gen/lisp/ArmReadyBT.lisp: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+srv_gen/lisp/ArmReadyBT.lisp: /opt/ros/fuerte/share/rosconsole/manifest.xml
+srv_gen/lisp/ArmReadyBT.lisp: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+srv_gen/lisp/ArmReadyBT.lisp: /opt/ros/fuerte/share/message_filters/manifest.xml
+srv_gen/lisp/ArmReadyBT.lisp: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+srv_gen/lisp/ArmReadyBT.lisp: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+srv_gen/lisp/ArmReadyBT.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+srv_gen/lisp/ArmReadyBT.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+srv_gen/lisp/ArmReadyBT.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating srv_gen/lisp/ArmReadyBT.lisp, srv_gen/lisp/_package.lisp, srv_gen/lisp/_package_ArmReadyBT.lisp"
+	/opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/olivier/ros_workspace/nao_behavior_tree/srv/ArmReadyBT.srv
+
+srv_gen/lisp/_package.lisp: srv_gen/lisp/ArmReadyBT.lisp
+
+srv_gen/lisp/_package_ArmReadyBT.lisp: srv_gen/lisp/ArmReadyBT.lisp
+
+srv_gen/lisp/BallPosForHand.lisp: srv/BallPosForHand.srv
+srv_gen/lisp/BallPosForHand.lisp: /opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py
+srv_gen/lisp/BallPosForHand.lisp: /opt/ros/fuerte/share/roslib/bin/gendeps
+srv_gen/lisp/BallPosForHand.lisp: manifest.xml
+srv_gen/lisp/BallPosForHand.lisp: /opt/ros/fuerte/share/roslang/manifest.xml
+srv_gen/lisp/BallPosForHand.lisp: /opt/ros/fuerte/share/roscpp/manifest.xml
+srv_gen/lisp/BallPosForHand.lisp: /opt/ros/fuerte/share/std_msgs/manifest.xml
+srv_gen/lisp/BallPosForHand.lisp: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+srv_gen/lisp/BallPosForHand.lisp: /opt/ros/fuerte/share/rospy/manifest.xml
+srv_gen/lisp/BallPosForHand.lisp: /opt/ros/fuerte/share/rostest/manifest.xml
+srv_gen/lisp/BallPosForHand.lisp: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
+srv_gen/lisp/BallPosForHand.lisp: /opt/ros/fuerte/share/actionlib/manifest.xml
+srv_gen/lisp/BallPosForHand.lisp: /opt/ros/fuerte/share/roslib/manifest.xml
+srv_gen/lisp/BallPosForHand.lisp: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+srv_gen/lisp/BallPosForHand.lisp: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+srv_gen/lisp/BallPosForHand.lisp: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+srv_gen/lisp/BallPosForHand.lisp: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+srv_gen/lisp/BallPosForHand.lisp: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+srv_gen/lisp/BallPosForHand.lisp: /opt/ros/fuerte/share/rosconsole/manifest.xml
+srv_gen/lisp/BallPosForHand.lisp: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+srv_gen/lisp/BallPosForHand.lisp: /opt/ros/fuerte/share/message_filters/manifest.xml
+srv_gen/lisp/BallPosForHand.lisp: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+srv_gen/lisp/BallPosForHand.lisp: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+srv_gen/lisp/BallPosForHand.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+srv_gen/lisp/BallPosForHand.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+srv_gen/lisp/BallPosForHand.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating srv_gen/lisp/BallPosForHand.lisp, srv_gen/lisp/_package.lisp, srv_gen/lisp/_package_BallPosForHand.lisp"
+	/opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/olivier/ros_workspace/nao_behavior_tree/srv/BallPosForHand.srv
+
+srv_gen/lisp/_package.lisp: srv_gen/lisp/BallPosForHand.lisp
+
+srv_gen/lisp/_package_BallPosForHand.lisp: srv_gen/lisp/BallPosForHand.lisp
+
+srv_gen/lisp/BallPosGetBT.lisp: srv/BallPosGetBT.srv
+srv_gen/lisp/BallPosGetBT.lisp: /opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py
+srv_gen/lisp/BallPosGetBT.lisp: /opt/ros/fuerte/share/roslib/bin/gendeps
+srv_gen/lisp/BallPosGetBT.lisp: manifest.xml
+srv_gen/lisp/BallPosGetBT.lisp: /opt/ros/fuerte/share/roslang/manifest.xml
+srv_gen/lisp/BallPosGetBT.lisp: /opt/ros/fuerte/share/roscpp/manifest.xml
+srv_gen/lisp/BallPosGetBT.lisp: /opt/ros/fuerte/share/std_msgs/manifest.xml
+srv_gen/lisp/BallPosGetBT.lisp: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+srv_gen/lisp/BallPosGetBT.lisp: /opt/ros/fuerte/share/rospy/manifest.xml
+srv_gen/lisp/BallPosGetBT.lisp: /opt/ros/fuerte/share/rostest/manifest.xml
+srv_gen/lisp/BallPosGetBT.lisp: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
+srv_gen/lisp/BallPosGetBT.lisp: /opt/ros/fuerte/share/actionlib/manifest.xml
+srv_gen/lisp/BallPosGetBT.lisp: /opt/ros/fuerte/share/roslib/manifest.xml
+srv_gen/lisp/BallPosGetBT.lisp: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+srv_gen/lisp/BallPosGetBT.lisp: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+srv_gen/lisp/BallPosGetBT.lisp: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+srv_gen/lisp/BallPosGetBT.lisp: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+srv_gen/lisp/BallPosGetBT.lisp: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+srv_gen/lisp/BallPosGetBT.lisp: /opt/ros/fuerte/share/rosconsole/manifest.xml
+srv_gen/lisp/BallPosGetBT.lisp: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+srv_gen/lisp/BallPosGetBT.lisp: /opt/ros/fuerte/share/message_filters/manifest.xml
+srv_gen/lisp/BallPosGetBT.lisp: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+srv_gen/lisp/BallPosGetBT.lisp: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+srv_gen/lisp/BallPosGetBT.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+srv_gen/lisp/BallPosGetBT.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+srv_gen/lisp/BallPosGetBT.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_5)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating srv_gen/lisp/BallPosGetBT.lisp, srv_gen/lisp/_package.lisp, srv_gen/lisp/_package_BallPosGetBT.lisp"
+	/opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/olivier/ros_workspace/nao_behavior_tree/srv/BallPosGetBT.srv
+
+srv_gen/lisp/_package.lisp: srv_gen/lisp/BallPosGetBT.lisp
+
+srv_gen/lisp/_package_BallPosGetBT.lisp: srv_gen/lisp/BallPosGetBT.lisp
+
+srv_gen/lisp/BallPosChangeBT.lisp: srv/BallPosChangeBT.srv
+srv_gen/lisp/BallPosChangeBT.lisp: /opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py
+srv_gen/lisp/BallPosChangeBT.lisp: /opt/ros/fuerte/share/roslib/bin/gendeps
+srv_gen/lisp/BallPosChangeBT.lisp: manifest.xml
+srv_gen/lisp/BallPosChangeBT.lisp: /opt/ros/fuerte/share/roslang/manifest.xml
+srv_gen/lisp/BallPosChangeBT.lisp: /opt/ros/fuerte/share/roscpp/manifest.xml
+srv_gen/lisp/BallPosChangeBT.lisp: /opt/ros/fuerte/share/std_msgs/manifest.xml
+srv_gen/lisp/BallPosChangeBT.lisp: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+srv_gen/lisp/BallPosChangeBT.lisp: /opt/ros/fuerte/share/rospy/manifest.xml
+srv_gen/lisp/BallPosChangeBT.lisp: /opt/ros/fuerte/share/rostest/manifest.xml
+srv_gen/lisp/BallPosChangeBT.lisp: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
+srv_gen/lisp/BallPosChangeBT.lisp: /opt/ros/fuerte/share/actionlib/manifest.xml
+srv_gen/lisp/BallPosChangeBT.lisp: /opt/ros/fuerte/share/roslib/manifest.xml
+srv_gen/lisp/BallPosChangeBT.lisp: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+srv_gen/lisp/BallPosChangeBT.lisp: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+srv_gen/lisp/BallPosChangeBT.lisp: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+srv_gen/lisp/BallPosChangeBT.lisp: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+srv_gen/lisp/BallPosChangeBT.lisp: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+srv_gen/lisp/BallPosChangeBT.lisp: /opt/ros/fuerte/share/rosconsole/manifest.xml
+srv_gen/lisp/BallPosChangeBT.lisp: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+srv_gen/lisp/BallPosChangeBT.lisp: /opt/ros/fuerte/share/message_filters/manifest.xml
+srv_gen/lisp/BallPosChangeBT.lisp: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+srv_gen/lisp/BallPosChangeBT.lisp: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+srv_gen/lisp/BallPosChangeBT.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+srv_gen/lisp/BallPosChangeBT.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+srv_gen/lisp/BallPosChangeBT.lisp: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_6)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating srv_gen/lisp/BallPosChangeBT.lisp, srv_gen/lisp/_package.lisp, srv_gen/lisp/_package_BallPosChangeBT.lisp"
+	/opt/ros/fuerte/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/olivier/ros_workspace/nao_behavior_tree/srv/BallPosChangeBT.srv
+
+srv_gen/lisp/_package.lisp: srv_gen/lisp/BallPosChangeBT.lisp
+
+srv_gen/lisp/_package_BallPosChangeBT.lisp: srv_gen/lisp/BallPosChangeBT.lisp
 
 ROSBUILD_gensrv_lisp: CMakeFiles/ROSBUILD_gensrv_lisp
+ROSBUILD_gensrv_lisp: srv_gen/lisp/BallPosForHead.lisp
+ROSBUILD_gensrv_lisp: srv_gen/lisp/_package.lisp
+ROSBUILD_gensrv_lisp: srv_gen/lisp/_package_BallPosForHead.lisp
+ROSBUILD_gensrv_lisp: srv_gen/lisp/GetArmReadyBT.lisp
+ROSBUILD_gensrv_lisp: srv_gen/lisp/_package.lisp
+ROSBUILD_gensrv_lisp: srv_gen/lisp/_package_GetArmReadyBT.lisp
+ROSBUILD_gensrv_lisp: srv_gen/lisp/ArmReadyBT.lisp
+ROSBUILD_gensrv_lisp: srv_gen/lisp/_package.lisp
+ROSBUILD_gensrv_lisp: srv_gen/lisp/_package_ArmReadyBT.lisp
+ROSBUILD_gensrv_lisp: srv_gen/lisp/BallPosForHand.lisp
+ROSBUILD_gensrv_lisp: srv_gen/lisp/_package.lisp
+ROSBUILD_gensrv_lisp: srv_gen/lisp/_package_BallPosForHand.lisp
+ROSBUILD_gensrv_lisp: srv_gen/lisp/BallPosGetBT.lisp
+ROSBUILD_gensrv_lisp: srv_gen/lisp/_package.lisp
+ROSBUILD_gensrv_lisp: srv_gen/lisp/_package_BallPosGetBT.lisp
+ROSBUILD_gensrv_lisp: srv_gen/lisp/BallPosChangeBT.lisp
+ROSBUILD_gensrv_lisp: srv_gen/lisp/_package.lisp
+ROSBUILD_gensrv_lisp: srv_gen/lisp/_package_BallPosChangeBT.lisp
 ROSBUILD_gensrv_lisp: CMakeFiles/ROSBUILD_gensrv_lisp.dir/build.make
 .PHONY : ROSBUILD_gensrv_lisp
 

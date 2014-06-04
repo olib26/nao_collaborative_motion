@@ -12,6 +12,14 @@
   </node>
   
   <!--
+    IMAGE CONVERTER 2
+  -->
+  <node pkg="nao_behavior_tree" type="imageconverter" name="im_conv2" args='2' output="screen">
+    <param name="NAO_IP" value="$(arg nao_ip)"/>
+    <param name="NAO_PORT" value="$(arg nao_port)"/>
+  </node>
+  
+  <!--
     Sonar 2
   -->
   <node pkg="nao_behavior_tree" type="nao_sonar" name="nao_sonar2" output="screen">
@@ -61,6 +69,16 @@
   <node pkg="nao_behavior_tree" type="Stop" name="Stop2" args="2">
     <param name="NAO_IP" value="$(arg nao_ip)"/>
     <param name="NAO_PORT" value="$(arg nao_port)"/>
-  </node> 
+  </node>
+  
+  <node pkg="nao_behavior_tree" type="TakeBall" name="TakeBall2" args="2" output="screen">
+    <param name="NAO_IP" value="$(arg nao_ip)"/>
+    <param name="NAO_PORT" value="$(arg nao_port)"/>
+  </node>
+
+  <node pkg="nao_behavior_tree" type="Catch" name="Catch2" args="2" output="screen">
+    <param name="NAO_IP" value="$(arg nao_ip)"/>
+    <param name="NAO_PORT" value="$(arg nao_port)"/>
+  </node>
 
 </launch>

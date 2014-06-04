@@ -22,6 +22,7 @@ SET(CMAKE_C_INCLUDE_PATH
   "/home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/cpp/include"
   "src"
   "msg_gen/cpp/include"
+  "srv_gen/cpp/include"
   "/home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include"
   "/home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alcommon"
   "/home/olivier/Downloads/webots-for-nao/resources/projects/robots/nao/aldebaran/simulator-sdk/include/alvision"

@@ -58,6 +58,10 @@ int process_substring(std::string sub)
 		node = new NodeLauncher(node); break;
 	case 'P': std::cout << "Launcher Close Detected" << std::endl;
 		node = node->get_parent(); break;
+	case 'm': std::cout << "ParallelM Open Detected" << std::endl;
+		node = new NodeParallelM(node); break;
+	case 'M': std::cout << "ParallelM Close Detected" << std::endl;
+		node = node->get_parent(); break;
 
 	// Subtrees Sequence Tilde
 	case 's': std::cout << "Sequence Tilde Open Detected" << std::endl;

@@ -1,6 +1,7 @@
 s
-	A ExchangeHN
-	/
+	A TakeBall1
+	A Catch1
+	m
 		[*
 			A Search1
 			A GoClose1
@@ -9,13 +10,13 @@ s
 			A Search2
 			A GoClose2
 		]
-	|
+	M
 	[*
-		A Lever
-		A Placer
+		A GiveBall1
+		A TakeBall2
 		/
-			A Ouvrir
-			A Fermer
+			A Drop1
+			A Catch2
 		|
 	]
 	p

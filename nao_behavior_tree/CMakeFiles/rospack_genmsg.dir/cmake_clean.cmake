@@ -1,7 +1,10 @@
 FILE(REMOVE_RECURSE
   "msg_gen"
+  "srv_gen"
   "src/nao_behavior_tree/msg"
+  "src/nao_behavior_tree/srv"
   "msg_gen"
+  "srv_gen"
   "CMakeFiles/rospack_genmsg"
 )
 

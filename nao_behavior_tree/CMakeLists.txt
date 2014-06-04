@@ -71,7 +71,7 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 #uncomment if you have defined messages
 rosbuild_genmsg()
 #uncomment if you have defined services
-#rosbuild_gensrv()
+rosbuild_gensrv()
 
 #common commands for building c++ executables and libraries
 #rosbuild_add_library(${PROJECT_NAME} src/example.cpp)
@@ -171,3 +171,33 @@ target_link_libraries(color_filter_calibration ${OpenCV_LIBS})
 rosbuild_add_executable(remote src/tools/remote.cpp)
 target_link_libraries(remote alproxies alvalue)
 rosbuild_link_boost(remote thread)
+
+
+# Exchange
+# Robot image/motion
+rosbuild_add_executable(imageconverter src/exchange/imageconverter.cpp src/exchange/WQUPC.cpp)
+target_link_libraries(imageconverter alproxies alvalue ${OpenCV_LIBS})
+rosbuild_add_executable(robotMove src/exchange/RobotMove.cpp)
+target_link_libraries(robotMove alproxies alvalue ${OpenCV_LIBS})
+rosbuild_add_executable(objectServer src/exchange/BTObjectServer.cpp)
+
+# Actions
+rosbuild_add_executable(TakeBall src/exchange/actions/TakeBall.cpp src/behavior_tree/rosaction.cpp)
+target_link_libraries(TakeBall alproxies alvalue)
+rosbuild_link_boost(TakeBall thread)
+
+rosbuild_add_executable(Catch src/exchange/actions/Catch.cpp src/behavior_tree/rosaction.cpp)
+target_link_libraries(Catch alproxies alvalue)
+rosbuild_link_boost(Catch thread)
+
+rosbuild_add_executable(ChangeHandBall src/exchange/actions/ChangeHandBall.cpp src/behavior_tree/rosaction.cpp)
+target_link_libraries(ChangeHandBall alproxies alvalue)
+rosbuild_link_boost(ChangeHandBall thread)
+
+rosbuild_add_executable(GiveBall src/exchange/actions/GiveBall.cpp src/behavior_tree/rosaction.cpp)
+target_link_libraries(GiveBall alproxies alvalue)
+rosbuild_link_boost(GiveBall thread)
+
+rosbuild_add_executable(Drop src/exchange/actions/Drop.cpp src/behavior_tree/rosaction.cpp)
+target_link_libraries(Drop alproxies alvalue)
+rosbuild_link_boost(Drop thread)

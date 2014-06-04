@@ -42,9 +42,206 @@ CMAKE_BINARY_DIR = /home/olivier/ros_workspace/nao_behavior_tree
 # Include the progress variables for this target.
 include CMakeFiles/ROSBUILD_gensrv_cpp.dir/progress.make
 
-CMakeFiles/ROSBUILD_gensrv_cpp:
+CMakeFiles/ROSBUILD_gensrv_cpp: srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h
+CMakeFiles/ROSBUILD_gensrv_cpp: srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h
+CMakeFiles/ROSBUILD_gensrv_cpp: srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h
+CMakeFiles/ROSBUILD_gensrv_cpp: srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h
+CMakeFiles/ROSBUILD_gensrv_cpp: srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h
+CMakeFiles/ROSBUILD_gensrv_cpp: srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h
+
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: srv/BallPosForHead.srv
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: /opt/ros/fuerte/share/roscpp/rosbuild/scripts/gensrv_cpp.py
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: /opt/ros/fuerte/share/roscpp/rosbuild/scripts/genmsg_cpp.py
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: /opt/ros/fuerte/share/roslib/bin/gendeps
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: /opt/ros/fuerte/share/roslang/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: /opt/ros/fuerte/share/roscpp/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: /opt/ros/fuerte/share/std_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: /opt/ros/fuerte/share/rospy/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: /opt/ros/fuerte/share/rostest/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: /opt/ros/fuerte/share/actionlib/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: /opt/ros/fuerte/share/roslib/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: /opt/ros/fuerte/share/rosconsole/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: /opt/ros/fuerte/share/message_filters/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h"
+	/opt/ros/fuerte/share/roscpp/rosbuild/scripts/gensrv_cpp.py /home/olivier/ros_workspace/nao_behavior_tree/srv/BallPosForHead.srv
+
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: srv/GetArmReadyBT.srv
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: /opt/ros/fuerte/share/roscpp/rosbuild/scripts/gensrv_cpp.py
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: /opt/ros/fuerte/share/roscpp/rosbuild/scripts/genmsg_cpp.py
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: /opt/ros/fuerte/share/roslib/bin/gendeps
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: /opt/ros/fuerte/share/roslang/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: /opt/ros/fuerte/share/roscpp/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: /opt/ros/fuerte/share/std_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: /opt/ros/fuerte/share/rospy/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: /opt/ros/fuerte/share/rostest/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: /opt/ros/fuerte/share/actionlib/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: /opt/ros/fuerte/share/roslib/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: /opt/ros/fuerte/share/rosconsole/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: /opt/ros/fuerte/share/message_filters/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h"
+	/opt/ros/fuerte/share/roscpp/rosbuild/scripts/gensrv_cpp.py /home/olivier/ros_workspace/nao_behavior_tree/srv/GetArmReadyBT.srv
+
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: srv/ArmReadyBT.srv
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: /opt/ros/fuerte/share/roscpp/rosbuild/scripts/gensrv_cpp.py
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: /opt/ros/fuerte/share/roscpp/rosbuild/scripts/genmsg_cpp.py
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: /opt/ros/fuerte/share/roslib/bin/gendeps
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: /opt/ros/fuerte/share/roslang/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: /opt/ros/fuerte/share/roscpp/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: /opt/ros/fuerte/share/std_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: /opt/ros/fuerte/share/rospy/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: /opt/ros/fuerte/share/rostest/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: /opt/ros/fuerte/share/actionlib/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: /opt/ros/fuerte/share/roslib/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: /opt/ros/fuerte/share/rosconsole/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: /opt/ros/fuerte/share/message_filters/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h"
+	/opt/ros/fuerte/share/roscpp/rosbuild/scripts/gensrv_cpp.py /home/olivier/ros_workspace/nao_behavior_tree/srv/ArmReadyBT.srv
+
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: srv/BallPosForHand.srv
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: /opt/ros/fuerte/share/roscpp/rosbuild/scripts/gensrv_cpp.py
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: /opt/ros/fuerte/share/roscpp/rosbuild/scripts/genmsg_cpp.py
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: /opt/ros/fuerte/share/roslib/bin/gendeps
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: /opt/ros/fuerte/share/roslang/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: /opt/ros/fuerte/share/roscpp/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: /opt/ros/fuerte/share/std_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: /opt/ros/fuerte/share/rospy/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: /opt/ros/fuerte/share/rostest/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: /opt/ros/fuerte/share/actionlib/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: /opt/ros/fuerte/share/roslib/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: /opt/ros/fuerte/share/rosconsole/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: /opt/ros/fuerte/share/message_filters/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h"
+	/opt/ros/fuerte/share/roscpp/rosbuild/scripts/gensrv_cpp.py /home/olivier/ros_workspace/nao_behavior_tree/srv/BallPosForHand.srv
+
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: srv/BallPosGetBT.srv
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: /opt/ros/fuerte/share/roscpp/rosbuild/scripts/gensrv_cpp.py
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: /opt/ros/fuerte/share/roscpp/rosbuild/scripts/genmsg_cpp.py
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: /opt/ros/fuerte/share/roslib/bin/gendeps
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: /opt/ros/fuerte/share/roslang/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: /opt/ros/fuerte/share/roscpp/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: /opt/ros/fuerte/share/std_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: /opt/ros/fuerte/share/rospy/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: /opt/ros/fuerte/share/rostest/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: /opt/ros/fuerte/share/actionlib/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: /opt/ros/fuerte/share/roslib/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: /opt/ros/fuerte/share/rosconsole/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: /opt/ros/fuerte/share/message_filters/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_5)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h"
+	/opt/ros/fuerte/share/roscpp/rosbuild/scripts/gensrv_cpp.py /home/olivier/ros_workspace/nao_behavior_tree/srv/BallPosGetBT.srv
+
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: srv/BallPosChangeBT.srv
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: /opt/ros/fuerte/share/roscpp/rosbuild/scripts/gensrv_cpp.py
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: /opt/ros/fuerte/share/roscpp/rosbuild/scripts/genmsg_cpp.py
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: /opt/ros/fuerte/share/roslib/bin/gendeps
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: /opt/ros/fuerte/share/roslang/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: /opt/ros/fuerte/share/roscpp/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: /opt/ros/fuerte/share/std_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: /opt/ros/fuerte/share/rospy/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: /opt/ros/fuerte/share/rostest/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: /opt/ros/fuerte/share/actionlib_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: /opt/ros/fuerte/share/actionlib/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: /opt/ros/fuerte/share/roslib/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: /opt/ros/fuerte/share/nav_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: /opt/ros/fuerte/share/sensor_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: /opt/ros/fuerte/stacks/vision_opencv/opencv2/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: /opt/ros/fuerte/share/ros/core/rosbuild/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: /opt/ros/fuerte/share/rosconsole/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: /opt/ros/fuerte/stacks/pluginlib/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: /opt/ros/fuerte/share/message_filters/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: /opt/ros/fuerte/stacks/image_common/image_transport/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: /opt/ros/fuerte/share/trajectory_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/manifest.xml
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/msg_gen/generated
+srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h: /home/olivier/ros_workspace/nao/stacks/nao_robot/nao_msgs/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles $(CMAKE_PROGRESS_6)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h"
+	/opt/ros/fuerte/share/roscpp/rosbuild/scripts/gensrv_cpp.py /home/olivier/ros_workspace/nao_behavior_tree/srv/BallPosChangeBT.srv
 
 ROSBUILD_gensrv_cpp: CMakeFiles/ROSBUILD_gensrv_cpp
+ROSBUILD_gensrv_cpp: srv_gen/cpp/include/nao_behavior_tree/BallPosForHead.h
+ROSBUILD_gensrv_cpp: srv_gen/cpp/include/nao_behavior_tree/GetArmReadyBT.h
+ROSBUILD_gensrv_cpp: srv_gen/cpp/include/nao_behavior_tree/ArmReadyBT.h
+ROSBUILD_gensrv_cpp: srv_gen/cpp/include/nao_behavior_tree/BallPosForHand.h
+ROSBUILD_gensrv_cpp: srv_gen/cpp/include/nao_behavior_tree/BallPosGetBT.h
+ROSBUILD_gensrv_cpp: srv_gen/cpp/include/nao_behavior_tree/BallPosChangeBT.h
 ROSBUILD_gensrv_cpp: CMakeFiles/ROSBUILD_gensrv_cpp.dir/build.make
 .PHONY : ROSBUILD_gensrv_cpp
 

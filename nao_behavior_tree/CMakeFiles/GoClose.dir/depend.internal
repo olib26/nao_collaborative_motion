@@ -1076,6 +1076,18 @@ CMakeFiles/GoClose.dir/src/actions/GoClose.o
  /opt/ros/fuerte/stacks/image_common/image_transport/include/image_transport/subscriber.h
  /opt/ros/fuerte/stacks/image_common/image_transport/include/image_transport/transport_hints.h
  /opt/ros/fuerte/stacks/vision_opencv/cv_bridge/include/cv_bridge/cv_bridge.h
+ include/Eigen/Core
+ include/Eigen/src/Core/Assign_MKL.h
+ include/Eigen/src/Core/GeneralProduct.h
+ include/Eigen/src/Core/products/GeneralMatrixMatrixTriangular_MKL.h
+ include/Eigen/src/Core/products/GeneralMatrixMatrix_MKL.h
+ include/Eigen/src/Core/products/GeneralMatrixVector_MKL.h
+ include/Eigen/src/Core/products/SelfadjointMatrixMatrix_MKL.h
+ include/Eigen/src/Core/products/SelfadjointMatrixVector_MKL.h
+ include/Eigen/src/Core/products/TriangularMatrixMatrix_MKL.h
+ include/Eigen/src/Core/products/TriangularMatrixVector_MKL.h
+ include/Eigen/src/Core/products/TriangularSolverMatrix_MKL.h
+ include/Eigen/src/Core/util/MKL_support.h
  include/nao_behavior_tree/actions/GoClose.hpp
  include/nao_behavior_tree/filters/particleFilter.hpp
  include/nao_behavior_tree/node.h

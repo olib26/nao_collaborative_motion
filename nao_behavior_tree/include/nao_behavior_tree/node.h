@@ -19,6 +19,7 @@ enum NODE_TYPE
 	SEQUENCE_TILDE,
 	PARALLEL,
 	LAUNCHER,
+	PARALLELM,
 	DECORATOR,
 	ACTION,
 	CONDITION,
@@ -160,6 +161,16 @@ private:
 	STATE execute();
 	inline NODE_TYPE get_node_type() { return LAUNCHER; }
 	inline std::string get_node_name() { return "Launcher"; }
+};
+
+class NodeParallelM : public Node
+{
+public:
+	NodeParallelM(Node* node);
+private:
+	STATE execute();
+	inline NODE_TYPE get_node_type() { return PARALLELM; }
+	inline std::string get_node_name() { return "ParallelM"; }
 };
 
 

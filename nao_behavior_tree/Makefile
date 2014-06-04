@@ -96,6 +96,58 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named Catch
+
+# Build rule for target.
+Catch: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Catch
+.PHONY : Catch
+
+# fast build rule for target.
+Catch/fast:
+	$(MAKE) -f CMakeFiles/Catch.dir/build.make CMakeFiles/Catch.dir/build
+.PHONY : Catch/fast
+
+#=============================================================================
+# Target rules for targets named ChangeHandBall
+
+# Build rule for target.
+ChangeHandBall: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ChangeHandBall
+.PHONY : ChangeHandBall
+
+# fast build rule for target.
+ChangeHandBall/fast:
+	$(MAKE) -f CMakeFiles/ChangeHandBall.dir/build.make CMakeFiles/ChangeHandBall.dir/build
+.PHONY : ChangeHandBall/fast
+
+#=============================================================================
+# Target rules for targets named Drop
+
+# Build rule for target.
+Drop: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Drop
+.PHONY : Drop
+
+# fast build rule for target.
+Drop/fast:
+	$(MAKE) -f CMakeFiles/Drop.dir/build.make CMakeFiles/Drop.dir/build
+.PHONY : Drop/fast
+
+#=============================================================================
+# Target rules for targets named GiveBall
+
+# Build rule for target.
+GiveBall: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 GiveBall
+.PHONY : GiveBall
+
+# fast build rule for target.
+GiveBall/fast:
+	$(MAKE) -f CMakeFiles/GiveBall.dir/build.make CMakeFiles/GiveBall.dir/build
+.PHONY : GiveBall/fast
+
+#=============================================================================
 # Target rules for targets named GoClose
 
 # Build rule for target.
@@ -252,6 +304,19 @@ ROSBUILD_gensrv_lisp/fast:
 .PHONY : ROSBUILD_gensrv_lisp/fast
 
 #=============================================================================
+# Target rules for targets named ROSBUILD_gensrv_py
+
+# Build rule for target.
+ROSBUILD_gensrv_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ROSBUILD_gensrv_py
+.PHONY : ROSBUILD_gensrv_py
+
+# fast build rule for target.
+ROSBUILD_gensrv_py/fast:
+	$(MAKE) -f CMakeFiles/ROSBUILD_gensrv_py.dir/build.make CMakeFiles/ROSBUILD_gensrv_py.dir/build
+.PHONY : ROSBUILD_gensrv_py/fast
+
+#=============================================================================
 # Target rules for targets named Search
 
 # Build rule for target.
@@ -276,6 +341,19 @@ Stop: cmake_check_build_system
 Stop/fast:
 	$(MAKE) -f CMakeFiles/Stop.dir/build.make CMakeFiles/Stop.dir/build
 .PHONY : Stop/fast
+
+#=============================================================================
+# Target rules for targets named TakeBall
+
+# Build rule for target.
+TakeBall: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 TakeBall
+.PHONY : TakeBall
+
+# fast build rule for target.
+TakeBall/fast:
+	$(MAKE) -f CMakeFiles/TakeBall.dir/build.make CMakeFiles/TakeBall.dir/build
+.PHONY : TakeBall/fast
 
 #=============================================================================
 # Target rules for targets named TrackingAmongObstacles
@@ -343,6 +421,19 @@ color_filter_calibration/fast:
 .PHONY : color_filter_calibration/fast
 
 #=============================================================================
+# Target rules for targets named imageconverter
+
+# Build rule for target.
+imageconverter: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 imageconverter
+.PHONY : imageconverter
+
+# fast build rule for target.
+imageconverter/fast:
+	$(MAKE) -f CMakeFiles/imageconverter.dir/build.make CMakeFiles/imageconverter.dir/build
+.PHONY : imageconverter/fast
+
+#=============================================================================
 # Target rules for targets named nao_behavior_tree
 
 # Build rule for target.
@@ -382,6 +473,19 @@ nao_sonar/fast:
 .PHONY : nao_sonar/fast
 
 #=============================================================================
+# Target rules for targets named objectServer
+
+# Build rule for target.
+objectServer: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 objectServer
+.PHONY : objectServer
+
+# fast build rule for target.
+objectServer/fast:
+	$(MAKE) -f CMakeFiles/objectServer.dir/build.make CMakeFiles/objectServer.dir/build
+.PHONY : objectServer/fast
+
+#=============================================================================
 # Target rules for targets named remote
 
 # Build rule for target.
@@ -393,6 +497,19 @@ remote: cmake_check_build_system
 remote/fast:
 	$(MAKE) -f CMakeFiles/remote.dir/build.make CMakeFiles/remote.dir/build
 .PHONY : remote/fast
+
+#=============================================================================
+# Target rules for targets named robotMove
+
+# Build rule for target.
+robotMove: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 robotMove
+.PHONY : robotMove
+
+# fast build rule for target.
+robotMove/fast:
+	$(MAKE) -f CMakeFiles/robotMove.dir/build.make CMakeFiles/robotMove.dir/build
+.PHONY : robotMove/fast
 
 #=============================================================================
 # Target rules for targets named rosbuild_precompile
@@ -471,6 +588,19 @@ rospack_gensrv: cmake_check_build_system
 rospack_gensrv/fast:
 	$(MAKE) -f CMakeFiles/rospack_gensrv.dir/build.make CMakeFiles/rospack_gensrv.dir/build
 .PHONY : rospack_gensrv/fast
+
+#=============================================================================
+# Target rules for targets named rospack_gensrv_all
+
+# Build rule for target.
+rospack_gensrv_all: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rospack_gensrv_all
+.PHONY : rospack_gensrv_all
+
+# fast build rule for target.
+rospack_gensrv_all/fast:
+	$(MAKE) -f CMakeFiles/rospack_gensrv_all.dir/build.make CMakeFiles/rospack_gensrv_all.dir/build
+.PHONY : rospack_gensrv_all/fast
 
 #=============================================================================
 # Target rules for targets named test
@@ -749,6 +879,10 @@ src/behavior_tree/parser.s:
 
 # target to build an object file
 src/behavior_tree/rosaction.o:
+	$(MAKE) -f CMakeFiles/Catch.dir/build.make CMakeFiles/Catch.dir/src/behavior_tree/rosaction.o
+	$(MAKE) -f CMakeFiles/ChangeHandBall.dir/build.make CMakeFiles/ChangeHandBall.dir/src/behavior_tree/rosaction.o
+	$(MAKE) -f CMakeFiles/Drop.dir/build.make CMakeFiles/Drop.dir/src/behavior_tree/rosaction.o
+	$(MAKE) -f CMakeFiles/GiveBall.dir/build.make CMakeFiles/GiveBall.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/GoClose.dir/build.make CMakeFiles/GoClose.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/GoToPoint.dir/build.make CMakeFiles/GoToPoint.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/Greet.dir/build.make CMakeFiles/Greet.dir/src/behavior_tree/rosaction.o
@@ -757,6 +891,7 @@ src/behavior_tree/rosaction.o:
 	$(MAKE) -f CMakeFiles/Obstacles.dir/build.make CMakeFiles/Obstacles.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/Stop.dir/build.make CMakeFiles/Stop.dir/src/behavior_tree/rosaction.o
+	$(MAKE) -f CMakeFiles/TakeBall.dir/build.make CMakeFiles/TakeBall.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/Walk.dir/build.make CMakeFiles/Walk.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/bt_server.dir/build.make CMakeFiles/bt_server.dir/src/behavior_tree/rosaction.o
@@ -765,6 +900,10 @@ src/behavior_tree/rosaction.o:
 
 # target to preprocess a source file
 src/behavior_tree/rosaction.i:
+	$(MAKE) -f CMakeFiles/Catch.dir/build.make CMakeFiles/Catch.dir/src/behavior_tree/rosaction.i
+	$(MAKE) -f CMakeFiles/ChangeHandBall.dir/build.make CMakeFiles/ChangeHandBall.dir/src/behavior_tree/rosaction.i
+	$(MAKE) -f CMakeFiles/Drop.dir/build.make CMakeFiles/Drop.dir/src/behavior_tree/rosaction.i
+	$(MAKE) -f CMakeFiles/GiveBall.dir/build.make CMakeFiles/GiveBall.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/GoClose.dir/build.make CMakeFiles/GoClose.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/GoToPoint.dir/build.make CMakeFiles/GoToPoint.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/Greet.dir/build.make CMakeFiles/Greet.dir/src/behavior_tree/rosaction.i
@@ -773,6 +912,7 @@ src/behavior_tree/rosaction.i:
 	$(MAKE) -f CMakeFiles/Obstacles.dir/build.make CMakeFiles/Obstacles.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/Stop.dir/build.make CMakeFiles/Stop.dir/src/behavior_tree/rosaction.i
+	$(MAKE) -f CMakeFiles/TakeBall.dir/build.make CMakeFiles/TakeBall.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/Walk.dir/build.make CMakeFiles/Walk.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/bt_server.dir/build.make CMakeFiles/bt_server.dir/src/behavior_tree/rosaction.i
@@ -781,6 +921,10 @@ src/behavior_tree/rosaction.i:
 
 # target to generate assembly for a file
 src/behavior_tree/rosaction.s:
+	$(MAKE) -f CMakeFiles/Catch.dir/build.make CMakeFiles/Catch.dir/src/behavior_tree/rosaction.s
+	$(MAKE) -f CMakeFiles/ChangeHandBall.dir/build.make CMakeFiles/ChangeHandBall.dir/src/behavior_tree/rosaction.s
+	$(MAKE) -f CMakeFiles/Drop.dir/build.make CMakeFiles/Drop.dir/src/behavior_tree/rosaction.s
+	$(MAKE) -f CMakeFiles/GiveBall.dir/build.make CMakeFiles/GiveBall.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/GoClose.dir/build.make CMakeFiles/GoClose.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/GoToPoint.dir/build.make CMakeFiles/GoToPoint.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/Greet.dir/build.make CMakeFiles/Greet.dir/src/behavior_tree/rosaction.s
@@ -789,11 +933,147 @@ src/behavior_tree/rosaction.s:
 	$(MAKE) -f CMakeFiles/Obstacles.dir/build.make CMakeFiles/Obstacles.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/Stop.dir/build.make CMakeFiles/Stop.dir/src/behavior_tree/rosaction.s
+	$(MAKE) -f CMakeFiles/TakeBall.dir/build.make CMakeFiles/TakeBall.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/Walk.dir/build.make CMakeFiles/Walk.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/bt_server.dir/build.make CMakeFiles/bt_server.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/nao_behavior_tree.dir/build.make CMakeFiles/nao_behavior_tree.dir/src/behavior_tree/rosaction.s
 .PHONY : src/behavior_tree/rosaction.s
+
+# target to build an object file
+src/exchange/BTObjectServer.o:
+	$(MAKE) -f CMakeFiles/objectServer.dir/build.make CMakeFiles/objectServer.dir/src/exchange/BTObjectServer.o
+.PHONY : src/exchange/BTObjectServer.o
+
+# target to preprocess a source file
+src/exchange/BTObjectServer.i:
+	$(MAKE) -f CMakeFiles/objectServer.dir/build.make CMakeFiles/objectServer.dir/src/exchange/BTObjectServer.i
+.PHONY : src/exchange/BTObjectServer.i
+
+# target to generate assembly for a file
+src/exchange/BTObjectServer.s:
+	$(MAKE) -f CMakeFiles/objectServer.dir/build.make CMakeFiles/objectServer.dir/src/exchange/BTObjectServer.s
+.PHONY : src/exchange/BTObjectServer.s
+
+# target to build an object file
+src/exchange/RobotMove.o:
+	$(MAKE) -f CMakeFiles/robotMove.dir/build.make CMakeFiles/robotMove.dir/src/exchange/RobotMove.o
+.PHONY : src/exchange/RobotMove.o
+
+# target to preprocess a source file
+src/exchange/RobotMove.i:
+	$(MAKE) -f CMakeFiles/robotMove.dir/build.make CMakeFiles/robotMove.dir/src/exchange/RobotMove.i
+.PHONY : src/exchange/RobotMove.i
+
+# target to generate assembly for a file
+src/exchange/RobotMove.s:
+	$(MAKE) -f CMakeFiles/robotMove.dir/build.make CMakeFiles/robotMove.dir/src/exchange/RobotMove.s
+.PHONY : src/exchange/RobotMove.s
+
+# target to build an object file
+src/exchange/WQUPC.o:
+	$(MAKE) -f CMakeFiles/imageconverter.dir/build.make CMakeFiles/imageconverter.dir/src/exchange/WQUPC.o
+.PHONY : src/exchange/WQUPC.o
+
+# target to preprocess a source file
+src/exchange/WQUPC.i:
+	$(MAKE) -f CMakeFiles/imageconverter.dir/build.make CMakeFiles/imageconverter.dir/src/exchange/WQUPC.i
+.PHONY : src/exchange/WQUPC.i
+
+# target to generate assembly for a file
+src/exchange/WQUPC.s:
+	$(MAKE) -f CMakeFiles/imageconverter.dir/build.make CMakeFiles/imageconverter.dir/src/exchange/WQUPC.s
+.PHONY : src/exchange/WQUPC.s
+
+# target to build an object file
+src/exchange/actions/Catch.o:
+	$(MAKE) -f CMakeFiles/Catch.dir/build.make CMakeFiles/Catch.dir/src/exchange/actions/Catch.o
+.PHONY : src/exchange/actions/Catch.o
+
+# target to preprocess a source file
+src/exchange/actions/Catch.i:
+	$(MAKE) -f CMakeFiles/Catch.dir/build.make CMakeFiles/Catch.dir/src/exchange/actions/Catch.i
+.PHONY : src/exchange/actions/Catch.i
+
+# target to generate assembly for a file
+src/exchange/actions/Catch.s:
+	$(MAKE) -f CMakeFiles/Catch.dir/build.make CMakeFiles/Catch.dir/src/exchange/actions/Catch.s
+.PHONY : src/exchange/actions/Catch.s
+
+# target to build an object file
+src/exchange/actions/ChangeHandBall.o:
+	$(MAKE) -f CMakeFiles/ChangeHandBall.dir/build.make CMakeFiles/ChangeHandBall.dir/src/exchange/actions/ChangeHandBall.o
+.PHONY : src/exchange/actions/ChangeHandBall.o
+
+# target to preprocess a source file
+src/exchange/actions/ChangeHandBall.i:
+	$(MAKE) -f CMakeFiles/ChangeHandBall.dir/build.make CMakeFiles/ChangeHandBall.dir/src/exchange/actions/ChangeHandBall.i
+.PHONY : src/exchange/actions/ChangeHandBall.i
+
+# target to generate assembly for a file
+src/exchange/actions/ChangeHandBall.s:
+	$(MAKE) -f CMakeFiles/ChangeHandBall.dir/build.make CMakeFiles/ChangeHandBall.dir/src/exchange/actions/ChangeHandBall.s
+.PHONY : src/exchange/actions/ChangeHandBall.s
+
+# target to build an object file
+src/exchange/actions/Drop.o:
+	$(MAKE) -f CMakeFiles/Drop.dir/build.make CMakeFiles/Drop.dir/src/exchange/actions/Drop.o
+.PHONY : src/exchange/actions/Drop.o
+
+# target to preprocess a source file
+src/exchange/actions/Drop.i:
+	$(MAKE) -f CMakeFiles/Drop.dir/build.make CMakeFiles/Drop.dir/src/exchange/actions/Drop.i
+.PHONY : src/exchange/actions/Drop.i
+
+# target to generate assembly for a file
+src/exchange/actions/Drop.s:
+	$(MAKE) -f CMakeFiles/Drop.dir/build.make CMakeFiles/Drop.dir/src/exchange/actions/Drop.s
+.PHONY : src/exchange/actions/Drop.s
+
+# target to build an object file
+src/exchange/actions/GiveBall.o:
+	$(MAKE) -f CMakeFiles/GiveBall.dir/build.make CMakeFiles/GiveBall.dir/src/exchange/actions/GiveBall.o
+.PHONY : src/exchange/actions/GiveBall.o
+
+# target to preprocess a source file
+src/exchange/actions/GiveBall.i:
+	$(MAKE) -f CMakeFiles/GiveBall.dir/build.make CMakeFiles/GiveBall.dir/src/exchange/actions/GiveBall.i
+.PHONY : src/exchange/actions/GiveBall.i
+
+# target to generate assembly for a file
+src/exchange/actions/GiveBall.s:
+	$(MAKE) -f CMakeFiles/GiveBall.dir/build.make CMakeFiles/GiveBall.dir/src/exchange/actions/GiveBall.s
+.PHONY : src/exchange/actions/GiveBall.s
+
+# target to build an object file
+src/exchange/actions/TakeBall.o:
+	$(MAKE) -f CMakeFiles/TakeBall.dir/build.make CMakeFiles/TakeBall.dir/src/exchange/actions/TakeBall.o
+.PHONY : src/exchange/actions/TakeBall.o
+
+# target to preprocess a source file
+src/exchange/actions/TakeBall.i:
+	$(MAKE) -f CMakeFiles/TakeBall.dir/build.make CMakeFiles/TakeBall.dir/src/exchange/actions/TakeBall.i
+.PHONY : src/exchange/actions/TakeBall.i
+
+# target to generate assembly for a file
+src/exchange/actions/TakeBall.s:
+	$(MAKE) -f CMakeFiles/TakeBall.dir/build.make CMakeFiles/TakeBall.dir/src/exchange/actions/TakeBall.s
+.PHONY : src/exchange/actions/TakeBall.s
+
+# target to build an object file
+src/exchange/imageconverter.o:
+	$(MAKE) -f CMakeFiles/imageconverter.dir/build.make CMakeFiles/imageconverter.dir/src/exchange/imageconverter.o
+.PHONY : src/exchange/imageconverter.o
+
+# target to preprocess a source file
+src/exchange/imageconverter.i:
+	$(MAKE) -f CMakeFiles/imageconverter.dir/build.make CMakeFiles/imageconverter.dir/src/exchange/imageconverter.i
+.PHONY : src/exchange/imageconverter.i
+
+# target to generate assembly for a file
+src/exchange/imageconverter.s:
+	$(MAKE) -f CMakeFiles/imageconverter.dir/build.make CMakeFiles/imageconverter.dir/src/exchange/imageconverter.s
+.PHONY : src/exchange/imageconverter.s
 
 # target to build an object file
 src/filters/particleFilter.o:
@@ -915,6 +1195,10 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... Catch"
+	@echo "... ChangeHandBall"
+	@echo "... Drop"
+	@echo "... GiveBall"
 	@echo "... GoClose"
 	@echo "... GoToPoint"
 	@echo "... Greet"
@@ -927,25 +1211,31 @@ help:
 	@echo "... ROSBUILD_genmsg_py"
 	@echo "... ROSBUILD_gensrv_cpp"
 	@echo "... ROSBUILD_gensrv_lisp"
+	@echo "... ROSBUILD_gensrv_py"
 	@echo "... Search"
 	@echo "... Stop"
+	@echo "... TakeBall"
 	@echo "... TrackingAmongObstacles"
 	@echo "... Walk"
 	@echo "... bt_server"
 	@echo "... clean-test-results"
 	@echo "... color_filter_calibration"
 	@echo "... edit_cache"
+	@echo "... imageconverter"
 	@echo "... nao_behavior_tree"
 	@echo "... nao_leds"
 	@echo "... nao_sonar"
+	@echo "... objectServer"
 	@echo "... rebuild_cache"
 	@echo "... remote"
+	@echo "... robotMove"
 	@echo "... rosbuild_precompile"
 	@echo "... rosbuild_premsgsrvgen"
 	@echo "... rospack_genmsg"
 	@echo "... rospack_genmsg_all"
 	@echo "... rospack_genmsg_libexe"
 	@echo "... rospack_gensrv"
+	@echo "... rospack_gensrv_all"
 	@echo "... test"
 	@echo "... test-future"
 	@echo "... test-results"
@@ -996,6 +1286,33 @@ help:
 	@echo "... src/behavior_tree/rosaction.o"
 	@echo "... src/behavior_tree/rosaction.i"
 	@echo "... src/behavior_tree/rosaction.s"
+	@echo "... src/exchange/BTObjectServer.o"
+	@echo "... src/exchange/BTObjectServer.i"
+	@echo "... src/exchange/BTObjectServer.s"
+	@echo "... src/exchange/RobotMove.o"
+	@echo "... src/exchange/RobotMove.i"
+	@echo "... src/exchange/RobotMove.s"
+	@echo "... src/exchange/WQUPC.o"
+	@echo "... src/exchange/WQUPC.i"
+	@echo "... src/exchange/WQUPC.s"
+	@echo "... src/exchange/actions/Catch.o"
+	@echo "... src/exchange/actions/Catch.i"
+	@echo "... src/exchange/actions/Catch.s"
+	@echo "... src/exchange/actions/ChangeHandBall.o"
+	@echo "... src/exchange/actions/ChangeHandBall.i"
+	@echo "... src/exchange/actions/ChangeHandBall.s"
+	@echo "... src/exchange/actions/Drop.o"
+	@echo "... src/exchange/actions/Drop.i"
+	@echo "... src/exchange/actions/Drop.s"
+	@echo "... src/exchange/actions/GiveBall.o"
+	@echo "... src/exchange/actions/GiveBall.i"
+	@echo "... src/exchange/actions/GiveBall.s"
+	@echo "... src/exchange/actions/TakeBall.o"
+	@echo "... src/exchange/actions/TakeBall.i"
+	@echo "... src/exchange/actions/TakeBall.s"
+	@echo "... src/exchange/imageconverter.o"
+	@echo "... src/exchange/imageconverter.i"
+	@echo "... src/exchange/imageconverter.s"
 	@echo "... src/filters/particleFilter.o"
 	@echo "... src/filters/particleFilter.i"
 	@echo "... src/filters/particleFilter.s"

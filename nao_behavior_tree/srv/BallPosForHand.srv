@@ -1,0 +1,6 @@
+int32 min_h
+int32 max_h
+---
+float32 pos_x
+float32 pos_y
+float32 pos_z
