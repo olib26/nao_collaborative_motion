@@ -11,6 +11,8 @@ s
 			A GoClose2
 		]
 	|
+	A StopWalking1
+	A StopWalking2
 	[*
 		A GiveBall1
 		A TakeBall2

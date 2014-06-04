@@ -141,6 +141,10 @@ rosbuild_add_executable(Walk src/actions/Walk.cpp src/behavior_tree/rosaction.cp
 target_link_libraries(Walk alproxies alvalue)
 rosbuild_link_boost(Walk thread)
 
+rosbuild_add_executable(StopWalking src/actions/StopWalking.cpp src/behavior_tree/rosaction.cpp)
+target_link_libraries(StopWalking alproxies alvalue)
+rosbuild_link_boost(StopWalking thread)
+
 rosbuild_add_library(bt_server ${PROJECT_SOURCE_DIR}/src/behavior_tree/rosaction.cpp)
 
 

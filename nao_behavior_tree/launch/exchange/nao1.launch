@@ -71,6 +71,11 @@
     <param name="NAO_PORT" value="$(arg nao_port)"/>
   </node>
   
+  <node pkg="nao_behavior_tree" type="StopWalking" name="StopWalking1" args="1">
+    <param name="NAO_IP" value="$(arg nao_ip)"/>
+    <param name="NAO_PORT" value="$(arg nao_port)"/>
+  </node>
+  
   <node pkg="nao_behavior_tree" type="TakeBall" name="TakeBall1" args="1" output="screen">
     <param name="NAO_IP" value="$(arg nao_ip)"/>
     <param name="NAO_PORT" value="$(arg nao_port)"/>

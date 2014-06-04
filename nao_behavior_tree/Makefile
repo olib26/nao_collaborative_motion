@@ -343,6 +343,19 @@ Stop/fast:
 .PHONY : Stop/fast
 
 #=============================================================================
+# Target rules for targets named StopWalking
+
+# Build rule for target.
+StopWalking: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 StopWalking
+.PHONY : StopWalking
+
+# fast build rule for target.
+StopWalking/fast:
+	$(MAKE) -f CMakeFiles/StopWalking.dir/build.make CMakeFiles/StopWalking.dir/build
+.PHONY : StopWalking/fast
+
+#=============================================================================
 # Target rules for targets named TakeBall
 
 # Build rule for target.
@@ -758,6 +771,21 @@ src/actions/Stop.s:
 .PHONY : src/actions/Stop.s
 
 # target to build an object file
+src/actions/StopWalking.o:
+	$(MAKE) -f CMakeFiles/StopWalking.dir/build.make CMakeFiles/StopWalking.dir/src/actions/StopWalking.o
+.PHONY : src/actions/StopWalking.o
+
+# target to preprocess a source file
+src/actions/StopWalking.i:
+	$(MAKE) -f CMakeFiles/StopWalking.dir/build.make CMakeFiles/StopWalking.dir/src/actions/StopWalking.i
+.PHONY : src/actions/StopWalking.i
+
+# target to generate assembly for a file
+src/actions/StopWalking.s:
+	$(MAKE) -f CMakeFiles/StopWalking.dir/build.make CMakeFiles/StopWalking.dir/src/actions/StopWalking.s
+.PHONY : src/actions/StopWalking.s
+
+# target to build an object file
 src/actions/TrackingAmongObstacles.o:
 	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/actions/TrackingAmongObstacles.o
 .PHONY : src/actions/TrackingAmongObstacles.o
@@ -891,6 +919,7 @@ src/behavior_tree/rosaction.o:
 	$(MAKE) -f CMakeFiles/Obstacles.dir/build.make CMakeFiles/Obstacles.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/Stop.dir/build.make CMakeFiles/Stop.dir/src/behavior_tree/rosaction.o
+	$(MAKE) -f CMakeFiles/StopWalking.dir/build.make CMakeFiles/StopWalking.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/TakeBall.dir/build.make CMakeFiles/TakeBall.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.o
 	$(MAKE) -f CMakeFiles/Walk.dir/build.make CMakeFiles/Walk.dir/src/behavior_tree/rosaction.o
@@ -912,6 +941,7 @@ src/behavior_tree/rosaction.i:
 	$(MAKE) -f CMakeFiles/Obstacles.dir/build.make CMakeFiles/Obstacles.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/Stop.dir/build.make CMakeFiles/Stop.dir/src/behavior_tree/rosaction.i
+	$(MAKE) -f CMakeFiles/StopWalking.dir/build.make CMakeFiles/StopWalking.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/TakeBall.dir/build.make CMakeFiles/TakeBall.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.i
 	$(MAKE) -f CMakeFiles/Walk.dir/build.make CMakeFiles/Walk.dir/src/behavior_tree/rosaction.i
@@ -933,6 +963,7 @@ src/behavior_tree/rosaction.s:
 	$(MAKE) -f CMakeFiles/Obstacles.dir/build.make CMakeFiles/Obstacles.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/Search.dir/build.make CMakeFiles/Search.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/Stop.dir/build.make CMakeFiles/Stop.dir/src/behavior_tree/rosaction.s
+	$(MAKE) -f CMakeFiles/StopWalking.dir/build.make CMakeFiles/StopWalking.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/TakeBall.dir/build.make CMakeFiles/TakeBall.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/TrackingAmongObstacles.dir/build.make CMakeFiles/TrackingAmongObstacles.dir/src/behavior_tree/rosaction.s
 	$(MAKE) -f CMakeFiles/Walk.dir/build.make CMakeFiles/Walk.dir/src/behavior_tree/rosaction.s
@@ -1214,6 +1245,7 @@ help:
 	@echo "... ROSBUILD_gensrv_py"
 	@echo "... Search"
 	@echo "... Stop"
+	@echo "... StopWalking"
 	@echo "... TakeBall"
 	@echo "... TrackingAmongObstacles"
 	@echo "... Walk"
@@ -1259,6 +1291,9 @@ help:
 	@echo "... src/actions/Stop.o"
 	@echo "... src/actions/Stop.i"
 	@echo "... src/actions/Stop.s"
+	@echo "... src/actions/StopWalking.o"
+	@echo "... src/actions/StopWalking.i"
+	@echo "... src/actions/StopWalking.s"
 	@echo "... src/actions/TrackingAmongObstacles.o"
 	@echo "... src/actions/TrackingAmongObstacles.i"
 	@echo "... src/actions/TrackingAmongObstacles.s"

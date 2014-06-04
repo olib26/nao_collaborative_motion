@@ -17,6 +17,7 @@
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/ROSBUILD_gensrv_py.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/Search.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/Stop.dir
+/home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/StopWalking.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/TakeBall.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/TrackingAmongObstacles.dir
 /home/olivier/ros_workspace/nao_behavior_tree/CMakeFiles/Walk.dir
