@@ -1115,7 +1115,7 @@ public:
     //ROS_INFO("v3z = %f",v3(2));
 
     //Get distance to ball
-    double rayon=0.025;
+    double rayon=0.028;
     double cosdelta=v3.transpose()*v1;
     double distance = rayon*sqrt(1+1/pow(tan(acos(cosdelta)),2.));
 //=====>LA

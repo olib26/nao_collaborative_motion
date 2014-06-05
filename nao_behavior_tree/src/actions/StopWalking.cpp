@@ -26,6 +26,7 @@ public:
 	void finalize()
 	{
 		// Stop walking
+		// and send vel = 0 !!!!!!!!!!!!!
 		motion_proxy_ptr->stopMove();
 
 		init_ = false;

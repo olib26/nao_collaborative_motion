@@ -1,6 +1,6 @@
 <launch>
   
-  <arg name="nao_ip" default="$(optenv NAO_IP 192.168.1.19)"/>
+  <arg name="nao_ip" default="$(optenv NAO_IP 192.168.0.198)"/>
   <arg name="nao_port" default="$(optenv NAO_PORT 9559)"/>
   
   <!--
