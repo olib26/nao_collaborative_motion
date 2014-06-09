@@ -1,3 +1,4 @@
+
 //TO UNDERSTAND THE CODE, WATCH THE REPORT
 
 #include <ros/ros.h>
@@ -480,16 +481,16 @@ public:
             for(int j=0;j<im.cols;j++){
 
                 a=b;
-                b=thresCondOKHSV(imHSV,i,j,HMIN,HMAX,SMIN,SMAX,VMIN,VMAX);//a always on pixel to the left of b excepted for j=0
+                b=thresCondOKHSV(imHSV,i,j,HMIN,HMAX,SMIN,SMAX,VMIN,VMAX);//a always on pixel to the left of b excepted for j=0yy
 
-                if((b-a)==1){im.at<uchar>(Point(j, i))=255;}
-                else{    if((a-b)==1){im.at<uchar>(Point(j-1, i))=255;}
-                        else{    if((b-im2.at<uchar>(Point(j,0)))==1){im.at<uchar>(Point(j, i))=255;}
-                                else{    if((im2.at<uchar>(Point(j,0))-b)==1){im.at<uchar>(Point(j, i-1))=255;}
-                                }
-                        }
-                }
-                im2.at<uchar>(Point(j,0))=b;
+
+
+                if((b==1)&(a==0)){im.at<uchar>(Point(j, i))=255;}
+                else{if((b==0)&(a==1)){im.at<uchar>(Point(j-1, i))=255;}}
+                if((b==1)&(im2.at<uchar>(Point(j,0))==0)){im.at<uchar>(Point(j, i))=255;}
+                else{if((b==0)&(im2.at<uchar>(Point(j,0))==1)){im.at<uchar>(Point(j, i-1))=255;}}
+
+            im2.at<uchar>(Point(j,0))=b;
             }
         }
         return im;
@@ -763,12 +764,12 @@ public:
 
     //Method that prints all the chains
     Mat drawChains(vector<vector<vector<int> > > chains,Mat contoursImage){
-        Mat im(contoursImage.rows, contoursImage.cols, CV_8UC1, Scalar(0));
+        Mat im(contoursImage.rows, contoursImage.cols, CV_8UC1, Scalar(255));
         for(int chain=0;chain<chains.size();chain++){
                 for (int i=0;i<chains.at(chain).size();i++){
                     int y=chains.at(chain).at(i).at(1);
                     int x=chains.at(chain).at(i).at(0);
-                    im.at<uchar>(Point(y,x))=255-1.5*chain*100/chains.size();
+                    im.at<uchar>(Point(y,x))=1.5*chain*100/chains.size();
                 }
         }
                 return im;
@@ -1115,7 +1116,7 @@ public:
     //ROS_INFO("v3z = %f",v3(2));
 
     //Get distance to ball
-    double rayon=0.028;
+    double rayon=0.030;
     double cosdelta=v3.transpose()*v1;
     double distance = rayon*sqrt(1+1/pow(tan(acos(cosdelta)),2.));
 //=====>LA
@@ -1257,11 +1258,11 @@ public:
 
     //Method to draw matrix for given list
     Mat drawMatFromList (vector<vector<int> > contours,Mat contoursImage){
-        Mat im(contoursImage.rows, contoursImage.cols, CV_8UC1, Scalar(0));
+        Mat im(contoursImage.rows, contoursImage.cols, CV_8UC1, Scalar(255));
         for (int i=0;i<contours.size();i++){
             int y=contours.at(i).at(1);
             int x=contours.at(i).at(0);
-            im.at<uchar>(Point(y,x))=255;
+            im.at<uchar>(Point(y,x))=0;
         }
         return im;
     }
