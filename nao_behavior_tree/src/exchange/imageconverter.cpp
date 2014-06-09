@@ -482,10 +482,10 @@ public:
                 a=b;
                 b=thresCondOKHSV(imHSV,i,j,HMIN,HMAX,SMIN,SMAX,VMIN,VMAX);//a always on pixel to the left of b excepted for j=0
 
-                if((b-a)>0){im.at<uchar>(Point(j, i))=255;}
-                else{    if((b-a)<0){im.at<uchar>(Point(j-1, i))=255;}
-                        else{    if((b-im2.at<uchar>(Point(j,0)))>0){im.at<uchar>(Point(j, i))=255;}
-                                else{    if((b-im2.at<uchar>(Point(j,0)))<0){im.at<uchar>(Point(j, i-1))=255;}
+                if((b-a)==1){im.at<uchar>(Point(j, i))=255;}
+                else{    if((b-a)==255){im.at<uchar>(Point(j-1, i))=255;}
+                        else{    if((b-im2.at<uchar>(Point(j,0)))==1){im.at<uchar>(Point(j, i))=255;}
+                                else{    if((b-im2.at<uchar>(Point(j,0)))==255){im.at<uchar>(Point(j, i-1))=255;}
                                 }
                         }
                 }
