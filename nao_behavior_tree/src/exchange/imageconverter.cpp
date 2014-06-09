@@ -483,9 +483,9 @@ public:
                 b=thresCondOKHSV(imHSV,i,j,HMIN,HMAX,SMIN,SMAX,VMIN,VMAX);//a always on pixel to the left of b excepted for j=0
 
                 if((b-a)==1){im.at<uchar>(Point(j, i))=255;}
-                else{    if((b-a)==255){im.at<uchar>(Point(j-1, i))=255;}
+                else{    if((a-b)==1){im.at<uchar>(Point(j-1, i))=255;}
                         else{    if((b-im2.at<uchar>(Point(j,0)))==1){im.at<uchar>(Point(j, i))=255;}
-                                else{    if((b-im2.at<uchar>(Point(j,0)))==255){im.at<uchar>(Point(j, i-1))=255;}
+                                else{    if((im2.at<uchar>(Point(j,0))-b)==1){im.at<uchar>(Point(j, i-1))=255;}
                                 }
                         }
                 }
@@ -1309,7 +1309,7 @@ public:
 
         Mat color = colorDetectionHSV(imgcam, req.min_h,req.max_h,80,255,80,255);
         //get the chain of the ball
-        Mat grad=getContourBall(imgcam, req.min_h,req.max_h,80,255,80,255);
+        Mat grad=getContourBall3(imgcam, req.min_h,req.max_h,80,255,80,255);
         //vector<vector<vector<int> > > chains=getChains2(getContourBall3(imgcam, req.min_h,req.max_h,120,255,120,255));
         vector<vector<vector<int> > > chains=getChains2(grad);
         vector<vector<vector<int> > >  meltedchainlist =meltChains(chains,meltingList);
