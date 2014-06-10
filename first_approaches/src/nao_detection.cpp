@@ -5,6 +5,15 @@
  *      Author: Olivier BALLAND
  */
 
+/* Description:
+ *  Receives the image from the camera’s proxy.
+ *  Publishes the robot’s position in the image.
+ */
+
+/* Topics used:
+ *  /image_raw
+ *  /image_nao_pos
+ */ 
 
 #include <ros/ros.h>
 #include "math.h"

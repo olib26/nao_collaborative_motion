@@ -1,3 +1,21 @@
+/* Description:
+ *  Receives the image from the camera’s proxy to detect a Nao.
+ *  Receives the robots’ position.
+ *  Receives the robot’s bearing.
+ *  Receives the optimal velocity.
+ *  Publishes the command velocity.
+ *  Receives the sonar values.
+ */
+
+/* Topics used:
+ *  /image_raw
+ *  /odometry
+ *  /bearing
+ *  /vel
+ *  /cmd_vel
+ *  /sonar
+ */
+
 #include "nao_behavior_tree/rosaction.h"
 
 #include <alproxies/almotionproxy.h>

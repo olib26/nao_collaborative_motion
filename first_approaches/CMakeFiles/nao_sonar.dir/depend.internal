@@ -590,6 +590,7 @@ CMakeFiles/nao_sonar.dir/src/nao_sonar.o
  /opt/ros/fuerte/include/ros/message.h
  /opt/ros/fuerte/include/ros/message_event.h
  /opt/ros/fuerte/include/ros/message_forward.h
+ /opt/ros/fuerte/include/ros/message_operations.h
  /opt/ros/fuerte/include/ros/message_traits.h
  /opt/ros/fuerte/include/ros/names.h
  /opt/ros/fuerte/include/ros/node_handle.h
@@ -625,3 +626,5 @@ CMakeFiles/nao_sonar.dir/src/nao_sonar.o
  /opt/ros/fuerte/include/ros/wall_timer.h
  /opt/ros/fuerte/include/ros/wall_timer_options.h
  /opt/ros/fuerte/include/rosconsole/macros_generated.h
+ /opt/ros/fuerte/include/std_msgs/Header.h
+ msg_gen/cpp/include/first_approaches/Sonar.h

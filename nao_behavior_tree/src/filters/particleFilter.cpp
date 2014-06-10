@@ -5,6 +5,9 @@
  *      Author: Olivier BALLAND
  */
 
+/* Description:
+ *  Particle Filter for multiple target tracking.
+ */
 
 #include <ros/ros.h>
 

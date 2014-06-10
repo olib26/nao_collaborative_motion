@@ -1,3 +1,15 @@
+/* Description:
+ *  Receives the image from the camera’s proxy to estimate partner’s position.
+ *  Walks in the right direction.
+ *  Receives the sonar values.
+ */
+
+/* Topics used:
+ *  /image_raw
+ *  /cmd_vel
+ *  /sonar
+ */
+
 #include "nao_behavior_tree/rosaction.h"
 
 #include <alproxies/almotionproxy.h>

@@ -5,6 +5,13 @@
  *      Author: Olivier BALLAND
  */
 
+/* Description:
+ *  Publishes the sonar values.
+ */
+
+/* Topics used:
+ *  /sonar
+ */
 
 #include <ros/ros.h>
 #include <alproxies/alsonarproxy.h>

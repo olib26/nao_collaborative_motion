@@ -5,6 +5,10 @@
  *      Author: Olivier BALLAND
  */
 
+/* Description:
+ *  Manages the servers.
+ */
+
 #include <ros/ros.h>
 #include <alproxies/almotionproxy.h>
 

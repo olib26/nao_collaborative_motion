@@ -5,6 +5,19 @@
  *      Author: Olivier BALLAND
  */
 
+/* Description:
+ *  Receives the image from the webcam.
+ *  Publishes the robots’ position.
+ *  Receives the robots’ bearing.
+ *  Receives the optimal velocity.
+ */
+
+/* Topics used:
+ *  /odometry
+ *  /bearing
+ *  /vel
+ */
+
 #include <ros/ros.h>
 #include "nao_behavior_tree/rosaction.h"
 

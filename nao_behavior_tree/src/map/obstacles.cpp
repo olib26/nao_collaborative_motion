@@ -5,6 +5,19 @@
  *      Author: Olivier BALLAND
  */
 
+/* Description:
+ *  Allows to create and save a map with obstacles.
+ *  Receives the robots’ position.
+ *  Receives the robots’ bearing.
+ *  Publishes the optimal velocity.
+ */
+
+/* Topics used:
+ *  /odometry
+ *  /bearing
+ *  /vel
+ */
+
 #include <ros/ros.h>
 #include "nao_behavior_tree/rosaction.h"
 

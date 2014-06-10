@@ -5,6 +5,14 @@
  *      Author: Olivier BALLAND
  */
 
+/* Description:
+ *  Receives the direction to the other robot.
+ *  Turns the head.
+ */
+
+/* Topics used:
+ *  /bearing
+ */
 
 #include <ros/ros.h>
 #include "nao_behavior_tree/rosaction.h"

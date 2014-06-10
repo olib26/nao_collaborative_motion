@@ -6209,7 +6209,7 @@ alproxies/almemoryproxy.h
 -
 alproxies/alsonarproxy.h
 -
-nao_custom/Sonar.h
+first_approaches/Sonar.h
 -
 
 /opt/ros/fuerte/include/XmlRpcDecl.h
@@ -6407,6 +6407,10 @@ boost/make_shared.hpp
 -
 
 /opt/ros/fuerte/include/ros/message_forward.h
+
+/opt/ros/fuerte/include/ros/message_operations.h
+ostream
+-
 
 /opt/ros/fuerte/include/ros/message_traits.h
 message_forward.h
@@ -6817,4 +6821,44 @@ ros/forwards.h
 /opt/ros/fuerte/include/ros/ros/forwards.h
 
 /opt/ros/fuerte/include/rosconsole/macros_generated.h
+
+/opt/ros/fuerte/include/std_msgs/Header.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+
+msg_gen/cpp/include/first_approaches/Sonar.h
+string
+-
+vector
+-
+map
+-
+ostream
+-
+ros/serialization.h
+msg_gen/cpp/include/first_approaches/ros/serialization.h
+ros/builtin_message_traits.h
+msg_gen/cpp/include/first_approaches/ros/builtin_message_traits.h
+ros/message_operations.h
+msg_gen/cpp/include/first_approaches/ros/message_operations.h
+ros/time.h
+msg_gen/cpp/include/first_approaches/ros/time.h
+ros/macros.h
+msg_gen/cpp/include/first_approaches/ros/macros.h
+ros/assert.h
+msg_gen/cpp/include/first_approaches/ros/assert.h
+std_msgs/Header.h
+msg_gen/cpp/include/first_approaches/std_msgs/Header.h
 

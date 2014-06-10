@@ -1,3 +1,7 @@
+/* Description:
+ *  Launches a behavior (greet).
+ */
+
 #include "nao_behavior_tree/rosaction.h"
 #include <alproxies/almotionproxy.h>
 #include <alproxies/albehaviormanagerproxy.h>

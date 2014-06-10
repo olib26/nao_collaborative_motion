@@ -5,6 +5,14 @@
  *      Author: Olivier BALLAND
  */
 
+/* Description:
+ *  Allows to control a Nao with the keyboard.
+ */
+
+/* Topics used:
+ *  /cmd_vel
+ */
+
 
 #include <ros/ros.h>
 #include <alproxies/almotionproxy.h>

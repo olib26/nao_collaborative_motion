@@ -1,3 +1,13 @@
+/* Description:
+ *  Receives the image from the camera’s proxy to detect a Nao.
+ *  Turns around to look for a partner.
+ */
+
+/* Topics used:
+ *  /image_raw
+ *  /cmd_vel
+ */
+
 #include "nao_behavior_tree/rosaction.h"
 
 #include <alproxies/almotionproxy.h>

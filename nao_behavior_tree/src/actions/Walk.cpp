@@ -1,3 +1,11 @@
+/* Description:
+ *  Walks straightly x meters.
+ */
+
+/* Topics used:
+ *  /cmd_vel
+ */
+
 #include "nao_behavior_tree/rosaction.h"
 
 #include <alproxies/almotionproxy.h>

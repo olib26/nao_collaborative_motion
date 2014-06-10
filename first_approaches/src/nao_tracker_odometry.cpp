@@ -5,6 +5,15 @@
  *      Author: Olivier BALLAND
  */
 
+/* Description:
+ *  Receives the estimated odometry.
+ *  Publishes the command velocity.
+ */
+
+/* Topics used:
+ *  /torso_odometry
+ *  /cmd_vel
+ */
 
 #include <ros/ros.h>
 #include <alproxies/almotionproxy.h>

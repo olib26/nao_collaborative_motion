@@ -1,10 +1,13 @@
 /*
- * nao_behavior.cpp
+ * nao_hello.cpp
  *
  *  Created on: Feb 3, 2014
  *      Author: Olivier BALLAND
  */
 
+/* Description:
+ *  Launches a behavior (greet).
+ */
 
 #include <ros/ros.h>
 #include <alproxies/albehaviormanagerproxy.h>

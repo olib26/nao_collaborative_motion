@@ -5,6 +5,15 @@
  *      Author: Olivier BALLAND
  */
 
+/* Description:
+ *  Receives the image from the camera’s proxy.
+ *  Allows to adjust HSV parameters.
+ */
+
+/* Topics used:
+ *  /image_raw
+ */
+
 
 #include <ros/ros.h>
 

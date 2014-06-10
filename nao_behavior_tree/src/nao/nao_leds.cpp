@@ -5,6 +5,9 @@
  *      Author: Olivier BALLAND
  */
 
+/* Description:
+ *  Turns off the LEDs.
+ */
 
 #include <ros/ros.h>
 #include <alproxies/alledsproxy.h>

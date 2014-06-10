@@ -8804,14 +8804,6 @@ nao_behavior_tree/Bearing.h
 nao_behavior_tree/actions/HeadTracker.hpp
 -
 
-/home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/rosaction.cpp
-nao_behavior_tree/rosaction.h
-/home/olivier/ros_workspace/nao_behavior_tree/src/behavior_tree/nao_behavior_tree/rosaction.h
-nao_behavior_tree/ROSAction.h
--
-boost/thread.hpp
--
-
 /opt/ros/fuerte/include/XmlRpcDecl.h
 ros/macros.h
 -

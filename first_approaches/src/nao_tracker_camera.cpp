@@ -5,6 +5,15 @@
  *      Author: Olivier BALLAND
  */
 
+/* Description:
+ *  Receives the robot’s position in the image.
+ *  Publishes the command velocity.
+ */
+
+/* Topics used:
+ *  /image_nao_pos
+ *  /cmd_vel
+ */
 
 #include <ros/ros.h>
 #include <geometry_msgs/Twist.h>
