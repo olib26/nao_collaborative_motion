@@ -26,7 +26,7 @@ Algorithms can be tested with Webots (load the environment /first_approaches/nao
 	Launch CollaborativeMotion.launch (change robots IP in NaoBehaviorTree1/2).
 
 	<LI> Tracking among obstacles: <br/>
-	Create the obstacles map running ObstaclesCreation.launch (select the correct webcam). <br/>
+	Create the obstacles map running ObstaclesCreation.launch (select the correct webcam, click left to add points and right to validate the obstacle). <br/>
 	Launch ObstaclesNormal.launch.
 	</UL>
 </UL>
